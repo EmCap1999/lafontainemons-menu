@@ -26,38 +26,17 @@ exports.creatItem = async (req, res) => {
 //Get all Items
 exports.getAllItems = async (req, res) => {
     try {
-        const allItems = await item.findAll();
-        res.json(allItems);
+        const { condition } = req.query;
 
+        let queryOptions = {};
+        if (condition) {
+            queryOptions.where = JSON.parse(condition);
+        }
+
+        const allItems = await item.findAll(queryOptions);
+        
+        res.json(allItems);
     } catch (err) {
         res.status(500).send({ message: err.message });
     }
 }
-
-//Get One item
-// exports.getOneitem = async (req, res) => {
-//     try {
-//         const { id } = req.params;
-//         const oneitem = await pool.query("SELECT * FROM item WHERE item_id = $1", [id]);
-//         res.json(oneitem.rows[0]);
-
-//     } catch (err) {
-//         console.error(err.message)
-//     }
-// }
-
-
-//Delete a item
-
-// exports.deleteOneitem = async (req, res) => {
-//     try {
-//         await Item.destroy({
-//             where: {
-              
-//             }
-//           });
-//     } catch (err) {
-//         console.error(err.message)
-
-//     }
-// }

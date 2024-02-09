@@ -1,0 +1,29 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Alcools</b></h4>
+          </div>
+        </div>
+        <table class="table table-striped table-hover table-bordered table-content">
+          <thead>
+            <tr class="center-align">
+              <th>nom</th>
+              <th>prix</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of itemsList" class="center-align">
+              <td>{{ item.name }}</td>
+              <td>{{ item.price }} €</td>
+            </tr>
+            <tr>
+              <td *ngIf="itemsList.length == 0" colspan="6">No item Found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
