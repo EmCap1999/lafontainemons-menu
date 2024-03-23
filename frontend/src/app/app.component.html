@@ -2,7 +2,7 @@
   <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1>La Fontaine</h1>
+  <h1>Carte La Fontaine</h1>
 </mat-toolbar>
 
 <mat-sidenav-container autosize>
@@ -13,6 +13,36 @@
         <span class="entry">
           <i class='fas fa-home'></i>
           <span *ngIf="!isCollapsed">Accueil</span>
+        </span>
+      </a>
+      <a mat-list-item href="/softs">
+        <span class="entry">
+          <fa-icon [icon]="faGlassWater"></fa-icon>
+          <span *ngIf="!isCollapsed">Softs</span>
+        </span>
+      </a>
+      <a mat-list-item href="/desserts">
+        <span class="entry">
+          <i class="fas fa-ice-cream"></i>
+          <span *ngIf="!isCollapsed">Desserts</span>
+        </span>
+      </a>
+      <a mat-list-item href="/hotdrinks">
+        <span class="entry">
+          <i class="fas fa-mug-hot"></i>
+          <span *ngIf="!isCollapsed">Cafés & Hot drinks</span>
+        </span>
+      </a>
+      <a mat-list-item href="/wines">
+        <span class="entry">
+          <i class="fas fa-wine-bottle"></i>
+          <span *ngIf="!isCollapsed">Les vins</span>
+        </span>
+      </a>
+      <a mat-list-item href="/beers">
+        <span class="entry">
+          <fa-icon [icon]="fafaBeerMugEmpty"></fa-icon>
+          <span *ngIf="!isCollapsed">Les bières</span>
         </span>
       </a>
       <a mat-list-item href="/alcools">

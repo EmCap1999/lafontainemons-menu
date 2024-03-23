@@ -1,3 +1,6 @@
+@use "@material/card";
+@include card.core-styles;
+
 h1 {
     padding: 0 1rem;
 }
@@ -16,7 +19,7 @@ mat-sidenav-container {
     height: 100%;
 }
 
-// Move the content down so that it won't be hidden by the toolbar
+
 mat-sidenav {
     padding-top: 3.5rem;
 
@@ -32,7 +35,6 @@ mat-sidenav {
     }
 }
 
-// Move the content down so that it won't be hidden by the toolbar
 mat-sidenav-content {
     padding-top: 3.5rem;
 
@@ -42,5 +44,54 @@ mat-sidenav-content {
 }
 
 .expanded {
-    width: 250px;   
+    width: auto;
+}
+
+.container {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.logo {
+    margin: 0 auto;
+    height: 100%;
+}
+
+mat-card {
+    border: 1px solid rgb(15, 15, 134);
+    margin: 5%;
+}
+
+.mat-card-header {
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: calc(1.2em + 0.5vw); 
+    font-weight: 700;
+}
+
+.mat-card-content {
+    position: relative; 
+}
+
+.mat-card-content-quantity {
+    color: rgb(15, 15, 134);
+    font-size: calc(1.2em + 0.5vw);
+    text-align: right; 
+}
+
+.mat-card-content-price-value {
+    font-weight: 500;
+    font-size: calc(1.4em + 0.5vw);
+}
+
+.price-container {
+    margin-left: auto; 
+    margin-bottom: 10px;
+}
+
+
+.logo {
+    width: 200px;
 }

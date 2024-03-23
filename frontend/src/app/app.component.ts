@@ -4,7 +4,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { faWhiskeyGlass } from '@fortawesome/free-solid-svg-icons';
+import { faWhiskeyGlass, faGlassWaterDroplet, faBeerMugEmpty } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +18,8 @@ export class AppComponent {
   isMobile= true;
   isCollapsed = true;
   faWhiskeyGlass = faWhiskeyGlass;
+  faGlassWater = faGlassWaterDroplet;
+  fafaBeerMugEmpty = faBeerMugEmpty;
 
   constructor(private observer: BreakpointObserver) {}
 

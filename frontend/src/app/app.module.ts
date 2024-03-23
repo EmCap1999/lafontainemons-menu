@@ -12,22 +12,33 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HomeComponent } from './home/home.component';
-import { AlcoolsComponent } from './alcools/alcools.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CocktailsComponent } from './cocktails/cocktails.component';
+import { CocktailsComponent } from './sections/cocktails/cocktails.component';
+import { MatCardModule } from '@angular/material/card';
+import { AlcoolsComponent } from './sections/alcools/alcools.component';
+import { SoftsComponent } from './sections/softs/softs.component';
+import { DessertsComponent } from './sections/desserts/desserts.component';
+import { HotDrinksComponent } from './sections/hot-drinks/hot-drinks.component';
+import { WinesComponent } from './sections/wines/wines.component';
+import { BeersComponent } from './sections/beers/beers.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    CocktailsComponent,
     AlcoolsComponent,
-    CocktailsComponent
+    SoftsComponent,
+    DessertsComponent,
+    HotDrinksComponent,
+    WinesComponent,
+    BeersComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
@@ -37,7 +48,9 @@ import { CocktailsComponent } from './cocktails/cocktails.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatButtonModule,
+    MatCardModule
   ],
 
   providers: [

@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpProviderService } from '../services/http-provider.service';
+import { HttpProviderService } from '../../services/http-provider.service';
 
 @Component({
-  selector: 'app-alcools',
-  templateUrl: './alcools.component.html',
-  styleUrls: ['./alcools.component.scss']
+  selector: 'app-beers',
+  templateUrl: './beers.component.html',
+  styleUrl: '../../app.component.scss'
 })
-export class AlcoolsComponent {
+export class BeersComponent {
   itemsList: any = [];
 
-  constructor(private router: Router, private httpProvider: HttpProviderService) { }
+  constructor(private httpProvider: HttpProviderService) { }
 
   ngOnInit(): void {
-    const condition = { section: 'Alcools' };
+    const condition = { section: 'Bières' };
 
     this.getAllItems(condition);
   }
