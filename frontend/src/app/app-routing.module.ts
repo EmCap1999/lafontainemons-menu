@@ -17,9 +17,10 @@ const routes: Routes = [
   { path: 'softs', component: SoftsComponent },
   { path: 'desserts', component: DessertsComponent },
   { path: 'wines', component: WinesComponent },
-  { path: 'wines', component: WinesComponent },
+  { path: 'cocktails', component: CocktailsComponent },
   { path: 'beers', component: BeersComponent },
   { path: 'alcools', component: AlcoolsComponent },
+  { path: '**', redirectTo: '/home' },
 ];
  
 @NgModule({
