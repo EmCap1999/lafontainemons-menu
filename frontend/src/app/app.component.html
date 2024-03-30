@@ -3,7 +3,18 @@
     <mat-icon>menu</mat-icon>
   </button>
   <h1>Carte La Fontaine</h1>
+  <span class="spacer"></span>
+  <div class="logos">
+    <a href="https://www.facebook.com/www.lafontaine.mons.be/" target="_blank">
+      <i class="bi bi-facebook h2 text-white"></i>
+    </a>
+    <a href="https://fr.tripadvisor.be/Restaurant_Review-g188647-d13143260-Reviews-La_Fontaine-Mons_Hainaut_Province_Wallonia.html"
+      target="_blank">
+      <i class="fa fa-tripadvisor h2 text-white"></i>
+    </a>
+  </div>
 </mat-toolbar>
+
 
 <mat-sidenav-container autosize>
   <mat-sidenav [ngClass]="!isCollapsed ? 'expanded' : ''" [mode]="isMobile ? 'over' : 'side'"
@@ -63,3 +74,4 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<app-footer></app-footer>

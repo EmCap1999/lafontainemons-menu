@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (min-width: 75em) {}
+
+@media (min-width: 60em) and (max-width: 75em) {}
+
+@media (min-width: 45em) and (max-width: 60em) {}
+
+@media (min-width: 30em) and (max-width: 45em) {}
+
+@media (max-width: 30em) {
+    .logo {
+        width: 200px;
+    }
+
+    .title {
+        font-weight: 600;
+        margin-bottom: 10%;
+        font-size: x-large;
+    }
+}

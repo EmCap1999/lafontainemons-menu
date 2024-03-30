@@ -23,6 +23,7 @@ import { DessertsComponent } from './sections/desserts/desserts.component';
 import { HotDrinksComponent } from './sections/hot-drinks/hot-drinks.component';
 import { WinesComponent } from './sections/wines/wines.component';
 import { BeersComponent } from './sections/beers/beers.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { BeersComponent } from './sections/beers/beers.component';
     DessertsComponent,
     HotDrinksComponent,
     WinesComponent,
-    BeersComponent
+    BeersComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
