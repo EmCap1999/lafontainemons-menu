@@ -16,7 +16,7 @@ export class AppComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isMobile= true;
-  isCollapsed = true;
+  isCollapsed = false;
   faWhiskeyGlass = faWhiskeyGlass;
   faGlassWater = faGlassWaterDroplet;
   fafaBeerMugEmpty = faBeerMugEmpty;
@@ -35,10 +35,10 @@ export class AppComponent {
   toggleMenu() {
     if(this.isMobile){
       this.sidenav.toggle();
-      this.isCollapsed = false; // On mobile, the menu can never be collapsed
+      // this.isCollapsed = false; // On mobile, the menu can never be collapsed
     } else {
       this.sidenav.open(); // On desktop/tablet, the menu can never be fully closed
-      this.isCollapsed = !this.isCollapsed;
+      // this.isCollapsed = !this.isCollapsed;
     }
   }
 

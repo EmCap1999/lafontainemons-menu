@@ -1,4 +1,3 @@
-
 .footer-content {
     color: white;
 }
@@ -6,14 +5,12 @@
 footer {
     position: fixed;
     text-align: center;
-    font-size: 1rem;
     justify-content: space-evenly;
     align-items: center;
     background-color: #3f51b5;
     bottom: 0;
-    height: 12%;
     width: 100%;
-    z-index: 100;
+    z-index: 10;
 }
 
 .fas {
@@ -22,4 +19,20 @@ footer {
 
 fa-icon {
     margin-right: 5px;
-} 
+}
+
+// media query updates
+@media (min-width: 75em) {}
+
+@media (min-width: 60em) and (max-width: 75em) {}
+
+@media (min-width: 45em) and (max-width: 60em) {}
+
+@media (min-width: 30em) and (max-width: 45em) {}
+
+@media (max-width: 30em) {
+    footer {
+        height: 12%;
+        font-size: medium;
+    }
+}

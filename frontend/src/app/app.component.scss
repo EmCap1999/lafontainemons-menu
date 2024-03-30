@@ -1,47 +1,12 @@
 @use "@material/card";
 @include card.core-styles;
 
-h1 {
-    padding: 0 1rem;
-}
 
-h2 {
-    padding: 1rem;
-}
-
+// static content
 mat-toolbar {
     position: fixed;
     top: 0;
-    z-index: 2;
-}
-
-mat-sidenav-container {
-    height: 100%;
-}
-
-mat-sidenav {
-    padding-top: 4rem;
-    position: fixed;
-
-    .entry {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 0.75rem;
-    }
-}
-
-mat-sidenav-content {
-    text-align: center;
-    padding-bottom: 40%;
-    padding-top: 12%;
-}
-
-mat-card {
-    border: 1px solid rgb(15, 15, 134);
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 5%;
+    z-index: 10;
 }
 
 .spacer {
@@ -49,41 +14,114 @@ mat-card {
 }
 
 .logos a {
-    margin-left: 15px;
+    padding-left: 5px;
+    padding-right: 10px;
 }
 
-.logo {
-    margin: 0 auto;
-    height: 100%;
-    width: 200px;
+.price-container {
+    margin-left: auto;
 }
 
-.mat-card-header {
-    margin-bottom: 10px;
+mat-sidenav {
+    position: fixed;
+
+    .entry {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.8rem;
+    }
 }
 
-.mat-card-content {
-    position: relative;
+mat-sidenav-content {
+    text-align: center;
+    height: 100vh;
+}
+
+mat-card {
+    border: 1px solid rgb(15, 15, 134);
 }
 
 .mat-card-content-quantity {
     color: rgb(51, 51, 176);
-    font-size: calc(1em + 0.5vw);
     text-align: left;
     font-style: italic;
 }
 
 .mat-card-content-price-value {
-    font-weight: 500;
-    font-size: calc(1.4em + 0.5vw);
-}
-
-.price-container {
-    margin-left: auto;
-    margin-bottom: 10px;
+    font-weight: 400;
 }
 
 .title {
-    font-size: calc(1.2em + 0.5vw);
-    font-weight: 700;
+    font-weight: 500;
+}
+
+.title-home {
+    font-weight: 600;
+    font-size: x-large;
+}
+
+.extra ol {
+    font-style: italic;
+}
+
+
+
+// media query updates
+@media (min-width: 75em) {}
+
+@media (min-width: 60em) and (max-width: 75em) {}
+
+@media (min-width: 45em) and (max-width: 60em) {}
+
+@media (min-width: 30em) and (max-width: 45em) {}
+
+// done
+@media (max-width: 30em) {
+    mat-sidenav {
+        padding-top: 13%;
+    }
+
+    mat-sidenav-content {
+        padding-bottom: 30%;
+        padding-top: 12%;
+    }
+
+    mat-card {
+        margin-bottom: 3%;
+    }
+
+    .logo {
+        width: 180px;
+    }
+
+    .mat-card-content-quantity {
+        font-size: 0.85rem;
+    }
+
+    .mat-card-content-price-value {
+        font-size: 1.05rem;
+    }
+
+    .title {
+        font-size: 1.1rem;
+    }
+
+    .title-home {
+        margin-bottom: 5%;
+    }
+
+    .body {
+        margin-top: 15%;
+    }
+
+    .extra {
+        margin-top: 10%;
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+
+    .extra ol {
+        margin-right: 5%;
+    }
 }
