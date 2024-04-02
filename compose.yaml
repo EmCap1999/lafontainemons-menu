@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: lafontaine/frontend
+    ports:
+      - ${PORT}:8081
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+
+  backend:
+    environment:
+      HOST: ${HOST}
+      PORT: ${PORT}
+      USER: ${USER}
+      DB: ${DB}
+      DIALECT: ${DIALECT}
+    image: lafontaine/backend
+    build:
+      context: backend
+      dockerfile: Dockerfile

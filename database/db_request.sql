@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS public.item
 );
 
 INSERT INTO public.item (section, subsection, name, price, capacity)
-VALUES 
+VALUES
     ('Softs',null, 'Chaudefontaine', 2.20, 25),
     ('Softs',null, 'Chaudefontaine', 4, 50),
     ('Softs',null, 'Chaudefontaine', 7, 100),
@@ -97,17 +97,3 @@ VALUES
 	('Alcools', null, 'Chartreuse', 12, null),
 	('Alcools', null, 'Rhum vanillé de Martinique', 8, null),
 	('Alcools', null, 'Limoncello', 8, null);
-	
-	
-	
-
-	
-	
-	
-	
-	
-    
-
-
-
-

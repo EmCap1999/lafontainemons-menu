@@ -7,7 +7,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:8081"],
+    origin: ["http://0.0.0.0:8081"],
   })
 );
 
@@ -16,8 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 require("./routes/item.routes")(app);
 
-const PORT = 8080;
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
