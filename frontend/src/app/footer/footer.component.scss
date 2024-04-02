@@ -22,13 +22,33 @@ fa-icon {
 }
 
 // media query updates
-@media (min-width: 75em) {}
+@media (min-width: 75em) {
+    footer {
+        height: 8%;
+        font-size: x-large;
+    }
+}
 
-@media (min-width: 60em) and (max-width: 75em) {}
+@media (min-width: 60em) and (max-width: 75em) {
+    footer {
+        height: 8%;
+        font-size: large;
+    }
+}
 
-@media (min-width: 45em) and (max-width: 60em) {}
+@media (min-width: 45em) and (max-width: 60em) {
+    footer {
+        height: 12%;
+        font-size: large;
+    }
+}
 
-@media (min-width: 30em) and (max-width: 45em) {}
+@media (min-width: 30em) and (max-width: 45em) {
+    footer {
+        height: 18%;
+        font-size: medium;
+    }
+}
 
 @media (max-width: 30em) {
     footer {

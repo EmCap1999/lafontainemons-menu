@@ -68,13 +68,217 @@ mat-card {
 
 
 // media query updates
-@media (min-width: 75em) {}
 
-@media (min-width: 60em) and (max-width: 75em) {}
+//done.
+@media (min-width: 75em) {
+    mat-sidenav {
+        padding-top: 4%;
+    }
 
-@media (min-width: 45em) and (max-width: 60em) {}
+    mat-sidenav-content {
+        padding-bottom: 6%;
+        padding-top: 2%;
+    }
 
-@media (min-width: 30em) and (max-width: 45em) {}
+    mat-card {
+        margin-bottom: 2%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .logo {
+        width: 350px;
+    }
+
+    .mat-card-content-quantity {
+        font-size: 1.1rem;
+    }
+
+    .mat-card-content-price-value {
+        font-size: 1.7rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .title-home {
+        margin-bottom: 5%;
+    }
+
+    .body {
+        margin-top: 5%;
+        font-size: x-large;
+    }
+
+    .extra {
+        margin-top: 5%;
+        margin-left: 3%;
+        margin-right: 3%;
+        font-size: x-large;
+    }
+
+    .extra ol {
+        margin-right: 8%;
+    }
+}
+
+//done.
+@media (min-width: 60em) and (max-width: 75em) {
+    mat-sidenav {
+        padding-top: 7%;
+    }
+
+    mat-sidenav-content {
+        padding-bottom: 10%;
+        padding-top: 5%;
+    }
+
+    mat-card {
+        margin-bottom: 3%;
+    }
+
+    .logo {
+        width: 300px;
+    }
+
+    .mat-card-content-quantity {
+        font-size: 1rem;
+    }
+
+    .mat-card-content-price-value {
+        font-size: 1.3rem;
+    }
+
+    .title {
+        font-size: 1.2rem;
+    }
+
+    .title-home {
+        margin-bottom: 5%;
+    }
+
+    .body {
+        margin-top: 5%;
+        font-size: large;
+    }
+
+    .extra {
+        margin-top: 5%;
+        margin-left: 3%;
+        margin-right: 3%;
+        font-size: large;
+    }
+
+    .extra ol {
+        margin-right: 8%;
+    }
+}
+
+//done.
+@media (min-width: 45em) and (max-width: 60em) {
+    mat-sidenav {
+        padding-top: 7%;
+        padding-bottom: 7%;
+    }
+
+    mat-sidenav-content {
+        padding-bottom: 17%;
+        padding-top: 5%;
+    }
+
+    mat-card {
+        margin-bottom: 3%;
+    }
+
+    .logo {
+        width: 250px;
+    }
+
+    .mat-card-content-quantity {
+        font-size: 1rem;
+    }
+
+    .mat-card-content-price-value {
+        font-size: 1.3rem;
+    }
+
+    .title {
+        font-size: 1.2rem;
+    }
+
+    .title-home {
+        margin-bottom: 5%;
+    }
+
+    .body {
+        margin-top: 5%;
+        font-size: medium;
+    }
+
+    .extra {
+        margin-top: 5%;
+        margin-left: 8%;
+        margin-right: 8%;
+        font-size: medium;
+    }
+
+    .extra ol {
+        margin-right: 8%;
+    }
+}
+
+
+//done.
+@media (min-width: 30em) and (max-width: 45em) {
+    mat-sidenav {
+        padding-top: 10%;
+        padding-bottom: 10%;
+    }
+
+    mat-sidenav-content {
+        padding-bottom: 12%;
+        padding-top: 7%;
+    }
+
+    mat-card {
+        margin-bottom: 3%;
+    }
+
+    .logo {
+        width: 200px;
+    }
+
+    .mat-card-content-quantity {
+        font-size: 1rem;
+    }
+
+    .mat-card-content-price-value {
+        font-size: 1.3rem;
+    }
+
+    .title {
+        font-size: 1.2rem;
+    }
+
+    .title-home {
+        margin-bottom: 5%;
+    }
+
+    .body {
+        margin-top: 10%;
+    }
+
+    .extra {
+        margin-top: 5%;
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+
+    .extra ol {
+        margin-right: 8%;
+    }
+}
 
 // done
 @media (max-width: 30em) {
@@ -96,15 +300,15 @@ mat-card {
     }
 
     .mat-card-content-quantity {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
 
     .mat-card-content-price-value {
-        font-size: 1.05rem;
+        font-size: 1.15rem;
     }
 
     .title {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .title-home {
