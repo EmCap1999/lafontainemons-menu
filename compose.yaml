@@ -2,9 +2,12 @@ version: '3.8'
 
 services:
   frontend:
+    environment:
+      HOST: ${HOST}
+      CLIENT_PORT: ${CLIENT_PORT}
     image: lafontaine/frontend
     ports:
-      - ${PORT}:8081
+      - ${CLIENT_PORT}:8081
     build:
       context: frontend
       dockerfile: Dockerfile
@@ -12,7 +15,8 @@ services:
   backend:
     environment:
       HOST: ${HOST}
-      PORT: ${PORT}
+      SERVER_PORT: ${SERVER_PORT}
+      CLIENT_PORT: ${CLIENT_PORT}
       USER: ${USER}
       DB: ${DB}
       DIALECT: ${DIALECT}
