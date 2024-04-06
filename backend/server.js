@@ -7,7 +7,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: [`http://0.0.0.0:${process.get.CLIENT_PORT}`],
+    origin: [`http://0.0.0.0:${CLIENT_PORT}`],
   })
 );
 
