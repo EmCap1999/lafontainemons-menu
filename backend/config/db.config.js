@@ -5,7 +5,7 @@ module.exports = {
     SERVER_PORT: process.env.SERVER_PORT,
     USER: process.env.POSTGRES_USER,
     PASSWORD: process.env.POSTGRES_PASSWORD,
-    DB: process.env.DB,
+    DB: process.env.POSTGRES_DB,
     dialect: process.env.DIALECT,
 
     pool: {
