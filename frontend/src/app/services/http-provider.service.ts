@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { WebApiService } from './web-api.service';
 
-var apiUrl = "http://localhost:8080/";
+var apiUrl = "http://162.19.247.38:8080/";
 
 @Injectable({
   providedIn: 'root'

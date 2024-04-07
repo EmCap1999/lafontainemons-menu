@@ -5,11 +5,14 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
+var corsOptions = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": ["Origin", "Content-Type", "X-Auth-Token"],
+    "Access-Control-Allow-Methods": ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"]
+};
+
 app.use(
-  cors({
-    credentials: true,
-    origin: [`http://0.0.0.0:${config.CLIENT_PORT}`],
-  })
+  cors(corsOptions)
 );
 
 app.use(express.json());
