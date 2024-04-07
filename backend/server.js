@@ -2,19 +2,19 @@ const { sequelize } = require("./models/index");
 const config = require("./config/db.config.js")
 
 const express = require("express");
-// const cors = require("cors");
+const cors = require("cors");
 const app = express();
 
-// var corsOptions = {
-//     "Access-Control-Allow-Origin": "http://162.19.247.38:8081",
-//     "Access-Control-Allow-Headers": ["Origin", "Content-Type", "X-Auth-Token", "Authorization"],
-//     "Access-Control-Allow-Methods": ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
-//     "Allow": ["OPTIONS", "GET", "POST", "DELETE", "PUT"]
-// };
+var corsOptions = {
+    "Access-Control-Allow-Origin": "http://162.19.247.38:8081",
+    "Access-Control-Allow-Headers": ["Origin", "Content-Type", "X-Auth-Token", "Authorization"],
+    "Access-Control-Allow-Methods": ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
+    "Allow": ["OPTIONS", "GET", "POST", "DELETE", "PUT"]
+};
 
-// app.use(
-//   cors(corsOptions)
-// );
+app.use(
+  cors(corsOptions)
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
