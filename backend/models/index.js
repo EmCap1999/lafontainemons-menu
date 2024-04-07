@@ -6,7 +6,7 @@ const sequelize = new Sequelize(
     config.USER,
     config.PASSWORD,
     {
-        host: config.HOST,
+        host: config.DB_HOST,
         dialect: config.dialect,
         pool: {
             max: config.pool.max,
