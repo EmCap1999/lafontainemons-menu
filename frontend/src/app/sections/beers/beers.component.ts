@@ -23,6 +23,8 @@ export class BeersComponent {
         var resultData = data.body;
         if (resultData) {
           this.itemsList = resultData;
+          console.log("data")
+          console.log(this.itemsList)
         }
       }
     },
