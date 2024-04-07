@@ -26,6 +26,8 @@ exports.creatItem = async (req, res) => {
 //Get all Items
 exports.getAllItems = async (req, res) => {
     try {
+
+        console.log(req)
         const { condition } = req.query;
 
         let queryOptions = {};
@@ -34,7 +36,7 @@ exports.getAllItems = async (req, res) => {
         }
 
         const allItems = await item.findAll(queryOptions);
-        
+
         res.json(allItems);
     } catch (err) {
         res.status(500).send({ message: err.message });
