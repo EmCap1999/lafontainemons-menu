@@ -1,4 +1,5 @@
 const { sequelize } = require("./models/index");
+const config = require("./config/db.config.js")
 
 const express = require("express");
 const cors = require("cors");
@@ -7,7 +8,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: [`http://0.0.0.0:${CLIENT_PORT}`],
+    origin: [`http://0.0.0.0:${config.CLIENT_PORT}`],
   })
 );
 
@@ -16,8 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 
 require("./routes/item.routes")(app);
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+app.listen(config.SERVER_PORT, () => {
+  console.log(`Server is running on port ${config.SERVER_PORT}.`);
 });
 
 sequelize.sync().then(() => {
