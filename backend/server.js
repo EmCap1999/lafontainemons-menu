@@ -7,7 +7,7 @@ const app = express();
 
 var corsOptions = {
     "Accept-Encoding": "*",
-    "Access-Control-Allow-Origin": "http://162.19.247.38:8081",
+    "Access-Control-Allow-Origin": "http://162.19.247.38:80",
     "Access-Control-Allow-Headers": ["Origin", "Content-Type", "X-Auth-Token", "Authorization"],
     "Access-Control-Allow-Methods": ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
     "Allow": ["OPTIONS", "GET", "POST", "DELETE", "PUT"]
