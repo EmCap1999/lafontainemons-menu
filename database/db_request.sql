@@ -13,9 +13,9 @@ CREATE TABLE IF NOT EXISTS public.item
 
 INSERT INTO public.item (section, subsection, name, price, capacity)
 VALUES
-    ('Softs',null, 'Chaudefontaine', 2.20, 25),
-    ('Softs',null, 'Chaudefontaine', 4, 50),
-    ('Softs',null, 'Chaudefontaine', 7, 100),
+    ('Softs',null, 'Chaudfontaine', 2.20, 25),
+    ('Softs',null, 'Chaudfontaine', 4, 50),
+    ('Softs',null, 'Chaudfontaine', 7, 100),
     ('Softs',null, 'Perrier Nature', 2.50, NULL),
     ('Softs',null, 'San Pellegrino', 2.50, 25),
     ('Softs',null, 'San Pellegrino', 4.50, 50),
