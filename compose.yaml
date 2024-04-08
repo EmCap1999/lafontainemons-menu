@@ -2,10 +2,6 @@ version: '3.8'
 
 services:
   frontend:
-    depends_on:
-      - backend
-    links:
-      - backend
     environment:
       HOST: ${HOST}
       CLIENT_PORT: ${CLIENT_PORT}
@@ -16,13 +12,9 @@ services:
       context: frontend
       dockerfile: Dockerfile
   backend:
-    links:
-      - postgres
-    depends_on:
-      - postgres
     environment:
       HOST: ${HOST}
-      DB_HOST: ${DB_HOST}
+      DB_HOST: ${DB_HOST}  
       SERVER_PORT: ${SERVER_PORT}
       CLIENT_PORT: ${CLIENT_PORT}
       DIALECT: ${DIALECT}
