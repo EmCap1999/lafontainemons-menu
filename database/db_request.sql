@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS public.item
     section character varying NOT NULL,
     subsection character varying,
     name character varying NOT NULL,
-    capacity integer,
-    price integer NOT NULL,
+    capacity real,
+    price real NOT NULL,
     picture character varying,
     PRIMARY KEY ("itemId")
 );

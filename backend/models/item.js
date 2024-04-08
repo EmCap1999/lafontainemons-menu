@@ -21,11 +21,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     capacity: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false
     },
     picture: {
