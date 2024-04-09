@@ -20,13 +20,9 @@ export class SoftsComponent {
   async getAllItems(condition?: any) {
     this.httpProvider.getAllItems(condition).subscribe((data: any) => {
       if (data != null && data.body != null) {
-        console.log("payload")
-        console.log(data)
         var resultData = data.body;
         if (resultData) {
           this.itemsList = resultData;
-          console.log("data")
-          console.log(this.itemsList)
         }
       }
     },
