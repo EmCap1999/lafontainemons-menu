@@ -23,9 +23,9 @@ stop-infra : ## stop the server, client and database
 
 .PHONY: spin-new-infra
 spin-new-infra : stop-infra clean-infra
-	@echo Build containers
-	@docker compose build
-	@echo Start services
-	@docker compose up
+	@docker-compose -f compose.yaml build
+	@docker-compose -f compose.yaml up --detach
+	@docker-compose -f compose.yaml stop && docker-compose -f compose.yaml down
+	@docker-compose -f compose.yaml up --detach
 
 
