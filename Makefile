@@ -26,6 +26,4 @@ spin-new-infra : stop-infra clean-infra
 	@docker-compose -f compose.yaml build
 	@docker-compose -f compose.yaml up --detach
 	@docker-compose -f compose.yaml stop && docker-compose -f compose.yaml down
-	@docker-compose -f compose.yaml up --detach
-
 

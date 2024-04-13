@@ -35,6 +35,7 @@ services:
       dockerfile: Dockerfile
   postgres:
     image: postgres:latest
+    hostname: lafontaine-postgres
     ports:
       - ${DB_PORT}:5432
     volumes:
