@@ -3,9 +3,9 @@ module.exports = {
     DB_HOST: process.env.DB_HOST,
     CLIENT_PORT: process.env.CLIENT_PORT,
     SERVER_PORT: process.env.SERVER_PORT,
-    USER: process.env.POSTGRES_USER,
+    USER: "lafontaine",
     PASSWORD: process.env.POSTGRES_PASSWORD,
-    DB: process.env.POSTGRES_DB,
+    DB: "lafontaine",
     dialect: process.env.DIALECT,
 
     pool: {
