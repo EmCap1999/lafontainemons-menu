@@ -13,6 +13,17 @@ run-frontend : ## Run frontend container
 build-backend : ## Build backend container
 	@docker build backend -t lafontaine:backend --platform linux/amd64
 
-.PHONY: clean-docker
-clean-docker : ## Remove images and containers
-	@docker stop $$(docker ps -a -q) && docker rm $$(docker ps -a -q) && docker rmi $$(docker images -a -q)
+.PHONY: clean-infra
+clean-infra : ## Remove images, containers and database
+	@docker system prune -f -a && sudo rm -rf ~/apps/postgres
+
+.PHONY: stop-infra
+stop-infra : ## stop the server, client and database
+	@docker-compose stop && docker-compose down
+
+.PHONY: spin-new-infra
+spin-new-infra : stop-infra clean-infra
+	@docker-compose -f compose.yaml build
+	@docker-compose -f compose.yaml up --detach
+	@docker-compose -f compose.yaml stop && docker-compose -f compose.yaml down
+

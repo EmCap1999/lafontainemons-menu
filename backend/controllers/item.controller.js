@@ -26,10 +26,7 @@ exports.creatItem = async (req, res) => {
 //Get all Items
 exports.getAllItems = async (req, res) => {
     try {
-
-        console.log(req)
         const { condition } = req.query;
-
         let queryOptions = {};
         if (condition) {
             queryOptions.where = JSON.parse(condition);
