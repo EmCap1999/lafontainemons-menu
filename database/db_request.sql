@@ -106,4 +106,4 @@ VALUES
 	('Alcools', null, 'Chartreuse', 12, null),
 	('Apéritifs', null, 'Rhum Coca', 7, null),
 	('Alcools', null, 'Rhum vanillé de Martinique', 8, null),
-	('Alcools', null, 'Limoncello', 8, null)
+	('Alcools', null, 'Limoncello', 8, null);
