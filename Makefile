@@ -20,10 +20,3 @@ clean-infra : ## Remove images, containers and database
 .PHONY: stop-infra
 stop-infra : ## stop the server, client and database
 	@docker-compose stop && docker-compose down
-
-.PHONY: spin-new-infra
-spin-new-infra : stop-infra clean-infra
-	@docker-compose -f compose.yaml build
-	@docker-compose -f compose.yaml up --detach
-	@docker-compose -f compose.yaml stop && docker-compose -f compose.yaml down
-
