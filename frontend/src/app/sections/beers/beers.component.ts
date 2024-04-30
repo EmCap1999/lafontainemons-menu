@@ -20,9 +20,35 @@ export class BeersComponent {
   async getAllItems(condition?: any) {
     this.httpProvider.getAllItems(condition).subscribe((data: any) => {
       if (data != null && data.body != null) {
-        var resultData = data.body;
+        let resultData = data.body;
+
         if (resultData) {
-          this.itemsList = resultData;
+          // Extraire les éléments spécifiques
+          const specialItems = [
+            "Saint-Lazare 002 Saison",
+            "Saint-Lazare 006 IPA",
+            "Supplément de sirop"
+          ];
+
+          const orderedSpecialItems = specialItems.map(name =>
+            resultData.find((item: { name: string; }) => item.name === name));
+
+          const remainingItems = resultData.filter(
+            (item: { name: string; }) => !specialItems.includes(item.name));
+
+          remainingItems.sort((a: any, b: any) => {
+            if (a.price === b.price) {
+              return a.name.localeCompare(b.name);
+            }
+            return a.price - b.price;
+          });
+
+          this.itemsList = [
+            orderedSpecialItems[0],
+            orderedSpecialItems[1],
+            ...remainingItems,
+            orderedSpecialItems[2]
+          ];
         }
       }
     },
