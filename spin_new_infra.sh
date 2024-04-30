@@ -15,4 +15,5 @@ docker-compose -f compose.yaml up --detach;
 
 echo "Executing the SQL statement"
 POSTGRES_CONTAINER=$(docker container ls  | grep 'postgres' | awk '{print $1}');
-cat ./query.sql | docker exec -i $POSTGRES_CONTAINER psql -U lafontaine -d lafontaine
+echo "postgre database container process found: ${POSTGRES_CONTAINER}"
+cat database/db_request.sql | docker exec -i $POSTGRES_CONTAINER psql -U lafontaine -d lafontaine
