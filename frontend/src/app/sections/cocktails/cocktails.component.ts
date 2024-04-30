@@ -22,7 +22,12 @@ export class CocktailsComponent {
       if (data != null && data.body != null) {
         var resultData = data.body;
         if (resultData) {
-          this.itemsList = resultData;
+          this.itemsList = resultData.sort((a: any, b: any) => {
+            if (a.price === b.price) {
+              return a.name.localeCompare(b.name);
+            }
+            return a.price - b.price;
+          });
         }
       }
     },
