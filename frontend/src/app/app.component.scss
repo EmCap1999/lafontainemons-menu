@@ -34,11 +34,7 @@ mat-sidenav {
 
 mat-sidenav-content {
     text-align: center;
-    height: 90vh;
-}
-
-mat-card {
-    border: 1px solid rgb(15, 15, 134);
+    height: 95vh;
 }
 
 .mat-card-content-quantity {
@@ -88,7 +84,7 @@ mat-card {
     }
 
     .logo {
-        width: 350px;
+        width: 300px;
     }
 
     .mat-card-content-quantity {
@@ -131,7 +127,7 @@ mat-card {
     }
 
     mat-sidenav-content {
-        padding-bottom: 10%;
+        padding-bottom: 5%;
         padding-top: 5%;
     }
 
@@ -184,7 +180,7 @@ mat-card {
     }
 
     mat-sidenav-content {
-        padding-bottom: 17%;
+        padding-bottom: 7%;
         padding-top: 5%;
     }
 
@@ -214,14 +210,14 @@ mat-card {
 
     .body {
         margin-top: 5%;
-        font-size: medium;
+        font-size: large;
     }
 
     .extra {
         margin-top: 5%;
         margin-left: 8%;
         margin-right: 8%;
-        font-size: medium;
+        font-size: large;
     }
 
     .extra ol {
@@ -238,7 +234,7 @@ mat-card {
     }
 
     mat-sidenav-content {
-        padding-bottom: 12%;
+        padding-bottom: 8%;
         padding-top: 7%;
     }
 
@@ -288,7 +284,7 @@ mat-card {
     }
 
     mat-sidenav-content {
-        padding-bottom: 35%;
+        padding-bottom: 25%;
         margin-top: 12%;
     }
 
