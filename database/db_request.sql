@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS public.item
 
 INSERT INTO public.item (section, subsection, name, price, capacity)
 VALUES
-    ('Softs',null, 'Chaudfontaine', 2.20, 25),
-    ('Softs',null, 'Chaudfontaine', 4, 50),
+    ('Softs',null, 'Chaudfontaine', 2.50, 25),
+    ('Softs',null, 'Chaudfontaine', 4.50, 50),
     ('Softs',null, 'Chaudfontaine', 7, 100),
     ('Softs',null, 'Perrier Nature', 2.50, NULL),
     ('Softs',null, 'San Pellegrino', 2.50, 25),
@@ -77,9 +77,9 @@ VALUES
 	('Apéritifs', null, 'Apéritif maison', 9, null),
 	('Apéritifs', null, 'Spritz', 9, null),
 	('Apéritifs', null, 'Martini blanc ou rouge', 5, null),
-	('Apéritifs', null, 'Porto', 5, null),
-	('Apéritifs', null, 'Pineau des Charentes', 5, null),
-	('Apéritifs', null, 'Kir', 5, null),
+	('Apéritifs', null, 'Porto', 7, null),
+	('Apéritifs', null, 'Pineau des Charentes', 7, null),
+	('Apéritifs', null, 'Kir', 7, null),
 	('Apéritifs', null, 'Batida', 7, null),
 	('Apéritifs', null, 'Campari orange', 8, null),
 	('Apéritifs', null, 'Pisang orange', 8, null),
@@ -103,6 +103,6 @@ VALUES
 	('Apéritifs', null, 'Negroni', 9, null),
 	('Alcools', null, 'Cointreau', 8, null),
 	('Alcools', null, 'Chartreuse', 12, null),
-	('Apéritifs', null, 'Rhum Coca', 7, null),
+	('Apéritifs', null, 'Rhum Coca', 8, null),
 	('Alcools', null, 'Rhum vanillé de Martinique', 8, null),
 	('Alcools', null, 'Limoncello', 8, null);
