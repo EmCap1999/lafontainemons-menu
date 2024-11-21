@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { WebApiService } from './web-api.service';
+import { environment } from '../environments/environment.dev';
 
-var apiUrl = "http://162.19.247.38:8080/";
+var apiUrl = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'

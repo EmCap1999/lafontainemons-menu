@@ -1,97 +1,67 @@
 @use "@material/card";
 @include card.core-styles;
 
-h1 {
-    padding: 0 1rem;
-}
-
-h2 {
-    padding: 1rem;
-}
-
-mat-toolbar {
-    position: fixed;
-    top: 0;
-    z-index: 2;
-}
-
-mat-sidenav-container {
-    height: 100%;
-}
-
-
-mat-sidenav {
-    padding-top: 3.5rem;
-
-    @media screen and (min-width: 600px) {
-        padding-top: 4rem;
-    }
-
-    .entry {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 0.75rem;
-    }
-}
-
+// home design
 mat-sidenav-content {
-    padding-top: 3.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    padding-bottom: 7rem;
+    background-color: white;
+}
 
-    @media screen and (min-width: 600px) {
-        padding-top: 4rem;
+.logo {
+    width: 150px;
+    padding-top: 1rem;
+}
+
+.title-home {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.home-content,
+.extra {
+    font-size: medium;
+    margin-left: 1%;
+    margin-right: 1%;
+
+    h2 {
+        font-size: x-large;
+        padding-bottom: 1rem;
+        padding-top: 3rem;
+        color: rgb(63, 81, 181);
     }
 }
 
-.expanded {
-    width: auto;
+// navbar design
+mat-toolbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.container {
-    text-align: center;
-    margin-bottom: 100px;
+.spacer {
+    flex-grow: 0.9;
 }
 
-.logo {
-    margin: 0 auto;
-    height: 100%;
-}
+.logos {
+    a {
+        margin-left: 20px;
+        display: inline-block;
+    }
 
-mat-card {
-    border: 1px solid rgb(15, 15, 134);
-    margin: 5%;
-}
+    i {
+        font-size: 1.5rem;
+        transition: transform 0.2s ease;
+    }
 
-.mat-card-header {
-    margin-bottom: 10px;
-}
-
-.title {
-    font-size: calc(1.2em + 0.5vw); 
-    font-weight: 700;
-}
-
-.mat-card-content {
-    position: relative; 
-}
-
-.mat-card-content-quantity {
-    color: rgb(15, 15, 134);
-    font-size: calc(1.2em + 0.5vw);
-    text-align: right; 
-}
-
-.mat-card-content-price-value {
-    font-weight: 500;
-    font-size: calc(1.4em + 0.5vw);
-}
-
-.price-container {
-    margin-left: auto; 
-    margin-bottom: 10px;
-}
-
-
-.logo {
-    width: 200px;
+    a:hover i {
+        transform: scale(1.1);
+    }
 }
