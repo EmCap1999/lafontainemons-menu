@@ -20,61 +20,74 @@
 
 
 <mat-sidenav-container autosize>
-  <mat-sidenav [ngClass]="!isCollapsed ? 'expanded' : ''" [mode]="isMobile ? 'over' : 'side'"
-    [opened]="isMobile ? 'false' : 'true'">
-    <mat-nav-list>
-      <a mat-list-item href="/home">
-        <span class="entry">
+  <mat-sidenav 
+    [ngClass]="!isCollapsed ? 'expanded' : ''" 
+    [mode]="isMobile ? 'over' : 'side'"
+    [opened]="isMobile ? 'false' : 'true'"
+    class="sidebar">
+    
+    <mat-nav-list class="nav-list">
+      <a mat-list-item href="/home" class="nav-item">
+        <span class="nav-item-content">
           <i class='fas fa-home'></i>
-          <span *ngIf="!isCollapsed">Accueil</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Accueil</span>
         </span>
       </a>
-      <a mat-list-item href="/softs">
-        <span class="entry">
+      
+      <a mat-list-item href="/softs" class="nav-item">
+        <span class="nav-item-content">
           <fa-icon [icon]="faGlassWater"></fa-icon>
-          <span *ngIf="!isCollapsed">Softs</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Softs</span>
         </span>
       </a>
-      <a mat-list-item href="/desserts">
-        <span class="entry">
+      
+      <a mat-list-item href="/desserts" class="nav-item">
+        <span class="nav-item-content">
           <i class="fas fa-ice-cream"></i>
-          <span *ngIf="!isCollapsed">Desserts</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Desserts</span>
         </span>
       </a>
-      <a mat-list-item href="/hotdrinks">
-        <span class="entry">
+      
+      <a mat-list-item href="/hotdrinks" class="nav-item">
+        <span class="nav-item-content">
           <i class="fas fa-mug-hot"></i>
-          <span *ngIf="!isCollapsed">Cafés & Hot drinks</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Cafés & Hot drinks</span>
         </span>
       </a>
-      <a mat-list-item href="/wines">
-        <span class="entry">
+      
+      <a mat-list-item href="/wines" class="nav-item">
+        <span class="nav-item-content">
           <i class="fas fa-wine-bottle"></i>
-          <span *ngIf="!isCollapsed">Les vins</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Les vins</span>
         </span>
       </a>
-      <a mat-list-item href="/beers">
-        <span class="entry">
+      
+      <a mat-list-item href="/beers" class="nav-item">
+        <span class="nav-item-content">
           <fa-icon [icon]="fafaBeerMugEmpty"></fa-icon>
-          <span *ngIf="!isCollapsed">Les bières</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Les bières</span>
         </span>
       </a>
-      <a mat-list-item href="/alcools">
-        <span class="entry">
+      
+      <a mat-list-item href="/alcools" class="nav-item">
+        <span class="nav-item-content">
           <fa-icon [icon]="faWhiskeyGlass"></fa-icon>
-          <span *ngIf="!isCollapsed">Alcools</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Alcools</span>
         </span>
       </a>
-      <a mat-list-item href="/cocktails">
-        <span class="entry">
+      
+      <a mat-list-item href="/cocktails" class="nav-item">
+        <span class="nav-item-content">
           <i class="fas fa-cocktail"></i>
-          <span *ngIf="!isCollapsed">Apéritifs</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Apéritifs</span>
         </span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
+  
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<app-footer></app-footer>
+
+
