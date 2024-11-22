@@ -11,7 +11,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 require("./routes/item.routes")(app);
 
+
 if (config.PORT === "8080") {
+  // prod env.
   var corsOptions = {
     "Accept-Encoding": "*",
     "Access-Control-Allow-Origin": "http://162.19.247.38:80",
@@ -24,6 +26,7 @@ if (config.PORT === "8080") {
     cors(corsOptions)
   );
 } else {
+  // dev env.
   var corsOptions = {
     origin: config.CORS_ORIGIN,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -36,15 +39,19 @@ if (config.PORT === "8080") {
       'Cache-Control',
       'Pragma'
     ],
-    exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers', 'Access-Control-Allow-Methods'],
+    exposedHeaders: [
+      'Access-Control-Allow-Origin',
+      'Access-Control-Allow-Headers',
+      'Access-Control-Allow-Methods'
+    ],
   };
 
   app.use(
     cors(corsOptions)
   );
-  app.listen(config.PORT, () => {
-    console.log("Server is listening on port:" + config.PORT);
-  });
+
+  app.listen(config.PORT, () => { });
+
 }
 
 sequelize.sync()
