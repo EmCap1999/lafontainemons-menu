@@ -8,5 +8,4 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 })
 export class FooterComponent {
   faLocationDot = faLocationDot;
-
 }

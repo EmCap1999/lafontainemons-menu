@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpProviderService } from '../../services/http-provider.service';
 
 @Component({
@@ -6,17 +6,16 @@ import { HttpProviderService } from '../../services/http-provider.service';
   templateUrl: './cocktails.component.html',
   styleUrl: '../../app.component.scss'
 })
-export class CocktailsComponent {
+export class CocktailsComponent implements OnInit{
   itemsList: any = [];
 
   constructor(private httpProvider: HttpProviderService) { }
 
   ngOnInit(): void {
     const condition = { section: 'Apéritifs' };
-
     this.getAllItems(condition);
   }
-
+  
   async getAllItems(condition?: any) {
     this.httpProvider.getAllItems(condition).subscribe((data: any) => {
       if (data != null && data.body != null) {
