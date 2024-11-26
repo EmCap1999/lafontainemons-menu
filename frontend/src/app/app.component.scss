@@ -1,6 +1,15 @@
 @use "@material/card";
 @include card.core-styles;
 
+/* =========== CATEGORY DRINKS DESIGN =========== */
+.container {
+    margin-top: 1rem;
+}
+
+.drink-card {
+    margin-bottom: 1.5rem;
+}
+
 
 /* =========== HOME DESIGN =========== */
 .logo {
@@ -63,7 +72,7 @@ mat-sidenav-content {
     }
 
     a:hover i {
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
 }
 
@@ -91,7 +100,7 @@ mat-nav-list {
     transition: background-color 0.3s ease;
 
     &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.2);
     }
 
     .nav-item-content {
@@ -113,7 +122,7 @@ mat-nav-list {
 /* =========== RESPONSIVE DESIGN =========== */
 @media (max-width: 30rem) {
     .logo {
-        width: 100px;
+        width: 130px;
     }
 
     .nav-item {
@@ -126,7 +135,7 @@ mat-nav-list {
 
 @media (min-width: 30rem) and (max-width: 45rem) {
     .logo {
-        width: 120px;
+        width: 140px;
     }
 
     .nav-item {
@@ -138,28 +147,30 @@ mat-nav-list {
 
 @media (min-width: 45rem) and (max-width: 60rem) {
     .logo {
-        width: 130px;
+        width: 150px;
     }
 }
 
 @media (min-width: 60rem) and (max-width: 75rem) {
     .logo {
-        width: 180px;
+        width: 165px;
     }
 
-    mat-sidenav-content {
-        align-items: center;
+    .container {
+        padding-top: 3vh;
+        padding-bottom: 3vh;
     }
 
 }
 
 @media (min-width: 75rem) {
     .logo {
-        width: 230px;
+        width: 180px;
     }
 
-    mat-sidenav-content {
-        align-items: center;
+    .container {
+        padding-top: 3vh;
+        padding-bottom: 2vh;
     }
 
 

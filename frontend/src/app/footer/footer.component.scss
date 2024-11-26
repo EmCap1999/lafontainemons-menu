@@ -1,5 +1,4 @@
 .sidebar-bottom-icons {
-    flex-shrink: 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -9,6 +8,14 @@
 
     span a {
         color: white;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
+
+    span a:hover i {
+        transform: scale(1.2);
+    }
+
 }
+
+
+    
