@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS public.item
     subsection character varying,
     name character varying NOT NULL,
     capacity real,
-    price real NOT NULL,
+    price NUMERIC(10, 2) NOT NULL,
     picture character varying,
     PRIMARY KEY ("itemId")
 );
