@@ -14,6 +14,8 @@ services:
       context: frontend
       dockerfile: Dockerfile
   backend:
+      env_file:
+      - .env
     depends_on:
       - postgres
     links:
