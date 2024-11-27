@@ -2,21 +2,23 @@ const config = require("../config/db.config.js");
 const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize(
-    config.DB, 
-    config.USER,      
-    config.PASSWORD,
+    config.DB,   
+    config.USER,    
+    config.PASSWORD, 
     {
-        host: config.HOST,           
+        host: config.HOST,          
         dialect: "postgres",         
         pool: {
-            max: config.pool.max,      
+            max: config.pool.max,    
             min: config.pool.min,      
             acquire: config.pool.acquire, 
-            idle: config.pool.idle,    
-        }
+            idle: config.pool.idle,  
+        },
+        logging: console.log,
     }
 );
 
+// Export the Sequelize instance
 module.exports = {
     sequelize,
 };
