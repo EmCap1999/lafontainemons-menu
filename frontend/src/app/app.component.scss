@@ -127,7 +127,7 @@ mat-sidenav-content {
 .sidebar {
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 100%;
     text-align: center;
     background-color: rgb(63, 81, 181);
     padding: 0;
@@ -167,6 +167,21 @@ mat-nav-list {
 
 
 /* =========== RESPONSIVE DESIGN =========== */
+
+@supports (height: 100dvh) {
+    .sidebar {
+        height: 90dvh;
+    }
+
+    mat-toolbar {
+        height: 10dvh
+    }
+
+    mat-sidenav-content {
+        height: 90dvh;
+    }
+
+}
 
 @media (max-width: 30rem) {
     .logo {
