@@ -1,6 +1,5 @@
 html, body {
     height: 100vh;
-    overflow: hidden;
     margin: 0;
     padding: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -10,6 +9,6 @@ html, body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: auto;
   }
   
