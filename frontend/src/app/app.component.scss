@@ -97,12 +97,12 @@ mat-toolbar {
   mat-sidenav-content {
     display: flex;
     flex-direction: column;
-    text-align: center;
     justify-content: center;
     height: 90vh; 
-    margin-bottom: 20vh;
     overflow-y: auto; 
     background-color: rgba(255, 255, 255, 0.2);
+    padding: 0;
+    padding-bottom: 10vh;
   }
 
 .spacer {
