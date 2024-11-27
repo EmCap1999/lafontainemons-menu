@@ -14,6 +14,7 @@ require("./routes/item.routes")(app);
 
 if (config.PORT === "8080") {
   // prod env.
+  console.log('prod. env. is ok');
   var corsOptions = {
     "Accept-Encoding": "*",
     "Access-Control-Allow-Origin": config.CORS_ORIGIN,
