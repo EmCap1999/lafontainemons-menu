@@ -1,16 +1,14 @@
-html,
-body{
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  margin: 0;
-  overflow-y: hidden;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+html, body, mat-sidenav-container {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    overflow-y: hidden;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-mat-sidenav-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden; 
+@supports (height: 90dvh) {
+  html, body, mat-sidenav-container {
+      height: 100dvh;
+  }
 }
