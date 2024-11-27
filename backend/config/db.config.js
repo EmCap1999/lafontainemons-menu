@@ -3,7 +3,7 @@ module.exports = {
   PORT: process.env.DB_PORT,
   USER: process.env.POSTGRES_USER,
   PASSWORD: process.env.POSTGRES_PASSWORD,
-  DB_HOST: process.env.DB_HOST,
+  DB: process.env.DB_HOST,
   SCHEMA: process.env.SCHEMA,
   DIALECT: "postgres",
   PROTOCOL: "postgres",
