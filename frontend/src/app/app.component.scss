@@ -167,6 +167,14 @@ mat-nav-list {
 
 
 /* =========== RESPONSIVE DESIGN =========== */
+
+
+@supports (height: 90dvh) {
+    .sidebar {
+        height: 90dvh;
+    }
+}
+
 @media (max-width: 30rem) {
     .logo {
         width: 130px;

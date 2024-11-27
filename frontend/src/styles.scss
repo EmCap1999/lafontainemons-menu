@@ -1,6 +1,6 @@
 html,
 body{
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100vh;
   margin: 0;
   padding: 0;
   margin: 0;
@@ -9,8 +9,8 @@ body{
 }
 
 mat-sidenav-container {
-  height: 100%; /* Le conteneur occupe toute la hauteur du viewport */
+  height: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Pas de défilement ici */
+  overflow: hidden; 
 }
