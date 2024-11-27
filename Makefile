@@ -13,6 +13,10 @@ run-frontend : ## Run frontend container
 build-backend : ## Build backend container
 	@docker build backend -t lafontaine:backend --platform linux/amd64
 
+.PHONY: run-backend
+run-backend : ## Run backend container
+	@docker run -p 8080:8080 lafontaine:backend
+
 .PHONY: clean-infra
 clean-infra : ## Remove images, containers and database
 	@docker system prune -f -a && sudo rm -rf ~/apps/postgres

@@ -6,10 +6,10 @@ services:
       - backend
     environment:
       HOST: ${HOST}
-      CLIENT_PORT: 80
+      CLIENT_PORT: 
     image: lafontaine/frontend
     ports:
-      - 80:80
+      - ${CLIENT_PORT}:${CLIENT_PORT}
     build:
       context: frontend
       dockerfile: Dockerfile
@@ -24,16 +24,16 @@ services:
       HOST: ${HOST}
       DB_HOST: ${DB_HOST}
       SERVER_PORT: ${SERVER_PORT}
-      CLIENT_PORT: 80
+      CLIENT_PORT: ${CLIENT_PORT}
       DIALECT: ${DIALECT}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_USER: lafontaine
-      POSTGRES_DB: lafontaine
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
       SSL_PROTECTED: ${SSL_PROTECTED}
       CORS_ORIGIN: ${CORS_ORIGIN}
     image: lafontaine/backend
     ports:
-      - ${SERVER_PORT}:8080
+      - ${SERVER_PORT}:${SERVER_PORT}
     build:
       context: backend
       dockerfile: Dockerfile
@@ -41,12 +41,12 @@ services:
     image: postgres:latest
     hostname: lafontaine-postgres
     ports:
-      - ${DB_PORT}:5432
+      - ${DB_PORT}:${DB_PORT}
     volumes:
       - ~/apps/postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_USER: lafontaine
-      POSTGRES_DB: lafontaine
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_HOST_AUTH_METHOD: scram-sha-256
       POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
