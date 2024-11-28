@@ -16,7 +16,7 @@ if (config.PORT === 8080) {
   console.log("prod. env. is ok");
   var corsOptions = {
     "Accept-Encoding": "*",
-    "Access-Control-Allow-Origin": config.CORS_ORIGIN,
+    "Access-Control-Allow-Origin": "http://162.19.247.38:80",
     "Access-Control-Allow-Headers": [
       "Origin",
       "Content-Type",
