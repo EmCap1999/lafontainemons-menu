@@ -5,7 +5,7 @@ module.exports = {
   PASSWORD: process.env.POSTGRES_PASSWORD,
   DB: process.env.POSTGRES_DB,
   SCHEMA: process.env.SCHEMA,
-  DIALECT: process.env.DIALECT,
+  DIALECT: "postgres",
   PROTOCOL: "postgres",
   SSL_PROTECTED: process.env.SSL_PROTECTED,
 
