@@ -1,11 +1,11 @@
 module.exports = {
-  HOST: "postgres",
+  HOST: process.env.HOST,
   PORT: process.env.DB_PORT,
   USER: process.env.POSTGRES_USER,
   PASSWORD: process.env.POSTGRES_PASSWORD,
   DB: process.env.POSTGRES_DB,
   SCHEMA: process.env.SCHEMA,
-  DIALECT: "postgres",
+  DIALECT: process.env.DIALECT,
   PROTOCOL: "postgres",
   SSL_PROTECTED: process.env.SSL_PROTECTED,
 

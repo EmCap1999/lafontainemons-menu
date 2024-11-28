@@ -15,7 +15,7 @@ build-backend : ## Build backend container
 
 .PHONY: run-backend
 run-backend : ## Run backend container
-	@docker run -d -p 8080:8080 lafontaine/backend
+	@docker run -d -p 8080:8080 lafontaine/backend --platform linux/amd64
 
 .PHONY: clean-infra
 clean-infra : ## Remove images, containers and database
