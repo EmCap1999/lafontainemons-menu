@@ -3,19 +3,19 @@ help:
 
 .PHONY: build-frontend
 build-frontend : ## Build frontend container
-	@docker build frontend -t lafontaine:frontend --platform linux/amd64
+	@docker build frontend -t lafontaine/frontend --platform linux/amd64
 
 .PHONY: run-frontend
 run-frontend : ## Run frontend container
-	@docker run -p 80:80 lafontaine:frontend
+	@docker run -d -p 80:80 lafontaine/frontend
 
 .PHONY: build-backend
 build-backend : ## Build backend container
-	@docker build backend -t lafontaine:backend --platform linux/amd64
+	@docker build backend -t lafontaine/backend --platform linux/amd64
 
 .PHONY: run-backend
 run-backend : ## Run backend container
-	@docker run -p 8080:8080 lafontaine:backend
+	@docker run -d -p 8080:8080 lafontaine/backend
 
 .PHONY: clean-infra
 clean-infra : ## Remove images, containers and database
