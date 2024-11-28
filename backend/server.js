@@ -1,7 +1,7 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const { sequelize } = require("./models/index");
-const config = require('./config/server.config.js');
+const config = require("./config/server.config.js");
 
 const express = require("express");
 const cors = require("cors");
@@ -11,54 +11,61 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 require("./routes/item.routes")(app);
 
-
-if (config.PORT === "8080") {
+if (config.PORT === 8080) {
   // prod env.
-  console.log('prod. env. is ok');
+  console.log("prod. env. is ok");
   var corsOptions = {
     "Accept-Encoding": "*",
     "Access-Control-Allow-Origin": config.CORS_ORIGIN,
-    "Access-Control-Allow-Headers": ["Origin", "Content-Type", "X-Auth-Token", "Authorization"],
-    "Access-Control-Allow-Methods": ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
-    "Allow": ["OPTIONS", "GET", "POST", "DELETE", "PUT"]
+    "Access-Control-Allow-Headers": [
+      "Origin",
+      "Content-Type",
+      "X-Auth-Token",
+      "Authorization",
+    ],
+    "Access-Control-Allow-Methods": [
+      "GET",
+      "POST",
+      "PATCH",
+      "PUT",
+      "DELETE",
+      "OPTIONS",
+    ],
+    Allow: ["OPTIONS", "GET", "POST", "DELETE", "PUT"],
   };
 
-  app.use(
-    cors(corsOptions)
-  );
+  app.use(cors(corsOptions));
 } else {
   // dev env.
   var corsOptions = {
     origin: config.CORS_ORIGIN,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: [
-      'Origin',
-      'Content-Type',
-      'Accept',
-      'X-Auth-Token',
-      'Authorization',
-      'Cache-Control',
-      'Pragma'
+      "Origin",
+      "Content-Type",
+      "Accept",
+      "X-Auth-Token",
+      "Authorization",
+      "Cache-Control",
+      "Pragma",
     ],
     exposedHeaders: [
-      'Access-Control-Allow-Origin',
-      'Access-Control-Allow-Headers',
-      'Access-Control-Allow-Methods'
+      "Access-Control-Allow-Origin",
+      "Access-Control-Allow-Headers",
+      "Access-Control-Allow-Methods",
     ],
   };
 
-  app.use(
-    cors(corsOptions)
-  );
+  app.use(cors(corsOptions));
 
-  app.listen(config.PORT, () => { });
-
+  app.listen(config.PORT, () => {});
 }
 
-sequelize.sync()
+sequelize
+  .sync()
   .then(() => {
-    console.log('Database successfully synchronized with the model');
+    console.log("Database successfully synchronized with the model");
   })
   .catch((error) => {
-    console.error('Unable to synchronize the model with the database', error);
+    console.error("Unable to synchronize the model with the database", error);
   });
