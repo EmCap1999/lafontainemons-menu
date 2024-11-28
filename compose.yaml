@@ -40,7 +40,7 @@ services:
 
   postgres:
     image: postgres:latest
-    hostname: lafontainemons
+    hostname: lafontaine-postgres
     ports:
       - ${DB_PORT}:${DB_PORT}
     volumes:
