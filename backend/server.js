@@ -37,6 +37,7 @@ if (config.PORT === 8080) {
   app.use(cors(corsOptions));
 } else {
   // dev env.
+  console.log("dev. env. is ok");
   var corsOptions = {
     origin: config.CORS_ORIGIN,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
