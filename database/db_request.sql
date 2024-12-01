@@ -1,4 +1,3 @@
-
 CREATE TABLE IF NOT EXISTS public.item
 (
     "itemId" bigint NOT NULL GENERATED ALWAYS AS IDENTITY,
@@ -6,7 +5,7 @@ CREATE TABLE IF NOT EXISTS public.item
     subsection character varying,
     name character varying NOT NULL,
     capacity real,
-    price DECIMAL(10, 2) NOT NULL,
+    price NUMERIC(10, 2) NOT NULL,
     picture character varying,
     PRIMARY KEY ("itemId")
 );
@@ -38,7 +37,7 @@ VALUES
 	('Desserts',null, 'Sorbet avec alcool', 10, null),
 	('Desserts',null, 'Flambé au calvados', 10, null),
 	('Desserts',null, 'Glace', 7, null),
-    ('HotDrinks',null, 'Café', 2.50, null),
+    ('HotDrinks',null, 'Café', 2.20, null),
     ('HotDrinks',null, 'Décaféiné', 2.50, null),
     ('HotDrinks',null, 'Thé', 2.50, null),
     ('HotDrinks',null, 'Chocolat chaud', 3, null),
