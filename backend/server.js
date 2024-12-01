@@ -11,7 +11,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 require("./routes/item.routes")(app);
 
-<<<<<<< HEAD
 if (config.PORT === 8080) {
   // prod env.
   console.log("prod. env. is ok");
@@ -39,13 +38,6 @@ if (config.PORT === 8080) {
 } else {
   // dev env.
   console.log("dev. env. is ok");
-=======
-if (Number(config.PORT) === 8080) {
-  // prod env.
-  console.log("prod. env. is ok");
-  console.log("config", config);
-  console.log("env", process.env);
->>>>>>> 1c437ae (index style $ update)
   var corsOptions = {
     origin: config.CORS_ORIGIN,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -65,43 +57,9 @@ if (Number(config.PORT) === 8080) {
     ],
   };
 
-<<<<<<< HEAD
   app.use(cors(corsOptions));
 
   app.listen(config.PORT, () => {});
-=======
-
-  app.use(cors(corsOptions));
-
-  app.listen(config.PORT, () => { });
-} else {
-  // dev env.
-  console.log("dev. env. is ok");
-  console.log("config", config);
-  console.log("env", process.env);
-  var corsOptions = {
-    origin: config.CORS_ORIGIN,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: [
-      "Origin",
-      "Content-Type",
-      "Accept",
-      "X-Auth-Token",
-      "Authorization",
-      "Cache-Control",
-      "Pragma",
-    ],
-    exposedHeaders: [
-      "Access-Control-Allow-Origin",
-      "Access-Control-Allow-Headers",
-      "Access-Control-Allow-Methods",
-    ],
-  };
-
-  app.use(cors(corsOptions));
-
-  app.listen(config.PORT, () => { });
->>>>>>> 1c437ae (index style $ update)
 }
 
 sequelize
