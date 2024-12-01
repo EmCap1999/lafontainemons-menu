@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpProviderService } from '../../services/http-provider.service';
 
 @Component({
@@ -6,14 +6,13 @@ import { HttpProviderService } from '../../services/http-provider.service';
   templateUrl: './alcools.component.html',
   styleUrl: '../../app.component.scss'
 })
-export class AlcoolsComponent {
+export class AlcoolsComponent implements OnInit {
   itemsList: any = [];
 
   constructor(private httpProvider: HttpProviderService) { }
 
   ngOnInit(): void {
     const condition = { section: 'Alcools' };
-
     this.getAllItems(condition);
   }
 

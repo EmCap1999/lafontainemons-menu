@@ -1,19 +1,23 @@
-<div class="container-fluid">
-    <img src="../../assets/logo.png" alt="Logo de votre brasserie" class="logo">
-    <mat-card *ngFor="let item of itemsList">
-        <mat-card-header>
-            <div class="title">
-                {{ item.name }}{{ item.subsection ? ' (' + item.subsection + ')' : '' }}
-            </div>
-            <div class="price-container">
-                <span class="mat-card-content-price-value">{{ item.price }}</span> €
-            </div>
-        </mat-card-header>
-        <mat-card-content>
-            <div *ngIf="item.capacity !== null" class="mat-card-content-quantity">
-                {{ item.capacity === 100 ? '1 Litre' : item.capacity + ' Cl' }}
-            </div>
-        </mat-card-content>
-    </mat-card>
+<div class="container">
+    <img src="../../assets/logo.png" alt="Logo de votre brasserie" class="logo img-fluid">
+    <div class="row">
+        <div class="col-12 col-md-6 col-xxl-4" *ngFor="let item of itemsList">
+            <mat-card class="drink-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        {{ item.name }}
+                        <span *ngIf="item.subsection">({{ item.subsection }})</span>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="price-container">
+                        <span class="price">{{ item.price }}</span> €
+                    </div>
+                    <div *ngIf="item.capacity !== null" class="capacity">
+                        {{ item.capacity === 100 ? '1 Litre' : item.capacity + ' Cl' }}
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
 </div>
-<app-footer></app-footer>

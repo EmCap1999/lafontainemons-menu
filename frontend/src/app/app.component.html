@@ -1,80 +1,95 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="app-toolbar">
   <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
     <mat-icon>menu</mat-icon>
   </button>
   <span class="spacer"></span>
   <div class="logos">
-    <a href="https://www.facebook.com/www.lafontaine.mons.be/" target="_blank">
-      <i class="bi bi-facebook h2 text-white"></i>
+    <a href="https://www.google.com/search?sca_esv=f04f39c9057254ed&rlz=1C1JJTC_enBE1125BE1125&sxsrf=ADLYWILQOXa5W0YoeSwUSNJ9hngXUoDR2w:1732788743983&uds=ADvngMjcH0KdF7qGWtwTBrP0nt7dYKWZLKwU1lKup9faKIbQjoowEnoeZV0t0s8U7RaYEab8Y7NZK7MmFhdvG9GJgMBkAO9UCbQUdp-t0SLd9Z_byQ7d2_YD15AtAY-airs7krELt0ZK_hBBr8gQ96lNbXsmBAqjVg&si=ACC90nzcy7sviKw0NTZoUBUzhQehr3jouizIrVSf6avWI23m1cdb3ublOaiJTtvmY-ls1P-gSxqYf0cNgAOI7CVXOUI-eX9g3WHgCDHJDdsj1sygsAIe9Yc%3D&q=La+Fontaine+Avis&sa=X&ved=2ahUKEwi-_LiM5f6JAxUxU6QEHaZfLaQQ3PALegQITBAF&biw=1368&bih=733&dpr=2"
+      target="_blank">
+      <i class="fa fa-google text-white"></i>
     </a>
     <a href="https://fr.tripadvisor.be/Restaurant_Review-g188647-d8045222-Reviews-Restaurant_La_Fontaine-Mons_Hainaut_Province_Wallonia.html"
       target="_blank">
-      <i class="fa fa-tripadvisor h2 text-white"></i>
+      <i class="fa fa-tripadvisor text-white"></i>
     </a>
-    <a href="https://www.google.com/search?sca_esv=618eadb7918fb614&sca_upv=1&tbm=lcl&sxsrf=ACQVn0-p6vlbwLWib0eRmtfKQ7Sf4Wuiug:1713782201797&q=La+Fontaine+Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDQ0MTIzsDQyNjY3NDM3Mzc0N97AyPiKUcAnUcEtP68kMTMvVcGxLLN4ESuGEADUZmWZQQAAAA&rldimm=11142609233716767173&hl=fr-BE&sa=X&ved=2ahUKEwjK7fCa0NWFAxXLU6QEHbY2B2EQ9fQKegQISBAF&biw=1368&bih=777&dpr=2#lkt=LocalPoiReviews"
-      target="_blank">
-      <i class="fa fa-google h2 text-white"></i>
+    <a href="https://www.facebook.com/www.lafontaine.mons.be" target="_blank">
+      <i class="bi bi-facebook text-white"></i>
     </a>
   </div>
 </mat-toolbar>
 
-
-<mat-sidenav-container autosize>
+<mat-sidenav-container class="app-container">
   <mat-sidenav [ngClass]="!isCollapsed ? 'expanded' : ''" [mode]="isMobile ? 'over' : 'side'"
-    [opened]="isMobile ? 'false' : 'true'">
-    <mat-nav-list>
-      <a mat-list-item href="/home">
-        <span class="entry">
+    [opened]="isMobile ? 'false' : 'true'" class="sidebar">
+
+    <mat-nav-list class="nav-list">
+
+      <a mat-list-item href="/home" class="nav-item">
+        <span class="nav-item-content">
           <i class='fas fa-home'></i>
-          <span *ngIf="!isCollapsed">Accueil</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Accueil</span>
         </span>
       </a>
-      <a mat-list-item href="/softs">
-        <span class="entry">
+
+      <a mat-list-item href="/softs" class="nav-item">
+        <span class="nav-item-content">
           <fa-icon [icon]="faGlassWater"></fa-icon>
-          <span *ngIf="!isCollapsed">Softs</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Softs</span>
         </span>
       </a>
-      <a mat-list-item href="/desserts">
-        <span class="entry">
+
+      <a mat-list-item href="/desserts" class="nav-item">
+        <span class="nav-item-content">
           <i class="fas fa-ice-cream"></i>
-          <span *ngIf="!isCollapsed">Desserts</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Desserts</span>
         </span>
       </a>
-      <a mat-list-item href="/hotdrinks">
-        <span class="entry">
+
+      <a mat-list-item href="/hotdrinks" class="nav-item">
+        <span class="nav-item-content">
           <i class="fas fa-mug-hot"></i>
-          <span *ngIf="!isCollapsed">Cafés & Hot drinks</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Cafés & Hot drinks</span>
         </span>
       </a>
-      <a mat-list-item href="/wines">
-        <span class="entry">
+
+      <a mat-list-item href="/wines" class="nav-item">
+        <span class="nav-item-content">
           <i class="fas fa-wine-bottle"></i>
-          <span *ngIf="!isCollapsed">Les vins</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Les vins</span>
         </span>
       </a>
-      <a mat-list-item href="/beers">
-        <span class="entry">
+
+      <a mat-list-item href="/beers" class="nav-item">
+        <span class="nav-item-content">
           <fa-icon [icon]="fafaBeerMugEmpty"></fa-icon>
-          <span *ngIf="!isCollapsed">Les bières</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Les bières</span>
         </span>
       </a>
-      <a mat-list-item href="/alcools">
-        <span class="entry">
+
+      <a mat-list-item href="/alcools" class="nav-item">
+        <span class="nav-item-content">
           <fa-icon [icon]="faWhiskeyGlass"></fa-icon>
-          <span *ngIf="!isCollapsed">Alcools</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Alcools</span>
         </span>
       </a>
-      <a mat-list-item href="/cocktails">
-        <span class="entry">
+
+      <a mat-list-item href="/cocktails" class="nav-item">
+        <span class="nav-item-content">
           <i class="fas fa-cocktail"></i>
-          <span *ngIf="!isCollapsed">Apéritifs</span>
+          <span *ngIf="!isCollapsed" class="nav-item-text">Apéritifs</span>
         </span>
       </a>
+
     </mat-nav-list>
+
+    <div class="footer">
+      <app-footer></app-footer>
+    </div>
   </mat-sidenav>
+
   <mat-sidenav-content>
-    <router-outlet></router-outlet>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<app-footer></app-footer>

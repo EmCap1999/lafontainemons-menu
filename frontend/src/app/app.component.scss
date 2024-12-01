@@ -1,325 +1,273 @@
 @use "@material/card";
 @include card.core-styles;
 
-
-mat-toolbar {
-    position: fixed;
-    top: 0;
-    z-index: 10;
+/* =========== CATEGORY DRINKS DESIGN =========== */
+.container {
+    margin-top: 1rem;
+    padding-left: 1rem;
 }
 
-.spacer {
-    flex: 1;
-}
+.drink-card {
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    text-overflow: ellipsis;
+    border: 0.2rem solid rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+    box-shadow: 0 0.3rem 0.3rem rgba(63, 81, 181, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-.logos a {
-    padding-left: 8px;
-    padding-right: 14px;
-}
+    &:hover {
+        transform: translateY(-0.5rem);
+        box-shadow: 0 0.6rem 0.6rem rgba(63, 81, 181, 0.5);
+    }
 
-.price-container {
-    margin-left: auto;
-}
-
-mat-sidenav {
-    position: fixed;
-
-    .entry {
+    mat-card-header {
         display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 0.8rem;
+        justify-content: space-around;
+    }
+
+    mat-card-title {
+        font-size: large;
+        font-weight: 600;
+    }
+
+    .price-container {
+        font-size: large;
+        font-weight: bold;
+        color: rgb(63, 81, 181);
+    }
+
+    mat-card-content {
+        flex-grow: 1;
+        padding: 0;
+    }
+
+    .capacity {
+        font-size: medium;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.5);
+        margin-top: auto;
+        text-align: right;
+        margin-right: 1rem;
     }
 }
 
-mat-sidenav-content {
-    text-align: center;
-    height: 95vh;
-}
 
-.mat-card-content-quantity {
-    color: rgb(51, 51, 176);
-    text-align: left;
-    font-style: italic;
-}
 
-.mat-card-content-price-value {
-    font-weight: 400;
-}
 
-.title {
-    font-weight: 500;
-    width: 75%;
-    text-align: start;
+/* =========== HOME DESIGN =========== */
+.logo {
+    width: 150px;
+    padding-bottom: 1rem;
+    transition: width 0.3s ease;
 }
 
 .title-home {
-    font-weight: 600;
-    font-size: x-large;
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
-.extra ol {
-    font-style: italic;
+.home-content,
+.extra {
+    font-size: medium;
+    margin: 0 3%;
+
+    h2 {
+        font-size: x-large;
+        padding: 3rem 0 1rem 0;
+        color: rgb(63, 81, 181);
+    }
 }
 
+/* =========== NAVBAR DESIGN =========== */
+mat-toolbar {
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+mat-sidenav-content {
+    display: flex;
+    height: 90vh;
+    text-align: center;
+    justify-content: center;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.2);
+}
 
-// media query updates
+.spacer {
+    flex-grow: 0.9;
+}
 
-//done.
-@media (min-width: 75em) {
-    mat-sidenav {
-        padding-top: 4%;
+.logos {
+    a {
+        margin-left: 1.2rem;
+        display: inline-block;
+        transition: transform 0.3s ease;
     }
 
-    mat-sidenav-content {
-        padding-bottom: 6%;
-        padding-top: 2%;
-    }
-
-    mat-card {
-        margin-bottom: 2%;
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-
-    .logo {
-        width: 300px;
-    }
-
-    .mat-card-content-quantity {
-        font-size: 1.1rem;
-    }
-
-    .mat-card-content-price-value {
-        font-size: 1.7rem;
-    }
-
-    .title {
+    i {
         font-size: 1.5rem;
     }
 
-    .title-home {
-        margin-bottom: 5%;
-    }
-
-    .body {
-        margin-top: 5%;
-        font-size: x-large;
-    }
-
-    .extra {
-        margin-top: 5%;
-        margin-left: 3%;
-        margin-right: 3%;
-        font-size: x-large;
-    }
-
-    .extra ol {
-        margin-right: 8%;
+    a:hover i {
+        transform: scale(1.2);
     }
 }
 
-//done.
-@media (min-width: 60em) and (max-width: 75em) {
-    mat-sidenav {
-        padding-top: 7%;
-    }
-
-    mat-sidenav-content {
-        padding-bottom: 5%;
-        padding-top: 5%;
-    }
-
-    mat-card {
-        margin-bottom: 3%;
-    }
-
-    .logo {
-        width: 300px;
-    }
-
-    .mat-card-content-quantity {
-        font-size: 1rem;
-    }
-
-    .mat-card-content-price-value {
-        font-size: 1.3rem;
-    }
-
-    .title {
-        font-size: 1.2rem;
-    }
-
-    .title-home {
-        margin-bottom: 5%;
-    }
-
-    .body {
-        margin-top: 5%;
-        font-size: large;
-    }
-
-    .extra {
-        margin-top: 5%;
-        margin-left: 3%;
-        margin-right: 3%;
-        font-size: large;
-    }
-
-    .extra ol {
-        margin-right: 8%;
-    }
+/* =========== SIDEBAR DESIGN =========== */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    background-color: rgb(63, 81, 181);
+    padding: 0;
 }
 
-//done.
-@media (min-width: 45em) and (max-width: 60em) {
-    mat-sidenav {
-        padding-top: 7%;
-        padding-bottom: 7%;
-    }
-
-    mat-sidenav-content {
-        padding-bottom: 7%;
-        padding-top: 5%;
-    }
-
-    mat-card {
-        margin-bottom: 3%;
-    }
-
-    .logo {
-        width: 250px;
-    }
-
-    .mat-card-content-quantity {
-        font-size: 1rem;
-    }
-
-    .mat-card-content-price-value {
-        font-size: 1.3rem;
-    }
-
-    .title {
-        font-size: 1.2rem;
-    }
-
-    .title-home {
-        margin-bottom: 5%;
-    }
-
-    .body {
-        margin-top: 5%;
-        font-size: large;
-    }
-
-    .extra {
-        margin-top: 5%;
-        margin-left: 8%;
-        margin-right: 8%;
-        font-size: large;
-    }
-
-    .extra ol {
-        margin-right: 8%;
-    }
+mat-nav-list {
+    margin-bottom: 13vh;
 }
 
 
-//done.
-@media (min-width: 30em) and (max-width: 45em) {
-    mat-sidenav {
-        padding-top: 10%;
-        padding-bottom: 10%;
+.nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
     }
 
-    mat-sidenav-content {
-        padding-bottom: 8%;
-        padding-top: 7%;
-    }
-
-    mat-card {
-        margin-bottom: 3%;
-    }
-
-    .logo {
-        width: 200px;
-    }
-
-    .mat-card-content-quantity {
-        font-size: 1rem;
-    }
-
-    .mat-card-content-price-value {
-        font-size: 1.3rem;
-    }
-
-    .title {
-        font-size: 1.2rem;
-    }
-
-    .title-home {
-        margin-bottom: 5%;
-    }
-
-    .body {
-        margin-top: 10%;
-    }
-
-    .extra {
-        margin-top: 5%;
-        margin-left: 8%;
-        margin-right: 8%;
-    }
-
-    .extra ol {
-        margin-right: 8%;
+    .nav-item-content {
+        display: flex;
+        align-items: start;
+        color: white;
+        gap: 1rem;
     }
 }
 
-// done
-@media (max-width: 30em) {
-    mat-sidenav {
-        padding-top: 13%;
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+}
+
+
+/* =========== RESPONSIVE DESIGN =========== */
+
+@supports (height: 100dvh) {
+    .sidebar {
+        height: 90dvh;
+    }
+
+    mat-toolbar {
+        height: 10dvh
     }
 
     mat-sidenav-content {
-        padding-bottom: 38%;
-        margin-top: 12%;
+        height: 90dvh;
     }
 
-    mat-card {
-        margin-bottom: 3%;
-    }
+}
 
+@media (max-width: 30rem) {
     .logo {
-        width: 180px;
+        width: 130px;
     }
 
-    .mat-card-content-quantity {
+    .nav-item {
+        padding: 1rem;
         font-size: 0.9rem;
     }
 
-    .mat-card-content-price-value {
-        font-size: 1rem;
+    .drink-card {
+        mat-card-title {
+            font-size: medium;
+        }
+
+        .price-container {
+            font-size: medium;
+        }
+
     }
 
-    .title {
-        font-size: 1rem;
+
+}
+
+@media (min-width: 30rem) and (max-width: 45rem) {
+    .logo {
+        width: 140px;
+    }
+
+    .nav-item {
+        padding: 1.2rem;
+    }
+
+}
+
+@media (min-width: 45rem) and (max-width: 60rem) {
+    .logo {
+        width: 150px;
+    }
+
+    .drink-card {
+        mat-card-title {
+            font-size: medium;
+        }
+
+        .price-container {
+            font-size: medium;
+        }
+    }
+}
+
+@media (min-width: 60rem) and (max-width: 75rem) {
+    .logo {
+        width: 165px;
+    }
+
+    .container {
+        padding-top: 3vh;
+        padding-bottom: 3vh;
+    }
+
+}
+
+@media (min-width: 75rem) {
+    .logo {
+        width: 175px;
+    }
+
+    .container {
+        padding-top: 3vh;
+        padding-bottom: 2vh;
+    }
+
+
+    .home-content,
+    .extra {
+        font-size: large;
+
+        h2 {
+            font-size: xx-large;
+        }
     }
 
     .title-home {
-        margin-bottom: 3%;
+        font-size: 2.5rem;
     }
-
-    .body {
-        margin-top: 7%;
-    }
-
-    .extra {
-        margin-top: 5%;
-        margin-left: 8%;
-        margin-right: 8%;
-    }
-
 }
