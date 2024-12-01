@@ -51,7 +51,7 @@ VALUES
     ('Les Vins', 'Vin rosé, blanc & rouge', 'Le verre', 5, null),
     ('Les Vins', 'Vin rosé, blanc & rouge', 'Pichet', 8, 25),
     ('Les Vins', 'Vin rosé, blanc & rouge', 'Pichet', 16, 50),
-    ('Les Vins', 'Sélection du Patron', 'Le verre', 25, 75),
+    ('Les Vins', 'Sélection du Patron', 'La bouteille', 25, 75),
     ('Bières', 'Au fût', 'Jupiler', 2.30, 25),
     ('Bières', 'Au fût', 'Jupiler', 3, 33),
     ('Bières', 'Mons', 'Saint-Lazare 002 Saison', 4.50, 33),
