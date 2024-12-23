@@ -54,7 +54,12 @@ import { ToastrModule } from 'ngx-toastr';
     FontAwesomeModule,
     MatButtonModule,
     MatCardModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      closeButton: true,
+      progressBar: true,
+      positionClass: 'toast-bottom-right',
+      timeOut: 7000,
+    }),
   ],
 
   providers: [

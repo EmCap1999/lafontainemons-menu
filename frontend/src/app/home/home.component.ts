@@ -7,22 +7,4 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['../app.component.scss']
 })
 
-export class HomeComponent {
-  constructor(private toastr: ToastrService) { }
-
-  ngOnInit(): void {
-    this.displayXmasMessage();
-  }
-
-  displayXmasMessage(): void {
-    this.toastr.success(
-      '<i class="fas fa-tree"></i> Joyeuses fêtes de Noël ! <i class="fas fa-sparkles"></i>',
-      'Message festif', {
-      closeButton: true,
-      progressBar: true, 
-      positionClass: 'toast-top-right', 
-      timeOut: 5000,
-      enableHtml: true
-    });;
-  }
-}
+export class HomeComponent { }

@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { faWhiskeyGlass, faGlassWaterDroplet, faBeerMugEmpty } from '@fortawesome/free-solid-svg-icons';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -15,30 +16,36 @@ export class AppComponent {
   title = 'frontend';
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  isMobile= true;
+  isMobile = true;
   isCollapsed = false;
   faWhiskeyGlass = faWhiskeyGlass;
   faGlassWater = faGlassWaterDroplet;
   fafaBeerMugEmpty = faBeerMugEmpty;
 
-  constructor(private observer: BreakpointObserver) {}
+  constructor(private observer: BreakpointObserver, private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.toastr.info(
+      `🎉 Le TCS vous souhaite de merveilleuses fêtes de fin d'année ! ✨`,
+      'Message festif',
+      {}
+    ); 
+  
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
-      if(screenSize.matches){
+      if (screenSize.matches) {
         this.isMobile = true;
       } else {
         this.isMobile = false;
       }
     });
   }
+  
   toggleMenu() {
-    if(this.isMobile){
+    if (this.isMobile) {
       this.sidenav.toggle();
-      // this.isCollapsed = false; // On mobile, the menu can never be collapsed
     } else {
-      this.sidenav.open(); // On desktop/tablet, the menu can never be fully closed
-      // this.isCollapsed = !this.isCollapsed;
+      this.sidenav.open();
+
     }
   }
 
