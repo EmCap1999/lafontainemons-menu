@@ -24,6 +24,7 @@ import { HotDrinksComponent } from './sections/hot-drinks/hot-drinks.component';
 import { WinesComponent } from './sections/wines/wines.component';
 import { BeersComponent } from './sections/beers/beers.component';
 import { FooterComponent } from './footer/footer.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     FontAwesomeModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    ToastrModule.forRoot(),
   ],
 
   providers: [
