@@ -26,7 +26,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.toastr.info(
-      `🎉 Le TCS vous souhaite de merveilleuses fêtes de fin d'année ! ✨`,
+      `🎉 La Brasserie La Fontaine vous souhaite de merveilleuses fêtes de fin d'année ! ✨`,
       'Message festif',
       {}
     ); 
