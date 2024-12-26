@@ -7,7 +7,7 @@ build-frontend : ## Build frontend container
 
 .PHONY: run-frontend
 run-frontend : ## Run frontend container
-	@docker run -p 80:80 lafontaine:frontend
+	@docker run -p 80:80 lafontaine/frontend
 
 .PHONY: build-backend
 build-backend : ## Build backend container
