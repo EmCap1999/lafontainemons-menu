@@ -13,7 +13,8 @@ export class HttpProviderService {
   public getAllItems(condition?: any): Observable<any> {
     let url = apiUrl + "allitems";
     if (condition) {
-      url += `?condition=${JSON.stringify(condition)}`;
+      url += `?condition=${encodeURIComponent(JSON.stringify(condition))}`;
+      console.log('Calling URL:', url);
     }
     return this.webApiService.get(url);
   }

@@ -1,24 +1,29 @@
-const { sequelize } = require("./models/index");
-const config = require("./config/db.config.js")
-
 const express = require("express");
 const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-    "Accept-Encoding": "*",
-    "Access-Control-Allow-Origin": "http://162.19.247.38:80",
-    "Access-Control-Allow-Headers": ["Origin", "Content-Type", "X-Auth-Token", "Authorization"],
-    "Access-Control-Allow-Methods": ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
-    "Allow": ["OPTIONS", "GET", "POST", "DELETE", "PUT"]
+  origin: "http://162.19.247.38:80",
+  methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Origin", "Content-Type", "X-Auth-Token", "Authorization"]
 };
 
-app.use(
-  cors(corsOptions)
-);
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use((req, res, next) => {
+  if (req.query.condition) {
+    try {
+      req.query.condition = JSON.parse(req.query.condition);
+    } catch (error) {
+      console.error('Invalid JSON in condition:', req.query.condition);
+      return res.status(400).send({ message: 'Invalid condition parameter' });
+    }
+  }
+  next();
+});
 
 require("./routes/item.routes")(app);
 
