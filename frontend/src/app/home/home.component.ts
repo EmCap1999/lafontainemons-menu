@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 export class HomeComponent implements OnInit {
   constructor(private toastr: ToastrService) { }
   ngOnInit(): void {
-    this.toastr.info(
+    this.toastr.success(
       `🎉 La Brasserie La Fontaine vous souhaite de merveilleuses fêtes de fin d'année ! ✨`,
       'Message festif',
       {}
