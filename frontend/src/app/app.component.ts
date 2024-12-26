@@ -5,7 +5,6 @@ import {
 } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { faWhiskeyGlass, faGlassWaterDroplet, faBeerMugEmpty } from '@fortawesome/free-solid-svg-icons';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -22,14 +21,9 @@ export class AppComponent {
   faGlassWater = faGlassWaterDroplet;
   fafaBeerMugEmpty = faBeerMugEmpty;
 
-  constructor(private observer: BreakpointObserver, private toastr: ToastrService) { }
+  constructor(private observer: BreakpointObserver) { }
 
-  ngOnInit() {
-    this.toastr.info(
-      `🎉 La Brasserie La Fontaine vous souhaite de merveilleuses fêtes de fin d'année ! ✨`,
-      'Message festif',
-      {}
-    ); 
+  ngOnInit() { 
   
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
       if (screenSize.matches) {

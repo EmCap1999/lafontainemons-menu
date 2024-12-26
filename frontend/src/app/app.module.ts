@@ -57,7 +57,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot({
       closeButton: true,
       progressBar: true,
-      positionClass: 'toast-bottom-right',
+      positionClass: 'toast-top-right',
       timeOut: 7000,
     }),
   ],

@@ -7,4 +7,13 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['../app.component.scss']
 })
 
-export class HomeComponent { }
+export class HomeComponent implements OnInit {
+  constructor(private toastr: ToastrService) { }
+  ngOnInit(): void {
+    this.toastr.info(
+      `🎉 La Brasserie La Fontaine vous souhaite de merveilleuses fêtes de fin d'année ! ✨`,
+      'Message festif',
+      {}
+    );
+  }
+}
