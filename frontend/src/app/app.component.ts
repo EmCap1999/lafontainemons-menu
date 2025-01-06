@@ -4,7 +4,17 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { faWhiskeyGlass, faGlassWaterDroplet, faBeerMugEmpty } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBars,
+  faHome,
+  faWhiskeyGlass,
+  faGlassWaterDroplet,
+  faBeerMugEmpty,
+  faIceCream,
+  faMugHot,
+  faWineBottle,
+  faCocktail
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -17,14 +27,21 @@ export class AppComponent {
   sidenav!: MatSidenav;
   isMobile = true;
   isCollapsed = false;
+
+  faBars = faBars;
+  faHome = faHome;
+  faIceCream = faIceCream;
+  faMugHot = faMugHot;
+  faWineBottle = faWineBottle;
   faWhiskeyGlass = faWhiskeyGlass;
   faGlassWater = faGlassWaterDroplet;
   fafaBeerMugEmpty = faBeerMugEmpty;
+  faCocktail = faCocktail;
 
   constructor(private observer: BreakpointObserver) { }
 
-  ngOnInit() { 
-  
+  ngOnInit() {
+
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
       if (screenSize.matches) {
         this.isMobile = true;
@@ -33,7 +50,7 @@ export class AppComponent {
       }
     });
   }
-  
+
   toggleMenu() {
     if (this.isMobile) {
       this.sidenav.toggle();

@@ -86,93 +86,102 @@
 .toast-success {
     background-color: #d63384 !important;
     color: white !important;
-    font-family: 'Comic Sans MS', cursive; 
-  }
-  
+    font-family: 'Comic Sans MS', cursive;
+}
+
 
 /* =========== NAVBAR DESIGN =========== */
 mat-toolbar {
     height: 10vh;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: row;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: rgb(63, 81, 181);
 }
 
 mat-sidenav-content {
-    display: flex;
-    height: 90vh;
-    text-align: center;
-    justify-content: center;
+    overflow: hidden;
+    background-color: white;
     overflow-y: auto;
-    background-color: rgba(255, 255, 255, 0.2);
+    text-align: center;
 }
 
-.spacer {
-    flex-grow: 0.9;
+mat-nav-list {
+    height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
 }
 
-.logos {
-    a {
-        margin-left: 1.2rem;
+::ng-deep button[mat-icon-button] {
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &:active {
+        transform: scale(1.05);
+    }
+
+}
+
+.toolbar-content {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+
+    .spacer {
+        flex-grow: 0.98;
+    }
+
+    .social-link {
+        text-align: center;
         display: inline-block;
-        transition: transform 0.3s ease;
-    }
+        color: white;
+        transition: all 0.5s ease;
+        font-size: x-large;
 
-    i {
-        font-size: 1.5rem;
-    }
-
-    a:hover i {
-        transform: scale(1.2);
+        &:hover {
+            transform: scale(1.1);
+        }
     }
 }
+
 
 /* =========== SIDEBAR DESIGN =========== */
 .sidebar {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    text-align: center;
+    height: 90vh;
+    width: 18rem;
+    overflow: hidden;
     background-color: rgb(63, 81, 181);
     padding: 0;
+    border-radius: 0;
 }
-
-mat-nav-list {
-    margin-bottom: 13vh;
-}
-
 
 .nav-item {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 1.95rem 1.75rem;
+
 
     &:hover {
-        background-color: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
     }
 
     .nav-item-content {
         display: flex;
-        align-items: start;
+        align-items: center;
+        gap: 0.9rem;
         color: white;
-        gap: 1rem;
+        font-size: large;
     }
 }
-
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-}
-
 
 /* =========== RESPONSIVE DESIGN =========== */
 
@@ -189,16 +198,14 @@ mat-nav-list {
         height: 90dvh;
     }
 
+    mat-nav-list {
+        height: 70dvh;
+    }
 }
 
 @media (max-width: 30rem) {
     .logo {
-        width: 130px;
-    }
-
-    .nav-item {
-        padding: 1rem;
-        font-size: 0.9rem;
+        width: 150px;
     }
 
     .drink-card {
@@ -218,10 +225,6 @@ mat-nav-list {
 @media (min-width: 30rem) and (max-width: 45rem) {
     .logo {
         width: 140px;
-    }
-
-    .nav-item {
-        padding: 1.2rem;
     }
 
 }
@@ -244,7 +247,7 @@ mat-nav-list {
 
 @media (min-width: 60rem) and (max-width: 75rem) {
     .logo {
-        width: 165px;
+        width: 175px;
     }
 
     .container {
@@ -256,7 +259,7 @@ mat-nav-list {
 
 @media (min-width: 75rem) {
     .logo {
-        width: 175px;
+        width: 185px;
     }
 
     .container {

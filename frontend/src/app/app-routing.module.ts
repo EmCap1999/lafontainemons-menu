@@ -11,7 +11,7 @@ import { BeersComponent } from './sections/beers/beers.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'hotdrinks', component: HotDrinksComponent },
   { path: 'softs', component: SoftsComponent },
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'alcools', component: AlcoolsComponent },
   { path: '**', redirectTo: '/home' },
 ];
- 
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
