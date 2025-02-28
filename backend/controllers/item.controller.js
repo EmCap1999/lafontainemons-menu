@@ -5,7 +5,7 @@ const { item } = initModels(sequelize);
 
 
 //Create an item
-exports.creatItem = async (req, res) => {
+exports.createItem = async (req, res) => {
     try {
         await item.create({
             section: req.body.section,

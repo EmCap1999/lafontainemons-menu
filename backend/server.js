@@ -1,4 +1,3 @@
-const { sequelize } = require("./models/index");
 const config = require("./config/db.config.js")
 
 const express = require("express");
@@ -26,6 +25,3 @@ app.listen(config.SERVER_PORT, () => {
   console.log(`Server is running on port ${config.SERVER_PORT}.`);
 });
 
-sequelize.sync().then(() => {
-  console.log('Base de données synchronisée!');
-});
