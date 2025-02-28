@@ -1,6 +1,7 @@
 # La fontaine
 
-A responsive website for a local restaurant.
+A responsive website for a local restaurant. See last stable prod version in branch 'V2'.
+
 👉 http://carte.lafontainemons.be/
 
 ## Clean and re-build
