@@ -1,7 +1,7 @@
 # 🍽️ Restaurant Website
 
 ## 📝 Description
-A **responsive website** for a local restaurant. This branch is the **last stable production version**.  
+A **responsive website** for a local restaurant. This branch is the **last version in development**.  
 👉 [http://carte.lafontainemons.be/](http://carte.lafontainemons.be/) 🔗
 
 ## 🛠️ Technologies Used
