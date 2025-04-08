@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,json}": [
+      "npx @biomejs/biome check --write --no-errors-on-unmatched",
+      "npx @biomejs/biome check --files-ignore-unknown=true"
+    ]
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0"
+  }
+}
