@@ -4,9 +4,9 @@
   },
   "lint-staged": {
     "*.{js,json}": [
-      "npx @biomejs/biome check --write --no-errors-on-unmatched",
-      "npx @biomejs/biome check --files-ignore-unknown=true"
-    ]
+      "npx @biomejs/biome check --write --no-errors-on-unmatched"
+    ],
+    "!**/node_modules/**/*": []
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
