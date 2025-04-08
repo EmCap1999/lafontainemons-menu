@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Manu Caputo",
+    "email": "caputoemmanuel1999@gmail.com",
+    "url": "https://github.com/EmCap1999"
+  },
+  "license": "ISC",
+  "description": "Backend of a responsive website for La Fontaine Mons Restaurant.",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
