@@ -27,8 +27,3 @@ CREATE TABLE IF NOT EXISTS public.item
  display_order INT NOT NULL DEFAULT 0,
  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
-
-
-CREATE INDEX idx_item_section ON public.item (section_id);
-CREATE INDEX idx_item_subsection ON public.item (subsection_id);
-CREATE INDEX idx_subsection_section ON public.subsection (section_id);
