@@ -105,14 +105,14 @@ VALUES ((SELECT section_id FROM public.section WHERE name = 'Bières'),
 -- Bières de Mons
 INSERT INTO public.item (section_id, subsection_id, name, origin, price, capacity, unit)
 VALUES ((SELECT section_id FROM public.section WHERE name = 'Bières'),
-        NULL, -- Pas de sous-section
+        NULL,
         'Saint-Lazare 002 Saison',
-        'Mons', -- Utilisation du champ origin
+        'Mons',
         4.50, 33, 'cl'),
        ((SELECT section_id FROM public.section WHERE name = 'Bières'),
-        NULL, -- Pas de sous-section
+        NULL,
         'Saint-Lazare 006 IPA',
-        'Mons', -- Utilisation du champ origin
+        'Mons',
         4.50, 33, 'cl');
 
 -- Autres bières
