@@ -31,6 +31,18 @@ FROM item i
      section s ON i.section_id = s.section_id
          LEFT JOIN
      subsection sub ON i.subsection_id = sub.subsection_id
-WHERE s.name = 'Bières'
+WHERE s.name = 'Softs'
 ORDER BY COALESCE(sub.display_order, 0),
          i.display_order;
+
+-- Search items by name or description
+SELECT i.item_id,
+       s.name AS section_name,
+       i.name,
+       i.price
+FROM item i
+         JOIN
+     section s ON i.section_id = s.section_id
+WHERE i.name ILIKE '%coca%'
+   OR i.description ILIKE '%coca%'
+ORDER BY i.name;
