@@ -7,6 +7,7 @@ SELECT i.item_id,
        i.capacity,
        i.unit,
        i.price,
+       i.origin,
        i.is_available,
        i.picture
 FROM item i
@@ -39,6 +40,8 @@ ORDER BY COALESCE(sub.display_order, 0),
 SELECT i.item_id,
        s.name AS section_name,
        i.name,
+       i.capacity,
+       i.unit,
        i.price
 FROM item i
          JOIN

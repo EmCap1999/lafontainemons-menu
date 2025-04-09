@@ -7,7 +7,6 @@ CREATE TABLE IF NOT EXISTS public.section
     updated_at    TIMESTAMP             DEFAULT CURRENT_TIMESTAMP
 );
 
-
 CREATE TABLE IF NOT EXISTS public.subsection
 (
     subsection_id SERIAL PRIMARY KEY,
@@ -19,7 +18,6 @@ CREATE TABLE IF NOT EXISTS public.subsection
     UNIQUE (section_id, name)
 );
 
-
 CREATE TABLE IF NOT EXISTS public.item
 (
     item_id       BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -27,6 +25,7 @@ CREATE TABLE IF NOT EXISTS public.item
     subsection_id INT            REFERENCES public.subsection (subsection_id) ON DELETE SET NULL,
     name          VARCHAR(100)   NOT NULL,
     description   TEXT,
+    origin        VARCHAR(100),
     capacity      REAL,
     unit          VARCHAR(20),
     price         NUMERIC(10, 2) NOT NULL,
