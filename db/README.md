@@ -73,4 +73,4 @@ Password: xxxxxx
 
 ## 📊 Example Queries
 
-For more, check the `db/examples/` directory.
+For more, check the `./examples/` directory.

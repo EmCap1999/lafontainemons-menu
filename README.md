@@ -10,7 +10,7 @@ This is the **latest stable development branch**.
 
 ## 📁 Project Structure
 
-- `./db` — Node.js API using Express and PostgreSQL
+- `./db` — PostgreSQL DataBase
 - `./backend` — Node.js API using Express
 - `./frontend` — Angular app *(coming soon)*
 
@@ -27,13 +27,8 @@ This is the **latest stable development branch**.
 
 ## ⚙️ Getting Started
 
-```bash
-# Install backend dependencies
-cd backend
-npm install
+Refer to the specific README files for each part of the project:
 
-# (Coming soon) Install frontend dependencies
-cd ../frontend
-```
-
-> Check the `backend/db/README.md` for detailed setup and schema documentation.
+- 📦 [Backend Setup](./backend/README.md)
+- 💻 [Frontend Setup](./frontend/README.md) *(coming soon)*
+- 🗄️ [Database Setup](./db/README.md)
