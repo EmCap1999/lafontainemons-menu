@@ -3,7 +3,7 @@
 ## 📝 Description
 
 A **responsive website** for a local restaurant.  
-This branch is the **latest stable production version**.  
+This branch is the **latest stable development version**.  
 👉 [http://carte.lafontainemons.be/](http://carte.lafontainemons.be/) 🔗
 
 ---
