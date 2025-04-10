@@ -1,51 +1,46 @@
--- Get all items with complete details including section and subsection
+-- Get all sections ordered by display order
+SELECT section_id,
+       name,
+       display_order,
+       created_at,
+       updated_at
+FROM section
+ORDER BY display_order, name;
+
+-- Get all subsections with their parent section
+SELECT sub.subsection_id,
+       sub.name AS subsection_name,
+       sub.display_order,
+       s.section_id,
+       s.name   AS section_name,
+       sub.created_at,
+       sub.updated_at
+FROM subsection sub
+         JOIN
+     section s ON sub.section_id = s.section_id
+ORDER BY s.display_order, s.name, sub.display_order, sub.name;
+
+-- Get all items with their section and subsection (if applicable)
 SELECT i.item_id,
        s.name   AS section_name,
-       sub.name AS subsection_name,
-       i.name,
-       i.description,
+       i.name   AS item_name,
+       i.price,
        i.capacity,
        i.unit,
-       i.price,
+       sub.name AS subsection_name,
        i.origin,
        i.is_available,
-       i.picture
+       i.display_order,
+       i.created_at,
+       i.updated_at
 FROM item i
          JOIN
      section s ON i.section_id = s.section_id
          LEFT JOIN
      subsection sub ON i.subsection_id = sub.subsection_id
 ORDER BY s.display_order,
+         s.name,
          COALESCE(sub.display_order, 0),
-         i.display_order;
-
--- Get all items from a specific section
-SELECT i.item_id,
-       i.name,
-       i.description,
-       i.capacity,
-       i.unit,
-       i.price,
-       sub.name AS subsection_name
-FROM item i
-         JOIN
-     section s ON i.section_id = s.section_id
-         LEFT JOIN
-     subsection sub ON i.subsection_id = sub.subsection_id
-WHERE s.name = 'Softs'
-ORDER BY COALESCE(sub.display_order, 0),
-         i.display_order;
-
--- Search items by name or description
-SELECT i.item_id,
-       s.name AS section_name,
-       i.name,
-       i.capacity,
-       i.unit,
-       i.price
-FROM item i
-         JOIN
-     section s ON i.section_id = s.section_id
-WHERE i.name ILIKE '%coca%'
-   OR i.description ILIKE '%coca%'
-ORDER BY i.name;
+         COALESCE(sub.name, ''),
+         i.display_order,
+         i.name;

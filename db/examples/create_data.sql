@@ -31,9 +31,3 @@ VALUES ((SELECT section_id FROM section WHERE name = 'Softs'),
         TRUE,
         'orangina.jpg',
         20);
-
--- Add multiple items at once
-INSERT INTO item (section_id, name, price, is_available, display_order)
-VALUES ((SELECT section_id FROM section WHERE name = 'Snacks'), 'Chips sel', 2.50, TRUE, 1),
-       ((SELECT section_id FROM section WHERE name = 'Snacks'), 'Chips paprika', 2.50, TRUE, 2),
-       ((SELECT section_id FROM section WHERE name = 'Snacks'), 'Cacahuètes', 3.00, TRUE, 3);

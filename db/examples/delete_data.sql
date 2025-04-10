@@ -1,11 +1,16 @@
+-- Delete all unavailable items
+DELETE
+FROM item
+WHERE is_available = FALSE;
+
 -- Delete a specific item
 DELETE
 FROM item
 WHERE item_id = 10;
 
--- Delete all items from a subsection
+-- Delete a subsection and all its items (uses cascade delete)
 DELETE
-FROM item
+FROM subsection
 WHERE subsection_id = (SELECT subsection_id
                        FROM subsection
                        WHERE name = 'Au fût'
@@ -16,7 +21,3 @@ DELETE
 FROM section
 WHERE name = 'Alcools';
 
--- Delete all unavailable items
-DELETE
-FROM item
-WHERE is_available = FALSE;
