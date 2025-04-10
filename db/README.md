@@ -45,7 +45,7 @@ GRANT ALL PRIVILEGES ON DATABASE la_fontaine_mons TO "user";
 ```bash
 cd lafontainemons-menu
 
-brew services start postgresql
+brew services start postgresql@17
 
 psql -d la_fontaine_mons -f db/migrations/001_initial_schema.sql
 psql -d la_fontaine_mons -f db/seeds/insert_data.sql
