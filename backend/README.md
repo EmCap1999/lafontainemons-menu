@@ -39,10 +39,12 @@ DB_USER=your_username
 DB_PASS=your_password
 DB_NAME=la_fontaine_mons
 ```
-**.env.prod**
+**.env.prod**:
+```
 NODE_ENV=production
 FRONTEND_URL=https://carte.lafontainemons.be
 etc.
+```
 
 ## Run the Application
 
