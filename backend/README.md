@@ -29,18 +29,19 @@ The application uses two environment files based on the environment:
 ### Example Files
 
 **.env.dev**
-```
 NODE_ENV=development
-PORT=8080
-DB_HOST=http://localhost
-```
+FRONTEND_URL=http://localhost:4200
+BACKEND_PORT=8080
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=your_username
+DB_PASS=your_password
+DB_NAME=la_fontaine_mons
 
 **.env.prod**
-```
 NODE_ENV=production
-PORT=80
-DB_HOST=https://yourproductionurl.com/
-```
+FRONTEND_URL=https://carte.lafontainemons.be
+etc.
 
 ## Run the Application
 
@@ -49,11 +50,10 @@ Once the environment variables are set, you can start the backend server:
 ### For development:
 ```bash
 npm run start:dev
+This will start the server using the .env.dev configuration.
 ```
-This will start the server on http://localhost:8080.
-
-### For production:
+### For development:
 ```bash
 npm run start:prod
+This will start the server using the .env.prod configuration.
 ```
-This will start the server on the configured production URL (defined by `DB_HOST`).
