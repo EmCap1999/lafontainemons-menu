@@ -10,12 +10,8 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-const PORT = process.env.PORT
-const host =
-  process.env.NODE_ENV === 'production'
-    ? corsOptions.origin
-    : `${corsOptions.origin}:${PORT}/`
+const PORT = process.env.BACKEND_PORT
 
 app.listen(PORT, () => {
-  console.log(`Server running on ${host}`)
+  console.log(`Server running on ${PORT}`)
 })
