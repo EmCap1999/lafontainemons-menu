@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "NODE_ENV=development node server.js",
+    "start:prod": "NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": {
@@ -13,7 +15,10 @@
   },
   "license": "ISC",
   "description": "Backend of a responsive website for La Fontaine Mons Restaurant.",
-  "dependencies": {
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "express": "^5.1.0"
-  }
+  },
+  "type": "module"
 }

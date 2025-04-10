@@ -1,7 +1,17 @@
-const express = require('express')
-const app = express()
-const port = 3000
+import cors from 'cors'
+import express from 'express'
+import './config/environment.js'
+import corsOptions from './config/cors.js'
 
-app.listen(port, () => {
-  console.log(`🚀 Server running on http://localhost:${port}`)
+const app = express()
+app.use(cors(corsOptions))
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+const PORT = process.env.BACKEND_PORT
+
+app.listen(PORT, () => {
+  console.log(`Server running on ${PORT}`)
 })
