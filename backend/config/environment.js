@@ -1,13 +1,21 @@
-import { resolve } from 'node:path'
+import path from 'node:path'
 import dotenv from 'dotenv'
 
-const envPath =
-  process.env.NODE_ENV === 'production'
-    ? resolve('./environments/.env.prod')
-    : resolve('./environments/.env.dev')
+const envFiles = {
+  production: './environments/.env.prod',
+  dev: './environments/.env.dev',
+  local: './environments/.env.local',
+}
 
-dotenv.config({
-  path: envPath,
-})
+const nodeEnv = process.env.NODE_ENV || 'local'
 
-console.log(`Using ${process.env.NODE_ENV} environment`)
+if (!envFiles[nodeEnv]) {
+  console.warn(
+    `Warning: The environment '${nodeEnv}' is not recognized. Defaulting to 'local' environment.`,
+  )
+}
+
+const envPath = path.resolve(envFiles[nodeEnv])
+console.log(`Loading environment from: ${envPath}`)
+
+dotenv.config({ path: envPath })

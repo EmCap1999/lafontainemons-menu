@@ -11,12 +11,20 @@ app.use(express.json())
 
 app.use(handleErrors)
 
-const PORT = process.env.BACKEND_PORT
+const startServer = () => {
+  const PORT = process.env.BACKEND_PORT || 3000
 
-try {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
   })
+}
+
+if (!process.env.BACKEND_PORT) {
+  console.warn('Warning: BACKEND_PORT is not defined, defaulting to port 3000')
+}
+
+try {
+  startServer()
 } catch (err) {
-  throw new AppError(err.message, err.code)
+  throw new AppError(err.message, err.code || 500)
 }
