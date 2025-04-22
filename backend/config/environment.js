@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 
 const envFiles = {
   production: './environments/.env.prod',
-  dev: './environments/.env.dev',
+  development: './environments/.env.dev',
   local: './environments/.env.local',
 }
 
