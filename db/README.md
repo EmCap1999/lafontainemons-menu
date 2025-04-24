@@ -51,20 +51,18 @@ FRONTEND_URL=http://localhost:4200
 BACKEND_PORT=8080
 DATABASE_URL=postgresql://user:password@localhost:5432/la_fontaine_mons
 ```
-### Structure de la Base
-Tables:
+### Database Structure
+Tables
 
     section: Main categories (e.g., Softs, Desserts)
     subsection: Subcategories (e.g., On tap)
     item: Individual menu items
 
-Intégration IDE (WebStorm):
+Intégration IDE (WebStorm)
 
     Open the Database tool window
     Add a PostgreSQL data source
-    Configure the connection:
-
-Configurer:
+    Configure the connection
 ```bash
 Host: localhost  
 Port: 5432  
