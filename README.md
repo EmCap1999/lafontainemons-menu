@@ -2,16 +2,9 @@
 
 ## 📝 Overview
 
-<<<<<<< Updated upstream
 A **responsive menu website** for a local restaurant.
 This is the **latest stable development branch**.  
 👉 Live demo: [http://carte.lafontainemons.be/](http://carte.lafontainemons.be/) 🔗
-=======
-A **responsive website** for a local restaurant.  
-This branch is the **latest stable development version**.  
-👉 [http://carte.lafontainemons.be/](http://carte.lafontainemons.be/) 🔗
->>>>>>> Stashed changes
-
 ---
 
 ## 📁 Project Structure
