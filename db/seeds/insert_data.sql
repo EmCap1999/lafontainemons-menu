@@ -1,3 +1,23 @@
+TRUNCATE public.item CASCADE;
+TRUNCATE public.subsection CASCADE;
+TRUNCATE public.section CASCADE;
+
+CREATE SEQUENCE IF NOT EXISTS section_id_seq;
+CREATE SEQUENCE IF NOT EXISTS subsection_id_seq;
+CREATE SEQUENCE IF NOT EXISTS item_id_seq;
+
+ALTER TABLE public.section
+    ALTER COLUMN section_id SET DEFAULT nextval('section_id_seq');
+ALTER TABLE public.subsection
+    ALTER COLUMN subsection_id SET DEFAULT nextval('subsection_id_seq');
+ALTER TABLE public.item
+    ALTER COLUMN item_id SET DEFAULT nextval('item_id_seq');
+
+ALTER SEQUENCE section_id_seq OWNED BY public.section.section_id;
+ALTER SEQUENCE subsection_id_seq OWNED BY public.subsection.subsection_id;
+ALTER SEQUENCE item_id_seq OWNED BY public.item.item_id;
+
+-- Sections
 INSERT INTO public.section (name, display_order)
 VALUES ('Softs', 1),
        ('Desserts', 2),
@@ -7,6 +27,7 @@ VALUES ('Softs', 1),
        ('Apéritifs', 6),
        ('Alcools', 7);
 
+-- Subsections
 INSERT INTO public.subsection (section_id, name, display_order)
 VALUES ((SELECT section_id FROM public.section WHERE name = 'Les Vins'), 'Vin rosé, blanc & rouge', 1),
        ((SELECT section_id FROM public.section WHERE name = 'Les Vins'), 'Sélection du Patron', 2),
@@ -46,6 +67,7 @@ VALUES ((SELECT section_id FROM public.section WHERE name = 'Desserts'), NULL,
        ((SELECT section_id FROM public.section WHERE name = 'Desserts'), NULL, 'Flambé au calvados', 10.00, NULL, NULL),
        ((SELECT section_id FROM public.section WHERE name = 'Desserts'), NULL, 'Glace', 7.00, NULL, NULL);
 
+-- Boissons chaudes
 INSERT INTO public.item (section_id, subsection_id, name, price, capacity, unit)
 VALUES ((SELECT section_id FROM public.section WHERE name = 'HotDrinks'), NULL, 'Café', 2.20, NULL, NULL),
        ((SELECT section_id FROM public.section WHERE name = 'HotDrinks'), NULL, 'Décaféiné', 2.50, NULL, NULL),
