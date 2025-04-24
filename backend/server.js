@@ -1,20 +1,25 @@
 import cors from 'cors'
 import express from 'express'
-import './config/environment.js'
-import corsOptions from './config/cors.js'
-import { testDatabaseConnection } from './config/database.js'
+import './config/environment.config.js'
+import corsOptions from './config/cors.config.js'
 import { AppError, handleErrors } from './errors/app-errors.js'
+import menuRoutes from './routes/menu.routes.js'
 
 const app = express()
 
 app.use(cors(corsOptions))
 app.use(express.json())
 
+app.use(menuRoutes)
+
+app.all(/.*/, (req, res, next) => {
+  next(new AppError(`Route ${req.originalUrl} not found on this server`, 404))
+})
+
 app.use(handleErrors)
 
 const startServer = async () => {
   const PORT = process.env.BACKEND_PORT || 3000
-  await testDatabaseConnection()
 
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}...`)
@@ -26,5 +31,6 @@ const startServer = async () => {
 }
 
 startServer().catch((err) => {
+  console.error('Failed to start server:', err)
   throw new AppError(err.message, err.code || 500)
 })
