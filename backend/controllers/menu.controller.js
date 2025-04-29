@@ -20,7 +20,7 @@ export const getSectionById = async (req, res, next) => {
     const id = Number.parseInt(req.params.id)
     const section = await menuService.getSectionById(id)
 
-    if (!section) {
+    if (section.length === 0) {
       return next(new AppError(`Section ID ${id} does not exist.`, 404))
     }
 
