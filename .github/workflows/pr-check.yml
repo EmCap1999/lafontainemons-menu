@@ -24,12 +24,3 @@ jobs:
 
       - name: 🧼 Run Biome (root)
         run: npx @biomejs/biome check --no-errors-on-unmatched
-
-      # Backend
-      - name: 📦 Install dependencies (backend)
-        run: npm ci
-        working-directory: backend
-
-      - name: 🧼 Run Biome (backend)
-        run: npx @biomejs/biome check --no-errors-on-unmatched
-        working-directory: backend
