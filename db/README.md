@@ -4,8 +4,9 @@ This directory contains everything related to the project's database setup.
 
 ## 📦 Tech Stack
 
-- 🐘 **PostgreSQL 17**
-- 🧩 **Node.js** for migrations and seeding
+- 🐘 PostgreSQL 17
+- 🧩 [Drizzle ORM](https://orm.drizzle.team/) for schema generation
+- 🛠️ Node.js for running migrations and data seeding
 
 ---
 
@@ -23,54 +24,53 @@ brew services start postgresql
 ```bash
 psql -d postgres
 
-CREATE USER "user" WITH PASSWORD 'xxxxxx';
+CREATE USER "user" WITH PASSWORD 'password';
 CREATE DATABASE la_fontaine_mons OWNER "user";
 GRANT ALL PRIVILEGES ON DATABASE la_fontaine_mons TO "user";
 ```
 
----
-
-## 📋 Database Schema
-
-### Tables
-
-- **section**: Main categories (e.g., Softs, Desserts)
-- **subsection**: Subcategories within a section (e.g., Au fût)
-- **item**: Individual menu items
-
-## 🚀 Getting Started
-
-### Set Up Locally
+### Schema Generation
+The schema is automatically generated via Drizzle Kit.
 
 ```bash
-cd lafontainemons-menu
+cd ../backend/drizzle/
+npx drizzle-kit push
+```
 
-brew services start postgresql@17
+### Seed the Tables
+Once the schema is in place:
 
-psql -d la_fontaine_mons -f db/migrations/001_initial_schema.sql
+```bash
 psql -d la_fontaine_mons -f db/seeds/insert_data.sql
 ```
 
----
-
-## 🛠️ IDE Integration (WebStorm)
-
-- Open the **Database** tool window
-- Add a PostgreSQL data source
-- Configuration:
-
+### .env File Example
+```bash
+NODE_ENV=local
+FRONTEND_URL=http://localhost:4200
+BACKEND_PORT=8080
+DATABASE_URL=postgresql://user:password@localhost:5432/la_fontaine_mons
 ```
+### Database Structure
+Tables
+
+    section: Main categories (e.g., Softs, Desserts)
+    subsection: Subcategories (e.g., On tap)
+    item: Individual menu items
+
+Intégration IDE (WebStorm)
+
+    Open the Database tool window
+    Add a PostgreSQL data source
+    Configure the connection
+```bash
 Host: localhost  
 Port: 5432  
 Database: la_fontaine_mons  
 User: user  
-Password: xxxxxx  
+Password: password
 ```
+Test and save the connection.
 
-- Test and save the connection
-
----
-
-## 📊 Example Queries
-
-For more, check the `./examples/` directory.
+### Example Queries
+For more examples, check the ./examples/ directory.

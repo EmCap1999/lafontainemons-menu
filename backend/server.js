@@ -1,30 +1,31 @@
-import cors from 'cors'
-import express from 'express'
-import './config/environment.js'
-import corsOptions from './config/cors.js'
-import { AppError, handleErrors } from './errors/app-errors.js'
-
-const app = express()
-
-app.use(cors(corsOptions))
-app.use(express.json())
-
-app.use(handleErrors)
-
-const startServer = () => {
-  const PORT = process.env.BACKEND_PORT || 3000
-
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-  })
-}
-
-if (!process.env.BACKEND_PORT) {
-  console.warn('Warning: BACKEND_PORT is not defined, defaulting to port 3000')
-}
-
-try {
-  startServer()
-} catch (err) {
-  throw new AppError(err.message, err.code || 500)
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "NODE_ENV=development node server.js",
+    "start:prod": "NODE_ENV=production node server.js"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Manu Caputo",
+    "email": "caputoemmanuel1999@gmail.com",
+    "url": "https://github.com/EmCap1999"
+  },
+  "license": "ISC",
+  "description": "Backend of a responsive website for La Fontaine Mons Restaurant.",
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "drizzle-kit": "^0.31.0",
+    "express": "^5.1.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "drizzle-orm": "^0.42.0",
+    "pg": "^8.15.1",
+    "pg-pool": "^3.8.0",
+    "zod": "^3.24.3"
+  }
 }

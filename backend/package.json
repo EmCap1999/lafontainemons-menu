@@ -18,7 +18,14 @@
   "devDependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
+    "drizzle-kit": "^0.31.0",
     "express": "^5.1.0"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "drizzle-orm": "^0.42.0",
+    "pg": "^8.15.1",
+    "pg-pool": "^3.8.0",
+    "zod": "^3.24.3"
+  }
 }

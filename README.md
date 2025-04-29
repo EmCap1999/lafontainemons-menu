@@ -5,7 +5,6 @@
 A **responsive menu website** for a local restaurant.
 This is the **latest stable development branch**.  
 👉 Live demo: [http://carte.lafontainemons.be/](http://carte.lafontainemons.be/) 🔗
-
 ---
 
 ## 📁 Project Structure
