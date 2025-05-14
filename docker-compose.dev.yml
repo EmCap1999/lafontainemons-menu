@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   postgres:
     image: postgres:17
@@ -13,6 +11,39 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - lafontaine-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lafontaine_dev -d la_fontaine_mons_dev"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  drizzle-migration:
+    image: node:18-alpine
+    container_name: lafontaine-drizzle-migration
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://lafontaine_dev:bYpbyq-nicfi4-myhxuw@postgres:5432/la_fontaine_mons_dev
+    command: sh -c "cd backend/drizzle && npm install && npx drizzle-kit push:pg"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - lafontaine-network
+
+  seeder:
+    image: postgres:17
+    container_name: lafontaine-seeder
+    volumes:
+      - ./db/seeds:/seeds
+    command: sh -c "sleep 10 && PGPASSWORD=bYpbyq-nicfi4-myhxuw psql -h postgres -U lafontaine_dev -d la_fontaine_mons_dev -f /seeds/insert_data.sql"
+    depends_on:
+      postgres:
+        condition: service_healthy
     networks:
       - lafontaine-network
 
