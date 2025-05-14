@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: lafontaine-postgres-dev
+    restart: always
+    environment:
+      POSTGRES_USER: lafontaine_dev
+      POSTGRES_PASSWORD: bYpbyq-nicfi4-myhxuw
+      POSTGRES_DB: la_fontaine_mons_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - lafontaine-network
+
+networks:
+  lafontaine-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
