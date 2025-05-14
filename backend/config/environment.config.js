@@ -2,9 +2,9 @@ import path from 'node:path'
 import dotenv from 'dotenv'
 
 const envFiles = {
-  production: './environments/.env.prod',
-  development: './environments/.env.dev',
-  local: './environments/.env.local',
+  production: '../environments/.env.prod',
+  development: '../environments/.env.dev',
+  local: '../environments/.env.local',
 }
 
 const nodeEnv = process.env.NODE_ENV || 'local'

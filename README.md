@@ -26,6 +26,24 @@ This is the **latest stable development branch**.
 
 ## ⚙️ Getting Started
 
+### Environment Configuration
+
+The application uses tree environment files based on the environment:
+
+- **Local**: Create a `.local.dev` file in the `./environments/` folder
+- **Development**: Create a `.env.dev` file in the `./environments/` folder
+- **Production**: Create a `.env.prod` file in the `./environments/` folder
+
+### Example Files
+
+**.local.dev**:
+```
+NODE_ENV=local
+FRONTEND_URL=http://localhost:4200
+BACKEND_PORT=8080
+DATABASE_URL=postgresql://your_username:your_password@localhost:5432/la_fontaine_mons
+```
+
 Refer to the specific README files for each part of the project:
 
 - 📦 [Backend Setup](./backend/README.md)

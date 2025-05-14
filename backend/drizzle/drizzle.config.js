@@ -2,7 +2,7 @@ import path from 'node:path'
 import dotenv from 'dotenv'
 import { defineConfig } from 'drizzle-kit'
 
-const envDirectory = path.resolve(__dirname, '..')
+const envDirectory = path.resolve(__dirname, '../../')
 
 const envFiles = {
   production: path.join(envDirectory, 'environments', '.env.prod'),
