@@ -18,9 +18,9 @@ jobs:
         with:
           node-version: 22
 
-      - name: 📦 Install dependencies
+      # Root
+      - name: 📦 Install dependencies (root)
         run: npm ci
 
-      - name: 🧼 Run Biome (check + format + lint)
-        run: |
-          npx @biomejs/biome check --no-errors-on-unmatched
+      - name: 🧼 Run Biome (root)
+        run: npx @biomejs/biome check --no-errors-on-unmatched
