@@ -44,33 +44,12 @@ Once the schema is in place:
 psql -d la_fontaine_mons -f db/seeds/insert_data.sql
 ```
 
-### .env File Example
-```bash
-NODE_ENV=local
-FRONTEND_URL=http://localhost:4200
-BACKEND_PORT=8080
-DATABASE_URL=postgresql://user:password@localhost:5432/la_fontaine_mons
-```
 ### Database Structure
 Tables
 
     section: Main categories (e.g., Softs, Desserts)
     subsection: Subcategories (e.g., On tap)
     item: Individual menu items
-
-Intégration IDE (WebStorm)
-
-    Open the Database tool window
-    Add a PostgreSQL data source
-    Configure the connection
-```bash
-Host: localhost  
-Port: 5432  
-Database: la_fontaine_mons  
-User: user  
-Password: password
-```
-Test and save the connection.
 
 ### Example Queries
 For more examples, check the ./examples/ directory.

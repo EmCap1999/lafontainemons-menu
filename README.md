@@ -28,20 +28,31 @@ This is the **latest stable development branch**.
 
 ### Environment Configuration
 
-The application uses tree environment files based on the environment:
+create a single .env file in the root of the project depending on the environment:
 
-- **Local**: Create a `.local.dev` file in the `./environments/` folder
-- **Development**: Create a `.env.dev` file in the `./environments/` folder
-- **Production**: Create a `.env.prod` file in the `./environments/` folder
+- **Local**
+- **Development**
+- **Production**
 
 ### Example Files
 
-**.local.dev**:
+**.env**:
 ```
 NODE_ENV=local
 FRONTEND_URL=http://localhost:4200
 BACKEND_PORT=8080
-DATABASE_URL=postgresql://your_username:your_password@localhost:5432/la_fontaine_mons
+
+# Configuration de la base de données
+POSTGRES_USER=user
+POSTGRES_PASSWORD=password
+POSTGRES_DB=postgres
+POSTGRES_PORT=5432
+
+# URL de connexion pour accès local (depuis le VPS)
+DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:${POSTGRES_PORT}/${POSTGRES_DB}"
+
+# URL de connexion pour accès depuis les conteneurs Docker
+# DATABASE_URL_DOCKER="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/${POSTGRES_DB}"
 ```
 
 Refer to the specific README files for each part of the project:
