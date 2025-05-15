@@ -23,23 +23,9 @@ npm install
 ```
 
 ## Run the Application
-
 Once the environment variables are set, you can start the backend server:
 
-### For Local:
 ```bash
 npm start
 ```
-This will start the server using the .env.local configuration.
-
-### For development:
-```bash
-npm run start:dev
-```
-This will start the server using the .env.dev configuration.
-
-### For production:
-```bash
-npm run start:prod
-```
-This will start the server using the .env.prod configuration.
+This will start the server using the .env configuration.

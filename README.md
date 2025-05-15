@@ -49,10 +49,10 @@ POSTGRES_DB=postgres
 POSTGRES_PORT=5432
 
 # URL de connexion pour accès local (depuis le VPS)
-DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:${POSTGRES_PORT}/${POSTGRES_DB}"
+DATABASE_URL_LOCAL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:${POSTGRES_PORT}/${POSTGRES_DB}"
 
 # URL de connexion pour accès depuis les conteneurs Docker
-# DATABASE_URL_DOCKER="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/${POSTGRES_DB}"
+# DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/${POSTGRES_DB}"
 ```
 
 Refer to the specific README files for each part of the project:
