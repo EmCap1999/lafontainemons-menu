@@ -14,7 +14,7 @@ services:
     networks:
       - lafontaine-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -52,6 +52,33 @@ services:
         condition: service_healthy
     networks:
       - lafontaine-network
+
+  backend:
+    image: node:22-alpine
+    container_name: lafontaine-backend-dev
+    restart: always
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - DATABASE_URL=${DATABASE_URL}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - BACKEND_PORT=${BACKEND_PORT}
+    ports:
+      - "${BACKEND_PORT}:3001"
+    command: sh -c "cd backend && npm install && npm start"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - lafontaine-network
+    healthcheck:
+      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider"]
+      interval: 20s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 
 networks:
   lafontaine-network:
