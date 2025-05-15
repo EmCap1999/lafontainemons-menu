@@ -3,16 +3,18 @@ services:
     image: postgres:17
     container_name: lafontaine-postgres-dev
     restart: always
-    env_file:
-      - ./environments/.env.dev
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - lafontaine-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -23,8 +25,11 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
-    env_file:
-      - ./environments/.env.dev
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=${DATABASE_URL_DOCKER}
+      - FRONTEND_URL=https://carte.lafontainemons.be
+      - BACKEND_PORT=3001
     command: sh -c "cd backend/drizzle && npm install && npx drizzle-kit push:pg"
     depends_on:
       postgres:
@@ -35,16 +40,13 @@ services:
   seeder:
     image: postgres:17
     container_name: lafontaine-seeder
-    env_file:
-      - ./environments/.env.dev
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
     volumes:
       - ./db/seeds:/seeds
-    entrypoint: /bin/bash
-    command:
-      - -c
-      - |
-        sleep 10
-        PGPASSWORD=${POSTGRES_PASSWORD} psql -h postgres -U ${POSTGRES_USER} -d ${POSTGRES_DB} -f /seeds/insert_data.sql
+    command: sh -c "sleep 10 && PGPASSWORD=${POSTGRES_PASSWORD} psql -h postgres -U ${POSTGRES_USER} -d ${POSTGRES_DB} -f /seeds/insert_data.sql"
     depends_on:
       postgres:
         condition: service_healthy
