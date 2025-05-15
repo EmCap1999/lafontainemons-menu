@@ -60,3 +60,4 @@ Refer to the specific README files for each part of the project:
 - 📦 [Backend Setup](./backend/README.md)
 - 💻 [Frontend Setup](./frontend/README.md) *(coming soon)*
 - 🗄️ [Database Setup](./db/README.md)
+
