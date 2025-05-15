@@ -30,7 +30,7 @@ services:
       - DATABASE_URL=${DATABASE_URL_DOCKER}
       - FRONTEND_URL=https://carte.lafontainemons.be
       - BACKEND_PORT=3001
-    command: sh -c "cd backend/drizzle && npm install && npx drizzle-kit push:pg"
+    command: sh -c "cd backend/drizzle && npm install && npx drizzle-kit push"
     depends_on:
       postgres:
         condition: service_healthy
