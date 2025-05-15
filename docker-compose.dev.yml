@@ -39,7 +39,12 @@ services:
       - ./environments/.env.dev
     volumes:
       - ./db/seeds:/seeds
-    command: sh -c "sleep 10 && PGPASSWORD=$POSTGRES_PASSWORD psql -h postgres -U $POSTGRES_USER -d $POSTGRES_DB -f /seeds/insert_data.sql"
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        sleep 10
+        PGPASSWORD=${POSTGRES_PASSWORD} psql -h postgres -U ${POSTGRES_USER} -d ${POSTGRES_DB} -f /seeds/insert_data.sql
     depends_on:
       postgres:
         condition: service_healthy
