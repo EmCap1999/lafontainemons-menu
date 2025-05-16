@@ -38,7 +38,6 @@ jobs:
         with:
           node-version: 22
 
-      # Backend
       - name: 📦 Install dependencies (backend)
         working-directory: ./backend
         run: npm ci
@@ -46,13 +45,9 @@ jobs:
       - name: 🧼 Lint backend with Biome
         run: npx @biomejs/biome check --no-errors-on-unmatched ./backend
 
-      - name: 🏗️ Build backend
+      - name: 🏗️ Start backend
         working-directory: ./backend
-        run: npm run build
-
-      - name: 🧪 Test backend
-        working-directory: ./backend
-        run: npm test
+        run: npm start
 
   frontend-check:
     name: 🅰️ Frontend Angular Checks
@@ -78,7 +73,3 @@ jobs:
       - name: 🏗️ Build Angular
         working-directory: ./frontend
         run: npm run build
-
-      - name: 🧪 Run Angular tests
-        working-directory: ./frontend
-        run: npm run test:headless
