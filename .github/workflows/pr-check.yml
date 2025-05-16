@@ -5,9 +5,9 @@ on:
     branches: [ main, dev ]
 
 jobs:
-  biome-check:
-    name: 🔍 Lint & Format with Biome
-    runs-on: ubuntu-latest
+  biome-global-check:
+    name: 🔍 Global Lint & Format
+    runs-on: ubuntu-24.04
 
     steps:
       - name: ⬇️ Checkout repository
@@ -18,9 +18,40 @@ jobs:
         with:
           node-version: 22
 
-      # Root
       - name: 📦 Install dependencies (root)
         run: npm ci
 
-      - name: 🧼 Run Biome (root)
+      - name: 🧼 Run Biome (global)
         run: npx @biomejs/biome check --no-errors-on-unmatched
+
+  backend-check:
+    name: 🖥️ Backend NodeJS Checks
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: 📦 Install dependencies (backend)
+        working-directory: ./backend
+        run: npm ci
+
+      - name: 🧼 Lint backend with Biome
+        run: npx @biomejs/biome check --no-errors-on-unmatched ./backend
+
+      - name: 🏗️ Build backend
+        working-directory: ./backend
+        run: npm run build
+
+  frontend-check:
+    name: 🅰️ Frontend Angular Checks
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: 📦 Install dependencies (frontend)
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: 🧼 Lint frontend with Biome
+        run: npx @biomejs/biome check --no-errors-on-unmatched ./frontend
+
+      - name: 🏗️ Build Angular
+        working-directory: ./frontend
+        run: npm run build
