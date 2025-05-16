@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@ngx-env/builder:application",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/frontend",
             "index": "src/index.html",
@@ -35,9 +35,6 @@
             "prerender": true,
             "ssr": {
               "entry": "src/server.ts"
-            },
-            "ngxEnv": {
-              "envFilePath": "../.env"
             }
           },
           "configurations": {
@@ -65,7 +62,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@ngx-env/builder:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "frontend:build:production"
@@ -75,11 +72,7 @@
             }
           },
           "defaultConfiguration": "development",
-          "options": {
-            "ngxEnv": {
-              "envFilePath": "../.env"
-            }
-          }
+          "options": {}
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
