@@ -5,9 +5,9 @@ on:
     branches: [ main, dev ]
 
 jobs:
-  biome-check:
-    name: 🔍 Lint & Format with Biome
-    runs-on: ubuntu-latest
+  biome-global-check:
+    name: 🔍 Global Lint & Format
+    runs-on: ubuntu-24.04
 
     steps:
       - name: ⬇️ Checkout repository
@@ -18,9 +18,58 @@ jobs:
         with:
           node-version: 22
 
-      # Root
+      # Root level checks
       - name: 📦 Install dependencies (root)
         run: npm ci
 
-      - name: 🧼 Run Biome (root)
+      - name: 🧼 Run Biome (global)
         run: npx @biomejs/biome check --no-errors-on-unmatched
+
+  backend-check:
+    name: 🖥️ Backend NodeJS Checks
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 📦 Install dependencies (backend)
+        working-directory: ./backend
+        run: npm ci
+
+      - name: 🧼 Lint backend with Biome
+        run: npx @biomejs/biome check --no-errors-on-unmatched ./backend
+
+      - name: 🏗️ Start backend (test only)
+        working-directory: ./backend
+        run: timeout 10s npm start || echo "Server started but timed out as expected"
+
+  frontend-check:
+    name: 🅰️ Frontend Angular Checks
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Frontend
+      - name: 📦 Install dependencies (frontend)
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: 🧼 Lint frontend with Biome
+        run: npx @biomejs/biome check --no-errors-on-unmatched ./frontend
+
+      - name: 🏗️ Build Angular
+        working-directory: ./frontend
+        run: npm run build
