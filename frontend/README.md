@@ -2,17 +2,49 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
 
-## Development server
+## Environment Configuration
+
+The frontend uses environment files generated from the root `.env` file to maintain consistency across the project.
+
+### Automatic Environment Generation
+
+Before starting development, environment files are automatically generated from the root `.env` configuration:
+
+```bash
+npm run generate-env
+```
+
+This script:
+
+- Reads variables from the root `.env` file
+- Generates `src/environments/environment.ts` with appropriate API URLs
+- Ensures frontend configuration stays in sync with backend settings
+
+### Environment Variables
+
+The generated environment file includes:
+
+- `apiUrl`: Backend API endpoint (from `BACKEND_PORT`)
+- `frontendUrl`: Frontend URL (from `FRONTEND_URL`)
+- `production`: Environment flag
+
+## Development Server
 
 To start a local development server, run:
+
+```bash
+npm start
+```
+
+Or using Angular CLI directly:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The environment generation runs automatically before starting the server. Once running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## Code Scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
@@ -36,7 +68,7 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
+## Running Unit Tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
@@ -44,7 +76,7 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
-## Running end-to-end tests
+## Running End-to-End Tests
 
 For end-to-end (e2e) testing, run:
 
