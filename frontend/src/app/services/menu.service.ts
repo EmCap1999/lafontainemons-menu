@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable, map } from 'rxjs'
-import { environment } from '../../environments/environment.js'
+import { environment } from '../../environments/environment'
 import { ApiResponse, ItemsResponse } from '../models/api-response.models'
 import { Item, ItemSchema } from '../models/menu.models'
 
