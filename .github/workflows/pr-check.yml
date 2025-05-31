@@ -72,13 +72,13 @@ jobs:
           if [ ! -f src/environments/environment.ts ]; then
             echo "Creating stub environment.ts..."
             cat <<EOT > src/environments/environment.ts
-            export const environment = {
-          production: false,
-          apiUrl: 'http://localhost:3000',
-          frontendUrl: 'http://localhost:4200'
-          }
-            EOT
-            fi
+          export const environment = {
+            production: false,
+            apiUrl: 'http://localhost:3000',
+            frontendUrl: 'http://localhost:4200'
+          };
+          EOT
+          fi
 
       - name: 🏗️ Build Angular
         working-directory: ./frontend
