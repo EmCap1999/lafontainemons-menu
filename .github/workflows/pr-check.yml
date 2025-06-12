@@ -8,7 +8,6 @@ jobs:
   biome-global-check:
     name: 🔍 Global Lint & Format
     runs-on: ubuntu-24.04
-
     steps:
       - name: ⬇️ Checkout repository
         uses: actions/checkout@v4
@@ -18,7 +17,6 @@ jobs:
         with:
           node-version: 22
 
-      # Root level checks
       - name: 📦 Install dependencies (root)
         run: npm ci
 
@@ -28,7 +26,6 @@ jobs:
   backend-check:
     name: 🖥️ Backend NodeJS Checks
     runs-on: ubuntu-24.04
-
     steps:
       - name: ⬇️ Checkout repository
         uses: actions/checkout@v4
@@ -52,7 +49,6 @@ jobs:
   frontend-check:
     name: 🅰️ Frontend Angular Checks
     runs-on: ubuntu-24.04
-
     steps:
       - name: ⬇️ Checkout repository
         uses: actions/checkout@v4
@@ -62,13 +58,27 @@ jobs:
         with:
           node-version: 22
 
-      # Frontend
       - name: 📦 Install dependencies (frontend)
         working-directory: ./frontend
         run: npm ci
 
       - name: 🧼 Lint frontend with Biome
         run: npx @biomejs/biome check --no-errors-on-unmatched ./frontend
+
+      - name: 📝 Create stub environment.ts if missing
+        working-directory: ./frontend
+        run: |
+          mkdir -p src/environments
+          if [ ! -f src/environments/environment.ts ]; then
+            echo "Creating stub environment.ts..."
+            cat <<EOT > src/environments/environment.ts
+          export const environment = {
+            production: false,
+            apiUrl: 'http://localhost:3000',
+            frontendUrl: 'http://localhost:4200'
+          };
+          EOT
+          fi
 
       - name: 🏗️ Build Angular
         working-directory: ./frontend
