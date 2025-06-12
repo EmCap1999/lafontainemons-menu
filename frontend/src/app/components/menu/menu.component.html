@@ -1,21 +1,26 @@
 <div class="menu-container">
-  <h2>Menu du Restaurant</h2>
+  <h1 class="menu-title">Menu du Restaurant</h1>
 
-  <div *ngIf="loading" class="loading">
-    Chargement du menu...
+  <div *ngIf="sectionsLoading" class="loading">
+    <p>Chargement du menu...</p>
   </div>
 
-  <div *ngIf="error" class="error">
-    {{ error }}
+  <div *ngIf="sectionsError" class="error">
+    {{ sectionsError }}
   </div>
 
-  <div *ngIf="!loading && !error" class="items-list">
-    <div *ngFor="let item of items" class="item-card">
-      <h3>{{ item.name }}</h3>
-      <p *ngIf="item.description">{{ item.description }}</p>
-      <p><strong>{{ item.price }}€</strong></p>
-      <p *ngIf="item.origin">Origine: {{ item.origin }}</p>
-      <p *ngIf="!item.isAvailable" class="unavailable">Non disponible</p>
-    </div>
+  <div *ngIf="!sectionsLoading && !sectionsError" class="sections-list">
+    <app-section
+      *ngFor="let section of sections"
+      [section]="section"
+      [items]="getSectionItems(section.sectionId)"
+      [isExpanded]="isSectionExpanded(section.sectionId)"
+      [isLoading]="isSectionLoading(section.sectionId)"
+      (sectionClick)="onSectionClick($event)">
+    </app-section>
+  </div>
+
+  <div *ngIf="!sectionsLoading && !sectionsError && sections.length === 0" class="no-sections">
+    <p>Aucune section disponible pour le moment.</p>
   </div>
 </div>

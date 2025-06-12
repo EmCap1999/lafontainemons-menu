@@ -2,8 +2,12 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable, map } from 'rxjs'
 import { environment } from '../../environments/environment'
-import { ApiResponse, ItemsResponse } from '../models/api-response.models'
-import { Item, ItemSchema } from '../models/menu.models'
+import {
+  ApiResponse,
+  ItemsResponse,
+  SectionsResponse,
+} from '../models/api-response.models'
+import { Item, ItemSchema, Section, SectionSchema } from '../models/menu.models'
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +17,24 @@ export class MenuService {
 
   constructor(private http: HttpClient) {}
 
-  getAllItems(): Observable<Item[]> {
+  getAllSections(): Observable<Section[]> {
     return this.http
-      .get<ApiResponse<ItemsResponse>>(`${this.apiUrl}/items`)
+      .get<ApiResponse<SectionsResponse>>(`${this.apiUrl}/sections`)
+      .pipe(
+        map((response) => {
+          const sections = response.data.sections
+          return Array.isArray(sections)
+            ? sections.map((section) => SectionSchema.parse(section))
+            : []
+        }),
+      )
+  }
+
+  getItemsBySection(sectionId: number): Observable<Item[]> {
+    return this.http
+      .get<ApiResponse<ItemsResponse>>(
+        `${this.apiUrl}/sections/${sectionId}/items`,
+      )
       .pipe(
         map((response) => {
           const items = response.data.items

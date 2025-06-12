@@ -1,4 +1,4 @@
-import { Item } from './menu.models'
+import { Item, Section } from './menu.models'
 
 export interface ApiResponse<T> {
   status: string
@@ -8,4 +8,8 @@ export interface ApiResponse<T> {
 
 export interface ItemsResponse {
   items: Item[]
+}
+
+export interface SectionsResponse {
+  sections: Section[]
 }

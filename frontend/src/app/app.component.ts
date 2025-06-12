@@ -6,7 +6,7 @@ import { MenuComponent } from './components/menu/menu.component'
   standalone: true,
   imports: [MenuComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'La Fontaine Mons - Menu'
