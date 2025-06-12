@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "NODE_ENV=development node server.js",
-    "start:prod": "NODE_ENV=production node server.js"
+    "start:prod": "NODE_ENV=production node server.js",
+    "db:studio": "NODE_ENV=development drizzle-kit studio --config=../backend/drizzle/drizzle.config.js"
   },
   "keywords": [],
   "author": {
