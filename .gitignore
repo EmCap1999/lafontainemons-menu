@@ -2,3 +2,6 @@
 .husky/_
 **/node_modules/
 .env
+frontend/.vscode
+frontend/.angular
+**/environments

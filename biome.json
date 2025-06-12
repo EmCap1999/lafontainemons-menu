@@ -7,7 +7,14 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["package-lock.json", "node_modules/**/*"]
+    "ignore": [
+      "package-lock.json",
+      "node_modules/**/*",
+      "frontend/.angular/**/*",
+      "frontend/node_modules/**/*",
+      "frontend/tsconfig*.json",
+      "backend/node_modules/**/*"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -79,17 +86,50 @@
       }
     },
     {
-      "include": ["tests/**"],
+      "include": ["backend/**/*.js", "backend/**/*.ts"],
+      "formatter": {
+        "indentWidth": 2
+      }
+    },
+    {
+      "include": [
+        "frontend/**/*.ts",
+        "frontend/**/*.html",
+        "frontend/**/*.scss"
+      ],
+      "formatter": {
+        "indentWidth": 2
+      }
+    },
+    {
+      "include": ["frontend/**/*.ts"],
       "linter": {
         "rules": {
-          "suspicious": {
-            "noDoubleEquals": "off"
+          "style": {
+            "useForOf": "error",
+            "useNodejsImportProtocol": "off"
+          },
+          "complexity": {
+            "noForEach": "off"
           }
         }
       }
     },
     {
-      "include": ["*.json"],
+      "include": ["frontend/**/*.html"]
+    },
+    {
+      "include": ["frontend/**/*.component.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noNonNullAssertion": "off"
+          }
+        }
+      }
+    },
+    {
+      "include": ["*.json", "frontend/**/*.json", "backend/**/*.json"],
       "formatter": {
         "indentWidth": 2
       }

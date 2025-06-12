@@ -1,0 +1,35 @@
+<div class="section-container">
+  <div class="section-header" (click)="onSectionClick()" [class.expanded]="isExpanded">
+    <h2 class="section-title">{{ section.name }}</h2>
+    <div class="section-toggle">
+      <span class="toggle-icon">{{ isExpanded ? '−' : '+' }}</span>
+    </div>
+  </div>
+
+  <div class="section-content" *ngIf="isExpanded">
+    <div *ngIf="isLoading" class="loading">
+      <p>Chargement des items...</p>
+    </div>
+
+    <div *ngIf="!isLoading && items.length > 0" class="items-list">
+      <div *ngFor="let item of items" class="item-card">
+        <div class="item-header">
+          <h3 class="item-name">{{ item.name }}</h3>
+          <span class="item-price">{{ item.price | currency:'EUR':'symbol':'1.2-2':'fr' }}</span>
+        </div>
+
+        <p *ngIf="item.description" class="item-description">{{ item.description }}</p>
+
+        <div class="item-details">
+          <span *ngIf="item.origin" class="item-origin">{{ item.origin }}</span>
+          <span *ngIf="item.capacity && item.unit" class="item-capacity">{{ item.capacity }}{{ item.unit }}</span>
+          <span *ngIf="!item.isAvailable" class="item-unavailable">Non disponible</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!isLoading && items.length === 0" class="no-items">
+      <p>Aucun item disponible dans cette section.</p>
+    </div>
+  </div>
+</div>
