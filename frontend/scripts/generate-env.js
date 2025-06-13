@@ -6,14 +6,8 @@ import dotenv from 'dotenv'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-let envFile
-if (process.env.NODE_ENV === 'production') {
-  envFile = '.env'
-} else {
-  envFile = '.env.dev'
-}
-
-console.log(`🔧 Loading environment from: ${envFile}`)
+const envFile = '.env'
+console.log(`Loading environment from: ${envFile}`)
 dotenv.config({ path: path.resolve(__dirname, `../../${envFile}`) })
 
 const backendPort = process.env.BACKEND_PORT || '8080'
