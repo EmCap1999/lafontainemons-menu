@@ -15,7 +15,7 @@ const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:4200'
 const isProduction = process.env.NODE_ENV === 'production'
 
 const apiUrl = isProduction
-  ? `https://carte.lafontainemons.be:${backendPort}`
+  ? `${frontendUrl}/api`
   : `http://localhost:${backendPort}`
 
 const envContent = `export const environment = {
@@ -34,7 +34,7 @@ if (!fs.existsSync(envDir)) {
 
 fs.writeFileSync(envPath, envContent)
 console.log(
-  `Frontend Environment file generated for ${process.env.NODE_ENV || 'development'}!`,
+  ` Frontend Environment file generated for ${process.env.NODE_ENV || 'development'}!`,
 )
 console.log(`API URL: ${apiUrl}`)
 console.log(`Frontend URL: ${frontendUrl}`)
