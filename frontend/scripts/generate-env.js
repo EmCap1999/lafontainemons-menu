@@ -6,14 +6,20 @@ import dotenv from 'dotenv'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-dotenv.config({ path: path.resolve(__dirname, '../../.env') })
+const envFile = process.env.NODE_ENV === 'production' ? '.env' : '.env.dev'
+dotenv.config({ path: path.resolve(__dirname, `../../${envFile}`) })
 
 const backendPort = process.env.BACKEND_PORT || '8080'
 const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:4200'
+const isProduction = process.env.NODE_ENV === 'production'
+
+const apiUrl = isProduction
+  ? `https://carte.lafontainemons.be:${backendPort}`
+  : `http://localhost:${backendPort}`
 
 const envContent = `export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:${backendPort}',
+  production: ${isProduction},
+  apiUrl: '${apiUrl}',
   frontendUrl: '${frontendUrl}'
 };
 `
@@ -26,4 +32,8 @@ if (!fs.existsSync(envDir)) {
 }
 
 fs.writeFileSync(envPath, envContent)
-console.log('Frontend Environment file generated successfully!')
+console.log(
+  `Frontend Environment file generated for ${process.env.NODE_ENV || 'development'}!`,
+)
+console.log(`API URL: ${apiUrl}`)
+console.log(`Frontend URL: ${frontendUrl}`)
