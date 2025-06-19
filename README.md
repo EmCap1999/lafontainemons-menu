@@ -53,23 +53,8 @@ cd lafontainemons-menu
 ```
 
 **Create `.env` file in project root:**
+ask the author if needed.
 ```bash
-NODE_ENV=production
-FRONTEND_URL=https://carte.lafontainemons.be
-BACKEND_PORT=3001
-
-# Configuration de la base de données
-POSTGRES_USER=user
-POSTGRES_PASSWORD=password
-POSTGRES_DB=la_fontaine_mons_dev
-POSTGRES_PORT=5432
-
-# URL de connexion pour accès local (depuis le VPS)
-DATABASE_URL_LOCAL=postgresql://lafontaine_dev:password@localhost:5432/la_fontaine_mons_dev
-
-# URL de connexion pour accès depuis les conteneurs Docker
-DATABASE_URL=postgresql://lafontaine_dev:password@postgres:5432/la_fontaine_mons_dev
-
 # 3. Start backend services
 docker compose -f docker-compose.dev.yml up -d
 
