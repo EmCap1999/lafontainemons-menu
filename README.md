@@ -1,63 +1,151 @@
-# 🍽️ Restaurant Website
+# 🍽️ La Fontaine Mons - Restaurant Website
 
-## 📝 Overview
+A **modern, responsive menu website** for La Fontaine Mons restaurant with dynamic menu sections and real-time API integration.
 
-A **responsive menu website** for a local restaurant.
-This is the **latest stable development branch**.  
-👉 Live demo: [http://carte.lafontainemons.be/](http://carte.lafontainemons.be/) 🔗
+**🌐 Live Site**: [https://carte.lafontainemons.be](https://carte.lafontainemons.be) 🔗
+
+---
+
+## ✨ Features
+
+- 🍽️ Dynamic menu display from database
+- 📱 Fully responsive design
+- ⚡ Fast loading with Angular SSR
+- 🔒 HTTPS secured with Let's Encrypt
+- 🌐 Production ready on OVH
+
 ---
 
 ## 📁 Project Structure
 
-- `./db` — PostgreSQL DataBase
-- `./backend` — Node.js API using Express
-- `./frontend` — Angular app *(coming soon)*
+```
+├── 📊 db/                     # PostgreSQL database
+├── ⚙️  backend/                # Node.js API 
+├── 💻 frontend/               # Angular application
+├── 🐳 docker-compose.dev.yml  # Development containers
+├── 🌐 NGINX.README.md         # Production deployment
+└── 🐳 DOCKER.README.md        # Container guide
+```
 
 ---
 
 ## 🛠️ Tech Stack
 
-- 🗄️ **Database**: PostgreSQL
-- ⚙️ **Backend**: Node.js (Express)
-- 💻 **Frontend**: Angular
-- 📦 **Deployment**: Docker containers on OVH
+- **Backend**: Node.js + Express + PostgreSQL + Drizzle ORM
+- **Frontend**: Angular 19 + TypeScript + SCSS + SSR
+- **Infrastructure**: Docker + Nginx + Let's Encrypt + OVH VPS
 
 ---
 
-## ⚙️ Getting Started
+## 🚀 Quick Start
 
-### Environment Configuration
+### Prerequisites
+- Node.js 22+, Docker, Git
 
-create a single .env file in the root of the project depending on the environment:
+### Development Setup
 
-- **Local**
-- **Development**
-- **Production**
+```bash
+# 1. Clone and setup
+git clone <repository-url>
+cd lafontainemons-menu
 
-### Example Files
-
-**.env**:
+# 2. Create .env file
 ```
-NODE_ENV=local
-FRONTEND_URL=http://localhost:4200
-BACKEND_PORT=8080
+
+**Create `.env` file in project root:**
+```bash
+NODE_ENV=production
+FRONTEND_URL=https://carte.lafontainemons.be
+BACKEND_PORT=3001
 
 # Configuration de la base de données
 POSTGRES_USER=user
 POSTGRES_PASSWORD=password
-POSTGRES_DB=postgres
+POSTGRES_DB=la_fontaine_mons_dev
 POSTGRES_PORT=5432
 
 # URL de connexion pour accès local (depuis le VPS)
-DATABASE_URL_LOCAL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:${POSTGRES_PORT}/${POSTGRES_DB}"
+DATABASE_URL_LOCAL=postgresql://lafontaine_dev:password@localhost:5432/la_fontaine_mons_dev
 
 # URL de connexion pour accès depuis les conteneurs Docker
-# DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/${POSTGRES_DB}"
+DATABASE_URL=postgresql://lafontaine_dev:password@postgres:5432/la_fontaine_mons_dev
+
+# 3. Start backend services
+docker compose -f docker-compose.dev.yml up -d
+
+# 4. Start frontend
+cd frontend && npm install && npm start
 ```
 
-Refer to the specific README files for each part of the project:
+**Access:**
+- Frontend: http://localhost:4200
+- Backend API: http://localhost:3001
+- Database: localhost:5432
 
-- 📦 [Backend Setup](./backend/README.md)
-- 💻 [Frontend Setup](./frontend/README.md) *(coming soon)*
-- 🗄️ [Database Setup](./db/README.md)
+---
 
+## 🌐 Production Architecture
+
+```
+Internet → Nginx → Angular Frontend
+              ↓
+         API Proxy → Node.js Backend → PostgreSQL
+```
+
+---
+
+## 📚 Documentation
+
+**Component Setup:**
+- 📦 [Backend](./backend/README.md) - API development
+- 💻 [Frontend](./frontend/README.md) - Angular development
+- 🗄️ [Database](./db/README.md) - PostgreSQL setup
+
+**Deployment:**
+- 🐳 [Docker Deployment](./DOCKER.README.md) - Backend & Database
+- 🌐 [Nginx Deployment](./NGINX.README.md) - Frontend & SSL
+
+---
+
+## 🔧 Development Commands
+
+```bash
+# Backend
+cd backend && npm start
+npm run db:studio  # Database GUI
+
+# Frontend  
+cd frontend && npm start
+npm run build:prod
+
+# Docker
+docker compose -f docker-compose.dev.yml up -d
+docker logs -f lafontaine-backend-dev
+```
+
+---
+
+## 🐛 Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Backend won't start | `docker ps` to check containers |
+| DB connection error | Verify `DATABASE_URL` in .env |
+| Frontend API error | Check backend port in .env |
+| SSL issues | `sudo certbot renew` |
+
+---
+
+## 📈 Project Status
+
+- ✅ Backend API operational
+- ✅ Frontend deployed with SSR
+- ✅ Database with seed data
+- ✅ HTTPS production site live
+- ✅ Monitoring configured
+
+---
+
+## 👨‍💻 Author
+
+**Manu Caputo** - caputoemmanuel1999@gmail.com

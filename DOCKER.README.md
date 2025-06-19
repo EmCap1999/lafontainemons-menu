@@ -1,58 +1,129 @@
-# 🐳 Docker Deployment
-This project is fully containerized using Docker, making it easy to deploy in any environment.
+# 🐳 Docker Backend Deployment
 
-## Prerequisites
-- Docker and Docker Compose installed on your server
-- Git to clone the repository
+Docker Compose setup for backend services (API + Database).
 
-## Deployment Steps
+## 📋 Prerequisites
 
-### Clone the repository:
-```bash
-git clone https://github.com/your-username/lafontainemons-menu.git
-cd lafontainemons-menu
+- **Docker** 20.10+ and **Docker Compose** v2+
+- **Environment file** configured (see main README)
+
+---
+
+## 🏗️ Container Architecture
+
+```
+PostgreSQL Database ← Drizzle Migration ← Seeder (SQL data)
+         ↑
+Backend API (Node.js)
 ```
 
-### Managing the Deployment
-Update the application before deploying:
-```bash
-git checkout dev
-git pull
-```
+**4 containers:**
+- `postgres` - PostgreSQL database (port 5432)
+- `drizzle-migration` - Database schema setup
+- `seeder` - Insert initial menu data
+- `backend` - Node.js API server (port 3001)
 
-### Create environment file:
-Check if .env file is set up in root directory [project Setup](./README.md)
+---
 
-### Deploy with Docker Compose (dev - prod comming soon...):
+## 🚀 Quick Start
+
 ```bash
-docker compose -f docker-compose.dev.yml down
+# Start all backend services
 docker compose -f docker-compose.dev.yml up -d
+
+# Check status
+docker ps
+
+# View logs
+docker compose -f docker-compose.dev.yml logs -f
 ```
 
-### Check database connection
+---
+
+## 🔧 Management Commands
+
+### Service Control
 ```bash
-docker exec -it lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB -c "\dt"
-```
+# Start/stop all services
+docker compose -f docker-compose.dev.yml up -d
+docker compose -f docker-compose.dev.yml down
 
-### Container Structure
-The docker-compose.dev.yml file defines the following services:
-```
-- postgres: PostgreSQL database server
-- drizzle-migration: Runs Drizzle ORM migrations to set up the database schema
-- seeder: Inserts initial data into the database
-- backend: Node.js Express API server
-```
+# Restart specific service
+docker compose -f docker-compose.dev.yml restart backend
 
-### View logs:
-```bash
+# View logs
 docker logs -f lafontaine-backend-dev
 docker logs -f lafontaine-postgres-dev
 ```
 
-Troubleshooting
+### Database Operations
+```bash
+# Connect to database
+docker exec -it lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB
 
-Container won't start: Check logs with docker logs [container-name]
-Database connection issues: Verify environment variables and network configuration
-Migration errors: Check the Drizzle configuration and database schema
+# View tables
+docker exec -it lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB -c "\dt"
 
-For more detailed information about each component, refer to the specific README files linked above.
+# Backup database
+docker exec lafontaine-postgres-dev pg_dump -U $POSTGRES_USER $POSTGRES_DB > backup.sql
+
+# Restore database
+docker exec -i lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB < backup.sql
+```
+
+### Re-run Setup
+```bash
+# Re-run migrations
+docker compose -f docker-compose.dev.yml up drizzle-migration
+
+# Re-run seeder
+docker compose -f docker-compose.dev.yml up seeder
+```
+
+---
+
+## 🐛 Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| **Backend won't start** | Check logs: `docker logs lafontaine-backend-dev` |
+| **Database connection error** | Verify `DATABASE_URL` in .env |
+| **Port already in use** | Stop conflicting services or change ports |
+| **Migration fails** | Check migration logs and DB permissions |
+| **Out of disk space** | Clean Docker: `docker system prune -f` |
+
+### Debug Commands
+```bash
+# Check container status
+docker ps
+
+# Test API
+curl http://localhost:3001/sections
+
+# Test database connection
+docker exec lafontaine-postgres-dev pg_isready -U $POSTGRES_USER
+
+# View container resources
+docker stats lafontaine-backend-dev lafontaine-postgres-dev
+```
+
+---
+
+## 🔗 Integration
+
+**Development:**
+- Frontend calls `http://localhost:3001` directly
+- Backend exposes port 3001 to host
+
+**Production:**
+- Frontend calls via Nginx proxy `/api/*`
+- See [NGINX.README.md](./NGINX.README.md) for complete setup
+
+---
+
+## 📚 Related Documentation
+
+- 🌐 [Frontend Deployment](./NGINX.README.md) - Nginx & SSL setup
+- 📦 [Backend Development](./backend/README.md) - API development
+- 🗄️ [Database Schema](./db/README.md) - Database structure
+- 📋 [Project Overview](./README.md) - Complete documentation
