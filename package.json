@@ -4,16 +4,16 @@
     "prepare": "husky",
     "precommit:setup": "npm run update-all",
     "update-all": "npm update && cd backend && npm update && cd ../frontend && npm update",
-    "lint": "npx @biomejs/biome check --no-errors-on-unmatched",
-    "lint:backend": "cd backend && npx @biomejs/biome check --no-errors-on-unmatched .",
-    "lint:frontend": "cd frontend && npx @biomejs/biome check --no-errors-on-unmatched ."
+    "lint": "./node_modules/.bin/biome check --no-errors-on-unmatched .",
+    "lint:backend": "./node_modules/.bin/biome check --no-errors-on-unmatched ./backend",
+    "lint:frontend": "./node_modules/.bin/biome check --no-errors-on-unmatched ./frontend"
   },
   "lint-staged": {
     "*.{js,json}": [
-      "npx @biomejs/biome check --write --no-errors-on-unmatched"
+      "npx --no-install @biomejs/biome check --write --no-errors-on-unmatched"
     ],
     "frontend/**/*.{ts,html,scss}": [
-      "npx @biomejs/biome check --write --no-errors-on-unmatched"
+      "npx --no-install @biomejs/biome check --write --no-errors-on-unmatched"
     ],
     "!frontend/tsconfig*.json": [],
     "!**/node_modules/**/*": [],

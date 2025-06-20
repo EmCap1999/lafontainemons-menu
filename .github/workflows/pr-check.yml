@@ -21,7 +21,7 @@ jobs:
         run: npm ci
 
       - name: 🧼 Run Biome (global)
-        run: npx @biomejs/biome check --no-errors-on-unmatched
+        run: ./node_modules/.bin/biome check --no-errors-on-unmatched
 
   backend-check:
     name: 🖥️ Backend NodeJS Checks
@@ -35,12 +35,19 @@ jobs:
         with:
           node-version: 22
 
+      - name: Clean npm cache
+        run: npm cache clean --force
+
+      - name: 📦 Install dependencies (root)
+        run: npm ci
+
       - name: 📦 Install dependencies (backend)
         working-directory: ./backend
         run: npm ci
 
       - name: 🧼 Lint backend with Biome
-        run: npx @biomejs/biome check --no-errors-on-unmatched ./backend
+        working-directory: ./backend
+        run: ../node_modules/.bin/biome check --no-errors-on-unmatched .
 
       - name: 🏗️ Start backend (test only)
         working-directory: ./backend
@@ -58,12 +65,16 @@ jobs:
         with:
           node-version: 22
 
+      - name: 📦 Install dependencies (root)
+        run: npm ci
+
       - name: 📦 Install dependencies (frontend)
         working-directory: ./frontend
         run: npm ci
 
       - name: 🧼 Lint frontend with Biome
-        run: npx @biomejs/biome check --no-errors-on-unmatched ./frontend
+        run: ../node_modules/.bin/biome check --no-errors-on-unmatched ./frontend
+        working-directory: ./frontend
 
       - name: 📝 Create stub environment.ts if missing
         working-directory: ./frontend
@@ -83,3 +94,4 @@ jobs:
       - name: 🏗️ Build Angular
         working-directory: ./frontend
         run: npm run build
+

@@ -1,91 +1,104 @@
-# Frontend
+# 💻 Frontend - La Fontaine Mons
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+Angular application for the La Fontaine Mons restaurant website.
 
-## Environment Configuration
+## 📦 Tech Stack
 
-The frontend uses environment files generated from the root `.env` file to maintain consistency across the project.
+- 🅰️ **Angular 19** – Web framework with SSR
+- 🎨 **SCSS** – Advanced CSS styling
+- 📱 **Responsive Design** – Mobile-first approach
+- 🔧 **TypeScript** – Type-safe development
+- 🌐 **HTTP Client** – API communication
 
-### Automatic Environment Generation
+---
 
-Before starting development, environment files are automatically generated from the root `.env` configuration:
+## 🔧 Environment Configuration
+
+The frontend automatically generates environment files from the root `.env` file.
 
 ```bash
 npm run generate-env
 ```
 
-This script:
-
-- Reads variables from the root `.env` file
-- Generates `src/environments/environment.ts` with appropriate API URLs
-- Ensures frontend configuration stays in sync with backend settings
-
-### Environment Variables
-
-The generated environment file includes:
-
-- `apiUrl`: Backend API endpoint (from `BACKEND_PORT`)
-- `frontendUrl`: Frontend URL (from `FRONTEND_URL`)
+**Environment Variables:**
+- `apiUrl`: Backend API endpoint
+  - **Development**: `http://localhost:${BACKEND_PORT}`
+  - **Production**: `${FRONTEND_URL}/api` (via Nginx)
+- `frontendUrl`: Frontend URL
 - `production`: Environment flag
 
-## Development Server
+---
 
-To start a local development server, run:
+## 🚀 Development Commands
 
 ```bash
+# Start development server
 npm start
+
+# Build for production
+npm run build:prod
+
+# Standard build
+npm run build
+
+# Run tests
+npm test
 ```
 
-Or using Angular CLI directly:
+Development server runs on `http://localhost:4200/`
+
+---
+
+## 🛠️ Angular CLI Tools
 
 ```bash
-ng serve
-```
-
-The environment generation runs automatically before starting the server. Once running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code Scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
+# Generate component
 ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
+# View available schematics
 ng generate --help
-```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running Unit Tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running End-to-End Tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
+# End-to-end testing
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## 📦 Production Deployment
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+See [Nginx Deployment Guide](../NGINX.README.md) for production setup.
+
+**Production optimizations:**
+- Tree-shaking for smaller bundles
+- Minification and compression
+- Ahead-of-Time (AOT) compilation
+
+---
+
+## 🔗 API Integration
+
+- **Development**: Direct API calls to `localhost:${BACKEND_PORT}`
+- **Production**: API proxied through Nginx at `/api/*`
+
+**Main Endpoints:**
+- `GET /api/sections` - Menu sections
+- `GET /api/menus` - Menu items
+
+---
+
+## 📱 Features
+
+- 🍽️ Dynamic menu display
+- 📱 Responsive design
+- 🔄 Real-time API updates
+- 🎨 Modern UI design
+- ⚡ SSR ready
+
+---
+
+## 🔗 Related Documentation
+
+- 📦 [Backend Setup](../backend/README.md)
+- 🗄️ [Database Setup](../db/README.md)
+- 🐳 [Docker Deployment](../DOCKER.README.md)
+- 🌐 [Nginx Deployment](../NGINX.README.md)
