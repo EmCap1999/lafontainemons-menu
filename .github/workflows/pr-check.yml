@@ -38,13 +38,16 @@ jobs:
       - name: Clean npm cache
         run: npm cache clean --force
 
+      - name: 📦 Install dependencies (root)
+        run: npm ci
+
       - name: 📦 Install dependencies (backend)
         working-directory: ./backend
         run: npm ci
 
       - name: 🧼 Lint backend with Biome
-        run: npx --no-install @biomejs/biome check --no-errors-on-unmatched ./backend
         working-directory: ./backend
+        run: ../node_modules/.bin/biome check --no-errors-on-unmatched .
 
       - name: 🏗️ Start backend (test only)
         working-directory: ./backend
