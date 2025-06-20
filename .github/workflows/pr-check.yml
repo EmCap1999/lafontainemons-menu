@@ -41,6 +41,7 @@ jobs:
 
       - name: 🧼 Lint backend with Biome
         run: ./node_modules/.bin/biome check --no-errors-on-unmatched ./backend
+        working-directory: ./backend
 
       - name: 🏗️ Start backend (test only)
         working-directory: ./backend
