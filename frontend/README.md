@@ -85,7 +85,6 @@ See [Nginx Deployment Guide](../NGINX.README.md) for production setup.
 - `GET /api/menus` - Menu items
 
 ---
-
 ## 📱 Features
 
 - 🍽️ Dynamic menu display
