@@ -60,8 +60,13 @@ jobs:
       - name: 📦 Install dependencies (root)
         run: npm ci
 
+      - name: 📦 Install dependencies (frontend)
+        working-directory: ./frontend
+        run: npm ci
+
       - name: 🧼 Lint frontend with Biome
-        run: ./node_modules/.bin/biome check --no-errors-on-unmatched ./frontend
+        run: ../node_modules/.bin/biome check --no-errors-on-unmatched ./frontend
+        working-directory: ./frontend
 
       - name: 📝 Create stub environment.ts if missing
         working-directory: ./frontend
@@ -81,3 +86,4 @@ jobs:
       - name: 🏗️ Build Angular
         working-directory: ./frontend
         run: npm run build
+
