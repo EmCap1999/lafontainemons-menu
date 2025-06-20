@@ -35,6 +35,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: Clean npm cache
+        run: npm cache clean --force
+
       - name: 📦 Install dependencies (backend)
         working-directory: ./backend
         run: npm ci
