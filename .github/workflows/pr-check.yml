@@ -35,7 +35,8 @@ jobs:
         with:
           node-version: 22
 
-      - name: 📦 Install dependencies (root)
+      - name: 📦 Install dependencies (backend)
+        working-directory: ./backend
         run: npm ci
 
       - name: 🧼 Lint backend with Biome
