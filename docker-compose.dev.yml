@@ -26,7 +26,7 @@ services:
     volumes:
       - ./:/app
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
       - DATABASE_URL=${DATABASE_URL}
       - FRONTEND_URL=https://carte.lafontainemons.be
       - BACKEND_PORT=3001

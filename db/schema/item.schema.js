@@ -9,25 +9,8 @@ import {
   timestamp,
   varchar,
 } from 'drizzle-orm/pg-core'
-
-export const section = pgTable('section', {
-  sectionId: integer('section_id').primaryKey().notNull(),
-  name: varchar('name', { length: 100 }).notNull().unique(),
-  displayOrder: integer('display_order').notNull().default(0),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow(),
-})
-
-export const subsection = pgTable('subsection', {
-  subsectionId: integer('subsection_id').primaryKey().notNull(),
-  sectionId: integer('section_id')
-    .notNull()
-    .references(() => section.sectionId, { onDelete: 'cascade' }),
-  name: varchar('name', { length: 100 }).notNull(),
-  displayOrder: integer('display_order').notNull().default(0),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow(),
-})
+import { section } from './section.schema.js'
+import { subsection } from './subsection.schema.js'
 
 export const item = pgTable('item', {
   itemId: integer('item_id').primaryKey().notNull(),
@@ -50,19 +33,6 @@ export const item = pgTable('item', {
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 })
-
-export const sectionRelations = relations(section, ({ many }) => ({
-  subsections: many(subsection),
-  items: many(item),
-}))
-
-export const subsectionRelations = relations(subsection, ({ one, many }) => ({
-  section: one(section, {
-    fields: [subsection.sectionId],
-    references: [section.sectionId],
-  }),
-  items: many(item),
-}))
 
 export const itemRelations = relations(item, ({ one }) => ({
   section: one(section, {

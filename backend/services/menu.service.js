@@ -1,11 +1,11 @@
 import { asc, eq } from 'drizzle-orm'
-import { item, section, subsection } from '../drizzle/src/db/schema.js'
-import { db } from '../drizzle/src/index.js'
+import { db } from '../../db/connection/index.js'
+import { item, section, subsection } from '../../db/schema/index.js'
 import {
   ItemSchema,
   SectionSchema,
   SubsectionSchema,
-} from '../schemas/zod.schemas.js'
+} from '../../db/validation/index.js'
 
 export const getAllSections = async () => {
   const result = await db
