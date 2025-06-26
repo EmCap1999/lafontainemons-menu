@@ -23,6 +23,42 @@ jobs:
       - name: 🧼 Run Biome (global)
         run: ./node_modules/.bin/biome check --no-errors-on-unmatched
 
+  database-check:
+    name: 🗄️ Database Layer Checks
+    runs-on: ubuntu-24.04
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 📦 Install dependencies (root)
+        run: npm ci
+
+      - name: 📦 Install dependencies (db)
+        working-directory: ./db
+        run: npm ci
+
+      - name: 🧼 Lint database layer with Biome
+        working-directory: ./db
+        run: ../node_modules/.bin/biome check --no-errors-on-unmatched .
+
+      - name: 🔍 Validate database schema
+        working-directory: ./db
+        run: |
+          echo "Validating Drizzle schema..."
+          node -e "
+            import('./schema/index.js')
+              .then(() => console.log('✅ Schema validation passed'))
+              .catch(err => {
+                console.error('❌ Schema validation failed:', err);
+                process.exit(1);
+              })
+          "
+
   backend-check:
     name: 🖥️ Backend NodeJS Checks
     runs-on: ubuntu-24.04
@@ -41,6 +77,10 @@ jobs:
       - name: 📦 Install dependencies (root)
         run: npm ci
 
+      - name: 📦 Install dependencies (db)
+        working-directory: ./db
+        run: npm ci
+
       - name: 📦 Install dependencies (backend)
         working-directory: ./backend
         run: npm ci
@@ -49,9 +89,18 @@ jobs:
         working-directory: ./backend
         run: ../node_modules/.bin/biome check --no-errors-on-unmatched .
 
-      - name: 🏗️ Start backend (test only)
+      - name: 🔗 Test backend imports
         working-directory: ./backend
-        run: timeout 10s npm start || echo "Server started but timed out as expected"
+        run: |
+          echo "Testing backend service imports..."
+          node -e "
+            import('./services/menu.service.js')
+              .then(() => console.log('✅ Backend imports working'))
+              .catch(err => {
+                console.error('❌ Backend import failed:', err);
+                process.exit(1);
+              })
+          "
 
   frontend-check:
     name: 🅰️ Frontend Angular Checks
@@ -85,7 +134,7 @@ jobs:
             cat <<EOT > src/environments/environment.ts
           export const environment = {
             production: false,
-            apiUrl: 'http://localhost:3000',
+            apiUrl: 'http://localhost:8080',
             frontendUrl: 'http://localhost:4200'
           };
           EOT
@@ -94,4 +143,3 @@ jobs:
       - name: 🏗️ Build Angular
         working-directory: ./frontend
         run: npm run build
-
