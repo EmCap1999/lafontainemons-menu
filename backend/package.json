@@ -15,19 +15,12 @@
     "url": "https://github.com/EmCap1999"
   },
   "license": "ISC",
-  "description": "Backend of a responsive website for La Fontaine Mons Restaurant.",
+  "description": "Backend API for La Fontaine Mons Restaurant.",
   "type": "module",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "dotenv-expand": "^12.0.2",
-    "drizzle-orm": "^0.42.0",
-    "express": "^5.1.0",
-    "pg": "^8.15.1",
-    "pg-pool": "^3.8.0",
-    "zod": "^3.24.3"
-  },
-  "devDependencies": {
-    "drizzle-kit": "^0.31.1"
+    "express": "^5.1.0"
   }
 }

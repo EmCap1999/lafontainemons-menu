@@ -58,7 +58,7 @@ const getDBErrorMessage = (code, message) => {
     case '53300':
       return `Database resource error: ${message}`
 
-    case '57014': // query_canceled
+    case '57014':
       return `Query execution canceled: ${message}`
 
     case 'DRIZZLE_MISSING_TABLE':
