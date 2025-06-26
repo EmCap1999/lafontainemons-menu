@@ -1,7 +1,8 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { registerLocaleData } from '@angular/common'
+import localeFr from '@angular/common/locales/fr'
+import { bootstrapApplication } from '@angular/platform-browser'
+import { AppComponent } from './app/app.component'
+import { appConfig } from './app/app.config'
 
-import { AppModule } from './app/app.module';
-
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+registerLocaleData(localeFr)
+bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err))

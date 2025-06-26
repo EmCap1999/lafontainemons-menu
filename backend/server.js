@@ -1,27 +1,36 @@
-const config = require("./config/db.config.js")
+import cors from 'cors'
+import express from 'express'
+import './config/environment.config.js'
+import corsOptions from './config/cors.config.js'
+import { AppError, handleErrors } from './errors/app-errors.js'
+import menuRoutes from './routes/menu.routes.js'
 
-const express = require("express");
-const cors = require("cors");
-const app = express();
+const app = express()
 
-var corsOptions = {
-    "Accept-Encoding": "*",
-    "Access-Control-Allow-Origin": "http://162.19.247.38:80",
-    "Access-Control-Allow-Headers": ["Origin", "Content-Type", "X-Auth-Token", "Authorization"],
-    "Access-Control-Allow-Methods": ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
-    "Allow": ["OPTIONS", "GET", "POST", "DELETE", "PUT"]
-};
+app.use(cors(corsOptions))
+app.use(express.json())
 
-app.use(
-  cors(corsOptions)
-);
+app.use(menuRoutes)
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.all(/.*/, (req, res, next) => {
+  next(new AppError(`Route ${req.originalUrl} not found on this server`, 404))
+})
 
-require("./routes/item.routes")(app);
+app.use(handleErrors)
 
-app.listen(config.SERVER_PORT, () => {
-  console.log(`Server is running on port ${config.SERVER_PORT}.`);
-});
+const startServer = async () => {
+  const PORT = process.env.BACKEND_PORT || 3000
 
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}...`)
+  })
+
+  if (!process.env.BACKEND_PORT) {
+    console.warn('BACKEND_PORT is not defined, defaulting to port 3000.')
+  }
+}
+
+startServer().catch((err) => {
+  console.error('Failed to start server:', err)
+  throw new AppError(err.message, err.code || 500)
+})

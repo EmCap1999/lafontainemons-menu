@@ -1,38 +1,136 @@
-# La fontaine
+# 🍽️ La Fontaine Mons - Restaurant Website
 
-A responsive website for a local restaurant. This branch is the last stable production version.
+A **modern, responsive menu website** for La Fontaine Mons restaurant with dynamic menu sections and real-time API integration.
 
-👉 http://carte.lafontainemons.be/
+**🌐 Live Site**: [https://carte.lafontainemons.be](https://carte.lafontainemons.be) 🔗
 
-## Server build
+---
 
-If an instance is running, execute:
+## ✨ Features
+
+- 🍽️ Dynamic menu display from database
+- 📱 Fully responsive design
+- ⚡ Fast loading with Angular SSR
+- 🔒 HTTPS secured with Let's Encrypt
+- 🌐 Production ready on OVH
+
+---
+
+## 📁 Project Structure
+
+```
+├── 📊 db/                     # PostgreSQL database
+├── ⚙️  backend/                # Node.js API 
+├── 💻 frontend/               # Angular application
+├── 🐳 docker-compose.dev.yml  # Development containers
+├── 🌐 NGINX.README.md         # Production deployment
+└── 🐳 DOCKER.README.md        # Container guide
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend**: Node.js + Express + PostgreSQL + Drizzle ORM
+- **Frontend**: Angular 19 + TypeScript + SCSS + SSR
+- **Infrastructure**: Docker + Nginx + Let's Encrypt + OVH VPS
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 22+, Docker, Git
+
+### Development Setup
 
 ```bash
-docker compose stop && docker compose down
+# 1. Clone and setup
+git clone <repository-url>
+cd lafontainemons-menu
+
+# 2. Create .env file
 ```
 
-Next execute the following make rule:
+**Create `.env` file in project root:**
+ask the author if needed.
+```bash
+# 3. Start backend services
+docker compose -f docker-compose.dev.yml up -d
 
-```Makefile
-make spin-new-infra
+# 4. Start frontend
+cd frontend && npm install && npm start
 ```
 
-This is going to clear all docker volumes, containers, images and local DB data. It spins mount, spins up the instance and run checks.
+**Access:**
+- Frontend: http://localhost:4200
+- Backend API: http://localhost:3001
+- Database: localhost:5432
 
-Then run:
+---
+
+## 🌐 Production Architecture
+
+```
+Internet → Nginx → Angular Frontend
+              ↓
+         API Proxy → Node.js Backend → PostgreSQL
+```
+
+---
+
+## 📚 Documentation
+
+**Component Setup:**
+- 📦 [Backend](./backend/README.md) - API development
+- 💻 [Frontend](./frontend/README.md) - Angular development
+- 🗄️ [Database](./db/README.md) - PostgreSQL setup
+
+**Deployment:**
+- 🐳 [Docker Deployment](./DOCKER.README.md) - Backend & Database
+- 🌐 [Nginx Deployment](./NGINX.README.md) - Frontend & SSL
+
+---
+
+## 🔧 Development Commands
 
 ```bash
-docker compose up
+# Backend
+cd backend && npm start
+npm run db:studio  # Database GUI
+
+# Frontend  
+cd frontend && npm start
+npm run build:prod
+
+# Docker
+docker compose -f docker-compose.dev.yml up -d
+docker logs -f lafontaine-backend-dev
 ```
 
-Last step needed, is to populate the database with the restaurant menu.
+---
 
-Enter the docker instance with:
+## 🐛 Troubleshooting
 
-```bash
-docker exec -it <container_id> /bin/bash
-```
+| Issue | Solution |
+|-------|----------|
+| Backend won't start | `docker ps` to check containers |
+| DB connection error | Verify `DATABASE_URL` in .env |
+| Frontend API error | Check backend port in .env |
+| SSL issues | `sudo certbot renew` |
 
-Connect to the DB with the psql cli and execute the query.
+---
 
+## 📈 Project Status
+
+- ✅ Backend API operational
+- ✅ Frontend deployed with SSR
+- ✅ Database with seed data
+- ✅ HTTPS production site live
+- ✅ Monitoring configured
+
+---
+
+## 👨‍💻 Author
+
+**Manu Caputo** - caputoemmanuel1999@gmail.com
