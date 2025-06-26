@@ -1,15 +1,29 @@
-# 🗄️ Database - PostgreSQL
+# 🗄️ Database Layer - PostgreSQL
 
-This directory contains the **database schema, migrations, and seed data** for the La Fontaine Mons restaurant application.
+This directory contains the **complete database layer** for the La Fontaine Mons restaurant application, including schemas, commands, validation, and seeding.
 
 ## 📦 Tech Stack
 
 - 🐘 **PostgreSQL 17** – Relational database
 - 🧩 **Drizzle ORM** – Type-safe schema and migrations
-- 🌱 **SQL Seeds** – Initial menu data
+- 📝 **Zod** – Runtime data validation
+- 🌱 **JavaScript Seeders** – Modular data seeding
 - 🐳 **Docker** – Containerized deployment
 
 ---
+
+## 🏗️ Architecture
+
+```
+db/
+├── config/          # Database configuration and connection
+├── schema/          # Drizzle table definitions (modular)
+├── validation/      # Zod schemas for data validation
+├── commands/        # Database CRUD operations
+├── seeds/           # JavaScript seeding system
+├── migrations/      # Drizzle Kit generated migrations
+└── package.json     # DB layer dependencies and scripts
+```
 
 ## 📊 Database Schema
 
@@ -42,42 +56,134 @@ docker compose -f docker-compose.dev.yml up seeder
 docker exec -it lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB -c "\dt"
 ```
 
-### Local PostgreSQL
+### Local Development
 
 ```bash
-# Install PostgreSQL
-brew install postgresql@17  # macOS
-sudo apt install postgresql # Ubuntu
+# Install dependencies
+cd db
+npm install
 
-# Create database
-psql -d postgres -c "CREATE USER lafontaine_user WITH PASSWORD 'password';"
-psql -d postgres -c "CREATE DATABASE la_fontaine_mons OWNER lafontaine_user;"
+# Test database connection
+node -e "import('./config/database.config.js').then(m => m.testConnection())"
 
-# Run migrations
-cd backend/drizzle && npx drizzle-kit push
+# Push schema to database
+npm run db:push
 
-# Load seed data
-psql -U lafontaine_user -d la_fontaine_mons -f db/seeds/insert_data.sql
+# Seed database with initial data
+npm run db:seed
 ```
 
 ---
 
-## 🔧 Management
+## 🔧 Available Commands
 
-### Database GUI
+### Database Management
 ```bash
-# Open Drizzle Studio
-cd backend/drizzle && npm run db:studio
-# Access at http://localhost:4983
+cd db
+
+# Open Drizzle Studio GUI
+npm run db:studio
+
+# Generate migrations
+npm run db:generate
+
+# Push schema changes (development)
+npm run db:push
+
+# Run migrations (production)
+npm run db:migrate
+
+# Seed database
+npm run db:seed
+
+# Fresh seeding (push + seed)
+npm run db:seed:fresh
 ```
 
-### Backup & Restore
+### Connection Testing
 ```bash
-# Backup
-pg_dump -U lafontaine_user -d la_fontaine_mons > backup.sql
+# Test database connection
+node -e "
+import { testConnection } from './config/database.config.js';
+testConnection().then(console.log);
+"
+```
 
-# Restore  
-psql -U lafontaine_user -d la_fontaine_mons < backup.sql
+---
+
+## 🏗️ Layer Architecture
+
+### 📄 Schemas (`schema/`)
+Modular Drizzle table definitions:
+- `section.schema.js` - Section table structure
+- `subsection.schema.js` - Subsection with foreign keys
+- `item.schema.js` - Complete item structure
+- `index.js` - Exports and table relations
+
+### ✅ Validation (`validation/`)
+Zod schemas for runtime validation:
+- Type-safe data validation
+- Create/Update schema variants
+- Input sanitization and parsing
+
+### 🛠️ Commands (`commands/`)
+Database operation functions:
+- CRUD operations for each table
+- Query builders with error handling
+- Reusable database functions
+
+### 🌱 Seeds (`seeds/`)
+JavaScript-based seeding system:
+- Modular data files by table
+- Validation before insertion
+- Logging and error handling
+- Selective seeding capabilities
+
+---
+
+## 🌱 Seeding System
+
+### Data Structure
+```
+seeds/
+├── data/            # Raw data by table
+│   ├── sections.data.js
+│   ├── subsections.data.js
+│   └── items.data.js
+├── seeders/         # Seeding logic
+│   ├── SectionSeeder.js
+│   ├── SubsectionSeeder.js
+│   └── ItemSeeder.js
+└── utils/           # Helper functions
+```
+
+### Seeding Process
+```bash
+# Complete database reset and seed
+npm run db:seed:fresh
+
+# Seed only (keep existing data structure)
+npm run db:seed
+
+# Individual seeders (for development)
+node -e "import('./seeds/seeders/SectionSeeder.js').then(m => m.runSectionSeeding())"
+```
+
+---
+
+## 🔧 Integration with Backend
+
+The database layer is consumed by the backend service layer:
+
+```javascript
+// Backend service example
+import { getAllSections, createSection } from '../../db/commands/index.js'
+import { SectionSchema } from '../../db/validation/index.js'
+
+export const getSections = async () => {
+  const sections = await getAllSections()
+  return sections.map(section => SectionSchema.parse(section))
+}
 ```
 
 ---
@@ -87,22 +193,35 @@ psql -U lafontaine_user -d la_fontaine_mons < backup.sql
 | Issue | Solution |
 |-------|----------|
 | Connection refused | Check PostgreSQL is running |
-| Authentication failed | Verify credentials in `.env` |
-| Table doesn't exist | Run migrations: `npx drizzle-kit push` |
-| Permission denied | Grant user permissions to database |
+| Authentication failed | Verify credentials in root `.env` |
+| Schema out of sync | Run `npm run db:push` |
+| Seeding fails | Check data validation and foreign keys |
+| Module not found | Run `npm install` in db directory |
+
+### Debug Commands
 
 ```bash
 # Test connection
-psql -U lafontaine_user -d la_fontaine_mons -c "SELECT version();"
+npm run test:connection
 
-# View tables
-psql -U lafontaine_user -d la_fontaine_mons -c "\dt"
+# Check database tables
+docker exec -it lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB -c "\dt"
+
+# View seeded data counts
+node -e "
+import { db } from './config/database.config.js';
+Promise.all([
+  db.execute('SELECT COUNT(*) FROM section'),
+  db.execute('SELECT COUNT(*) FROM subsection'),
+  db.execute('SELECT COUNT(*) FROM item')
+]).then(([s,sub,i]) => console.log('Sections:', s.rows[0].count, 'Subsections:', sub.rows[0].count, 'Items:', i.rows[0].count))
+"
 ```
 
 ---
 
 ## 🔗 Related Documentation
 
-- 📦 **[Backend API](../backend/README.md)** - API using this database
+- 📦 **[Backend API](../backend/README.md)** - API using this database layer
 - 🐳 **[Docker Deployment](../DOCKER.README.md)** - Container setup
 - 📋 **[Project Overview](../README.md)** - Complete setup guide
