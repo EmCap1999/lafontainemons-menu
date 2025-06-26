@@ -6,10 +6,8 @@ This folder contains the **RESTful API server** for the La Fontaine Mons restaur
 
 - ⚙️ **Node.js 22** – JavaScript runtime environment
 - 🚀 **Express.js 5** – Web framework for API routes
-- 🧩 **Drizzle ORM** – Type-safe database operations
-- 🔐 **dotenv** – Environment variable management
 - 🌐 **CORS** – Cross-Origin Resource Sharing
-- 📝 **Zod** – Runtime type validation
+- 🔐 **dotenv** – Environment variable management
 - 🐳 **Docker** – Containerized deployment
 
 ---
@@ -35,7 +33,7 @@ The backend automatically loads environment variables from the root `.env` file.
 
 ### Database Setup
 
-Ensure PostgreSQL is running and configured (see [Database README](../db/README.md)).
+Ensure the database layer is properly configured (see [Database README](../db/README.md)).
 
 ### Start the Server
 
@@ -51,8 +49,12 @@ Server runs on `http://localhost:3001`
 
 ### Menu API
 - `GET /sections` - Retrieve all menu sections
-- `GET /sections/:id/items` - Get items for a specific section
-- `GET /health` - Server health check
+- `GET /sections/:id` - Get a specific section by ID
+- `GET /sections/:sectionId/items` - Get items for a specific section
+- `GET /subsections` - Retrieve all subsections
+- `GET /sections/:sectionId/subsections` - Get subsections for a specific section
+- `GET /items` - Retrieve all items
+- `GET /subsections/:subsectionId/items` - Get items for a specific subsection
 
 ### Response Format
 All endpoints return JSON with consistent structure:
@@ -60,7 +62,7 @@ All endpoints return JSON with consistent structure:
 {
   "status": "success",
   "results": 7,
-  "data": { ... }
+  "data": { }
 }
 ```
 
@@ -72,11 +74,9 @@ All endpoints return JSON with consistent structure:
 # Start development server
 npm start
 
-# Open database GUI
-npm run db:studio
-
-# Apply database migrations
-cd drizzle && npx drizzle-kit push
+# Start with specific environment
+npm run start:dev    # Development mode
+npm run start:prod   # Production mode
 ```
 
 ---
@@ -103,11 +103,19 @@ docker compose -f docker-compose.dev.yml restart backend
 ```
 backend/
 ├── config/          # Environment and CORS configuration
-├── drizzle/         # Database schema and migrations
+├── controllers/     # API endpoint handlers
 ├── errors/          # Error handling utilities
-├── routes/          # API endpoint definitions
+├── routes/          # API route definitions
+├── services/        # Business logic layer
 └── server.js        # Main application entry point
 ```
+
+## 🔗 Database Integration
+
+The backend connects to the database layer located in `/db`:
+- **Schemas**: Imported from `/db/schema/`
+- **Commands**: CRUD operations from `/db/commands/`
+- **Validation**: Zod schemas from `/db/validation/`
 
 ---
 
@@ -116,7 +124,7 @@ backend/
 | Issue | Solution |
 |-------|----------|
 | Port already in use | Change `BACKEND_PORT` in .env |
-| Database connection error | Verify `DATABASE_URL` and PostgreSQL status |
+| Database connection error | Verify `DATABASE_URL` and database status |
 | CORS errors | Check `FRONTEND_URL` matches client origin |
 | Module not found | Run `npm install` |
 
@@ -124,20 +132,20 @@ backend/
 
 ```bash
 # Test API health
-curl http://localhost:3001/health
+curl http://localhost:3001/sections
 
 # Check container status
 docker ps | grep backend
 
 # View environment variables
-docker exec lafontaine-backend-dev env | grep POSTGRES
+docker exec lafontaine-backend-dev env | grep DATABASE
 ```
 
 ---
 
 ## 🔗 Related Documentation
 
-- 🗄️ **[Database Setup](../db/README.md)** - PostgreSQL configuration and schema
+- 🗄️ **[Database Layer](../db/README.md)** - Database schemas, commands and seeding
 - 🐳 **[Docker Deployment](../DOCKER.README.md)** - Container setup guide
 - 🌐 **[Nginx Configuration](../NGINX.README.md)** - Production deployment
 - 📋 **[Project Overview](../README.md)** - Complete setup guide
