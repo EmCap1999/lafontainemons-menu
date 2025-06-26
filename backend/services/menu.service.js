@@ -1,77 +1,33 @@
-import { asc, eq } from 'drizzle-orm'
-import { db } from '../../db/connection/index.js'
-import { item, section, subsection } from '../../db/schema/index.js'
 import {
-  ItemSchema,
-  SectionSchema,
-  SubsectionSchema,
-} from '../../db/validation/index.js'
+  itemCommands,
+  sectionCommands,
+  subsectionCommands,
+} from '../../db/commands/index.js'
 
 export const getAllSections = async () => {
-  const result = await db
-    .select()
-    .from(section)
-    .orderBy(asc(section.displayOrder))
-  return Array.isArray(result)
-    ? result.map((item) => SectionSchema.parse(item))
-    : []
+  return await sectionCommands.getAllSections()
 }
 
 export const getSectionById = async (id) => {
-  const result = await db
-    .select()
-    .from(section)
-    .where(eq(section.sectionId, id))
-  return Array.isArray(result)
-    ? result.map((item) => SectionSchema.parse(item))
-    : []
+  return await sectionCommands.getSectionById(id)
 }
 
 export const getAllSubsections = async () => {
-  const result = await db
-    .select()
-    .from(subsection)
-    .orderBy(asc(subsection.displayOrder))
-  return Array.isArray(result)
-    ? result.map((item) => SubsectionSchema.parse(item))
-    : []
+  return await subsectionCommands.getAllSubsections()
 }
 
 export const getSubsectionsBySection = async (sectionId) => {
-  const result = await db
-    .select()
-    .from(subsection)
-    .where(eq(subsection.sectionId, sectionId))
-    .orderBy(asc(subsection.displayOrder))
-
-  return Array.isArray(result)
-    ? result.map((item) => SubsectionSchema.parse(item))
-    : []
+  return await subsectionCommands.getSubsectionsBySection(sectionId)
 }
 
 export const getAllItems = async () => {
-  const result = await db.select().from(item).orderBy(asc(item.displayOrder))
-  return Array.isArray(result)
-    ? result.map((item) => ItemSchema.parse(item))
-    : []
+  return await itemCommands.getAllItems()
 }
 
 export const getItemsBySection = async (sectionId) => {
-  const result = await db
-    .select()
-    .from(item)
-    .where(eq(item.sectionId, sectionId))
-    .orderBy(asc(item.displayOrder))
-
-  return result.map((row) => ItemSchema.parse(row))
+  return await itemCommands.getItemsBySection(sectionId)
 }
 
 export const getItemsBySubsection = async (subsectionId) => {
-  const result = await db
-    .select()
-    .from(item)
-    .where(eq(item.subsectionId, subsectionId))
-    .orderBy(asc(item.displayOrder))
-
-  return result.map((row) => ItemSchema.parse(row))
+  return await itemCommands.getItemsBySubsection(subsectionId)
 }

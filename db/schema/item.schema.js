@@ -5,6 +5,7 @@ import {
   numeric,
   pgTable,
   real,
+  serial,
   text,
   timestamp,
   varchar,
@@ -13,7 +14,7 @@ import { section } from './section.schema.js'
 import { subsection } from './subsection.schema.js'
 
 export const item = pgTable('item', {
-  itemId: integer('item_id').primaryKey().notNull(),
+  itemId: serial('item_id').primaryKey(),
   sectionId: integer('section_id')
     .notNull()
     .references(() => section.sectionId, { onDelete: 'cascade' }),

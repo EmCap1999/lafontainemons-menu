@@ -1,9 +1,15 @@
 import { relations } from 'drizzle-orm'
-import { integer, pgTable, timestamp, varchar } from 'drizzle-orm/pg-core'
+import {
+  integer,
+  pgTable,
+  serial,
+  timestamp,
+  varchar,
+} from 'drizzle-orm/pg-core'
 import { section } from './section.schema.js'
 
 export const subsection = pgTable('subsection', {
-  subsectionId: integer('subsection_id').primaryKey().notNull(),
+  subsectionId: serial('subsection_id').primaryKey(),
   sectionId: integer('section_id')
     .notNull()
     .references(() => section.sectionId, { onDelete: 'cascade' }),
