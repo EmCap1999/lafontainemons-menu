@@ -116,7 +116,7 @@ VALUES ((SELECT section_id FROM public.section WHERE name = 'Bières'),
          FROM public.subsection
          WHERE name = 'Au fût'
            AND section_id = (SELECT section_id FROM public.section WHERE name = 'Bières')),
-        'Jupiler', 2.30, 25, 'cl'),
+        'Jupiler', 2.50, 25, 'cl'),
        ((SELECT section_id FROM public.section WHERE name = 'Bières'),
         (SELECT subsection_id
          FROM public.subsection
@@ -155,7 +155,7 @@ VALUES ((SELECT section_id FROM public.section WHERE name = 'Bières'), NULL, 'S
        ((SELECT section_id FROM public.section WHERE name = 'Bières'), NULL, 'Orval', 5.00, 33, 'cl'),
        ((SELECT section_id FROM public.section WHERE name = 'Bières'), NULL, 'Dominicains quadruple', 5.00, 33, 'cl'),
        ((SELECT section_id FROM public.section WHERE name = 'Bières'), NULL, 'Liefmans', 3.50, 33, 'cl'),
-       ((SELECT section_id FROM public.section WHERE name = 'Bières'), NULL, 'Blanche', 2.50, 25, 'cl'),
+       ((SELECT section_id FROM public.section WHERE name = 'Bières'), NULL, 'Blanche', 3.00, 25, 'cl'),
        ((SELECT section_id FROM public.section WHERE name = 'Bières'), NULL, 'Blanche rosée', 3.00, 25, 'cl'),
        ((SELECT section_id FROM public.section WHERE name = 'Bières'), NULL, 'Carlsberg', 3.00, 25, 'cl'),
        ((SELECT section_id FROM public.section WHERE name = 'Bières'), NULL, 'Geuze Boon', 6.00, 37.5, 'cl'),
