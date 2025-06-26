@@ -1,0 +1,30 @@
+{
+  "name": "lafontaine-database",
+  "version": "1.0.0",
+  "description": "Database schema and commands for La Fontaine Mons restaurant",
+  "type": "module",
+  "main": "config/database.config.js",
+  "scripts": {
+    "db:studio": "NODE_ENV=development drizzle-kit studio --config=./config/drizzle.config.js",
+    "db:generate": "drizzle-kit generate --config=./config/drizzle.config.js",
+    "db:push": "drizzle-kit push --config=./config/drizzle.config.js",
+    "db:migrate": "drizzle-kit migrate --config=./config/drizzle.config.js",
+    "db:seed": "node ./seeds/index.js",
+    "db:seed:sections": "node -e \"import('./seeds/seeders/SectionSeeder.js').then(m => m.SectionSeeder.run())\"",
+    "db:seed:fresh": "npm run db:push && npm run db:seed",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["database", "drizzle", "postgresql", "restaurant"],
+  "author": "Manu Caputo <caputoemmanuel1999@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "dotenv-expand": "^12.0.2",
+    "drizzle-orm": "^0.44.2",
+    "pg": "^8.16.2",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.2"
+  }
+}
