@@ -13,8 +13,6 @@
       "**/.angular/**",
       "**/migrations/**",
       "**/tsconfig*.json",
-      "**/package.json",
-      "**/package-lock.json",
       "**/server.ts"
     ]
   },
