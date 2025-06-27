@@ -30,6 +30,7 @@ services:
       - DATABASE_URL=${DATABASE_URL}
       - FRONTEND_URL=https://carte.lafontainemons.be
       - BACKEND_PORT=3001
+      - HUSKY=0
     command: sh -c "cd db && npm install && npm run db:migrate"
     depends_on:
       postgres:
