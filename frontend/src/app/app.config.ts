@@ -1,6 +1,6 @@
 import { provideHttpClient, withFetch } from '@angular/common/http'
 import {
-  ApplicationConfig,
+  type ApplicationConfig,
   LOCALE_ID,
   provideZoneChangeDetection,
 } from '@angular/core'

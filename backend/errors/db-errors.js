@@ -78,14 +78,14 @@ const handleDBError = (err) => {
 
   if (err.code) {
     pgErrorCode = err.code
-  } else if (err.originalError && err.originalError.code) {
+  } else if (err.originalError?.code) {
     pgErrorCode = err.originalError.code
   }
 
   if (pgErrorCode) {
     if (
       ['23000', '23001', '23502', '23503', '23505', '23514'].includes(
-        pgErrorCode,
+        pgErrorCode
       )
     ) {
       statusCode = 400

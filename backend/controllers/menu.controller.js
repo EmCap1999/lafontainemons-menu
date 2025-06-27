@@ -60,8 +60,8 @@ export const getSubsectionsBySection = async (req, res, next) => {
       return next(
         new AppError(
           `Sub-section with Section ID ${sectionId} does not exist.`,
-          404,
-        ),
+          404
+        )
       )
     }
 
@@ -95,7 +95,7 @@ export const getItemsBySection = async (req, res, next) => {
 
     if (items.length === 0) {
       return next(
-        new AppError(`No items founded with section ID ${sectionId}`, 404),
+        new AppError(`No items founded with section ID ${sectionId}`, 404)
       )
     }
 
@@ -118,8 +118,8 @@ export const getItemsBySubsection = async (req, res, next) => {
       return next(
         new AppError(
           `No items founded with sub-section ID ${subsectionId}`,
-          404,
-        ),
+          404
+        )
       )
     }
 

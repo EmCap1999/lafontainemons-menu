@@ -34,7 +34,7 @@ if (!fs.existsSync(envDir)) {
 
 fs.writeFileSync(envPath, envContent)
 console.log(
-  ` Frontend Environment file generated for ${process.env.NODE_ENV || 'development'}!`,
+  ` Frontend Environment file generated for ${process.env.NODE_ENV || 'development'}!`
 )
 console.log(`API URL: ${apiUrl}`)
 console.log(`Frontend URL: ${frontendUrl}`)

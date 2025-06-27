@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { Component, EventEmitter, Input, Output } from '@angular/core'
-import { Item, Section } from '../../models/menu.models'
+import type { Item, Section } from '../../models/menu.models'
 
 @Component({
   selector: 'app-section',
@@ -12,8 +12,8 @@ import { Item, Section } from '../../models/menu.models'
 export class SectionComponent {
   @Input() section!: Section
   @Input() items: Item[] = []
-  @Input() isExpanded: boolean = false
-  @Input() isLoading: boolean = false
+  @Input() isExpanded = false
+  @Input() isLoading = false
 
   @Output() sectionClick = new EventEmitter<number>()
 

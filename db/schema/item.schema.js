@@ -20,7 +20,7 @@ export const item = pgTable('item', {
     .references(() => section.sectionId, { onDelete: 'cascade' }),
   subsectionId: integer('subsection_id').references(
     () => subsection.subsectionId,
-    { onDelete: 'set null' },
+    { onDelete: 'set null' }
   ),
   name: varchar('name', { length: 100 }).notNull(),
   description: text('description'),

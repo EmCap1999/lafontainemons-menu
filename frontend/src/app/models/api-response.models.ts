@@ -1,4 +1,4 @@
-import { Item, Section } from './menu.models'
+import type { Item, Section } from './menu.models'
 
 export interface ApiResponse<T> {
   status: string

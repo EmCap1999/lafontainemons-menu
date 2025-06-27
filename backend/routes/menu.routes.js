@@ -9,14 +9,14 @@ router.get('/sections/:id', menuController.getSectionById)
 router.get('/subsections', menuController.getAllSubsections)
 router.get(
   '/sections/:sectionId/subsections',
-  menuController.getSubsectionsBySection,
+  menuController.getSubsectionsBySection
 )
 
 router.get('/items', menuController.getAllItems)
 router.get('/sections/:sectionId/items', menuController.getItemsBySection)
 router.get(
   '/subsections/:subsectionId/items',
-  menuController.getItemsBySubsection,
+  menuController.getItemsBySubsection
 )
 
 export default router

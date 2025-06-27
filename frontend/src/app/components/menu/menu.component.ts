@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
-import { Component, OnInit } from '@angular/core'
-import { Item, Section } from '../../models/menu.models'
-import { MenuService } from '../../services/menu.service'
+import { Component, type OnInit } from '@angular/core'
+import type { Item, Section } from '../../models/menu.models'
+import type { MenuService } from '../../services/menu.service'
 import { SectionComponent } from '../section/section.component'
 
 @Component({
@@ -55,7 +55,7 @@ export class MenuComponent implements OnInit {
     this.menuService.getItemsBySection(sectionId).subscribe({
       next: (items) => {
         this.sectionItems[sectionId] = items.sort(
-          (a, b) => a.displayOrder - b.displayOrder,
+          (a, b) => a.displayOrder - b.displayOrder
         )
         this.loadingSections.delete(sectionId)
       },

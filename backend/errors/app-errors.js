@@ -13,7 +13,7 @@ const getErrorMessage = (statusCode, message) => {
     case 400:
       return `Requête incorrecte: ${message}`
     case 401:
-      return `Non autorisé: Veuillez vous authentifier`
+      return 'Non autorisé: Veuillez vous authentifier'
     case 403:
       return `Accès interdit: Vous n'avez pas les droits nécessaires`
     case 404:
@@ -23,14 +23,14 @@ const getErrorMessage = (statusCode, message) => {
     case 422:
       return `Données invalides: ${message}`
     case 429:
-      return `Trop de requêtes: Veuillez réessayer plus tard`
+      return 'Trop de requêtes: Veuillez réessayer plus tard'
 
     case 500:
       return `Erreur serveur interne: ${message || "Une erreur inattendue s'est produite"}`
     case 502:
-      return `Erreur de passerelle: Le service externe a retourné une erreur`
+      return 'Erreur de passerelle: Le service externe a retourné une erreur'
     case 503:
-      return `Service indisponible: Le serveur est temporairement indisponible`
+      return 'Service indisponible: Le serveur est temporairement indisponible'
     case 504:
       return `Délai d'attente dépassé: L'opération a pris trop de temps`
 

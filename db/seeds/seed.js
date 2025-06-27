@@ -74,7 +74,7 @@ async function seedItems(insertedSections, insertedSubsections) {
     const batch = itemsWithIds.slice(i, i + batchSize)
     await db.insert(item).values(batch)
     console.log(
-      `Inserted batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(itemsWithIds.length / batchSize)}`,
+      `Inserted batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(itemsWithIds.length / batchSize)}`
     )
   }
 

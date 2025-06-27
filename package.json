@@ -3,7 +3,7 @@
   "scripts": {
     "prepare": "husky",
     "lint": "biome check .",
-    "lint:fix": "biome check --write .",
+    "lint:fix": "biome check --write --unsafe .",
     "update": "npm run update:check && npm run update:install && npm run update:audit",
     "update:check": "npm outdated --workspaces || true",
     "update:install": "npm update --workspaces && npm update",
@@ -13,7 +13,7 @@
   "workspaces": ["backend", "frontend", "db"],
   "lint-staged": {
     "**/*.{js,ts,json,html,scss}": [
-      "biome check --write --files-ignore-unknown=true"
+      "biome check --write --unsafe --files-ignore-unknown=true"
     ]
   },
   "devDependencies": {
