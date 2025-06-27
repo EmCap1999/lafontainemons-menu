@@ -1,33 +1,27 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
   "vcs": {
-    "enabled": false,
+    "enabled": true,
     "clientKind": "git",
-    "useIgnoreFile": false
+    "useIgnoreFile": true
   },
   "files": {
-    "ignoreUnknown": false,
+    "ignoreUnknown": true,
     "ignore": [
-      "package-lock.json",
-      "node_modules/**/*",
-      "frontend/.angular/**/*",
-      "frontend/node_modules/**/*",
-      "frontend/tsconfig*.json",
-      "backend/node_modules/**/*",
-      "db/node_modules/**/*",
-      "db/migrations/**/*"
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/.angular/**",
+      "**/migrations/**",
+      "**/tsconfig*.json",
+      "package-lock.json"
     ]
   },
   "formatter": {
     "enabled": true,
-    "useEditorconfig": true,
-    "formatWithErrors": false,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
-    "lineWidth": 80,
-    "attributePosition": "auto",
-    "bracketSpacing": true
+    "lineWidth": 80
   },
   "organizeImports": {
     "enabled": true
@@ -35,116 +29,37 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": false,
+      "recommended": true,
       "complexity": {
-        "noForEach": "error",
-        "noStaticOnlyClass": "error",
-        "noUselessSwitchCase": "error",
-        "useDateNow": "error",
-        "useFlatMap": "error"
-      },
-      "correctness": {
-        "noInvalidBuiltinInstantiation": "error"
+        "noForEach": "warn"
       },
       "style": {
-        "noNegationElse": "off",
-        "useExplicitLengthCheck": "error",
-        "useForOf": "error",
-        "useNodejsImportProtocol": "error",
-        "useNumberNamespace": "error",
-        "useThrowNewError": "error"
+        "useNodejsImportProtocol": "error"
       },
       "suspicious": {
-        "noDoubleEquals": "error",
-        "noThenProperty": "error",
-        "useErrorMessage": "error",
-        "useNumberToFixedDigitsArgument": "error"
+        "noDoubleEquals": "error"
       }
     }
   },
   "javascript": {
     "formatter": {
-      "jsxQuoteStyle": "double",
-      "quoteProperties": "asNeeded",
-      "trailingCommas": "all",
-      "semicolons": "asNeeded",
-      "arrowParentheses": "always",
-      "bracketSameLine": false,
       "quoteStyle": "single",
-      "attributePosition": "auto",
-      "bracketSpacing": true
-    },
-    "globals": ["Global1"]
+      "trailingCommas": "es5",
+      "semicolons": "asNeeded"
+    }
   },
   "overrides": [
-    {
-      "include": ["tests/**"],
-      "linter": {
-        "rules": {
-          "suspicious": {
-            "noDoubleEquals": "off"
-          }
-        }
-      }
-    },
-    {
-      "include": ["backend/**/*.js", "backend/**/*.ts"],
-      "formatter": {
-        "indentWidth": 2
-      }
-    },
-    {
-      "include": ["db/**/*.js", "db/**/*.ts"],
-      "formatter": {
-        "indentWidth": 2
-      }
-    },
-    {
-      "include": [
-        "frontend/**/*.ts",
-        "frontend/**/*.html",
-        "frontend/**/*.scss"
-      ],
-      "formatter": {
-        "indentWidth": 2
-      }
-    },
     {
       "include": ["frontend/**/*.ts"],
       "linter": {
         "rules": {
           "style": {
-            "useForOf": "error",
             "useNodejsImportProtocol": "off"
           },
           "complexity": {
             "noForEach": "off"
           }
         }
-      }
-    },
-    {
-      "include": ["frontend/**/*.html"]
-    },
-    {
-      "include": ["frontend/**/*.component.ts"],
-      "linter": {
-        "rules": {
-          "style": {
-            "noNonNullAssertion": "off"
-          }
-        }
-      }
-    },
-    {
-      "include": [
-        "*.json",
-        "frontend/**/*.json",
-        "backend/**/*.json",
-        "db/**/*.json"
-      ],
-      "formatter": {
-        "indentWidth": 2
       }
     }
   ]

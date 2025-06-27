@@ -2,23 +2,16 @@
   "version": "1.0.0",
   "scripts": {
     "prepare": "husky",
-    "precommit:setup": "npm run update-all",
-    "update-all": "npm update && cd backend && npm update && cd ../frontend && npm update && cd ../db && npm update",
-    "lint": "./node_modules/.bin/biome check --no-errors-on-unmatched .",
-    "lint:backend": "./node_modules/.bin/biome check --no-errors-on-unmatched ./backend",
-    "lint:frontend": "./node_modules/.bin/biome check --no-errors-on-unmatched ./frontend",
-    "lint:db": "./node_modules/.bin/biome check --no-errors-on-unmatched ./db"
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "update-deps": "npm update && npm run update-deps:workspaces",
+    "update-deps:workspaces": "npm run -ws update"
   },
+  "workspaces": ["backend", "frontend", "db"],
   "lint-staged": {
-    "*.{js,json}": [
-      "npx --no-install @biomejs/biome check --write --no-errors-on-unmatched"
-    ],
-    "frontend/**/*.{ts,html,scss}": [
-      "npx --no-install @biomejs/biome check --write --no-errors-on-unmatched"
-    ],
-    "!frontend/tsconfig*.json": [],
-    "!**/node_modules/**/*": [],
-    "!**/dist/**/*": []
+    "**/*.{js,ts,json,html,scss}": [
+      "biome check --write --files-ignore-unknown=true"
+    ]
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

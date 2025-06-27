@@ -1,5 +1,5 @@
-echo "📦 Checking dependencies..."
-npm run precommit:setup
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
 echo "🧼 Running lint-staged..."
 npx lint-staged
