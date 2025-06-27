@@ -61,7 +61,7 @@ export class MenuComponent implements OnInit {
       },
       error: (error) => {
         this.loadingSections.delete(sectionId)
-        console.error(`Error loading items for section ${sectionId}:`, error)
+        console.error(`Error loading items in section ${sectionId}:`, error)
       },
     })
   }
