@@ -1,4 +1,5 @@
 name: 🛡️ PR Check
+
 on:
   pull_request:
     branches: [main, dev]
@@ -8,9 +9,9 @@ jobs:
     name: 🔍 Lint & Build
     runs-on: ubuntu-24.04
     env:
-      # Disable Angular SSR during CI build
       CI: true
       NODE_ENV: test
+
     steps:
       - name: ⬇️ Checkout
         uses: actions/checkout@v4
@@ -33,17 +34,16 @@ jobs:
       - name: 🌍 Create CI environment config
         run: |
           mkdir -p frontend/src/environments
-          # Override environment to prevent API calls during build
           cat > frontend/src/environments/environment.ts << 'EOF'
           export const environment = {
             production: false,
-            apiUrl: process.env['CI'] ? '' : 'http://localhost:3000',  // Empty in CI
+            apiUrl: '',
             frontendUrl: 'http://localhost:4200'
           };
           EOF
 
       - name: 🏗️ Build Frontend (no API calls)
-        run: npm run build --workspace=frontend
+        run: npx ng build frontend --configuration production
 
       - name: 🔧 Test Backend Compilation
         run: |
