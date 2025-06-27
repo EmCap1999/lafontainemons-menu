@@ -4,8 +4,11 @@
     "prepare": "husky",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "update-deps": "npm update && npm run update-deps:workspaces",
-    "update-deps:workspaces": "npm run -ws update"
+    "update": "npm run update:check && npm run update:install && npm run update:audit",
+    "update:check": "npm outdated --workspaces || true",
+    "update:install": "npm update --workspaces && npm update",
+    "update:audit": "npm audit --audit-level=moderate --workspaces",
+    "update:force": "npm run update:install && npm run update:audit -- --fix"
   },
   "workspaces": ["backend", "frontend", "db"],
   "lint-staged": {
