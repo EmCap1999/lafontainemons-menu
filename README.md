@@ -148,15 +148,16 @@ npm run update:force
 - **⚠️ Manual review**: Major versions and breaking changes require approval
 
 ### Quality Gates
-- **Pre-commit**: Automatic linting with lint-staged
-- **PR checks**: Comprehensive testing before merge
+- **Pre-commit**: Automatic linting with lint-staged on modified files
+- **PR checks**: Auto-fix + comprehensive testing before merge
+- **Auto-healing CI**: Automatically corrects fixable lint issues during PR validation
 - **Biome integration**: Unified formatting and linting across the monorepo
 
 ### Git Workflow
 ```bash
 # Commits automatically trigger:
-# 1. Pre-commit linting
-# 2. CI/CD pipeline on PR
+# 1. Pre-commit linting on modified files
+# 2. CI/CD pipeline with auto-fix + validation on PR
 # 3. Auto-merge for safe dependency updates
 ```
 
@@ -184,7 +185,7 @@ npm run update:force
 - ✅ HTTPS production site live
 - ✅ Monitoring configured
 - ✅ Automated dependency management
-- ✅ Quality gates & CI/CD pipeline
+- ✅ Quality gates & auto-healing CI/CD pipeline
 - ✅ Streamlined development workflow
 
 ---
