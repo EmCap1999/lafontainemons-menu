@@ -3,6 +3,28 @@
   margin: 0 auto;
   padding: 2rem;
 
+  .brewery-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+
+    .logo-image {
+      max-height: 240px;
+      max-width: 440px;
+      height: auto;
+      width: auto;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+      transition: transform 0.3s ease, filter 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+      }
+    }
+  }
+
   .menu-title {
     text-align: center;
     font-size: 2.5rem;
@@ -68,8 +90,33 @@
   .menu-container {
     padding: 1rem;
 
+    .brewery-logo {
+      margin-bottom: 1.5rem;
+      padding: 0.5rem;
+
+      .logo-image {
+        max-height: 180px;
+        max-width: 340px;
+      }
+    }
+
     .menu-title {
       font-size: 2rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-container {
+    .brewery-logo {
+      .logo-image {
+        max-height: 160px;
+        max-width: 320px;
+      }
+    }
+
+    .menu-title {
+      font-size: 1.8rem;
     }
   }
 }
