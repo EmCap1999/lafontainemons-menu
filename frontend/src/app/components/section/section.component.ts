@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { Component, EventEmitter, Input, Output } from '@angular/core'
-import type { Item, Section } from '../../models/menu.models'
+import { Item, Section } from '../../models/menu.models'
 
 @Component({
   selector: 'app-section',
