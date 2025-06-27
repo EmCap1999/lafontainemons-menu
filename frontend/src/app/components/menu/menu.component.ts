@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { Component, type OnInit } from '@angular/core'
-import type { Item, Section } from '../../models/menu.models'
-import type { MenuService } from '../../services/menu.service'
+import { Item, Section } from '../../models/menu.models'
+import { MenuService } from '../../services/menu.service'
 import { SectionComponent } from '../section/section.component'
 
 @Component({

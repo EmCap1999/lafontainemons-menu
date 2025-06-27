@@ -13,7 +13,8 @@
       "**/.angular/**",
       "**/migrations/**",
       "**/tsconfig*.json",
-      "package-lock.json"
+      "package-lock.json",
+      "**/server.ts"
     ]
   },
   "formatter": {
@@ -34,7 +35,8 @@
         "noForEach": "warn"
       },
       "style": {
-        "useNodejsImportProtocol": "error"
+        "useNodejsImportProtocol": "error",
+        "useImportType": "off"
       },
       "suspicious": {
         "noDoubleEquals": "error"
@@ -54,7 +56,8 @@
       "linter": {
         "rules": {
           "style": {
-            "useNodejsImportProtocol": "off"
+            "useNodejsImportProtocol": "off",
+            "useImportType": "off"
           },
           "complexity": {
             "noForEach": "off"
