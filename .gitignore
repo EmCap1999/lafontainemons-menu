@@ -7,3 +7,12 @@ frontend/.angular
 **/environments
 frontend/dist
 **/.DS_Store
+gh_*.tar.gz
+*.tar.gz
+*.zip
+*.dmg
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
