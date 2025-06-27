@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "scripts": {
-    "prepare": "husky",
+    "prepare": "command -v git >/dev/null 2>&1 && husky || echo 'Skipping husky in non-git environment'",
     "lint": "biome check .",
     "lint:fix": "biome check --write --unsafe .",
     "update": "npm run update:check && npm run update:install && npm run update:audit",
@@ -12,9 +12,7 @@
   },
   "workspaces": ["backend", "frontend", "db"],
   "lint-staged": {
-    "**/*.{js,ts,json,html,scss}": [
-      "biome check --write --unsafe --files-ignore-unknown=true"
-    ]
+    "*.{js,ts,json}": ["biome check --write --unsafe"]
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
