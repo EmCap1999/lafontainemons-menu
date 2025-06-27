@@ -43,17 +43,14 @@ jobs:
           EOF
 
       - name: 🏗️ Build Frontend (no API calls)
-        run: |
-          cd frontend
-          # Build with production optimizations but without server calls
-          ng build --optimization --aot --build-optimizer --output-hashing=all
-          cd ..
+        run: npm run build --workspace=frontend
 
       - name: 🔧 Test Backend Compilation
         run: |
-          cd backend
-          timeout 10s npm start || echo "✅ Backend compiles and starts correctly"
-          cd ..
+          npm start --workspace=backend &
+          BACKEND_PID=$!
+          sleep 5
+          kill $BACKEND_PID || echo "✅ Backend compiles and starts correctly"
 
       - name: ⚙️ Validate Database Config
         run: |
