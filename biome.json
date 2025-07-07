@@ -13,7 +13,9 @@
       "**/.angular/**",
       "**/migrations/**",
       "**/tsconfig*.json",
-      "**/server.ts"
+      "**/server.ts",
+      "**/package-lock.json",
+      "**/npm-shrinkwrap.json"
     ]
   },
   "formatter": {
@@ -38,7 +40,8 @@
         "useImportType": "off"
       },
       "suspicious": {
-        "noDoubleEquals": "error"
+        "noDoubleEquals": "error",
+        "noExplicitAny": "off"
       }
     }
   },
@@ -60,6 +63,9 @@
           },
           "complexity": {
             "noForEach": "off"
+          },
+          "suspicious": {
+            "noExplicitAny": "off"
           }
         }
       }

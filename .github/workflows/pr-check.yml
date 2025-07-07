@@ -43,7 +43,8 @@ jobs:
           EOF
 
       - name: 🏗️ Build Frontend (no API calls)
-        run: npx ng build frontend --configuration production
+        working-directory: frontend
+        run: npx ng build --configuration production
 
       - name: 🔧 Test Backend Compilation
         run: |

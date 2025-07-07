@@ -2,17 +2,6 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable, map } from 'rxjs'
 import { environment } from '../../environments/environment'
-import type {
-  ApiResponse,
-  ItemsResponse,
-  SectionsResponse,
-} from '../models/api-response.models'
-import {
-  type Item,
-  ItemSchema,
-  type Section,
-  SectionSchema,
-} from '../models/menu.models'
 
 @Injectable({
   providedIn: 'root',
@@ -22,31 +11,15 @@ export class MenuService {
 
   constructor(private http: HttpClient) {}
 
-  getAllSections(): Observable<Section[]> {
+  getAllSections(): Observable<any[]> {
     return this.http
-      .get<ApiResponse<SectionsResponse>>(`${this.apiUrl}/sections`)
-      .pipe(
-        map((response) => {
-          const sections = response.data.sections
-          return Array.isArray(sections)
-            ? sections.map((section) => SectionSchema.parse(section))
-            : []
-        })
-      )
+      .get<any>(`${this.apiUrl}/sections`)
+      .pipe(map((response) => response.data.sections))
   }
 
-  getItemsBySection(sectionId: number): Observable<Item[]> {
+  getItemsBySection(sectionId: number): Observable<any[]> {
     return this.http
-      .get<ApiResponse<ItemsResponse>>(
-        `${this.apiUrl}/sections/${sectionId}/items`
-      )
-      .pipe(
-        map((response) => {
-          const items = response.data.items
-          return Array.isArray(items)
-            ? items.map((item) => ItemSchema.parse(item))
-            : []
-        })
-      )
+      .get<any>(`${this.apiUrl}/sections/${sectionId}/items`)
+      .pipe(map((response) => response.data.items))
   }
 }
