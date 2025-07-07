@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common'
 import { Component, type OnInit } from '@angular/core'
-import { Item, Section } from '../../models/menu.models'
 import { MenuService } from '../../services/menu.service'
 import { SectionComponent } from '../section/section.component'
 
@@ -12,10 +11,10 @@ import { SectionComponent } from '../section/section.component'
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent implements OnInit {
-  sections: Section[] = []
+  sections: any[] = []
   sectionsLoading = true
   sectionsError: string | null = null
-  sectionItems: { [sectionId: number]: Item[] } = {}
+  sectionItems: { [sectionId: number]: any[] } = {}
   expandedSections: Set<number> = new Set()
   loadingSections: Set<number> = new Set()
 
@@ -74,7 +73,7 @@ export class MenuComponent implements OnInit {
     return this.loadingSections.has(sectionId)
   }
 
-  getSectionItems(sectionId: number): Item[] {
+  getSectionItems(sectionId: number): any[] {
     return this.sectionItems[sectionId] || []
   }
 }

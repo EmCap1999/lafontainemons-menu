@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common'
 import { Component, EventEmitter, Input, Output } from '@angular/core'
-import { Item, Section } from '../../models/menu.models'
 
 @Component({
   selector: 'app-section',
@@ -10,8 +9,8 @@ import { Item, Section } from '../../models/menu.models'
   styleUrl: './section.component.scss',
 })
 export class SectionComponent {
-  @Input() section!: Section
-  @Input() items: Item[] = []
+  @Input() section!: any
+  @Input() items: any[] = []
   @Input() isExpanded = false
   @Input() isLoading = false
 
