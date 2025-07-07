@@ -40,7 +40,8 @@
         "useImportType": "off"
       },
       "suspicious": {
-        "noDoubleEquals": "error"
+        "noDoubleEquals": "error",
+        "noExplicitAny": "off"
       }
     }
   },
@@ -62,6 +63,9 @@
           },
           "complexity": {
             "noForEach": "off"
+          },
+          "suspicious": {
+            "noExplicitAny": "off"
           }
         }
       }
