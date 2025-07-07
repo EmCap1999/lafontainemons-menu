@@ -1,6 +1,18 @@
-.container {
+.app-container {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  app-menu {
+    flex: 1;
+  }
 
   h1 {
     text-align: center;

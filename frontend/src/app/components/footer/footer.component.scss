@@ -1,0 +1,151 @@
+.app-footer {
+  margin-top: auto;
+  padding: 2rem 1rem 1rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-top: 1px solid #e0e0e0;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    border-radius: 0 0 2px 2px;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .powered-by {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #6c757d;
+
+    .powered-text {
+      font-weight: 300;
+    }
+
+    .developer-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 500;
+      padding: 0.3rem 0.6rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      background: rgba(52, 152, 219, 0.05);
+      border: 1px solid transparent;
+
+      &:hover {
+        background: #3498db;
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        border-color: #3498db;
+
+        .linkedin-icon {
+          color: white;
+          transform: scale(1.1);
+        }
+      }
+
+      &:focus {
+        outline: 2px solid #3498db;
+        outline-offset: 2px;
+      }
+
+      .developer-name {
+        font-size: 0.95rem;
+        letter-spacing: 0.3px;
+      }
+
+      .linkedin-icon {
+        font-size: 14px;
+        color: #0077b5;
+        transition: all 0.3s ease;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .copyright {
+    font-size: 0.85rem;
+    color: #95a5a6;
+    font-weight: 300;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .app-footer {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .powered-by {
+      order: 2;
+    }
+
+    .copyright {
+      order: 1;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .app-footer {
+    .powered-by {
+      flex-direction: column;
+      gap: 0.8rem;
+
+      .powered-text {
+        font-size: 0.8rem;
+      }
+
+      .developer-link {
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+
+        .developer-name {
+          font-size: 1rem;
+        }
+
+        .linkedin-icon {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.app-footer {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
