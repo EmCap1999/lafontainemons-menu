@@ -90,9 +90,9 @@ server {
         try_files $uri =404;
     }
 
-    # API Proxy to Backend
-    location /api/ {
-        proxy_pass http://localhost:3001/;
+    # API Proxy to Backend Hono (PORT PRODUCTION 3001)
+    location /api/v1/menu/ {
+        proxy_pass http://localhost:3001/api/v1/menu/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -106,6 +106,16 @@ server {
         add_header Access-Control-Allow-Origin *;
         add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS";
         add_header Access-Control-Allow-Headers "Content-Type, Authorization";
+    }
+
+    # Health check proxy
+    location /health {
+        proxy_pass http://localhost:3001/health;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 
     # Error handling

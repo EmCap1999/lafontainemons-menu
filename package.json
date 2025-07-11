@@ -1,23 +1,30 @@
 {
+  "name": "lafontaine-mons-menu",
   "version": "1.0.0",
+  "private": true,
+  "type": "module",
   "scripts": {
     "prepare": "command -v git >/dev/null 2>&1 && husky || echo 'Skipping husky in non-git environment'",
     "lint": "biome check .",
     "lint:fix": "biome check --write --unsafe .",
-    "update": "npm run update:check && npm run update:install && npm run update:audit",
-    "update:check": "npm outdated --workspaces || true",
-    "update:install": "npm update --workspaces && npm update",
-    "update:audit": "npm audit --audit-level=moderate --workspaces",
-    "update:force": "npm run update:install && npm run update:audit -- --fix"
+    "format": "biome format --write .",
+    "check": "biome check .",
+    "db:migrate": "cd database && npm run db:migrate",
+    "db:seed": "cd database && npm run db:seed",
+    "db:reset": "npm run db:migrate && npm run db:seed",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build:prod",
+    "docker:up": "docker compose -f docker-compose.dev.yml up -d",
+    "docker:down": "docker compose -f docker-compose.dev.yml down",
+    "docker:logs": "docker compose -f docker-compose.dev.yml logs -f"
   },
-  "workspaces": ["backend", "frontend", "db"],
-
+  "workspaces": ["backend", "frontend", "database"],
   "lint-staged": {
-    "*.{js,ts}": ["npx biome check --write --unsafe"],
-    "*.json": ["npx biome format --write"],
-    "package-lock.json": []
+    "*.{js,ts}": ["biome check --write --unsafe"],
+    "*.{json,md}": ["biome format --write"]
   },
-
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "husky": "^9.1.7",

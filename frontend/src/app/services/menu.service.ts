@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment'
   providedIn: 'root',
 })
 export class MenuService {
-  private apiUrl = environment.apiUrl
+  private apiUrl = `${environment.apiUrl}/api/v1/menu`
 
   constructor(private http: HttpClient) {}
 

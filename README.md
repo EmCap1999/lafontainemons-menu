@@ -95,7 +95,7 @@ Internet → Nginx → Angular Frontend
 **Component Setup:**
 - 📦 [Backend](./backend/README.md) - API development
 - 💻 [Frontend](./frontend/README.md) - Angular development
-- 🗄️ [Database](./db/README.md) - PostgreSQL setup
+- 🗄️ [Database](database/README.md) - PostgreSQL setup
 
 **Deployment:**
 - 🐳 [Docker Deployment](./DOCKER.README.md) - Backend & Database
@@ -114,7 +114,7 @@ npm run update            # Update all dependencies safely
 
 # Backend
 cd backend && npm start
-npm run db:studio         # Database GUI
+npm run database:studio         # Database GUI
 
 # Frontend  
 cd frontend && npm start

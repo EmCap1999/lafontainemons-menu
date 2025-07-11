@@ -12,10 +12,12 @@
       "**/dist/**",
       "**/.angular/**",
       "**/migrations/**",
+      "**/drizzle/**",
       "**/tsconfig*.json",
       "**/server.ts",
       "**/package-lock.json",
-      "**/npm-shrinkwrap.json"
+      "**/npm-shrinkwrap.json",
+      "**/*.d.ts"
     ]
   },
   "formatter": {
@@ -23,7 +25,7 @@
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
-    "lineWidth": 80
+    "lineWidth": 100
   },
   "organizeImports": {
     "enabled": true
@@ -37,11 +39,15 @@
       },
       "style": {
         "useNodejsImportProtocol": "error",
-        "useImportType": "off"
+        "useImportType": "off",
+        "useConst": "error"
       },
       "suspicious": {
         "noDoubleEquals": "error",
-        "noExplicitAny": "off"
+        "noExplicitAny": "warn"
+      },
+      "correctness": {
+        "noUnusedVariables": "warn"
       }
     }
   },
@@ -66,6 +72,16 @@
           },
           "suspicious": {
             "noExplicitAny": "off"
+          }
+        }
+      }
+    },
+    {
+      "include": ["database/**/*.ts", "backend/**/*.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useNodejsImportProtocol": "error"
           }
         }
       }

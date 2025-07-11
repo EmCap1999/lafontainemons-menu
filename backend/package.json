@@ -1,26 +1,30 @@
 {
-  "name": "backend",
+  "name": "lafontaine-backend",
   "version": "1.0.0",
-  "main": "server.js",
+  "description": "Backend API for La Fontaine Mons Restaurant with Hono",
+  "type": "module",
+  "main": "src/api/server.node.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "NODE_ENV=development node server.js",
-    "start:prod": "NODE_ENV=production node server.js",
-    "start": "node server.js"
+    "dev": "tsx watch src/api/server.node.ts",
+    "build": "tsc",
+    "start": "node dist/api/server.node.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["restaurant", "menu", "api", "hono", "typescript"],
   "author": {
     "name": "Manu Caputo",
-    "email": "caputoemmanuel1999@gmail.com",
-    "url": "https://github.com/EmCap1999"
+    "email": "caputoemmanuel1999@gmail.com"
   },
   "license": "ISC",
-  "description": "Backend API for La Fontaine Mons Restaurant.",
-  "type": "module",
   "dependencies": {
-    "cors": "^2.8.5",
+    "hono": "^4.6.10",
+    "@hono/node-server": "^1.13.7",
     "dotenv": "^16.4.7",
-    "dotenv-expand": "^12.0.2",
-    "express": "^5.1.0"
+    "dotenv-expand": "^12.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
   }
 }

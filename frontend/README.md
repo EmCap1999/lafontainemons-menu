@@ -99,6 +99,6 @@ See [Nginx Deployment Guide](../NGINX.README.md) for production setup.
 ## 🔗 Related Documentation
 
 - 📦 [Backend Setup](../backend/README.md)
-- 🗄️ [Database Setup](../db/README.md)
+- 🗄️ [Database Setup](../database/README.md)
 - 🐳 [Docker Deployment](../DOCKER.README.md)
 - 🌐 [Nginx Deployment](../NGINX.README.md)

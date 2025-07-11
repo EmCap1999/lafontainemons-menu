@@ -55,7 +55,7 @@ jobs:
 
       - name: ⚙️ Validate Database Config
         run: |
-          cd db
+          cd database
           node -e "
             import('./drizzle.config.js').then(config => {
               console.log('✅ Drizzle config valid');

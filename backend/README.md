@@ -33,7 +33,7 @@ The backend automatically loads environment variables from the root `.env` file.
 
 ### Database Setup
 
-Ensure the database layer is properly configured (see [Database README](../db/README.md)).
+Ensure the database layer is properly configured (see [Database README](../database/README.md)).
 
 ### Start the Server
 
@@ -145,7 +145,7 @@ docker exec lafontaine-backend-dev env | grep DATABASE
 
 ## 🔗 Related Documentation
 
-- 🗄️ **[Database Layer](../db/README.md)** - Database schemas, commands and seeding
+- 🗄️ **[Database Layer](../database/README.md)** - Database schemas, commands and seeding
 - 🐳 **[Docker Deployment](../DOCKER.README.md)** - Container setup guide
 - 🌐 **[Nginx Configuration](../NGINX.README.md)** - Production deployment
 - 📋 **[Project Overview](../README.md)** - Complete setup guide

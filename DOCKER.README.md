@@ -159,5 +159,5 @@ docker logs lafontaine-seeder | grep "Inserted"
 
 - 🌐 [Frontend Deployment](./NGINX.README.md) - Nginx & SSL setup
 - 📦 [Backend API](./backend/README.md) - API server development
-- 🗄️ [Database Layer](./db/README.md) - Schemas, commands & seeding
+- 🗄️ [Database Layer](database/README.md) - Schemas, commands & seeding
 - 📋 [Project Overview](./README.md) - Complete documentation

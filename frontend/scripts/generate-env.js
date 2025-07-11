@@ -14,9 +14,7 @@ const backendPort = process.env.BACKEND_PORT || '8080'
 const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:4200'
 const isProduction = process.env.NODE_ENV === 'production'
 
-const apiUrl = isProduction
-  ? `${frontendUrl}/api`
-  : `http://localhost:${backendPort}`
+const apiUrl = isProduction ? frontendUrl : `http://localhost:${backendPort}`
 
 const envContent = `export const environment = {
   production: ${isProduction},
@@ -33,8 +31,6 @@ if (!fs.existsSync(envDir)) {
 }
 
 fs.writeFileSync(envPath, envContent)
-console.log(
-  ` Frontend Environment file generated for ${process.env.NODE_ENV || 'development'}!`
-)
+console.log(` Frontend Environment file generated for ${process.env.NODE_ENV || 'development'}!`)
 console.log(`API URL: ${apiUrl}`)
 console.log(`Frontend URL: ${frontendUrl}`)

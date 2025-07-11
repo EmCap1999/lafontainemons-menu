@@ -1,0 +1,39 @@
+{
+  "name": "lafontaine-db",
+  "version": "1.0.0",
+  "description": "Database layer for La Fontaine Mons restaurant",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/server.ts",
+    "db:generate": "drizzle-kit generate --config=drizzle.config.ts",
+    "db:migrate": "drizzle-kit push --config=drizzle.config.ts",
+    "db:studio": "drizzle-kit studio --config=drizzle.config.ts",
+    "db:seed": "tsx seeds/seed.ts",
+    "db:reset": "npm run db:migrate && npm run db:seed"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Manu Caputo",
+    "email": "caputoemmanuel1999@gmail.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "dotenv-expand": "^12.0.2",
+    "drizzle-orm": "^0.42.0",
+    "drizzle-zod": "^0.5.1",
+    "pg": "^8.15.1",
+    "pg-pool": "^3.8.0",
+    "zod": "^3.25.67",
+    "hono": "^4.0.0",
+    "tsx": "^4.0.0",
+    "@hono/zod-validator": "^0.3.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.1",
+    "@types/node": "^20.0.0",
+    "@types/pg": "^8.15.0",
+    "typescript": "^5.0.0"
+  }
+}
