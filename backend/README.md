@@ -87,13 +87,13 @@ The backend runs in a containerized environment:
 
 ```bash
 # Start backend with Docker
-docker compose -f docker-compose.dev.yml up -d backend
+docker compose -f docker-compose.yml up -d backend
 
 # View logs
 docker logs -f lafontaine-backend-dev
 
 # Restart backend
-docker compose -f docker-compose.dev.yml restart backend
+docker compose -f docker-compose.yml restart backend
 ```
 
 ---

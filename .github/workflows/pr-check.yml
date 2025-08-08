@@ -53,15 +53,8 @@ jobs:
           sleep 5
           kill $BACKEND_PID || echo "✅ Backend compiles and starts correctly"
 
-      - name: ⚙️ Validate Database Config
-        run: |
-          cd db
-          node -e "
-            import('./drizzle.config.js').then(config => {
-              console.log('✅ Drizzle config valid');
-            }).catch(err => {
-              console.error('❌ Drizzle config error:', err.message);
-              process.exit(1);
-            });
-          "
-          cd ..
+      - name: 🗄️ Build Database Package
+        run: npm run build --workspace=database
+
+      - name: 🔍 Type Check Database
+        run: npm run typecheck --workspace=database

@@ -6,6 +6,7 @@ frontend/.vscode
 frontend/.angular
 **/environments
 frontend/dist
+database/dist
 **/.DS_Store
 gh_*.tar.gz
 *.tar.gz
