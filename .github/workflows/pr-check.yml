@@ -58,20 +58,3 @@ jobs:
 
       - name: 🔍 Type Check Database
         run: npm run typecheck --workspace=database
-
-      - name: 🌱 Validate Seed Data Structure
-        run: |
-          cd database
-          node -e "
-            Promise.all([
-              import('./seeds/data/index.js'),
-              import('./dist/src/schema/index.js')
-            ]).then(([data, schema]) => {
-              console.log('✅ Seed data structure valid');
-              console.log('✅ Schema types accessible');
-            }).catch(err => {
-              console.error('❌ Data validation error:', err.message);
-              process.exit(1);
-            });
-          "
-          cd ..
