@@ -1,7 +1,7 @@
-import { section } from '@lafontaine/database/src/schema/section'
-import { subsection } from '@lafontaine/database/src/schema/subsection'
 import * as drizzle from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
+import { section } from './section'
+import { subsection } from './subsection'
 
 export const item = drizzle.pgTable('item', {
   itemId: drizzle.serial('item_id').primaryKey(),
@@ -20,7 +20,7 @@ export const item = drizzle.pgTable('item', {
     }),
   name: drizzle.text('name').notNull(),
   price: drizzle.numeric('price', { precision: 10, scale: 2 }).notNull(),
-  capacity: drizzle.integer('capacity'),
+  capacity: drizzle.numeric('capacity', { precision: 10, scale: 1 }),
   unit: drizzle.text('unit'),
   origin: drizzle.text('origin'),
   description: drizzle.text('description'),

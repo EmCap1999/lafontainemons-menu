@@ -1,0 +1,1 @@
+ALTER TABLE "item" ALTER COLUMN "capacity" SET DATA TYPE real;

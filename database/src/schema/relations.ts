@@ -1,7 +1,7 @@
-import { item } from '@lafontaine/database/src/schema/item'
-import { section } from '@lafontaine/database/src/schema/section'
-import { subsection } from '@lafontaine/database/src/schema/subsection'
 import { relations } from 'drizzle-orm'
+import { item } from './item'
+import { section } from './section'
+import { subsection } from './subsection'
 
 export const sectionRelations = relations(section, ({ many }) => ({
   subsections: many(subsection),

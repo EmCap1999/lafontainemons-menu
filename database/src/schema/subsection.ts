@@ -1,6 +1,6 @@
-import { section } from '@lafontaine/database/src/schema/section'
 import * as drizzle from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
+import { section } from './section'
 
 export const subsection = drizzle.pgTable('subsection', {
   subsectionId: drizzle.serial('subsection_id').primaryKey(),

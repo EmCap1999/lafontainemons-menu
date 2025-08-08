@@ -1,3 +1,3 @@
-export * as sectionCommand from './section'
-export * as subsectionCommand from './subsection'
-export * as itemCommand from './item'
+export * as sectionCommand from './section.js'
+export * as subsectionCommand from './subsection.js'
+export * as itemCommand from './item.js'

@@ -12,23 +12,23 @@ Docker Compose setup for backend services (API + Database layer).
 ## 🏗️ Container Architecture
 
 ```
-PostgreSQL Database ← Database Migration ← JavaScript Seeder
+PostgreSQL Database ← Database Migration ← TypeScript Seeder
          ↑
-Backend API (Node.js)
+Backend API (TypeScript/Node.js)
 ```
 
 **4 containers:**
 - `postgres` - PostgreSQL database (port 5432)
 - `drizzle-migration` - Database schema setup from `/database`
 - `seeder` - TypeScript seeding with 95 menu items from `/database`
-- `backend` - Node.js API server
+- `backend` - TypeScript/Node.js API server (compiled from `/backend/src`)
 
 ---
 
 ## 🚀 Quick Start
 
 ```bash
-# Start all backend services
+# Start all back services
 docker compose -f docker-compose.yml up -d
 
 # Check status
@@ -144,9 +144,10 @@ docker logs lafontaine-seeder | grep "Inserted"
 ## 🔗 Integration
 
 **Development:**
-- Frontend calls `http://localhost:8080` directly
-- Backend exposes port 8080 to host
-- Database layer in `/database` provides CRUD operations
+- Frontend calls `http://localhost:${BACKEND_PORT}` directly (default 8080)
+- Backend TypeScript compiled to `/backend/dist` then served
+- Database layer in `/database` provides type-safe CRUD operations
+- Workspace setup enables shared types between database/backend
 
 **Production:**
 - Frontend calls via Nginx proxy `/api/*`
@@ -158,6 +159,6 @@ docker logs lafontaine-seeder | grep "Inserted"
 ## 📚 Related Documentation
 
 - 🌐 [Frontend Deployment](./NGINX.README.md) - Nginx & SSL setup
-- 📦 [Backend API](./backend/README.md) - API server development
+- 📦 [Backend API](backend/README.md) - TypeScript API server development
 - 🗄️ [Database Layer](./database/README.md) - Schemas, commands & seeding
 - 📋 [Project Overview](./README.md) - Complete documentation

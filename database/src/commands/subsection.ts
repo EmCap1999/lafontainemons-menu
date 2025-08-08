@@ -1,8 +1,6 @@
-import type { DrizzleDatabase } from '@lafontaine/database/db'
-import * as schema from '@lafontaine/database/src/schema'
 import { asc, eq, getTableColumns } from 'drizzle-orm'
-
-export * as subsectionCommand from './subsection'
+import type { DrizzleDatabase } from '../../db.js'
+import * as schema from '../schema'
 
 export async function selectAll(db: DrizzleDatabase) {
   return db
