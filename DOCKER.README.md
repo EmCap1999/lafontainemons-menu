@@ -19,8 +19,8 @@ Backend API (Node.js)
 
 **4 containers:**
 - `postgres` - PostgreSQL database (port 5432)
-- `drizzle-migration` - Database schema setup from `/db`
-- `seeder` - JavaScript seeding with 95 menu items from `/db`
+- `drizzle-migration` - Database schema setup from `/database`
+- `seeder` - TypeScript seeding with 95 menu items from `/database`
 - `backend` - Node.js API server
 
 ---
@@ -29,13 +29,13 @@ Backend API (Node.js)
 
 ```bash
 # Start all backend services
-docker compose -f docker-compose.dev.yml up -d
+docker compose -f docker-compose.yml up -d
 
 # Check status
 docker ps
 
 # View logs
-docker compose -f docker-compose.dev.yml logs -f
+docker compose -f docker-compose.yml logs -f
 ```
 
 ---
@@ -45,11 +45,11 @@ docker compose -f docker-compose.dev.yml logs -f
 ### Service Control
 ```bash
 # Start/stop all services
-docker compose -f docker-compose.dev.yml up -d
-docker compose -f docker-compose.dev.yml down
+docker compose -f docker-compose.yml up -d
+docker compose -f docker-compose.yml down
 
 # Restart specific service
-docker compose -f docker-compose.dev.yml restart backend
+docker compose -f docker-compose.yml restart backend
 
 # View logs
 docker logs -f lafontaine-backend-dev
@@ -76,24 +76,24 @@ docker exec -i lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB < 
 ### Re-run Database Setup
 ```bash
 # Re-run migrations only
-docker compose -f docker-compose.dev.yml up drizzle-migration
+docker compose -f docker-compose.yml up drizzle-migration
 
 # Re-run seeding only (95 items)
-docker compose -f docker-compose.dev.yml up seeder
+docker compose -f docker-compose.yml up seeder
 
 # Complete database reset
-docker compose -f docker-compose.dev.yml up drizzle-migration seeder
+docker compose -f docker-compose.yml up drizzle-migration seeder
 ```
 
 ---
 
 ## 🗄️ Database Layer Integration
 
-The containers now work with the refactored `/db` structure:
+The containers now work with the refactored `/database` TypeScript structure:
 
-- **Migration**: Uses `/db/drizzle.config.js` and `/db/schema/`
-- **Seeding**: Executes `/db/seeds/seed.js` with JavaScript data
-- **Backend**: Imports CRUD commands from `/db/commands/`
+- **Migration**: Uses `/database/drizzle.config.ts` and `/database/src/schema/`
+- **Seeding**: Executes `/database/seeds/seed.ts` with TypeScript data modules
+- **Backend**: Imports CRUD commands from `/database/src/commands/`
 
 ### Database Verification
 ```bash
@@ -115,8 +115,8 @@ ORDER BY s.display_order;"
 | **Backend won't start** | Check logs: `docker logs lafontaine-backend-dev` |
 | **Database connection error** | Verify `DATABASE_URL` in .env |
 | **Port already in use** | Stop conflicting services or change ports |
-| **Migration fails** | Check `/db` structure and permissions |
-| **Seeder fails** | Verify JavaScript data files in `/db/seeds/data/` |
+| **Migration fails** | Check `/database` structure and permissions |
+| **Seeder fails** | Verify TypeScript data files in `/database/seeds/data/` |
 | **Wrong item count** | Should show 95 items after seeding |
 | **Out of disk space** | Clean Docker: `docker system prune -f` |
 
@@ -146,7 +146,7 @@ docker logs lafontaine-seeder | grep "Inserted"
 **Development:**
 - Frontend calls `http://localhost:8080` directly
 - Backend exposes port 8080 to host
-- Database layer in `/db` provides CRUD operations
+- Database layer in `/database` provides CRUD operations
 
 **Production:**
 - Frontend calls via Nginx proxy `/api/*`
@@ -159,5 +159,5 @@ docker logs lafontaine-seeder | grep "Inserted"
 
 - 🌐 [Frontend Deployment](./NGINX.README.md) - Nginx & SSL setup
 - 📦 [Backend API](./backend/README.md) - API server development
-- 🗄️ [Database Layer](./db/README.md) - Schemas, commands & seeding
+- 🗄️ [Database Layer](./database/README.md) - Schemas, commands & seeding
 - 📋 [Project Overview](./README.md) - Complete documentation

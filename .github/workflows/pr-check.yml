@@ -53,14 +53,37 @@ jobs:
           sleep 5
           kill $BACKEND_PID || echo "✅ Backend compiles and starts correctly"
 
+      - name: 🗄️ Build Database Package
+        run: npm run build --workspace=database
+
+      - name: 🔍 Type Check Database
+        run: npm run typecheck --workspace=database
+
       - name: ⚙️ Validate Database Config
         run: |
-          cd db
+          cd database
           node -e "
-            import('./drizzle.config.js').then(config => {
+            import('./drizzle.config.ts').then(config => {
               console.log('✅ Drizzle config valid');
             }).catch(err => {
               console.error('❌ Drizzle config error:', err.message);
+              process.exit(1);
+            });
+          "
+          cd ..
+
+      - name: 🌱 Validate Seed Data Structure
+        run: |
+          cd database
+          node -e "
+            Promise.all([
+              import('./seeds/data/index.js'),
+              import('./dist/src/schema/index.js')
+            ]).then(([data, schema]) => {
+              console.log('✅ Seed data structure valid');
+              console.log('✅ Schema types accessible');
+            }).catch(err => {
+              console.error('❌ Data validation error:', err.message);
               process.exit(1);
             });
           "

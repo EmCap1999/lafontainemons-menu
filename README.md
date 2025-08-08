@@ -20,10 +20,10 @@ A **modern, responsive menu website** for La Fontaine Mons restaurant with dynam
 ## 📁 Project Structure
 
 ```
-├── 📊 db/                     # PostgreSQL database
+├── 🗄️ database/               # TypeScript database layer
 ├── ⚙️  backend/                # Node.js API 
 ├── 💻 frontend/               # Angular application
-├── 🐳 docker-compose.dev.yml  # Development containers
+├── 🐳 docker-compose.yml      # Production containers
 ├── 🌐 NGINX.README.md         # Production deployment
 ├── 🐳 DOCKER.README.md        # Container guide
 └── 🔧 .github/                # CI/CD & automation
@@ -67,7 +67,7 @@ ask the author if needed.
 npm install
 
 # 4. Start backend services
-docker compose -f docker-compose.dev.yml up -d
+docker compose -f docker-compose.yml up -d
 
 # 5. Start frontend
 cd frontend && npm start
@@ -95,7 +95,7 @@ Internet → Nginx → Angular Frontend
 **Component Setup:**
 - 📦 [Backend](./backend/README.md) - API development
 - 💻 [Frontend](./frontend/README.md) - Angular development
-- 🗄️ [Database](./db/README.md) - PostgreSQL setup
+- 🗄️ [Database](./database/README.md) - TypeScript database layer
 
 **Deployment:**
 - 🐳 [Docker Deployment](./DOCKER.README.md) - Backend & Database
@@ -114,14 +114,14 @@ npm run update            # Update all dependencies safely
 
 # Backend
 cd backend && npm start
-npm run db:studio         # Database GUI
+npm run db:studio --workspace=database  # Database GUI
 
 # Frontend  
 cd frontend && npm start
 npm run build:prod
 
 # Docker
-docker compose -f docker-compose.dev.yml up -d
+docker compose -f docker-compose.yml up -d
 docker logs -f lafontaine-backend-dev
 ```
 

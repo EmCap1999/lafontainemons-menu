@@ -10,7 +10,7 @@
     "update:audit": "npm audit --audit-level=moderate --workspaces",
     "update:force": "npm run update:install && npm run update:audit -- --fix"
   },
-  "workspaces": ["backend", "frontend", "db"],
+  "workspaces": ["backend", "frontend", "database"],
 
   "lint-staged": {
     "*.{js,ts}": ["npx biome check --write --unsafe"],
