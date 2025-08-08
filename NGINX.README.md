@@ -245,7 +245,7 @@ ls -la /etc/nginx/sites-enabled/
 sudo ss -tlnp | grep :80
 sudo ss -tlnp | grep :443
 
-# Test backend connectivity
+# Test back connectivity
 curl http://localhost:3001/sections
 ```
 

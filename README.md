@@ -66,7 +66,7 @@ ask the author if needed.
 # 3. Install dependencies (monorepo setup)
 npm install
 
-# 4. Start backend services
+# 4. Start back services
 docker compose -f docker-compose.yml up -d
 
 # 5. Start frontend
@@ -93,7 +93,7 @@ Internet → Nginx → Angular Frontend
 ## 📚 Documentation
 
 **Component Setup:**
-- 📦 [Backend](./backend/README.md) - API development
+- 📦 [Backend](back/README.md) - API development
 - 💻 [Frontend](./frontend/README.md) - Angular development
 - 🗄️ [Database](./database/README.md) - TypeScript database layer
 
@@ -113,7 +113,7 @@ npm run lint:fix          # Auto-fix linting issues
 npm run update            # Update all dependencies safely
 
 # Backend
-cd backend && npm start
+cd back && npm start
 npm run db:studio --workspace=database  # Database GUI
 
 # Frontend  
@@ -122,7 +122,7 @@ npm run build:prod
 
 # Docker
 docker compose -f docker-compose.yml up -d
-docker logs -f lafontaine-backend-dev
+docker logs -f lafontaine-back-dev
 ```
 
 ### Dependency Management

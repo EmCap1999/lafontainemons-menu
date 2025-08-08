@@ -1,6 +1,5 @@
-import type { PublicSection, PublicItem } from './schemas.js'
+import type { PublicItem, PublicSection } from './schemas.js'
 
-// Types de réponse API standardisés
 export interface ApiResponse<T> {
   status: 'success' | 'error'
   results?: number
@@ -17,6 +16,6 @@ export interface ApiError {
   }
 }
 
-// Types de réponse spécifiques
-export interface SectionsResponse extends ApiResponse<{ sections: PublicSection[] }> {}
+export interface SectionsResponse
+  extends ApiResponse<{ sections: PublicSection[] }> {}
 export interface ItemsResponse extends ApiResponse<{ items: PublicItem[] }> {}

@@ -1,9 +1,5 @@
-import {
-  SectionSelectZod,
-  ItemSelectZod,
-} from '@lafontaine/database/src/schema'
+import { ItemSelectZod, SectionSelectZod } from '@lafontaine/database'
 
-// Schémas publics avec uniquement les champs exposés via l'API
 export const PublicSectionSchema = SectionSelectZod.pick({
   sectionId: true,
   name: true,
@@ -21,6 +17,5 @@ export const PublicItemSchema = ItemSelectZod.pick({
   displayOrder: true,
 })
 
-// Types inférés pour TypeScript
 export type PublicSection = typeof PublicSectionSchema._type
 export type PublicItem = typeof PublicItemSchema._type

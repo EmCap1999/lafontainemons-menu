@@ -7,6 +7,7 @@ frontend/.angular
 **/environments
 frontend/dist
 database/dist
+backend/dist
 **/.DS_Store
 gh_*.tar.gz
 *.tar.gz

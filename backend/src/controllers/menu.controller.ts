@@ -1,93 +1,44 @@
+import { db, itemCommand, sectionCommand } from '@lafontaine/database'
 import type { Request, Response } from 'express'
-import {
-  itemCommands,
-  sectionCommands,
-  subsectionCommands,
-} from '../db/commands.js'
 import { AppError, asyncHandler } from '../errors/app-error.js'
+import { PublicItemSchema, PublicSectionSchema } from '../types'
 
-export const getAllSections = asyncHandler(async (_req: Request, res: Response) => {
-  const sections = await sectionCommands.getAllSections()
-  res.status(200).json({
-    status: 'success',
-    results: sections.length,
-    data: { sections },
-  })
-})
+export const getAllSections = asyncHandler(
+  async (_req: Request, res: Response) => {
+    const sections = await sectionCommand.selectAll(db)
+    const publicSections = sections.map((section) =>
+      PublicSectionSchema.parse(section)
+    )
 
-export const getSectionById = asyncHandler(async (req: Request, res: Response) => {
-  const id = Number.parseInt(req.params.id)
-  const section = await sectionCommands.getSectionById(id)
-
-  if (!section) {
-    throw new AppError(`Section ID ${id} does not exist.`, 404)
+    res.status(200).json({
+      status: 'success',
+      results: publicSections.length,
+      data: { sections: publicSections },
+    })
   }
+)
 
-  res.status(200).json({
-    status: 'success',
-    data: { section },
-  })
-})
+export const getItemsBySection = asyncHandler(
+  async (req: Request, res: Response) => {
+    const sectionId = Number.parseInt(req.params.sectionId)
 
-export const getAllSubsections = asyncHandler(async (_req: Request, res: Response) => {
-  const subsections = await subsectionCommands.getAllSubsections()
-  res.status(200).json({
-    status: 'success',
-    results: subsections.length,
-    data: { subsections },
-  })
-})
+    if (Number.isNaN(sectionId)) {
+      throw new AppError('Invalid section ID', 400)
+    }
 
-export const getSubsectionsBySection = asyncHandler(async (req: Request, res: Response) => {
-  const sectionId = Number.parseInt(req.params.sectionId)
-  const subsections = await subsectionCommands.getSubsectionsBySection(sectionId)
+    const section = await sectionCommand.selectById(db, sectionId)
+    if (!section) {
+      throw new AppError(`Section ID ${sectionId} does not exist`, 404)
+    }
 
-  if (subsections.length === 0) {
-    throw new AppError(`Sub-section with Section ID ${sectionId} does not exist.`, 404)
+    const items = await itemCommand.selectBySection(db, sectionId)
+
+    const publicItems = items.map((item) => PublicItemSchema.parse(item))
+
+    res.status(200).json({
+      status: 'success',
+      results: publicItems.length,
+      data: { items: publicItems },
+    })
   }
-
-  res.status(200).json({
-    status: 'success',
-    results: subsections.length,
-    data: { subsections },
-  })
-})
-
-export const getAllItems = asyncHandler(async (_req: Request, res: Response) => {
-  const items = await itemCommands.getAllItems()
-  res.status(200).json({
-    status: 'success',
-    results: items.length,
-    data: { items },
-  })
-})
-
-export const getItemsBySection = asyncHandler(async (req: Request, res: Response) => {
-  const sectionId = Number.parseInt(req.params.sectionId)
-  const items = await itemCommands.getItemsBySection(sectionId)
-
-  if (items.length === 0) {
-    throw new AppError(`No items found with section ID ${sectionId}`, 404)
-  }
-
-  res.status(200).json({
-    status: 'success',
-    results: items.length,
-    data: { items },
-  })
-})
-
-export const getItemsBySubsection = asyncHandler(async (req: Request, res: Response) => {
-  const subsectionId = Number.parseInt(req.params.subsectionId)
-  const items = await itemCommands.getItemsBySubsection(subsectionId)
-
-  if (items.length === 0) {
-    throw new AppError(`No items found with sub-section ID ${subsectionId}`, 404)
-  }
-
-  res.status(200).json({
-    status: 'success',
-    results: items.length,
-    data: { items },
-  })
-})
+)

@@ -267,6 +267,6 @@ docker logs lafontaine-postgres-dev
 
 ## 🔗 Related Documentation
 
-- 📦 **[Backend API](../backend/README.md)** - API using this database layer
+- 📦 **[Backend API](../back/README.md)** - API using this database layer
 - 🐳 **[Docker Deployment](../DOCKER.README.md)** - Container setup
 - 📋 **[Project Overview](../README.md)** - Complete setup guide

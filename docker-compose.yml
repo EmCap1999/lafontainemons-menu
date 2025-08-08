@@ -69,15 +69,15 @@ services:
       - BACKEND_PORT=${BACKEND_PORT}
       - HUSKY=0
     ports:
-      - "${BACKEND_PORT}:3001"
-    command: sh -c "cd backend && npm install --ignore-scripts && npm start"
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    command: sh -c "npm ci --ignore-scripts && npm run build --workspace=database && npm run build --workspace=backend && npm start --workspace=backend"
     depends_on:
-      postgres:
-        condition: service_healthy
+      drizzle-migration:
+        condition: service_completed_successfully
     networks:
       - lafontaine-network
     healthcheck:
-      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3001" ]
+      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:${BACKEND_PORT}" ]
       interval: 20s
       timeout: 10s
       retries: 3

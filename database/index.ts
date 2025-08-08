@@ -1,3 +1,3 @@
-export * from './db'
+export * from './db.js'
 export * from './src/schema'
-export * from './src/commands'
+export * from './src/commands/index.js'
