@@ -63,7 +63,7 @@ jobs:
         run: |
           cd database
           node -e "
-            import('./drizzle.config.ts').then(config => {
+            import('./dist/drizzle.config.js').then(config => {
               console.log('✅ Drizzle config valid');
             }).catch(err => {
               console.error('❌ Drizzle config error:', err.message);
