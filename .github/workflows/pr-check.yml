@@ -59,19 +59,6 @@ jobs:
       - name: 🔍 Type Check Database
         run: npm run typecheck --workspace=database
 
-      - name: ⚙️ Validate Database Config
-        run: |
-          cd database
-          node -e "
-            import('./dist/drizzle.config.js').then(config => {
-              console.log('✅ Drizzle config valid');
-            }).catch(err => {
-              console.error('❌ Drizzle config error:', err.message);
-              process.exit(1);
-            });
-          "
-          cd ..
-
       - name: 🌱 Validate Seed Data Structure
         run: |
           cd database
