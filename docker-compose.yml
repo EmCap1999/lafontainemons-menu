@@ -52,8 +52,8 @@ services:
       - HUSKY=0
     command: sh -c "npm install -g tsx && npm install drizzle-orm postgres && npx tsx database/seeds/seed.ts"
     depends_on:
-      drizzle-migration:
-        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
     networks:
       - lafontaine-network
 
@@ -74,8 +74,8 @@ services:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
     command: sh -c "npm install -g tsx && npm ci --ignore-scripts && npx tsx backend/src/server.ts"
     depends_on:
-      drizzle-migration:
-        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
     networks:
       - lafontaine-network
     healthcheck:
