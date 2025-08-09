@@ -17,11 +17,12 @@ PostgreSQL Database ← Database Migration ← TypeScript Seeder
 Backend API (TypeScript/Node.js)
 ```
 
-**4 containers:**
+**3 containers:**
 - `postgres` - PostgreSQL database (port 5432)
-- `drizzle-migration` - Database schema setup from `/database`
-- `seeder` - TypeScript seeding with 95 menu items (uses `tsx` for direct TypeScript execution)
+- `seeder` - TypeScript seeding with 95 menu items (isolated container with direct dependencies)
 - `backend` - TypeScript/Node.js API server (uses `tsx` for direct TypeScript execution)
+
+**Note:** The `drizzle-migration` container is temporarily disabled due to TypeScript compilation conflicts between drizzle packages. The backend runs migrations automatically on startup.
 
 ---
 
@@ -75,14 +76,14 @@ docker exec -i lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB < 
 
 ### Re-run Database Setup
 ```bash
-# Re-run migrations only
-docker compose -f docker-compose.yml up drizzle-migration
-
 # Re-run seeding only (95 items)
 docker compose -f docker-compose.yml up seeder
 
-# Complete database reset
-docker compose -f docker-compose.yml up drizzle-migration seeder
+# Start specific services
+docker compose -f docker-compose.yml up postgres backend seeder
+
+# Note: Manual migration can be run if needed:
+# docker compose -f docker-compose.yml up drizzle-migration
 ```
 
 ---
@@ -120,6 +121,15 @@ ORDER BY s.display_order;"
 - ✅ Backend healthcheck tests correct API endpoint
 - ✅ Eliminated TypeScript compilation errors in Docker containers
 - ✅ Consistent `tsx` usage across seeder and backend services
+- ✅ Bypassed drizzle-zod TypeScript compilation conflicts by using direct execution
+
+### Migration Strategy
+Due to TypeScript version conflicts between `drizzle-orm` and `drizzle-zod`, the migration container is temporarily disabled. The current approach:
+
+- **Database schemas** are embedded directly in the backend and seeder
+- **Migrations** can be run manually if schema changes are needed
+- **Seeder** works independently with its own isolated dependencies
+- **Backend** uses TypeScript files directly via `tsx` without compilation
 
 ---
 
