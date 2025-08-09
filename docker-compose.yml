@@ -70,7 +70,7 @@ services:
       - HUSKY=0
     ports:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
-    command: sh -c "npm install -g typescript && npm ci && npm run build --workspace=database && npm run build --workspace=backend && npm start --workspace=backend"
+    command: sh -c "npm install -g tsx && npm ci --ignore-scripts && npx tsx backend/src/server.ts"
     depends_on:
       drizzle-migration:
         condition: service_completed_successfully
