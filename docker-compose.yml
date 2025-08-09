@@ -31,7 +31,7 @@ services:
       - FRONTEND_URL=https://carte.lafontainemons.be
       - BACKEND_PORT=3001
       - HUSKY=0
-    command: sh -c "npm install --ignore-scripts && npm run build --workspace=database && npm run db:migrate --workspace=database"
+    command: sh -c "npm ci --ignore-scripts && npm run build --workspace=database && npm run db:migrate --workspace=database"
     depends_on:
       postgres:
         condition: service_healthy
@@ -72,7 +72,7 @@ services:
       - HUSKY=0
     ports:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
-    command: sh -c "npm install -g tsx && npm install --ignore-scripts && npx tsx backend/src/server.ts"
+    command: sh -c "npm install -g tsx && npm ci --ignore-scripts && npx tsx backend/src/server.ts"
     depends_on:
       drizzle-migration:
         condition: service_completed_successfully
