@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "@lafontaine/backend",
   "version": "1.0.0",
   "main": "dist/server.js",
   "scripts": {

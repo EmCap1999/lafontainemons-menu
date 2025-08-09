@@ -1,22 +1,22 @@
-import type { Request, Response, NextFunction } from 'express'
+import type { NextFunction, Request, Response } from 'express'
 
 export class AppError extends Error {
   public readonly statusCode: number
   public readonly isOperational: boolean
 
-  constructor(message: string, statusCode: number = 500) {
+  constructor(message: string, statusCode = 500) {
     super(message)
     this.statusCode = statusCode
     this.isOperational = true
     this.name = this.constructor.name
-    
+
     Error.captureStackTrace(this, this.constructor)
   }
 }
 
 export const errorHandler = (
   err: Error | AppError,
-  req: Request, 
+  req: Request,
   res: Response,
   _next: NextFunction
 ): void => {
@@ -27,7 +27,9 @@ export const errorHandler = (
     message = 'Internal Server Error'
   }
 
-  console.error(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl} - ${statusCode} - ${message}`)
+  console.error(
+    `[${new Date().toISOString()}] ${req.method} ${req.originalUrl} - ${statusCode} - ${message}`
+  )
 
   if (process.env.NODE_ENV === 'development') {
     console.error(err.stack)
@@ -39,12 +41,14 @@ export const errorHandler = (
     error: {
       message,
       statusCode,
-      ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
-    }
+      ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
+    },
   })
 }
 
-export const asyncHandler = (fn: (req: Request, res: Response, next: NextFunction) => Promise<void>) => {
+export const asyncHandler = (
+  fn: (req: Request, res: Response, next: NextFunction) => Promise<void>
+) => {
   return (req: Request, res: Response, next: NextFunction) => {
     Promise.resolve(fn(req, res, next)).catch(next)
   }
