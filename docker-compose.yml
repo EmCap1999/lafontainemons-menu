@@ -48,7 +48,7 @@ services:
       - NODE_ENV=development
       - DATABASE_URL=${DATABASE_URL}
       - HUSKY=0
-    command: sh -c "npm ci --ignore-scripts && npm run build --workspace=database && npm run db:seed --workspace=database"
+    command: sh -c "npm install -g tsx && npm ci --ignore-scripts && npx tsx database/seeds/seed.ts"
     depends_on:
       drizzle-migration:
         condition: service_completed_successfully
@@ -77,7 +77,7 @@ services:
     networks:
       - lafontaine-network
     healthcheck:
-      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:${BACKEND_PORT}" ]
+      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:${BACKEND_PORT}/api/sections" ]
       interval: 20s
       timeout: 10s
       retries: 3

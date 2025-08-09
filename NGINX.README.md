@@ -95,7 +95,7 @@ server {
 
     # API Proxy to Backend
     location /api/ {
-        proxy_pass http://localhost:3001/;
+        proxy_pass http://localhost:3001/api/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -290,8 +290,8 @@ ls -la /etc/nginx/sites-enabled/
 sudo ss -tlnp | grep :80
 sudo ss -tlnp | grep :443
 
-# Test backend connectivity
-curl http://localhost:3001/sections
+# Test backend connectivity  
+curl http://localhost:3001/api/sections
 ```
 
 ---

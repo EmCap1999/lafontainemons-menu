@@ -20,8 +20,8 @@ Backend API (TypeScript/Node.js)
 **4 containers:**
 - `postgres` - PostgreSQL database (port 5432)
 - `drizzle-migration` - Database schema setup from `/database`
-- `seeder` - TypeScript seeding with 95 menu items from `/database`
-- `backend` - TypeScript/Node.js API server (compiled from `/backend/src`)
+- `seeder` - TypeScript seeding with 95 menu items (uses `tsx` for direct TypeScript execution)
+- `backend` - TypeScript/Node.js API server (uses `tsx` for direct TypeScript execution)
 
 ---
 
@@ -108,6 +108,21 @@ ORDER BY s.display_order;"
 
 ---
 
+## ✅ Recent Improvements
+
+### TypeScript Execution
+- **Seeder**: Now uses `tsx` directly instead of `npm run build` to avoid TypeScript compilation issues
+- **Backend**: Uses `tsx` for direct TypeScript execution, eliminating build step requirements
+- **Healthcheck**: Updated to test `/api/sections` instead of non-existent root route
+
+### Fixed Issues
+- ✅ Seeder Docker container now works properly with TypeScript files
+- ✅ Backend healthcheck tests correct API endpoint
+- ✅ Eliminated TypeScript compilation errors in Docker containers
+- ✅ Consistent `tsx` usage across seeder and backend services
+
+---
+
 ## 🐛 Troubleshooting
 
 | Issue | Solution |
@@ -125,9 +140,9 @@ ORDER BY s.display_order;"
 # Check container status
 docker ps
 
-# Test API endpoints
-curl http://localhost:port/sections
-curl http://localhost:port/items
+# Test API endpoints (replace ${BACKEND_PORT} with actual port, e.g. 3001)
+curl http://localhost:${BACKEND_PORT}/api/sections
+curl http://localhost:${BACKEND_PORT}/api/items
 
 # Test database connection
 docker exec lafontaine-postgres-dev pg_isready -U $POSTGRES_USER
@@ -144,8 +159,8 @@ docker logs lafontaine-seeder | grep "Inserted"
 ## 🔗 Integration
 
 **Development:**
-- Frontend calls `http://localhost:${BACKEND_PORT}` directly (default 8080)
-- Backend TypeScript compiled to `/backend/dist` then served
+- Frontend calls `http://localhost:${BACKEND_PORT}` directly (default 3001)
+- Backend TypeScript executed directly with `tsx` (no compilation needed)
 - Database layer in `/database` provides type-safe CRUD operations
 - Workspace setup enables shared types between database/backend
 
