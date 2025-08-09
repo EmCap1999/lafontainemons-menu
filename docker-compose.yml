@@ -49,7 +49,7 @@ services:
       - NODE_ENV=development
       - DATABASE_URL=${DATABASE_URL}
       - HUSKY=0
-    command: sh -c "rm -rf node_modules && npm cache clean --force && npm install -g tsx && npm ci --ignore-scripts && npx tsx database/seeds/seed.ts"
+    command: sh -c "npm cache clean --force && npm install -g tsx && npm ci --ignore-scripts --no-optional && npx tsx database/seeds/seed.ts"
     depends_on:
       drizzle-migration:
         condition: service_completed_successfully
