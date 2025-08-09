@@ -37,10 +37,12 @@ A **modern, responsive menu website** for La Fontaine Mons restaurant with dynam
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Node.js + Express + PostgreSQL + Drizzle ORM
+- **Backend**: Node.js + TypeScript + Express + PostgreSQL + Drizzle ORM
 - **Frontend**: Angular 19 + TypeScript + SCSS + SSR
+- **Database**: Drizzle ORM + PostgreSQL + TypeScript schemas
 - **Infrastructure**: Docker + Nginx + Let's Encrypt + OVH VPS
 - **DevOps**: Biome (linting) + Husky (git hooks) + Dependabot (auto-updates)
+- **Type Safety**: Full TypeScript integration across all layers
 
 ---
 
@@ -93,8 +95,8 @@ Internet → Nginx → Angular Frontend
 ## 📚 Documentation
 
 **Component Setup:**
-- 📦 [Backend](back/README.md) - API development
-- 💻 [Frontend](./frontend/README.md) - Angular development
+- 📦 [Backend](backend/README.md) - API development
+- 💻 [Frontend](frontend/README.md) - Angular development
 - 🗄️ [Database](./database/README.md) - TypeScript database layer
 
 **Deployment:**
@@ -113,7 +115,7 @@ npm run lint:fix          # Auto-fix linting issues
 npm run update            # Update all dependencies safely
 
 # Backend
-cd back && npm start
+cd backend && npm start
 npm run db:studio --workspace=database  # Database GUI
 
 # Frontend  
@@ -179,14 +181,14 @@ npm run update:force
 
 ## 📈 Project Status
 
-- ✅ Backend API operational
-- ✅ Frontend deployed with SSR
-- ✅ Database with seed data
-- ✅ HTTPS production site live
-- ✅ Monitoring configured
-- ✅ Automated dependency management
-- ✅ Quality gates & auto-healing CI/CD pipeline
-- ✅ Streamlined development workflow
+- ✅ **Backend API** - TypeScript migration completed
+- ✅ **Frontend** - Angular with full TypeScript integration 
+- ✅ **Database** - TypeScript schemas with Drizzle ORM
+- ✅ **Type Safety** - End-to-end TypeScript across all layers
+- ✅ **Production Site** - HTTPS live deployment
+- ✅ **CI/CD Pipeline** - Automated quality gates and linting
+- ✅ **Dependency Management** - Automated updates with Dependabot
+- ✅ **Development Experience** - Hot reload, type checking, modern tooling
 
 ---
 

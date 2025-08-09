@@ -2,10 +2,10 @@
 .husky/_
 **/node_modules/
 .env
-frontend/.vscode
-frontend/.angular
+front/.vscode
+front/.angular
 **/environments
-frontend/dist
+front/dist
 database/dist
 backend/dist
 **/.DS_Store

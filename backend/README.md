@@ -168,8 +168,7 @@ backend/
 │   ├── routes/          # API route definitions
 │   │   └── menu.routes.ts
 │   ├── types/           # TypeScript type definitions
-│   │   ├── api.ts       # API response types
-│   │   ├── schemas.ts   # Public data schemas
+│   │   ├── api.ts       # API types, responses & mappers
 │   │   └── index.ts     # Type exports
 │   └── server.ts        # Main application entry point
 ├── dist/                # Compiled JavaScript output
@@ -189,10 +188,10 @@ import {
   sectionCommand 
 } from '@lafontaine/database'
 
-// Import Zod schemas for validation
-import { 
-  SectionSelectZod, 
-  ItemSelectZod 
+// Import database types directly
+import type { 
+  SectionSelect, 
+  ItemSelect 
 } from '@lafontaine/database'
 ```
 
@@ -218,14 +217,14 @@ export const getAllSections = asyncHandler(
 )
 ```
 
-### Schema Validation
+### Type Mapping
 ```typescript
-import { PublicSectionSchema } from '../types'
+import { toPublicSection, toPublicItem } from '../types'
+import type { SectionSelect, ItemSelect } from '@lafontaine/database'
 
-// Parse and validate data
-const publicSections = sections.map(section => 
-  PublicSectionSchema.parse(section)  // Runtime type checking
-)
+// Transform database models to public API format
+const publicSections = sections.map(toPublicSection)
+const publicItems = items.map(toPublicItem)
 ```
 
 ### Error Handling

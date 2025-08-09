@@ -1,14 +1,12 @@
 import { db, itemCommand, sectionCommand } from '@lafontaine/database'
 import type { Request, Response } from 'express'
 import { AppError, asyncHandler } from '../errors/app-error.js'
-import { PublicItemSchema, PublicSectionSchema } from '../types'
+import { toPublicItem, toPublicSection } from '../types'
 
 export const getAllSections = asyncHandler(
   async (_req: Request, res: Response) => {
     const sections = await sectionCommand.selectAll(db)
-    const publicSections = sections.map((section) =>
-      PublicSectionSchema.parse(section)
-    )
+    const publicSections = sections.map(toPublicSection)
 
     res.status(200).json({
       status: 'success',
@@ -32,8 +30,7 @@ export const getItemsBySection = asyncHandler(
     }
 
     const items = await itemCommand.selectBySection(db, sectionId)
-
-    const publicItems = items.map((item) => PublicItemSchema.parse(item))
+    const publicItems = items.map(toPublicItem)
 
     res.status(200).json({
       status: 'success',

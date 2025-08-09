@@ -1,5 +1,11 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
+import type {
+  ItemsResponse,
+  PublicItem,
+  PublicSection,
+  SectionsResponse,
+} from '@lafontaine/backend/src/types'
 import { Observable, map } from 'rxjs'
 import { environment } from '../../environments/environment'
 
@@ -11,15 +17,15 @@ export class MenuService {
 
   constructor(private http: HttpClient) {}
 
-  getAllSections(): Observable<any[]> {
+  getAllSections(): Observable<PublicSection[]> {
     return this.http
-      .get<any>(`${this.apiUrl}/sections`)
-      .pipe(map((response) => response.data.sections))
+      .get<SectionsResponse>(`${this.apiUrl}/sections`)
+      .pipe(map((response) => response.data?.sections || []))
   }
 
-  getItemsBySection(sectionId: number): Observable<any[]> {
+  getItemsBySection(sectionId: number): Observable<PublicItem[]> {
     return this.http
-      .get<any>(`${this.apiUrl}/sections/${sectionId}/items`)
-      .pipe(map((response) => response.data.items))
+      .get<ItemsResponse>(`${this.apiUrl}/sections/${sectionId}/items`)
+      .pipe(map((response) => response.data?.items || []))
   }
 }

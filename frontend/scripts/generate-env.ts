@@ -1,7 +1,7 @@
-import fs from 'node:fs'
-import path from 'node:path'
+import * as fs from 'node:fs'
+import * as path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import dotenv from 'dotenv'
+import * as dotenv from 'dotenv'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -16,7 +16,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 
 const apiUrl = isProduction
   ? `${frontendUrl}/api`
-  : `http://localhost:${backendPort}`
+  : `http://localhost:${backendPort}/api`
 
 const envContent = `export const environment = {
   production: ${isProduction},

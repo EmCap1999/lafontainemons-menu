@@ -16,7 +16,13 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022"
+    "module": "ES2022",
+    "paths": {
+      "@lafontaine/backend": ["../backend"],
+      "@lafontaine/backend/*": ["../backend/*"],
+      "@lafontaine/database": ["../database"],
+      "@lafontaine/database/*": ["../database/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

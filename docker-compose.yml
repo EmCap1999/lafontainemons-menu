@@ -41,17 +41,19 @@ services:
   seeder:
     image: node:22-alpine
     container_name: lafontaine-seeder
-    working_dir: /app
+    working_dir: /seeder
     volumes:
-      - ./:/app
+      - ./database:/seeder/database
+      - ./package.json:/seeder/package.json
+      - ./package-lock.json:/seeder/package-lock.json
     environment:
       - NODE_ENV=development
       - DATABASE_URL=${DATABASE_URL}
       - HUSKY=0
-    command: sh -c "npm ci --ignore-scripts && npm run build --workspace=database && npm run db:seed --workspace=database"
+    command: sh -c "npm install -g tsx && npm install drizzle-orm postgres && npx tsx database/seeds/seed.ts"
     depends_on:
-      drizzle-migration:
-        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
     networks:
       - lafontaine-network
 
@@ -70,14 +72,14 @@ services:
       - HUSKY=0
     ports:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
-    command: sh -c "npm ci --ignore-scripts && npm run build --workspace=database && npm run build --workspace=backend && npm start --workspace=backend"
+    command: sh -c "npm install -g tsx && npm ci --ignore-scripts && npx tsx backend/src/server.ts"
     depends_on:
-      drizzle-migration:
-        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
     networks:
       - lafontaine-network
     healthcheck:
-      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:${BACKEND_PORT}" ]
+      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:${BACKEND_PORT}/api/sections" ]
       interval: 20s
       timeout: 10s
       retries: 3

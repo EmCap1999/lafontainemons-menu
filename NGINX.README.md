@@ -20,8 +20,11 @@ This guide covers the complete deployment process for the La Fontaine Mons front
 # Navigate to frontend directory
 cd frontend
 
-# Generate production environment and build
-NODE_ENV=production npm run build:prod
+# Generate environment file from root .env (TypeScript)
+NODE_ENV=production npm run generate-env
+
+# Build production Angular app with TypeScript
+npm run build:prod
 
 # Verify build output
 ls -la dist/frontend/browser/
@@ -92,7 +95,7 @@ server {
 
     # API Proxy to Backend
     location /api/ {
-        proxy_pass http://localhost:3001/;
+        proxy_pass http://localhost:3001/api/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -165,17 +168,28 @@ sudo certbot renew --dry-run
 
 ## 🔧 Environment Configuration
 
-The deployment uses environment-specific configurations:
+The deployment uses a **TypeScript environment generator** that creates configuration from the root `.env` file:
 
 ### Development Environment
-- API calls go directly to `localhost:${BACKEND_PORT}`
-- Hot reload enabled
-- Source maps included
+- **TypeScript generation**: `npm run generate-env` creates `src/environments/environment.ts`
+- **API calls**: Direct to `localhost:${BACKEND_PORT}`
+- **Features**: Hot reload, source maps, type checking
 
-### Production Environment
-- API calls proxied through Nginx (`/api/*` → `localhost:3001/*`)
-- Optimized bundles with tree-shaking
-- Minified assets with long-term caching
+### Production Environment  
+- **Environment**: `NODE_ENV=production npm run generate-env`
+- **API proxy**: Nginx routes `/api/*` → `localhost:3001/*`
+- **Optimizations**: TypeScript compilation, tree-shaking, minification
+- **Caching**: Long-term asset caching with immutable headers
+
+### Environment Variables Used
+```typescript
+// Generated from root .env by scripts/generate-env.ts
+export const environment = {
+  production: true,  // from NODE_ENV
+  apiUrl: '${FRONTEND_URL}/api',  // Nginx proxy in production
+  frontendUrl: '${FRONTEND_URL}'
+}
+```
 
 ---
 
@@ -213,10 +227,41 @@ curl -I http://carte.lafontainemons.be
 # Update frontend (automated script)
 #!/bin/bash
 cd /path/to/project/frontend
-NODE_ENV=production npm run build:prod
+
+# Generate production environment from .env
+NODE_ENV=production npm run generate-env
+
+# Build TypeScript Angular application  
+npm run build:prod
+
+# Deploy built assets
 cp -r dist/frontend/browser/* /var/www/carte.lafontainemons.be/
+
+# Reload Nginx
 sudo systemctl reload nginx
 echo "Frontend updated successfully!"
+```
+
+### TypeScript Build Process
+
+The frontend uses a complete TypeScript build pipeline:
+
+```bash
+# 1. Environment Generation (TypeScript)
+NODE_ENV=production npm run generate-env
+# → Creates src/environments/environment.ts from root .env
+
+# 2. Angular TypeScript Build
+npm run build:prod  
+# → Compiles TypeScript to optimized JavaScript
+# → Includes type checking, tree-shaking, minification
+
+# 3. Output Structure
+dist/frontend/browser/
+├── index.html              # Main SPA entry point
+├── main-[hash].js          # Compiled TypeScript bundle
+├── styles-[hash].css       # Compiled SCSS styles
+└── assets/                 # Static assets
 ```
 
 ---
@@ -245,8 +290,8 @@ ls -la /etc/nginx/sites-enabled/
 sudo ss -tlnp | grep :80
 sudo ss -tlnp | grep :443
 
-# Test back connectivity
-curl http://localhost:3001/sections
+# Test backend connectivity  
+curl http://localhost:3001/api/sections
 ```
 
 ---
