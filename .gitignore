@@ -1,20 +1,34 @@
+# IDE & Development Tools
 .idea
-.husky/_
-**/node_modules/
-.env
-front/.vscode
-front/.angular
-**/environments
-front/dist
-database/dist
-backend/dist
+.vscode
 **/.DS_Store
-gh_*.tar.gz
-*.tar.gz
-*.zip
-*.dmg
 .DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
+
+# Dependencies
+**/node_modules/
+
+# Environment & Configuration
+.env
+**/environments
+
+# Build & Compiled Output
+**/dist
+**/.angular
+
+# Frontend specific (legacy paths)
+front/.vscode
+front/.angular
+front/dist
+
+# Git Hooks
+.husky/_
+
+# Archives & Downloads
+*.tar.gz
+*.zip
+*.dmg
+gh_*.tar.gz

@@ -13,7 +13,6 @@ A **modern, responsive menu website** for La Fontaine Mons restaurant with dynam
 - ⚡ Fast loading with Angular SSR
 - 🔒 HTTPS secured with Let's Encrypt
 - 🌐 Production ready on OVH
-- 🤖 Automated dependency management with Dependabot
 
 ---
 
@@ -26,11 +25,6 @@ A **modern, responsive menu website** for La Fontaine Mons restaurant with dynam
 ├── 🐳 docker-compose.yml      # Production containers
 ├── 🌐 NGINX.README.md         # Production deployment
 ├── 🐳 DOCKER.README.md        # Container guide
-└── 🔧 .github/                # CI/CD & automation
-   ├── dependabot.yml          # Automated dependency updates
-   └── workflows/
-      ├── pr-check.yml         # Quality gates
-      └── dependabot.yml       # Auto-merge safe updates
 ```
 
 ---
@@ -41,7 +35,7 @@ A **modern, responsive menu website** for La Fontaine Mons restaurant with dynam
 - **Frontend**: Angular 19 + TypeScript + SCSS + SSR
 - **Database**: Drizzle ORM + PostgreSQL + TypeScript schemas
 - **Infrastructure**: Docker + Nginx + Let's Encrypt + OVH VPS
-- **DevOps**: Biome (linting) + Husky (git hooks) + Dependabot (auto-updates)
+- **DevOps**: Biome (linting) + Husky (git hooks)
 - **Type Safety**: Full TypeScript integration across all layers
 
 ---
@@ -68,10 +62,16 @@ ask the author if needed.
 # 3. Install dependencies (monorepo setup)
 npm install
 
-# 4. Start back services
-docker compose -f docker-compose.yml up -d
+# 4. Start services (PostgreSQL + Backend)
+docker compose up -d
 
-# 5. Start frontend
+# 5. Run database migrations manually
+npm run db:migrate --workspace=database
+
+# 6. (Optional) Seed database
+npx tsx database/seeds/seed.ts
+
+# 7. Start frontend
 cd frontend && npm start
 ```
 
@@ -123,8 +123,13 @@ cd frontend && npm start
 npm run build:prod
 
 # Docker
-docker compose -f docker-compose.yml up -d
-docker logs -f lafontaine-back-dev
+docker compose up -d
+docker logs -f lafontaine-backend-dev
+
+# Database operations
+npm run db:migrate --workspace=database  # Run migrations
+npm run db:push --workspace=database     # Push schema changes
+npx tsx database/seeds/seed.ts          # Seed database
 ```
 
 ### Dependency Management
@@ -141,26 +146,15 @@ npm run update:force
 
 ---
 
-## 🤖 Automation & CI/CD
-
-### Automated Dependency Updates
-- **📅 Weekly**: Monday 9:00 AM - All dependency updates via Dependabot
-- **🚨 Daily**: Security patches auto-merged immediately
-- **✅ Auto-merge**: Patch updates and security fixes merge automatically
-- **⚠️ Manual review**: Major versions and breaking changes require approval
-
-### Quality Gates
-- **Pre-commit**: Automatic linting with lint-staged on modified files
-- **PR checks**: Auto-fix + comprehensive testing before merge
-- **Auto-healing CI**: Automatically corrects fixable lint issues during PR validation
-- **Biome integration**: Unified formatting and linting across the monorepo
+## 🤖 Development Tools
 
 ### Git Workflow
+- **Pre-commit**: Automatic linting with lint-staged on modified files
+- **Biome integration**: Unified formatting and linting across the monorepo
+
 ```bash
 # Commits automatically trigger:
-# 1. Pre-commit linting on modified files
-# 2. CI/CD pipeline with auto-fix + validation on PR
-# 3. Auto-merge for safe dependency updates
+# Pre-commit linting on modified files
 ```
 
 ---
@@ -174,7 +168,6 @@ npm run update:force
 | Frontend API error | Check backend port in .env |
 | SSL issues | `sudo certbot renew` |
 | Lint errors | `npm run lint:fix` to auto-fix |
-| Dependency conflicts | `npm run update:force` for security fixes |
 | Pre-commit fails | Check `.husky/pre-commit` permissions |
 
 ---
@@ -186,8 +179,7 @@ npm run update:force
 - ✅ **Database** - TypeScript schemas with Drizzle ORM
 - ✅ **Type Safety** - End-to-end TypeScript across all layers
 - ✅ **Production Site** - HTTPS live deployment
-- ✅ **CI/CD Pipeline** - Automated quality gates and linting
-- ✅ **Dependency Management** - Automated updates with Dependabot
+- ✅ **Code Quality** - Automated linting with Biome
 - ✅ **Development Experience** - Hot reload, type checking, modern tooling
 
 ---

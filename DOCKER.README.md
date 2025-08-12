@@ -12,31 +12,35 @@ Docker Compose setup for backend services (API + Database layer).
 ## 🏗️ Container Architecture
 
 ```
-PostgreSQL Database ← Database Migration ← TypeScript Seeder
+PostgreSQL Database
          ↑
 Backend API (TypeScript/Node.js)
 ```
 
-**3 containers:**
+**2 containers:**
 - `postgres` - PostgreSQL database (port 5432)
-- `seeder` - TypeScript seeding with 95 menu items (isolated container with direct dependencies)
 - `backend` - TypeScript/Node.js API server (uses `tsx` for direct TypeScript execution)
 
-**Note:** The `drizzle-migration` container is temporarily disabled due to TypeScript compilation conflicts between drizzle packages. The backend runs migrations automatically on startup.
+**Note:** Migration and seeding are now done manually on the VPS for better control.
 
 ---
 
 ## 🚀 Quick Start
 
 ```bash
-# Start all back services
-docker compose -f docker-compose.yml up -d
+# Start all services
+docker compose up -d
+
+# Then connect to VPS for manual migration/seeding
+ssh your-vps
+npm run db:migrate --workspace=database
+npx tsx database/seeds/seed.ts  # Optional
 
 # Check status
 docker ps
 
 # View logs
-docker compose -f docker-compose.yml logs -f
+docker compose logs -f
 ```
 
 ---
@@ -46,16 +50,15 @@ docker compose -f docker-compose.yml logs -f
 ### Service Control
 ```bash
 # Start/stop all services
-docker compose -f docker-compose.yml up -d
-docker compose -f docker-compose.yml down
+docker compose up -d
+docker compose down
 
 # Restart specific service
-docker compose -f docker-compose.yml restart backend
+docker compose restart backend
 
 # View logs
 docker logs -f lafontaine-backend-dev
 docker logs -f lafontaine-postgres-dev
-docker logs -f lafontaine-seeder
 ```
 
 ### Database Operations
@@ -74,16 +77,16 @@ docker exec lafontaine-postgres-dev pg_dump -U $POSTGRES_USER $POSTGRES_DB > bac
 docker exec -i lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB < backup.sql
 ```
 
-### Re-run Database Setup
+### Manual Database Setup
 ```bash
-# Re-run seeding only (95 items)
-docker compose -f docker-compose.yml up seeder
+# Connect to VPS
+ssh your-vps
 
-# Start specific services
-docker compose -f docker-compose.yml up postgres backend seeder
+# Run migrations
+npm run db:migrate --workspace=database
 
-# Note: Manual migration can be run if needed:
-# docker compose -f docker-compose.yml up drizzle-migration
+# Run seeding (95 items)
+npx tsx database/seeds/seed.ts
 ```
 
 ---
@@ -112,23 +115,22 @@ ORDER BY s.display_order;"
 ## ✅ Recent Improvements
 
 ### TypeScript Execution
-- **Seeder**: Now uses `tsx` directly instead of `npm run build` to avoid TypeScript compilation issues
 - **Backend**: Uses `tsx` for direct TypeScript execution, eliminating build step requirements
-- **Healthcheck**: Updated to test `/api/sections` instead of non-existent root route
+- **Healthcheck**: Tests `/api/sections` endpoint
+- **Manual Operations**: Migrations and seeding are now done manually for better control
 
 ### Fixed Issues
-- ✅ Seeder Docker container now works properly with TypeScript files
+- ✅ Backend runs with direct TypeScript execution
 - ✅ Backend healthcheck tests correct API endpoint
 - ✅ Eliminated TypeScript compilation errors in Docker containers
-- ✅ Consistent `tsx` usage across seeder and backend services
-- ✅ Bypassed drizzle-zod TypeScript compilation conflicts by using direct execution
+- ✅ Simplified architecture by removing automated migration/seeding containers
 
 ### Migration Strategy
-Due to TypeScript version conflicts between `drizzle-orm` and `drizzle-zod`, the migration container is temporarily disabled. The current approach:
+Migrations and seeding are now performed manually on the VPS:
 
-- **Database schemas** are embedded directly in the backend and seeder
-- **Migrations** can be run manually if schema changes are needed
-- **Seeder** works independently with its own isolated dependencies
+- **Database schemas** are defined in the database workspace
+- **Migrations** are run manually via SSH for better control
+- **Seeding** is executed manually when needed
 - **Backend** uses TypeScript files directly via `tsx` without compilation
 
 ---
@@ -140,8 +142,8 @@ Due to TypeScript version conflicts between `drizzle-orm` and `drizzle-zod`, the
 | **Backend won't start** | Check logs: `docker logs lafontaine-backend-dev` |
 | **Database connection error** | Verify `DATABASE_URL` in .env |
 | **Port already in use** | Stop conflicting services or change ports |
-| **Migration fails** | Check `/database` structure and permissions |
-| **Seeder fails** | Verify TypeScript data files in `/database/seeds/data/` |
+| **Migration fails** | SSH to VPS and run `npm run db:migrate --workspace=database` |
+| **Seeding fails** | SSH to VPS and run `npx tsx database/seeds/seed.ts` |
 | **Wrong item count** | Should show 95 items after seeding |
 | **Out of disk space** | Clean Docker: `docker system prune -f` |
 
@@ -160,8 +162,8 @@ docker exec lafontaine-postgres-dev pg_isready -U $POSTGRES_USER
 # View container resources
 docker stats lafontaine-backend-dev lafontaine-postgres-dev
 
-# Check seeding results
-docker logs lafontaine-seeder | grep "Inserted"
+# Check seeding results via database
+docker exec -it lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB -c "SELECT COUNT(*) FROM item;"
 ```
 
 ---

@@ -19,44 +19,6 @@ services:
       timeout: 5s
       retries: 5
 
-  drizzle-migration:
-    image: node:22-alpine
-    container_name: lafontaine-drizzle-migration
-    working_dir: /app
-    volumes:
-      - ./:/app
-    environment:
-      - NODE_ENV=development
-      - DATABASE_URL=${DATABASE_URL}
-      - FRONTEND_URL=https://carte.lafontainemons.be
-      - BACKEND_PORT=3001
-      - HUSKY=0
-    command: sh -c "npm ci --ignore-scripts && npm run build --workspace=database && npm run db:migrate --workspace=database"
-    depends_on:
-      postgres:
-        condition: service_healthy
-    networks:
-      - lafontaine-network
-
-  seeder:
-    image: node:22-alpine
-    container_name: lafontaine-seeder
-    working_dir: /seeder
-    volumes:
-      - ./database:/seeder/database
-      - ./package.json:/seeder/package.json
-      - ./package-lock.json:/seeder/package-lock.json
-    environment:
-      - NODE_ENV=development
-      - DATABASE_URL=${DATABASE_URL}
-      - HUSKY=0
-    command: sh -c "npm install -g tsx && npm install drizzle-orm postgres && npx tsx database/seeds/seed.ts"
-    depends_on:
-      postgres:
-        condition: service_healthy
-    networks:
-      - lafontaine-network
-
   backend:
     image: node:22-alpine
     container_name: lafontaine-backend-dev

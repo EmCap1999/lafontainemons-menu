@@ -41,11 +41,12 @@ Ensure the database layer is built and configured:
 # Build database layer first
 npm run build --workspace=database
 
-# Run migrations
+# Connect to VPS and run migrations manually
+ssh your-vps
 npm run db:migrate --workspace=database
 
-# Seed with sample data
-npm run db:seed --workspace=database
+# (Optional) Seed with sample data manually
+npx tsx database/seeds/seed.ts
 ```
 
 See [Database README](../database/README.md) for detailed setup.

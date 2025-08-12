@@ -83,11 +83,12 @@ npm install
 # Build TypeScript
 npm run build
 
-# Apply database schema
+# Connect to VPS and apply database schema manually
+ssh your-vps
 npm run db:migrate
 
-# Seed database with menu data
-npm run db:seed
+# (Optional) Seed database with menu data manually
+npx tsx database/seeds/seed.ts
 
 # Open database GUI
 npm run db:studio
@@ -114,17 +115,15 @@ Database automatically loads environment variables from the root `.env` file:
 Database layer runs in containerized environment:
 
 ```bash
-# Start PostgreSQL
-docker compose -f docker-compose.yml up -d postgres
+# Start PostgreSQL and Backend
+docker compose up -d
 
-# Run migrations
-docker compose -f docker-compose.yml up drizzle-migration
+# Connect to VPS for manual migrations
+ssh your-vps
+npm run db:migrate --workspace=database
 
-# Run seeding
-docker compose -f docker-compose.yml up seeder
-
-# Complete setup
-docker compose -f docker-compose.yml up -d
+# (Optional) Run seeding manually
+npx tsx database/seeds/seed.ts
 ```
 
 ---
@@ -214,7 +213,7 @@ const validatedData = SectionInsertZod.parse(inputData)
 
 1. **Add to data files**: Update `seeds/data/*.ts`
 2. **Build**: `npm run build`
-3. **Run seeding**: `npm run db:seed`
+3. **Run seeding manually**: `npx tsx database/seeds/seed.ts`
 4. **Verify**: Check with `npm run db:studio`
 
 ### Schema Changes
