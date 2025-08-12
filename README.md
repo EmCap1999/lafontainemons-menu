@@ -13,7 +13,6 @@ A **modern, responsive menu website** for La Fontaine Mons restaurant with dynam
 - ⚡ Fast loading with Angular SSR
 - 🔒 HTTPS secured with Let's Encrypt
 - 🌐 Production ready on OVH
-- 🤖 Automated dependency management with Dependabot
 
 ---
 
@@ -26,21 +25,18 @@ A **modern, responsive menu website** for La Fontaine Mons restaurant with dynam
 ├── 🐳 docker-compose.yml      # Production containers
 ├── 🌐 NGINX.README.md         # Production deployment
 ├── 🐳 DOCKER.README.md        # Container guide
-└── 🔧 .github/                # CI/CD & automation
-   ├── dependabot.yml          # Automated dependency updates
-   └── workflows/
-      ├── pr-check.yml         # Quality gates
-      └── dependabot.yml       # Auto-merge safe updates
 ```
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Node.js + Express + PostgreSQL + Drizzle ORM
+- **Backend**: Node.js + TypeScript + Express + PostgreSQL + Drizzle ORM
 - **Frontend**: Angular 19 + TypeScript + SCSS + SSR
+- **Database**: Drizzle ORM + PostgreSQL + TypeScript schemas
 - **Infrastructure**: Docker + Nginx + Let's Encrypt + OVH VPS
-- **DevOps**: Biome (linting) + Husky (git hooks) + Dependabot (auto-updates)
+- **DevOps**: Biome (linting) + Husky (git hooks)
+- **Type Safety**: Full TypeScript integration across all layers
 
 ---
 
@@ -66,11 +62,20 @@ ask the author if needed.
 # 3. Install dependencies (monorepo setup)
 npm install
 
-# 4. Start backend services
-docker compose -f docker-compose.yml up -d
+# 4. Start services (PostgreSQL + Backend)
+docker compose up -d
 
-# 5. Start frontend
+# 5. Run database migrations manually
+npm run db:migrate --workspace=@lafontaine/database
+
+# 6. (Optional) Seed database
+npm run db:seed --workspace=@lafontaine/database
+
+# 7. Start frontend
 cd frontend && npm start
+
+# 8. Stop containers when not needed
+docker compose stop
 ```
 
 **Access:**
@@ -93,8 +98,8 @@ Internet → Nginx → Angular Frontend
 ## 📚 Documentation
 
 **Component Setup:**
-- 📦 [Backend](./backend/README.md) - API development
-- 💻 [Frontend](./frontend/README.md) - Angular development
+- 📦 [Backend](backend/README.md) - API development
+- 💻 [Frontend](frontend/README.md) - Angular development
 - 🗄️ [Database](./database/README.md) - TypeScript database layer
 
 **Deployment:**
@@ -120,9 +125,19 @@ npm run db:studio --workspace=database  # Database GUI
 cd frontend && npm start
 npm run build:prod
 
-# Docker
-docker compose -f docker-compose.yml up -d
-docker logs -f lafontaine-backend-dev
+# Docker - Full stack
+docker compose up -d                    # Start all services
+docker compose stop                     # Stop all services
+docker compose down                     # Remove containers
+docker logs lafontaine-backend-dev -f   # View backend logs
+
+# Docker - Database only (for local backend dev)
+docker compose up -d postgres           # Start only PostgreSQL
+docker compose stop postgres            # Stop only PostgreSQL
+
+# Database operations
+npm run db:migrate --workspace=@lafontaine/database  # Run migrations
+npm run db:seed --workspace=@lafontaine/database     # Seed database
 ```
 
 ### Dependency Management
@@ -139,26 +154,15 @@ npm run update:force
 
 ---
 
-## 🤖 Automation & CI/CD
-
-### Automated Dependency Updates
-- **📅 Weekly**: Monday 9:00 AM - All dependency updates via Dependabot
-- **🚨 Daily**: Security patches auto-merged immediately
-- **✅ Auto-merge**: Patch updates and security fixes merge automatically
-- **⚠️ Manual review**: Major versions and breaking changes require approval
-
-### Quality Gates
-- **Pre-commit**: Automatic linting with lint-staged on modified files
-- **PR checks**: Auto-fix + comprehensive testing before merge
-- **Auto-healing CI**: Automatically corrects fixable lint issues during PR validation
-- **Biome integration**: Unified formatting and linting across the monorepo
+## 🤖 Development Tools
 
 ### Git Workflow
+- **Pre-commit**: Automatic linting with lint-staged on modified files
+- **Biome integration**: Unified formatting and linting across the monorepo
+
 ```bash
 # Commits automatically trigger:
-# 1. Pre-commit linting on modified files
-# 2. CI/CD pipeline with auto-fix + validation on PR
-# 3. Auto-merge for safe dependency updates
+# Pre-commit linting on modified files
 ```
 
 ---
@@ -172,21 +176,19 @@ npm run update:force
 | Frontend API error | Check backend port in .env |
 | SSL issues | `sudo certbot renew` |
 | Lint errors | `npm run lint:fix` to auto-fix |
-| Dependency conflicts | `npm run update:force` for security fixes |
 | Pre-commit fails | Check `.husky/pre-commit` permissions |
 
 ---
 
 ## 📈 Project Status
 
-- ✅ Backend API operational
-- ✅ Frontend deployed with SSR
-- ✅ Database with seed data
-- ✅ HTTPS production site live
-- ✅ Monitoring configured
-- ✅ Automated dependency management
-- ✅ Quality gates & auto-healing CI/CD pipeline
-- ✅ Streamlined development workflow
+- ✅ **Backend API** - TypeScript migration completed
+- ✅ **Frontend** - Angular with full TypeScript integration 
+- ✅ **Database** - TypeScript schemas with Drizzle ORM
+- ✅ **Type Safety** - End-to-end TypeScript across all layers
+- ✅ **Production Site** - HTTPS live deployment
+- ✅ **Code Quality** - Automated linting with Biome
+- ✅ **Development Experience** - Hot reload, type checking, modern tooling
 
 ---
 

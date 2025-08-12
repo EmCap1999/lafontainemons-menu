@@ -8,6 +8,41 @@
       "when": 1754426525777,
       "tag": "0000_lush_puff_adder",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1754660859875,
+      "tag": "0001_round_shriek",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1754661682092,
+      "tag": "0002_sour_sabretooth",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1755029241897,
+      "tag": "0003_magenta_steve_rogers",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1755034483417,
+      "tag": "0004_supreme_bullseye",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1755034997543,
+      "tag": "0005_skinny_dexter_bennett",
+      "breakpoints": true
     }
   ]
 }

@@ -1,10 +1,10 @@
+import type { DrizzleDatabase } from '@lafontaine/database/db'
 import { sectionsData } from '@lafontaine/database/seeds/data'
 import { sectionCommand } from '@lafontaine/database/src/commands'
 import type { SectionSelect } from '@lafontaine/database/src/schema'
-import type { NodePgDatabase } from 'drizzle-orm/node-postgres'
 
 export async function seedSections(
-  db: NodePgDatabase<any>
+  db: DrizzleDatabase
 ): Promise<SectionSelect[]> {
   const insertedSections: SectionSelect[] = []
 

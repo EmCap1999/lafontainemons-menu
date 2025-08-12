@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { Component, EventEmitter, Input, Output } from '@angular/core'
+import type { PublicItem, PublicSection } from '@lafontaine/backend/src/types'
 
 @Component({
   selector: 'app-section',
@@ -9,8 +10,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   styleUrl: './section.component.scss',
 })
 export class SectionComponent {
-  @Input() section!: any
-  @Input() items: any[] = []
+  @Input() section!: PublicSection
+  @Input() items: PublicItem[] = []
   @Input() isExpanded = false
   @Input() isLoading = false
 

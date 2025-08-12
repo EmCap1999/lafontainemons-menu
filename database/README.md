@@ -77,21 +77,31 @@ cd database
 npm install
 ```
 
-### Database Operations
+### Local Development
 
 ```bash
+# Start PostgreSQL container
+docker compose up -d postgres
+
 # Build TypeScript
 npm run build
 
-# Apply database schema
-npm run db:migrate
+# Run migrations
+npm run db:migrate --workspace=@lafontaine/database
 
-# Seed database with menu data
-npm run db:seed
+# Seed database
+npm run db:seed --workspace=@lafontaine/database
 
 # Open database GUI
 npm run db:studio
 
+# Stop database when not needed
+docker compose stop postgres
+```
+
+### Development Commands
+
+```bash
 # Generate new migration
 npm run db:generate
 
@@ -111,20 +121,21 @@ Database automatically loads environment variables from the root `.env` file:
 
 ## 🐳 Docker Usage
 
-Database layer runs in containerized environment:
+Database runs in Docker container:
 
 ```bash
-# Start PostgreSQL
-docker compose -f docker-compose.yml up -d postgres
+# Start only PostgreSQL
+docker compose up -d postgres
 
-# Run migrations
-docker compose -f docker-compose.yml up drizzle-migration
+# Start full stack (PostgreSQL + Backend)
+docker compose up -d
 
-# Run seeding
-docker compose -f docker-compose.yml up seeder
+# Stop when not needed
+docker compose stop
 
-# Complete setup
-docker compose -f docker-compose.yml up -d
+# Manual operations
+npm run db:migrate --workspace=@lafontaine/database
+npm run db:seed --workspace=@lafontaine/database
 ```
 
 ---
@@ -214,7 +225,7 @@ const validatedData = SectionInsertZod.parse(inputData)
 
 1. **Add to data files**: Update `seeds/data/*.ts`
 2. **Build**: `npm run build`
-3. **Run seeding**: `npm run db:seed`
+3. **Run seeding**: `npm run db:seed --workspace=@lafontaine/database`
 4. **Verify**: Check with `npm run db:studio`
 
 ### Schema Changes

@@ -19,47 +19,12 @@ services:
       timeout: 5s
       retries: 5
 
-  drizzle-migration:
-    image: node:22-alpine
-    container_name: lafontaine-drizzle-migration
-    working_dir: /app
-    volumes:
-      - ./:/app
-    environment:
-      - NODE_ENV=development
-      - DATABASE_URL=${DATABASE_URL}
-      - FRONTEND_URL=https://carte.lafontainemons.be
-      - BACKEND_PORT=3001
-      - HUSKY=0
-    command: sh -c "npm ci --ignore-scripts && npm run build --workspace=database && npm run db:migrate --workspace=database"
-    depends_on:
-      postgres:
-        condition: service_healthy
-    networks:
-      - lafontaine-network
-
-  seeder:
-    image: node:22-alpine
-    container_name: lafontaine-seeder
-    working_dir: /app
-    volumes:
-      - ./:/app
-    environment:
-      - NODE_ENV=development
-      - DATABASE_URL=${DATABASE_URL}
-      - HUSKY=0
-    command: sh -c "npm ci --ignore-scripts && npm run build --workspace=database && npm run db:seed --workspace=database"
-    depends_on:
-      drizzle-migration:
-        condition: service_completed_successfully
-    networks:
-      - lafontaine-network
-
   backend:
     image: node:22-alpine
     container_name: lafontaine-backend-dev
     restart: always
     working_dir: /app
+    network_mode: host
     volumes:
       - ./:/app
     environment:
@@ -68,16 +33,12 @@ services:
       - FRONTEND_URL=${FRONTEND_URL}
       - BACKEND_PORT=${BACKEND_PORT}
       - HUSKY=0
-    ports:
-      - "${BACKEND_PORT}:3001"
-    command: sh -c "cd backend && npm install --ignore-scripts && npm start"
+    command: sh -c "npm install -g tsx && npm ci --ignore-scripts && npx tsx backend/src/server.ts"
     depends_on:
       postgres:
         condition: service_healthy
-    networks:
-      - lafontaine-network
     healthcheck:
-      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3001" ]
+      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:${BACKEND_PORT}/api/sections" ]
       interval: 20s
       timeout: 10s
       retries: 3

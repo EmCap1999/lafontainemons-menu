@@ -1,14 +1,11 @@
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-import * as schema from '@lafontaine/database/src/schema'
 import dotenv from 'dotenv'
 import dotenvExpand from 'dotenv-expand'
 import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
+import * as schema from './src/schema'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const envPath = path.resolve(__dirname, '../.env')
+const envPath = path.join(process.cwd(), '..', '.env')
 
 console.log(`Loading environment from: ${envPath}`)
 const myEnv = dotenv.config({ path: envPath })
