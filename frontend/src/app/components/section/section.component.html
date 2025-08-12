@@ -22,7 +22,7 @@
 
         <div class="item-details">
           <span *ngIf="item.origin" class="item-origin">{{ item.origin }}</span>
-          <span *ngIf="item.capacity && item.unit" class="item-capacity">{{ item.capacity }}{{ item.unit }}</span>
+          <span *ngIf="item.capacity && item.unit" class="item-capacity">{{ item.capacity | number:'1.0-1':'fr' }} {{ item.unit }}</span>
           <span *ngIf="!item.isAvailable" class="item-unavailable">Non disponible</span>
         </div>
       </div>

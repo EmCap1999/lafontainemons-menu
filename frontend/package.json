@@ -11,7 +11,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr": "node dist/frontend/server/server.mjs",
-    "generate-env": "npx ts-node scripts/generate-env.js",
+    "generate-env": "npx tsx scripts/generate-env.ts",
     "prestart": "npm run generate-env"
   },
   "private": true,
@@ -44,6 +44,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "tsx": "^4.20.3",
     "typescript": "~5.7.2"
   }
 }

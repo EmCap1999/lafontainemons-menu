@@ -1,0 +1,40 @@
+{
+  "name": "@lafontaine/database",
+  "version": "1.0.0",
+  "description": "Database layer for La Fontaine Mons restaurant with TypeScript and Drizzle ORM",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "dev": "tsc --watch",
+    "db:generate": "dotenv -e ../.env -- drizzle-kit generate",
+    "db:migrate": "dotenv -e ../.env -- drizzle-kit migrate",
+    "db:studio": "dotenv -e ../.env -- drizzle-kit studio",
+    "db:push": "dotenv -e ../.env -- drizzle-kit push",
+    "db:reset": "npm run db:migrate && npm run db:seed",
+    "db:seed": "dotenv -e ../.env -- tsx seeds/seed.ts",
+    "clean": "rm -rf dist"
+  },
+  "author": "EmCap1999",
+  "dependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "dotenv": "^16.6.0",
+    "dotenv-expand": "^12.0.2",
+    "drizzle-orm": "^0.44.4",
+    "drizzle-zod": "^0.5.1",
+    "postgres": "^3.4.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "dotenv-cli": "^7.4.4",
+    "drizzle-kit": "^0.31.4",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "type": "module"
+}

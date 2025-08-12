@@ -12,30 +12,35 @@ Docker Compose setup for backend services (API + Database layer).
 ## 🏗️ Container Architecture
 
 ```
-PostgreSQL Database ← Database Migration ← JavaScript Seeder
+PostgreSQL Database
          ↑
-Backend API (Node.js)
+Backend API (TypeScript/Node.js)
 ```
 
-**4 containers:**
+**2 containers:**
 - `postgres` - PostgreSQL database (port 5432)
-- `drizzle-migration` - Database schema setup from `/db`
-- `seeder` - JavaScript seeding with 95 menu items from `/db`
-- `backend` - Node.js API server
+- `backend` - TypeScript/Node.js API server (uses `tsx` for direct TypeScript execution)
+
+**Note:** Migration and seeding are now done manually on the VPS for better control.
 
 ---
 
 ## 🚀 Quick Start
 
 ```bash
-# Start all backend services
-docker compose -f docker-compose.dev.yml up -d
+# Start all services
+docker compose up -d
+
+# Then connect to VPS for manual migration/seeding
+ssh your-vps
+npm run db:migrate --workspace=database
+npx tsx database/seeds/seed.ts  # Optional
 
 # Check status
 docker ps
 
 # View logs
-docker compose -f docker-compose.dev.yml logs -f
+docker compose logs -f
 ```
 
 ---
@@ -45,16 +50,15 @@ docker compose -f docker-compose.dev.yml logs -f
 ### Service Control
 ```bash
 # Start/stop all services
-docker compose -f docker-compose.dev.yml up -d
-docker compose -f docker-compose.dev.yml down
+docker compose up -d
+docker compose down
 
 # Restart specific service
-docker compose -f docker-compose.dev.yml restart backend
+docker compose restart backend
 
 # View logs
 docker logs -f lafontaine-backend-dev
 docker logs -f lafontaine-postgres-dev
-docker logs -f lafontaine-seeder
 ```
 
 ### Database Operations
@@ -73,27 +77,27 @@ docker exec lafontaine-postgres-dev pg_dump -U $POSTGRES_USER $POSTGRES_DB > bac
 docker exec -i lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB < backup.sql
 ```
 
-### Re-run Database Setup
+### Manual Database Setup
 ```bash
-# Re-run migrations only
-docker compose -f docker-compose.dev.yml up drizzle-migration
+# Connect to VPS
+ssh your-vps
 
-# Re-run seeding only (95 items)
-docker compose -f docker-compose.dev.yml up seeder
+# Run migrations
+npm run db:migrate --workspace=database
 
-# Complete database reset
-docker compose -f docker-compose.dev.yml up drizzle-migration seeder
+# Run seeding (95 items)
+npx tsx database/seeds/seed.ts
 ```
 
 ---
 
 ## 🗄️ Database Layer Integration
 
-The containers now work with the refactored `/db` structure:
+The containers now work with the refactored `/database` TypeScript structure:
 
-- **Migration**: Uses `/db/drizzle.config.js` and `/db/schema/`
-- **Seeding**: Executes `/db/seeds/seed.js` with JavaScript data
-- **Backend**: Imports CRUD commands from `/db/commands/`
+- **Migration**: Uses `/database/drizzle.config.ts` and `/database/src/schema/`
+- **Seeding**: Executes `/database/seeds/seed.ts` with TypeScript data modules
+- **Backend**: Imports CRUD commands from `/database/src/commands/`
 
 ### Database Verification
 ```bash
@@ -108,6 +112,29 @@ ORDER BY s.display_order;"
 
 ---
 
+## ✅ Recent Improvements
+
+### TypeScript Execution
+- **Backend**: Uses `tsx` for direct TypeScript execution, eliminating build step requirements
+- **Healthcheck**: Tests `/api/sections` endpoint
+- **Manual Operations**: Migrations and seeding are now done manually for better control
+
+### Fixed Issues
+- ✅ Backend runs with direct TypeScript execution
+- ✅ Backend healthcheck tests correct API endpoint
+- ✅ Eliminated TypeScript compilation errors in Docker containers
+- ✅ Simplified architecture by removing automated migration/seeding containers
+
+### Migration Strategy
+Migrations and seeding are now performed manually on the VPS:
+
+- **Database schemas** are defined in the database workspace
+- **Migrations** are run manually via SSH for better control
+- **Seeding** is executed manually when needed
+- **Backend** uses TypeScript files directly via `tsx` without compilation
+
+---
+
 ## 🐛 Troubleshooting
 
 | Issue | Solution |
@@ -115,8 +142,8 @@ ORDER BY s.display_order;"
 | **Backend won't start** | Check logs: `docker logs lafontaine-backend-dev` |
 | **Database connection error** | Verify `DATABASE_URL` in .env |
 | **Port already in use** | Stop conflicting services or change ports |
-| **Migration fails** | Check `/db` structure and permissions |
-| **Seeder fails** | Verify JavaScript data files in `/db/seeds/data/` |
+| **Migration fails** | SSH to VPS and run `npm run db:migrate --workspace=database` |
+| **Seeding fails** | SSH to VPS and run `npx tsx database/seeds/seed.ts` |
 | **Wrong item count** | Should show 95 items after seeding |
 | **Out of disk space** | Clean Docker: `docker system prune -f` |
 
@@ -125,9 +152,9 @@ ORDER BY s.display_order;"
 # Check container status
 docker ps
 
-# Test API endpoints
-curl http://localhost:port/sections
-curl http://localhost:port/items
+# Test API endpoints (replace ${BACKEND_PORT} with actual port, e.g. 3001)
+curl http://localhost:${BACKEND_PORT}/api/sections
+curl http://localhost:${BACKEND_PORT}/api/items
 
 # Test database connection
 docker exec lafontaine-postgres-dev pg_isready -U $POSTGRES_USER
@@ -135,8 +162,8 @@ docker exec lafontaine-postgres-dev pg_isready -U $POSTGRES_USER
 # View container resources
 docker stats lafontaine-backend-dev lafontaine-postgres-dev
 
-# Check seeding results
-docker logs lafontaine-seeder | grep "Inserted"
+# Check seeding results via database
+docker exec -it lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB -c "SELECT COUNT(*) FROM item;"
 ```
 
 ---
@@ -144,9 +171,10 @@ docker logs lafontaine-seeder | grep "Inserted"
 ## 🔗 Integration
 
 **Development:**
-- Frontend calls `http://localhost:8080` directly
-- Backend exposes port 8080 to host
-- Database layer in `/db` provides CRUD operations
+- Frontend calls `http://localhost:${BACKEND_PORT}` directly (default 3001)
+- Backend TypeScript executed directly with `tsx` (no compilation needed)
+- Database layer in `/database` provides type-safe CRUD operations
+- Workspace setup enables shared types between database/backend
 
 **Production:**
 - Frontend calls via Nginx proxy `/api/*`
@@ -158,6 +186,6 @@ docker logs lafontaine-seeder | grep "Inserted"
 ## 📚 Related Documentation
 
 - 🌐 [Frontend Deployment](./NGINX.README.md) - Nginx & SSL setup
-- 📦 [Backend API](./backend/README.md) - API server development
-- 🗄️ [Database Layer](./db/README.md) - Schemas, commands & seeding
+- 📦 [Backend API](backend/README.md) - TypeScript API server development
+- 🗄️ [Database Layer](./database/README.md) - Schemas, commands & seeding
 - 📋 [Project Overview](./README.md) - Complete documentation
