@@ -38,15 +38,14 @@ The backend automatically loads environment variables from the root `.env` file.
 Ensure the database layer is built and configured:
 
 ```bash
-# Build database layer first
-npm run build --workspace=database
+# Build database layer
+npm run build --workspace=@lafontaine/database
 
-# Connect to VPS and run migrations manually
-ssh your-vps
-npm run db:migrate --workspace=database
+# Run migrations
+npm run db:migrate --workspace=@lafontaine/database
 
-# (Optional) Seed with sample data manually
-npx tsx database/seeds/seed.ts
+# Seed database
+npm run db:seed --workspace=@lafontaine/database
 ```
 
 See [Database README](../database/README.md) for detailed setup.
@@ -243,7 +242,7 @@ throw new AppError('Invalid section ID', 400)
 | Issue | Solution |
 |-------|----------|
 | **TypeScript errors** | Run `npm run typecheck` to see all type issues |
-| **Import errors** | Ensure database workspace is built: `npm run build --workspace=database` |
+| **Import errors** | Ensure database workspace is built: `npm run build --workspace=@lafontaine/database` |
 | **Port already in use** | Change `BACKEND_PORT` in .env |
 | **Database connection error** | Verify `DATABASE_URL` and ensure database is running |
 | **CORS errors** | Check `FRONTEND_URL` matches client origin |
@@ -267,7 +266,7 @@ docker ps | grep backend
 docker exec lafontaine-backend-dev env | grep DATABASE
 
 # Test database connection from backend
-docker exec -it lafontaine-backend-dev npm run typecheck --workspace=database
+docker exec -it lafontaine-backend-dev npm run typecheck --workspace=@lafontaine/database
 ```
 
 ### Development Tips

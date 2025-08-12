@@ -66,13 +66,16 @@ npm install
 docker compose up -d
 
 # 5. Run database migrations manually
-npm run db:migrate --workspace=database
+npm run db:migrate --workspace=@lafontaine/database
 
 # 6. (Optional) Seed database
-npx tsx database/seeds/seed.ts
+npm run db:seed --workspace=@lafontaine/database
 
 # 7. Start frontend
 cd frontend && npm start
+
+# 8. Stop containers when not needed
+docker compose stop
 ```
 
 **Access:**
@@ -122,14 +125,19 @@ npm run db:studio --workspace=database  # Database GUI
 cd frontend && npm start
 npm run build:prod
 
-# Docker
-docker compose up -d
-docker logs -f lafontaine-backend-dev
+# Docker - Full stack
+docker compose up -d                    # Start all services
+docker compose stop                     # Stop all services
+docker compose down                     # Remove containers
+docker logs lafontaine-backend-dev -f   # View backend logs
+
+# Docker - Database only (for local backend dev)
+docker compose up -d postgres           # Start only PostgreSQL
+docker compose stop postgres            # Stop only PostgreSQL
 
 # Database operations
-npm run db:migrate --workspace=database  # Run migrations
-npm run db:push --workspace=database     # Push schema changes
-npx tsx database/seeds/seed.ts          # Seed database
+npm run db:migrate --workspace=@lafontaine/database  # Run migrations
+npm run db:seed --workspace=@lafontaine/database     # Seed database
 ```
 
 ### Dependency Management

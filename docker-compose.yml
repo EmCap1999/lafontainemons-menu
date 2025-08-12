@@ -24,6 +24,7 @@ services:
     container_name: lafontaine-backend-dev
     restart: always
     working_dir: /app
+    network_mode: host
     volumes:
       - ./:/app
     environment:
@@ -32,14 +33,10 @@ services:
       - FRONTEND_URL=${FRONTEND_URL}
       - BACKEND_PORT=${BACKEND_PORT}
       - HUSKY=0
-    ports:
-      - "${BACKEND_PORT}:${BACKEND_PORT}"
     command: sh -c "npm install -g tsx && npm ci --ignore-scripts && npx tsx backend/src/server.ts"
     depends_on:
       postgres:
         condition: service_healthy
-    networks:
-      - lafontaine-network
     healthcheck:
       test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:${BACKEND_PORT}/api/sections" ]
       interval: 20s

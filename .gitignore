@@ -19,11 +19,6 @@
 **/dist
 **/.angular
 
-# Frontend specific (legacy paths)
-front/.vscode
-front/.angular
-front/dist
-
 # Git Hooks
 .husky/_
 
