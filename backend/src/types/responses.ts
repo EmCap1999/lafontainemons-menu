@@ -1,19 +1,9 @@
-import type { PublicItem, PublicSection } from './schemas.js'
+import type { PublicItem, PublicSection } from './public.js'
 
 export interface ApiResponse<T> {
   status: 'success' | 'error'
   results?: number
   data?: T
-}
-
-export interface ApiError {
-  status: 'error'
-  error: {
-    message: string
-    statusCode: number
-    stack?: string
-    details?: any
-  }
 }
 
 export interface SectionsResponse

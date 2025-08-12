@@ -1,3 +1,4 @@
+import type { DrizzleDatabase } from '@lafontaine/database/db'
 import { itemsRawData } from '@lafontaine/database/seeds/data'
 import { itemCommand } from '@lafontaine/database/src/commands'
 import type {
@@ -5,10 +6,9 @@ import type {
   SectionSelect,
   SubsectionSelect,
 } from '@lafontaine/database/src/schema'
-import type { NodePgDatabase } from 'drizzle-orm/node-postgres'
 
 export async function seedItems(
-  db: NodePgDatabase<any>,
+  db: DrizzleDatabase,
   sections: SectionSelect[],
   subsections: SubsectionSelect[]
 ): Promise<void> {

@@ -1,3 +1,4 @@
+import type { DrizzleDatabase } from '@lafontaine/database/db'
 import { subsectionsRawData } from '@lafontaine/database/seeds/data'
 import { subsectionCommand } from '@lafontaine/database/src/commands'
 import type {
@@ -5,10 +6,9 @@ import type {
   SubsectionInsert,
   SubsectionSelect,
 } from '@lafontaine/database/src/schema'
-import type { NodePgDatabase } from 'drizzle-orm/node-postgres'
 
 export async function seedSubsections(
-  db: NodePgDatabase<any>,
+  db: DrizzleDatabase,
   sections: SectionSelect[]
 ): Promise<SubsectionSelect[]> {
   const sectionNameToId = new Map<string, number>()

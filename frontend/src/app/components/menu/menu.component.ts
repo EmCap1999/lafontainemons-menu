@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { Component, type OnInit } from '@angular/core'
+import type { PublicItem, PublicSection } from '@lafontaine/backend/src/types'
 import { MenuService } from '../../services/menu.service'
 import { SectionComponent } from '../section/section.component'
 
@@ -11,10 +12,10 @@ import { SectionComponent } from '../section/section.component'
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent implements OnInit {
-  sections: any[] = []
+  sections: PublicSection[] = []
   sectionsLoading = true
   sectionsError: string | null = null
-  sectionItems: { [sectionId: number]: any[] } = {}
+  sectionItems: { [sectionId: number]: PublicItem[] } = {}
   expandedSections: Set<number> = new Set()
   loadingSections: Set<number> = new Set()
 
@@ -73,7 +74,7 @@ export class MenuComponent implements OnInit {
     return this.loadingSections.has(sectionId)
   }
 
-  getSectionItems(sectionId: number): any[] {
+  getSectionItems(sectionId: number): PublicItem[] {
     return this.sectionItems[sectionId] || []
   }
 }
