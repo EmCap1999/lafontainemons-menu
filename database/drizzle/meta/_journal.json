@@ -29,6 +29,20 @@
       "when": 1755029241897,
       "tag": "0003_magenta_steve_rogers",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1755034483417,
+      "tag": "0004_supreme_bullseye",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1755034997543,
+      "tag": "0005_skinny_dexter_bennett",
+      "breakpoints": true
     }
   ]
 }
