@@ -25,6 +25,83 @@
     }
   }
 
+  .social-media-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-top: 1rem;
+  }
+
+  .facebook-link, .tripadvisor-link, .google-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    backdrop-filter: blur(8px);
+
+    i {
+      font-size: 22px;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0px);
+    }
+  }
+
+  .facebook-link {
+    background: rgba(66, 103, 178, 0.5);
+    box-shadow: 0 2px 8px rgba(66, 103, 178, 0.1);
+
+    &:hover {
+      background: rgba(66, 103, 178, 0.6);
+      box-shadow: 0 4px 16px rgba(66, 103, 178, 0.2);
+    }
+
+    &:active {
+      box-shadow: 0 2px 8px rgba(66, 103, 178, 0.15);
+    }
+  }
+
+  .tripadvisor-link {
+    background: rgba(76, 175, 80, 0.5);
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.1);
+
+    &:hover {
+      background: rgba(76, 175, 80, 0.6);
+      box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2);
+    }
+
+    &:active {
+      box-shadow: 0 2px 8px rgba(76, 175, 80, 0.15);
+    }
+  }
+
+  .google-link {
+    background: rgba(234, 67, 53, 0.5);
+    box-shadow: 0 2px 8px rgba(234, 67, 53, 0.1);
+
+    &:hover {
+      background: rgba(234, 67, 53, 0.6);
+      box-shadow: 0 4px 16px rgba(234, 67, 53, 0.2);
+    }
+
+    &:active {
+      box-shadow: 0 2px 8px rgba(234, 67, 53, 0.15);
+    }
+  }
+
   .menu-title {
     text-align: center;
     font-size: 2.5rem;
