@@ -1,6 +1,10 @@
 <div class="app-container">
   <div class="main-content">
-    <app-menu></app-menu>
+    <app-menu 
+      [facebookUrl]="facebookUrl" 
+      [tripadvisorUrl]="tripadvisorUrl"
+      [googleUrl]="googleUrl">
+    </app-menu>
   </div>
   <app-footer></app-footer>
 </div>

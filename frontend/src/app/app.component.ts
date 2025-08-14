@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { environment } from '../environments/environment'
 import { FooterComponent } from './components/footer/footer.component'
 import { MenuComponent } from './components/menu/menu.component'
 
@@ -11,4 +12,7 @@ import { MenuComponent } from './components/menu/menu.component'
 })
 export class AppComponent {
   title = 'La Fontaine Mons'
+  facebookUrl = environment.facebookUrl
+  tripadvisorUrl = environment.tripadvisorUrl
+  googleUrl = environment.googleUrl
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, type OnInit } from '@angular/core'
+import { Component, Input, type OnInit } from '@angular/core'
 import type { PublicItem, PublicSection } from '@lafontaine/backend/src/types'
 import { MenuService } from '../../services/menu.service'
 import { SectionComponent } from '../section/section.component'
@@ -12,6 +12,10 @@ import { SectionComponent } from '../section/section.component'
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent implements OnInit {
+  @Input() facebookUrl = ''
+  @Input() tripadvisorUrl = ''
+  @Input() googleUrl = ''
+
   sections: PublicSection[] = []
   sectionsLoading = true
   sectionsError: string | null = null

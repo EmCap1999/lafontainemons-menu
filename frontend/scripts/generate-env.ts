@@ -12,6 +12,9 @@ dotenv.config({ path: path.resolve(__dirname, `../../${envFile}`) })
 
 const backendPort = process.env.BACKEND_PORT || '8080'
 const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:4200'
+const facebookUrl = process.env.FACEBOOK_URL || ''
+const tripadvisorUrl = process.env.TRIPADVISOR_URL || ''
+const googleUrl = process.env.GOOGLE_URL || ''
 const isProduction = process.env.NODE_ENV === 'production'
 
 const apiUrl = isProduction
@@ -21,7 +24,10 @@ const apiUrl = isProduction
 const envContent = `export const environment = {
   production: ${isProduction},
   apiUrl: '${apiUrl}',
-  frontendUrl: '${frontendUrl}'
+  frontendUrl: '${frontendUrl}',
+  facebookUrl: '${facebookUrl}',
+  tripadvisorUrl: '${tripadvisorUrl}',
+  googleUrl: '${googleUrl}'
 };
 `
 
@@ -36,5 +42,8 @@ fs.writeFileSync(envPath, envContent)
 console.log(
   ` Frontend Environment file generated for ${process.env.NODE_ENV || 'development'}!`
 )
-console.log(`API URL: ${apiUrl}`)
+
 console.log(`Frontend URL: ${frontendUrl}`)
+console.log(`Facebook URL: ${facebookUrl}`)
+console.log(`TripAdvisor URL: ${tripadvisorUrl}`)
+console.log(`Google URL: ${googleUrl}`)
