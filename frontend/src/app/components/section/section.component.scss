@@ -27,7 +27,7 @@
     }
 
     &.expanded {
-      background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+      background: linear-gradient(135deg, #4267b2 0%, #365899 100%);
       color: white;
 
       .toggle-icon {
@@ -73,7 +73,7 @@
         height: 20px;
         margin-left: 10px;
         border: 3px solid #f3f3f3;
-        border-top: 3px solid #007bff;
+        border-top: 3px solid #4267b2;
         border-radius: 50%;
         animation: spin 1s linear infinite;
       }
@@ -99,7 +99,7 @@
           left: 0;
           width: 4px;
           height: 100%;
-          background: #007bff;
+          background: #4267b2;
           transform: scaleY(0);
           transition: transform 0.2s ease;
         }
@@ -116,7 +116,7 @@
         .item-header {
           display: flex;
           justify-content: space-between;
-          align-items: flex-start;
+          align-items: baseline;
           margin-bottom: 1rem;
 
           .item-name {
@@ -131,12 +131,13 @@
           .item-price {
             font-size: 1.2rem;
             font-weight: bold;
-            color: #007bff;
+            color: #4267b2;
             margin-left: 1rem;
-            background: #e7f3ff;
+            background: #e7f0ff;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             white-space: nowrap;
+            align-self: baseline;
           }
         }
 
@@ -156,26 +157,33 @@
           font-size: 0.9rem;
 
           .item-origin {
-            color: #28a745;
+            display: inline-block;
+            color: #ea4335;
             font-weight: 500;
-            background: #e8f5e8;
+            background: #ffebe9;
             padding: 0.2rem 0.6rem;
             border-radius: 12px;
+            width: fit-content;
           }
 
           .item-capacity {
-            color: #6c757d;
+            display: inline-block;
+            color: #495057;
+            font-weight: 600;
             background: #f8f9fa;
             padding: 0.2rem 0.6rem;
             border-radius: 12px;
+            width: fit-content;
           }
 
           .item-unavailable {
+            display: inline-block;
             color: #dc3545;
             font-weight: 600;
             background: #ffeaea;
             padding: 0.2rem 0.6rem;
             border-radius: 12px;
+            width: fit-content;
           }
         }
       }
@@ -214,13 +222,17 @@
         padding: 1rem;
 
         .item-header {
-          flex-direction: column;
-          align-items: flex-start;
+          flex-direction: row;
+          align-items: baseline;
           gap: 0.5rem;
 
+          .item-name {
+            font-size: 1.15rem;
+          }
+
           .item-price {
-            margin-left: 0;
-            align-self: flex-end;
+            margin-left: 0.5rem;
+            font-size: 1.1rem;
           }
         }
 
