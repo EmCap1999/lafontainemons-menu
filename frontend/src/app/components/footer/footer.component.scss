@@ -13,7 +13,7 @@
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, #3498db, #2980b9);
+    background: linear-gradient(90deg, #4267b2, #365899);
     border-radius: 0 0 2px 2px;
   }
 
@@ -32,7 +32,7 @@
     align-items: center;
     gap: 0.5rem;
     font-size: 0.9rem;
-    color: #6c757d;
+    color: #495057;
 
     .powered-text {
       font-weight: 300;
@@ -48,15 +48,15 @@
       padding: 0.3rem 0.6rem;
       border-radius: 20px;
       transition: all 0.3s ease;
-      background: rgba(52, 152, 219, 0.05);
+      background: rgba(66, 103, 178, 0.1);
       border: 1px solid transparent;
 
       &:hover {
-        background: #3498db;
+        background: #4267b2;
         color: white;
         transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-        border-color: #3498db;
+        box-shadow: 0 4px 12px rgba(66, 103, 178, 0.3);
+        border-color: #4267b2;
 
         .linkedin-icon {
           color: white;
@@ -65,7 +65,7 @@
       }
 
       &:focus {
-        outline: 2px solid #3498db;
+        outline: 2px solid #4267b2;
         outline-offset: 2px;
       }
 
@@ -76,7 +76,7 @@
 
       .linkedin-icon {
         font-size: 14px;
-        color: #0077b5;
+        color: #4267b2;
         transition: all 0.3s ease;
         font-weight: bold;
       }
@@ -85,7 +85,7 @@
 
   .copyright {
     font-size: 0.85rem;
-    color: #95a5a6;
+    color: #6c757d;
     font-weight: 300;
   }
 }
