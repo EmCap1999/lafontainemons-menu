@@ -1,2 +1,1 @@
-echo "🧼 Running lint-staged..."
-npx lint-staged
+# Biome checks disabled - now handled in GitHub Actions

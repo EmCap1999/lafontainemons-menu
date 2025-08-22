@@ -12,12 +12,6 @@
   },
   "workspaces": ["backend", "frontend", "database"],
 
-  "lint-staged": {
-    "*.{js,ts}": ["npx biome check --write --unsafe"],
-    "*.json": ["npx biome format --write"],
-    "package-lock.json": []
-  },
-
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "husky": "^9.1.7",
