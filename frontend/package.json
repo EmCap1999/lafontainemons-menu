@@ -10,6 +10,7 @@
     "deploy": "npm run build:prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "typecheck": "tsc --noEmit",
     "serve:ssr": "node dist/frontend/server/server.mjs",
     "generate-env": "npx tsx scripts/generate-env.ts",
     "prestart": "npm run generate-env"

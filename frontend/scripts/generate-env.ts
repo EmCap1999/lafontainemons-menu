@@ -23,11 +23,11 @@ const apiUrl = isProduction
 
 const envContent = `export const environment = {
   production: ${isProduction},
-  apiUrl: '${apiUrl}',
-  frontendUrl: '${frontendUrl}',
-  facebookUrl: '${facebookUrl}',
-  tripadvisorUrl: '${tripadvisorUrl}',
-  googleUrl: '${googleUrl}'
+  apiUrl: ${JSON.stringify(apiUrl)},
+  frontendUrl: ${JSON.stringify(frontendUrl)},
+  facebookUrl: ${JSON.stringify(facebookUrl)},
+  tripadvisorUrl: ${JSON.stringify(tripadvisorUrl)},
+  googleUrl: ${JSON.stringify(googleUrl)}
 };
 `
 

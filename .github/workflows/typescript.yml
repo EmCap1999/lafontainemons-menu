@@ -1,0 +1,44 @@
+name: TypeScript
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  typescript:
+    runs-on: ubuntu-latest
+    name: TypeScript
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate environment file
+        run: npm run generate-env --workspace=frontend
+        env:
+          BACKEND_PORT: ${{ secrets.BACKEND_PORT }}
+          FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
+          FACEBOOK_URL: ${{ secrets.FACEBOOK_URL }}
+          TRIPADVISOR_URL: ${{ secrets.TRIPADVISOR_URL }}
+          GOOGLE_URL: ${{ secrets.GOOGLE_URL }}
+          NODE_ENV: "development"
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: TypeScript check - Backend
+        run: npm run typecheck --workspace=backend
+
+      - name: TypeScript check - Frontend
+        run: npm run typecheck --workspace=frontend
+
+      - name: TypeScript check - Database
+        run: npm run typecheck --workspace=database
