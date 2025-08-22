@@ -3,6 +3,7 @@
   "scripts": {
     "lint": "biome check .",
     "lint:fix": "biome check --write --unsafe .",
+    "typecheck:all": "npm run typecheck --workspace=backend && npm run typecheck --workspace=frontend && npm run typecheck --workspace=database",
     "update": "npm run update:check && npm run update:install && npm run update:audit",
     "update:check": "npm outdated --workspaces || true",
     "update:install": "npm update --workspaces && npm update",
