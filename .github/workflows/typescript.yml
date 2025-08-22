@@ -23,6 +23,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate environment file
+        run: npm run generate-env --workspace=frontend
+        env:
+          BACKEND_PORT: ${{ secrets.BACKEND_PORT }}
+          FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
+          FACEBOOK_URL: ${{ secrets.FACEBOOK_URL }}
+          TRIPADVISOR_URL: ${{ secrets.TRIPADVISOR_URL }}
+          GOOGLE_URL: ${{ secrets.GOOGLE_URL }}
+          NODE_ENV: "development"
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
       - name: TypeScript check - Backend
         run: npm run typecheck --workspace=backend
 
