@@ -3,7 +3,10 @@ import type { DrizzleDatabase } from '../../db.js'
 import * as schema from '../schema'
 
 export async function selectAll(db: DrizzleDatabase) {
-  return db.select().from(schema.item).orderBy(asc(schema.item.displayOrder))
+  return db
+    .select()
+    .from(schema.item)
+    .orderBy(asc(schema.item.price), asc(schema.item.name))
 }
 
 export async function selectById(
@@ -23,7 +26,7 @@ export async function selectBySection(db: DrizzleDatabase, sectionId: number) {
     .select()
     .from(schema.item)
     .where(eq(schema.item.sectionId, sectionId))
-    .orderBy(asc(schema.item.displayOrder))
+    .orderBy(asc(schema.item.price), asc(schema.item.name))
 }
 
 export async function selectBySubsection(
@@ -34,7 +37,7 @@ export async function selectBySubsection(
     .select()
     .from(schema.item)
     .where(eq(schema.item.subsectionId, subsectionId))
-    .orderBy(asc(schema.item.displayOrder))
+    .orderBy(asc(schema.item.price), asc(schema.item.name))
 }
 
 export async function selectBySectionWithoutSubsection(
@@ -50,7 +53,7 @@ export async function selectBySectionWithoutSubsection(
         isNull(schema.item.subsectionId)
       )
     )
-    .orderBy(asc(schema.item.displayOrder))
+    .orderBy(asc(schema.item.price), asc(schema.item.name))
 }
 
 export async function selectWithRelations(db: DrizzleDatabase, itemId: number) {
@@ -68,7 +71,7 @@ export async function selectAvailable(db: DrizzleDatabase) {
     .select()
     .from(schema.item)
     .where(eq(schema.item.isAvailable, true))
-    .orderBy(asc(schema.item.displayOrder))
+    .orderBy(asc(schema.item.price), asc(schema.item.name))
 }
 
 export async function selectAvailableBySection(
@@ -84,7 +87,7 @@ export async function selectAvailableBySection(
         eq(schema.item.isAvailable, true)
       )
     )
-    .orderBy(asc(schema.item.displayOrder))
+    .orderBy(asc(schema.item.price), asc(schema.item.name))
 }
 
 export async function insert(db: DrizzleDatabase, item: schema.ItemInsert) {

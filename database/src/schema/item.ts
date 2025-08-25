@@ -25,7 +25,6 @@ export const item = drizzle.pgTable('item', {
   origin: drizzle.text('origin'),
   description: drizzle.text('description'),
   isAvailable: drizzle.boolean('is_available').notNull().default(true),
-  displayOrder: drizzle.integer('display_order').notNull().default(0),
   createdAt: drizzle.timestamp('created_at').defaultNow(),
   updatedAt: drizzle.timestamp('updated_at').defaultNow(),
 })

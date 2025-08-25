@@ -6,7 +6,7 @@ export async function selectAll(db: DrizzleDatabase) {
   return db
     .select()
     .from(schema.subsection)
-    .orderBy(asc(schema.subsection.displayOrder))
+    .orderBy(asc(schema.subsection.name))
 }
 
 export async function selectById(
@@ -26,7 +26,7 @@ export async function selectBySection(db: DrizzleDatabase, sectionId: number) {
     .select()
     .from(schema.subsection)
     .where(eq(schema.subsection.sectionId, sectionId))
-    .orderBy(asc(schema.subsection.displayOrder))
+    .orderBy(asc(schema.subsection.name))
 }
 
 export async function selectWithSection(
@@ -45,10 +45,10 @@ export async function selectWithItems(db: DrizzleDatabase) {
   return db.query.subsection.findMany({
     with: {
       items: {
-        orderBy: [asc(schema.item.displayOrder)],
+        orderBy: [asc(schema.item.price), asc(schema.item.name)],
       },
     },
-    orderBy: [asc(schema.subsection.displayOrder)],
+    orderBy: [asc(schema.subsection.name)],
   })
 }
 
@@ -60,10 +60,10 @@ export async function selectBySectionWithItems(
     where: eq(schema.subsection.sectionId, sectionId),
     with: {
       items: {
-        orderBy: [asc(schema.item.displayOrder)],
+        orderBy: [asc(schema.item.price), asc(schema.item.name)],
       },
     },
-    orderBy: [asc(schema.subsection.displayOrder)],
+    orderBy: [asc(schema.subsection.name)],
   })
 }
 

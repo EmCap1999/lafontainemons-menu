@@ -11,7 +11,15 @@ import type { PublicItem, PublicSection } from '@lafontaine/backend/src/types'
 })
 export class SectionComponent {
   @Input() section!: PublicSection
-  @Input() items: PublicItem[] = []
+  @Input() set items(value: PublicItem[]) {
+    this._items =
+      this.section?.name === 'Bières' ? this.reorderBeers(value) : value
+  }
+  get items(): PublicItem[] {
+    return this._items
+  }
+  private _items: PublicItem[] = []
+
   @Input() isExpanded = false
   @Input() isLoading = false
 
@@ -19,5 +27,16 @@ export class SectionComponent {
 
   onSectionClick(): void {
     this.sectionClick.emit(this.section.sectionId)
+  }
+
+  private reorderBeers(beers: PublicItem[]): PublicItem[] {
+    const saintLazare = beers.filter((b) => b.name.includes('Saint-Lazare'))
+    const supplement = beers.filter((b) => b.name === 'Supplément de sirop')
+    const others = beers.filter(
+      (b) =>
+        !b.name.includes('Saint-Lazare') && b.name !== 'Supplément de sirop'
+    )
+
+    return [...saintLazare, ...others, ...supplement]
   }
 }
