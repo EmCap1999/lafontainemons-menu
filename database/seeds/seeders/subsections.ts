@@ -27,7 +27,6 @@ export async function seedSubsections(
     const subsectionToInsert: SubsectionInsert = {
       sectionId,
       name: rawData.name,
-      displayOrder: rawData.displayOrder,
     }
 
     const [subsection] = await subsectionCommand.insert(db, subsectionToInsert)

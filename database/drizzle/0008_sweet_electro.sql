@@ -1,0 +1,1 @@
+ALTER TABLE "section" ADD COLUMN "display_order" integer DEFAULT 0 NOT NULL;

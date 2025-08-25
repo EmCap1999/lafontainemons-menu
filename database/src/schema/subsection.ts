@@ -12,7 +12,6 @@ export const subsection = drizzle.pgTable('subsection', {
       onUpdate: 'cascade',
     }),
   name: drizzle.text('name').notNull(),
-  displayOrder: drizzle.integer('display_order').notNull().default(0),
   createdAt: drizzle.timestamp('created_at').defaultNow(),
   updatedAt: drizzle.timestamp('updated_at').defaultNow(),
 })

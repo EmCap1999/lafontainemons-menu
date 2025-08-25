@@ -32,7 +32,7 @@ export class MenuComponent implements OnInit {
   loadSections(): void {
     this.menuService.getAllSections().subscribe({
       next: (sections) => {
-        this.sections = sections.sort((a, b) => a.displayOrder - b.displayOrder)
+        this.sections = sections
         this.sectionsLoading = false
       },
       error: (error) => {
@@ -58,9 +58,7 @@ export class MenuComponent implements OnInit {
 
     this.menuService.getItemsBySection(sectionId).subscribe({
       next: (items) => {
-        this.sectionItems[sectionId] = items.sort(
-          (a, b) => a.displayOrder - b.displayOrder
-        )
+        this.sectionItems[sectionId] = items
         this.loadingSections.delete(sectionId)
       },
       error: (error) => {

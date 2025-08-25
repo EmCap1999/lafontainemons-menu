@@ -37,7 +37,7 @@ export async function selectWithSubsections(db: DrizzleDatabase) {
   return db.query.section.findMany({
     with: {
       subsections: {
-        orderBy: [asc(schema.subsection.displayOrder)],
+        orderBy: [asc(schema.subsection.name)],
       },
     },
     orderBy: [asc(schema.section.displayOrder)],
@@ -48,7 +48,7 @@ export async function selectWithItems(db: DrizzleDatabase) {
   return db.query.section.findMany({
     with: {
       items: {
-        orderBy: [asc(schema.item.displayOrder)],
+        orderBy: [asc(schema.item.price), asc(schema.item.name)],
       },
     },
     orderBy: [asc(schema.section.displayOrder)],
