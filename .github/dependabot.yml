@@ -1,0 +1,203 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+      timezone: "Europe/Brussels"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "root"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    groups:
+      biome:
+        patterns:
+          - "@biomejs/*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: "npm"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+      timezone: "Europe/Brussels"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "backend"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    groups:
+      express-ecosystem:
+        patterns:
+          - "express"
+          - "@types/express"
+          - "cors"
+          - "@types/cors"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      dotenv-ecosystem:
+        patterns:
+          - "dotenv*"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      typescript-tooling:
+        patterns:
+          - "typescript"
+          - "tsx"
+          - "@types/node"
+          - "esbuild*"
+        update-types:
+          - "minor"
+          - "patch"
+
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "express"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "04:00"
+      timezone: "Europe/Brussels"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "frontend"
+      - "angular"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    groups:
+      angular-core:
+        patterns:
+          - "@angular/*"
+        update-types:
+          - "minor"
+          - "patch"
+        exclude-patterns:
+          - "@angular-devkit/*"
+          - "@angular/cli"
+      
+      angular-tooling:
+        patterns:
+          - "@angular-devkit/*"
+          - "@angular/cli"
+          - "@angular/compiler-cli"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      testing-tools:
+        patterns:
+          - "jasmine*"
+          - "karma*"
+          - "@types/jasmine"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      typescript-and-types:
+        patterns:
+          - "typescript"
+          - "@types/*"
+          - "tsx"
+        update-types:
+          - "minor"
+          - "patch"
+
+    versioning-strategy: "increase-if-necessary"
+
+    ignore:
+      - dependency-name: "@angular/*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "rxjs"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "zone.js"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: "npm"
+    directory: "/database"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "04:00"
+      timezone: "Europe/Brussels"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "database"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    groups:
+      drizzle-ecosystem:
+        patterns:
+          - "drizzle-*"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      database-tools:
+        patterns:
+          - "postgres"
+          - "zod"
+          - "dotenv*"
+        update-types:
+          - "minor"
+          - "patch"
+      
+      dev-tools:
+        patterns:
+          - "typescript"
+          - "tsx"
+          - "@types/*"
+        update-types:
+          - "minor"
+          - "patch"
+
+    ignore:
+      - dependency-name: "drizzle-orm"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "postgres"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "thursday"
+      time: "04:00"
+      timezone: "Europe/Brussels"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
