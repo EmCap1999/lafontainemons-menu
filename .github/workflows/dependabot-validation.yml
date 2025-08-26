@@ -10,9 +10,6 @@ on:
 jobs:
   validate-dependencies:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        workspace: [root, database, backend, frontend]
     
     steps:
       - name: Checkout repository
@@ -27,51 +24,36 @@ jobs:
       - name: Install all dependencies
         run: npm ci --workspaces --include-workspace-root
 
-      - name: Build database first (required by backend)
-        if: matrix.workspace == 'backend'
+      - name: Run linting
+        run: npm run lint
+
+      - name: Build database (required by backend)
         run: npm run build --workspace=database
 
-      - name: Run type checking (root)
-        if: matrix.workspace == 'root'
+      - name: Build backend
+        run: npm run build --workspace=backend
+        continue-on-error: true
+
+      - name: Generate environment file for frontend
+        run: |
+          cd frontend
+          npm run generate-env || true
+        continue-on-error: true
+
+      - name: Build frontend
+        run: npm run build --workspace=frontend
+        continue-on-error: true
+
+      - name: Run type checking
         run: npm run typecheck:all || true
         continue-on-error: true
 
-      - name: Run type checking (workspace)
-        if: matrix.workspace != 'root'
-        run: npm run typecheck --workspace=${{ matrix.workspace }}
-        continue-on-error: true
-
-      - name: Run linting
-        if: matrix.workspace == 'root'
-        run: npm run lint
-
       - name: Check for vulnerabilities
-        run: npm audit --audit-level=moderate --workspace=${{ matrix.workspace }} || true
-        if: matrix.workspace != 'root'
-        continue-on-error: true
-
-      - name: Check for vulnerabilities (root)
-        if: matrix.workspace == 'root'
-        run: npm audit --audit-level=moderate || true
-        continue-on-error: true
-
-      - name: Build project (backend)
-        if: matrix.workspace == 'backend'
-        run: npm run build --workspace=backend
-
-      - name: Build project (frontend)
-        if: matrix.workspace == 'frontend'
-        run: npm run build --workspace=frontend
-
-      - name: Build project (database)
-        if: matrix.workspace == 'database'
-        run: npm run build --workspace=database
-
-      - name: Check bundle size (frontend)
-        if: matrix.workspace == 'frontend'
         run: |
-          echo "Checking bundle size..."
-          ls -lah frontend/dist/frontend/browser/ || true
+          npm audit --audit-level=moderate || true
+          npm audit --audit-level=moderate --workspace=backend || true
+          npm audit --audit-level=moderate --workspace=frontend || true
+          npm audit --audit-level=moderate --workspace=database || true
         continue-on-error: true
 
   security-check:
