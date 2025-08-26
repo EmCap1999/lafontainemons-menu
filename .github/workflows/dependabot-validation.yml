@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        workspace: [root, backend, frontend, database]
+        workspace: [root, database, backend, frontend]
     
     steps:
       - name: Checkout repository
@@ -24,15 +24,12 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install dependencies (root)
-        if: matrix.workspace == 'root'
-        run: npm ci
+      - name: Install all dependencies
+        run: npm ci --workspaces --include-workspace-root
 
-      - name: Install dependencies (workspace)
-        if: matrix.workspace != 'root'
-        run: |
-          npm ci --workspaces
-          npm ci --workspace=${{ matrix.workspace }}
+      - name: Build database first (required by backend)
+        if: matrix.workspace == 'backend'
+        run: npm run build --workspace=database
 
       - name: Run type checking (root)
         if: matrix.workspace == 'root'
