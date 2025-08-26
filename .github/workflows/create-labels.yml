@@ -1,0 +1,25 @@
+name: Create GitHub Labels
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/labels.json'
+      - '.github/workflows/create-labels.yml'
+
+jobs:
+  create-labels:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create or Update Labels
+        uses: EndBug/label-sync@v2
+        with:
+          config-file: .github/labels.json
+          delete-other-labels: false
+          token: ${{ secrets.GITHUB_TOKEN }}
