@@ -22,7 +22,7 @@
   "type": "module",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
+    "dotenv": "^17.2.1",
     "dotenv-expand": "^12.0.2",
     "express": "^4.21.2"
   },
