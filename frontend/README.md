@@ -4,8 +4,8 @@ Angular application for the La Fontaine Mons restaurant website, built with Type
 
 ## 📦 Tech Stack
 
-- 🅰️ **Angular 19** – Modern web framework with SSR
-- 🔷 **TypeScript 5.7** – Type-safe development 
+- 🅰️ **Angular 20** – Modern web framework with SSR
+- 🔷 **TypeScript 5.9** – Type-safe development 
 - 🎨 **SCSS** – Advanced CSS styling
 - 📱 **Responsive Design** – Mobile-first approach
 - 🌐 **HTTP Client** – Type-safe API communication
