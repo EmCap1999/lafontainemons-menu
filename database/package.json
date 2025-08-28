@@ -18,7 +18,6 @@
   },
   "author": "EmCap1999",
   "dependencies": {
-    "@biomejs/biome": "^1.9.4",
     "dotenv": "^16.6.0",
     "dotenv-expand": "^12.0.2",
     "drizzle-orm": "^0.44.4",
