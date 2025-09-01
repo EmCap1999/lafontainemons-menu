@@ -36,7 +36,11 @@ export async function seedItems(
       throw new Error(`Subsection not found: ${rawData.subsectionName}`)
     }
 
-    const { sectionName, subsectionName, ...itemFields } = rawData
+    const {
+      sectionName: _sectionName,
+      subsectionName: _subsectionName,
+      ...itemFields
+    } = rawData
     const itemToInsert: ItemInsert = {
       sectionId,
       subsectionId,
