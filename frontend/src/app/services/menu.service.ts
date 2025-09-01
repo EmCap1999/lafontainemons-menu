@@ -6,7 +6,7 @@ import type {
   PublicSection,
   SectionsResponse,
 } from '@lafontaine/backend/src/types'
-import { Observable, map } from 'rxjs'
+import { map, Observable } from 'rxjs'
 import { environment } from '../../environments/environment'
 
 @Injectable({
