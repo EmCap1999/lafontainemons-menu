@@ -104,6 +104,8 @@ export const itemsRawData = [
     price: 2.5,
   },
 
+  // Anciens desserts (en commentaire)
+  /*
   {
     sectionName: 'Desserts',
     name: 'Moelleux chocolat/caramel et boule de glace',
@@ -130,9 +132,27 @@ export const itemsRawData = [
     name: 'Flambé au calvados',
     price: 10.0,
   },
-  { sectionName: 'Desserts', name: 'Glace', price: 7.0 },
+  { sectionName: 'Desserts', name: 'Glace', price: 8.0 },
+  */
 
-  { sectionName: 'HotDrinks', name: 'Café', price: 2.2 },
+  // Nouveaux desserts
+  {
+    sectionName: 'Desserts',
+    name: 'Glace gourmande',
+    price: 8.0,
+  },
+  {
+    sectionName: 'Desserts',
+    name: 'Tarte aux pommes chaudes + glace vanille',
+    price: 8.0,
+  },
+  {
+    sectionName: 'Desserts',
+    name: 'Tarte aux pommes chaudes + glace vanille + flambé au calvados',
+    price: 10.0,
+  },
+
+  { sectionName: 'HotDrinks', name: 'Café', price: 2.5 },
   {
     sectionName: 'HotDrinks',
     name: 'Décaféiné',
@@ -177,7 +197,7 @@ export const itemsRawData = [
   {
     sectionName: 'HotDrinks',
     name: 'Vin chaud amélioré',
-    price: 7.0,
+    price: 8.0,
   },
 
   {
@@ -190,7 +210,7 @@ export const itemsRawData = [
     sectionName: 'Les Vins',
     subsectionName: 'Vin rosé, blanc & rouge',
     name: 'Pichet',
-    price: 8.0,
+    price: 9.0,
     capacity: 25,
     unit: 'cl',
   },
@@ -198,7 +218,7 @@ export const itemsRawData = [
     sectionName: 'Les Vins',
     subsectionName: 'Vin rosé, blanc & rouge',
     name: 'Pichet',
-    price: 16.0,
+    price: 17.0,
     capacity: 50,
     unit: 'cl',
   },
@@ -253,14 +273,14 @@ export const itemsRawData = [
   {
     sectionName: 'Bières',
     name: "Fram' Bush",
-    price: 4.5,
+    price: 5.0,
     capacity: 33,
     unit: 'cl',
   },
   {
     sectionName: 'Bières',
     name: "Pêche Mel'",
-    price: 4.5,
+    price: 5.0,
     capacity: 33,
     unit: 'cl',
   },
@@ -274,7 +294,7 @@ export const itemsRawData = [
   {
     sectionName: 'Bières',
     name: 'Triple Karmeliet',
-    price: 4.5,
+    price: 5.0,
     capacity: 33,
     unit: 'cl',
   },
@@ -372,7 +392,7 @@ export const itemsRawData = [
   {
     sectionName: 'Bières',
     name: 'Supplément de sirop',
-    price: 0.2,
+    price: 0.5,
   },
 
   {
@@ -384,20 +404,20 @@ export const itemsRawData = [
   {
     sectionName: 'Apéritifs',
     name: 'Martini blanc ou rouge',
-    price: 5.0,
+    price: 7.0,
   },
   { sectionName: 'Apéritifs', name: 'Porto', price: 7.0 },
   {
     sectionName: 'Apéritifs',
     name: 'Pineau des Charentes',
-    price: 7.0,
+    price: 9.0,
   },
   { sectionName: 'Apéritifs', name: 'Kir', price: 7.0 },
   { sectionName: 'Apéritifs', name: 'Batida', price: 7.0 },
   {
     sectionName: 'Apéritifs',
     name: 'Campari orange',
-    price: 8.0,
+    price: 9.0,
   },
   {
     sectionName: 'Apéritifs',
@@ -407,10 +427,23 @@ export const itemsRawData = [
   {
     sectionName: 'Apéritifs',
     name: 'Picon vin blanc',
-    price: 8.0,
+    price: 9.0,
   },
-  { sectionName: 'Apéritifs', name: 'Ricard', price: 5.0 },
-  { sectionName: 'Apéritifs', name: 'Cynar', price: 5.0 },
+  {
+    sectionName: 'Apéritifs',
+    name: 'Ricard',
+    price: 5.0,
+    capacity: 2,
+    unit: 'cl',
+  },
+  {
+    sectionName: 'Apéritifs',
+    name: 'Ricard',
+    price: 7.0,
+    capacity: 4,
+    unit: 'cl',
+  },
+  { sectionName: 'Apéritifs', name: 'Cynar', price: 7.0 },
   {
     sectionName: 'Apéritifs',
     name: 'Grodino 0%',
@@ -428,7 +461,12 @@ export const itemsRawData = [
     capacity: 75,
     unit: 'cl',
   },
-  { sectionName: 'Apéritifs', name: 'Negroni', price: 9.0 },
+  {
+    sectionName: 'Apéritifs',
+    name: 'Verre de Prosecco',
+    price: 6.0,
+  },
+  { sectionName: 'Apéritifs', name: 'Negroni', price: 10.0 },
   {
     sectionName: 'Apéritifs',
     name: 'Rhum Coca',
@@ -438,16 +476,16 @@ export const itemsRawData = [
   {
     sectionName: 'Alcools',
     name: 'Cocktail maison',
-    price: 7.0,
+    price: 9.0,
   },
-  { sectionName: 'Alcools', name: 'Cognac', price: 8.0 },
   { sectionName: 'Alcools', name: 'Gin', price: 8.0 },
   { sectionName: 'Alcools', name: 'Gin Soft', price: 9.0 },
   { sectionName: 'Alcools', name: 'Whisky', price: 8.0 },
-  { sectionName: 'Alcools', name: 'Calvados', price: 8.0 },
+  { sectionName: 'Alcools', name: 'Whisky Spécial', price: 12.0 },
+  { sectionName: 'Alcools', name: 'Calvados', price: 10.0 },
   {
     sectionName: 'Alcools',
-    name: 'Vacchia Romagna',
+    name: 'Vecchia Romagna',
     price: 8.0,
   },
   { sectionName: 'Alcools', name: 'Grappa', price: 8.0 },
