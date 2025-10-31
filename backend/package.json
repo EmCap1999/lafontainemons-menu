@@ -21,7 +21,7 @@
   "description": "Backend API for La Fontaine Mons Restaurant.",
   "type": "module",
   "dependencies": {
-    "@types/express": "^4.17.23",
+    "@types/express": "^5.0.5",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "dotenv-expand": "^12.0.2",
