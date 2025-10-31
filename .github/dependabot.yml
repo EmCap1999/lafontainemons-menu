@@ -66,14 +66,6 @@ updates:
           - "minor"
           - "patch"
 
-    ignore:
-      - dependency-name: "typescript"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "express"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "@types/express"
-        update-types: ["version-update:semver-major"]
-
   - package-ecosystem: "npm"
     directory: "/frontend"
     schedule:
@@ -130,16 +122,6 @@ updates:
 
     versioning-strategy: "increase-if-necessary"
 
-    ignore:
-      - dependency-name: "@angular/*"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "typescript"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "rxjs"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "zone.js"
-        update-types: ["version-update:semver-major"]
-
   - package-ecosystem: "npm"
     directory: "/database"
     schedule:
@@ -180,14 +162,6 @@ updates:
         update-types:
           - "minor"
           - "patch"
-
-    ignore:
-      - dependency-name: "drizzle-orm"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "postgres"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "typescript"
-        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "github-actions"
     directory: "/"

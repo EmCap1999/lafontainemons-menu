@@ -1,4 +1,4 @@
-name: Dependabot Auto-Merge
+name: Dependabot Auto-Label
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ jobs:
   dependabot:
     runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -22,13 +22,6 @@ jobs:
         uses: dependabot/fetch-metadata@v2
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
-
-      - name: Auto-approve patch and minor updates
-        if: steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor'
-        run: gh pr review --approve "$PR_URL"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Label PR based on update type
         run: |
@@ -43,22 +36,13 @@ jobs:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Enable auto-merge for patch updates
-        if: steps.metadata.outputs.update-type == 'version-update:semver-patch'
+      - name: Label dependency type
         run: |
-          gh pr merge --auto --squash "$PR_URL"
-          gh pr edit "$PR_URL" --add-label "auto-merge"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Enable auto-merge for minor dev dependencies
-        if: |
-          steps.metadata.outputs.update-type == 'version-update:semver-minor' &&
-          steps.metadata.outputs.dependency-type == 'direct:development'
-        run: |
-          gh pr merge --auto --squash "$PR_URL"
-          gh pr edit "$PR_URL" --add-label "auto-merge"
+          if [[ "${{ steps.metadata.outputs.dependency-type }}" == "direct:development" ]]; then
+            gh pr edit "$PR_URL" --add-label "dev-dependency"
+          elif [[ "${{ steps.metadata.outputs.dependency-type }}" == "direct:production" ]]; then
+            gh pr edit "$PR_URL" --add-label "prod-dependency"
+          fi
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -70,9 +54,23 @@ jobs:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Auto-merge security updates
-        if: steps.metadata.outputs.ghsa-id != ''
-        run: gh pr merge --auto --squash "$PR_URL"
+      - name: Add comment with update details
+        run: |
+          COMMENT="## 📦 Dependabot Update Summary
+          
+          **Update Type:** \`${{ steps.metadata.outputs.update-type }}\`
+          **Dependency Type:** \`${{ steps.metadata.outputs.dependency-type }}\`
+          **Package:** \`${{ steps.metadata.outputs.dependency-names }}\`
+          
+          ℹ️ This PR requires manual review and approval before merging."
+          
+          if [[ "${{ steps.metadata.outputs.ghsa-id }}" != "" ]]; then
+            COMMENT="${COMMENT}
+          
+          🔒 **Security Update** - GHSA: \`${{ steps.metadata.outputs.ghsa-id }}\`"
+          fi
+          
+          gh pr comment "$PR_URL" --body "$COMMENT"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
