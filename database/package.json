@@ -19,7 +19,7 @@
   "author": "EmCap1999",
   "dependencies": {
     "dotenv-expand": "^12.0.2",
-    "drizzle-orm": "^0.44.5",
+    "drizzle-orm": "^0.45.0",
     "drizzle-zod": "^0.8.3",
     "postgres": "^3.4.4",
     "zod": "^4.1.3"
