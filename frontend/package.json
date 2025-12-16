@@ -12,7 +12,7 @@
     "test": "ng test",
     "typecheck": "tsc --noEmit",
     "serve:ssr": "node dist/frontend/server/server.mjs",
-    "generate-env": "dotenv -e ../.env -- node scripts/generate-env.mjs",
+    "generate-env": "npx tsx scripts/generate-env.ts",
     "prestart": "npm run generate-env"
   },
   "private": true,

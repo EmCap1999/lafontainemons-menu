@@ -58,18 +58,6 @@ jobs:
             echo "=== Seeding database ==="
             npm run db:seed --workspace=@lafontaine/database
 
-            echo "=== Building frontend ==="
-            NODE_ENV=production npm run generate-env --workspace=frontend
-            cd frontend && NODE_PATH=$PROJECT_PATH/node_modules node ../node_modules/@angular/cli/bin/ng.js build --configuration production
-
-            echo "=== Deploying frontend ==="
-            sudo rm -rf $FRONTEND_DEST/*
-            sudo cp -r dist/frontend/browser/* $FRONTEND_DEST/
-            sudo chown -R www-data:www-data $FRONTEND_DEST
-
-            echo "=== Reloading Nginx ==="
-            sudo systemctl reload nginx
-
             echo "=== Cleaning old backups (keep last 10) ==="
             cd $PROJECT_PATH/backups && ls -t *.sql 2>/dev/null | tail -n +11 | xargs -r rm -- || true
 
