@@ -11,7 +11,7 @@ app.use(cors(corsOptions))
 app.use(express.json())
 app.use('/api', menuRoutes)
 
-app.all('*', (req: Request, _res: Response, next: NextFunction) => {
+app.all('/{*splat}', (req: Request, _res: Response, next: NextFunction) => {
   next(new AppError(`Route ${req.originalUrl} not found`, 404))
 })
 
