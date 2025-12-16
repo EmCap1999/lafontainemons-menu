@@ -58,7 +58,7 @@ jobs:
             npm run db:seed --workspace=@lafontaine/database
 
             echo "=== Building frontend ==="
-            npm run build:prod --workspace=frontend
+            cd frontend && npm install && npm run build:prod && cd ..
 
             echo "=== Deploying frontend ==="
             sudo rm -rf $FRONTEND_DEST/*
