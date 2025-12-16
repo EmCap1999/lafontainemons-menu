@@ -60,7 +60,6 @@ jobs:
             echo "=== Building frontend ==="
             NODE_ENV=production ./node_modules/.bin/tsx frontend/scripts/generate-env.ts
             npm run build --workspace=frontend -- --configuration production
-
             echo "=== Deploying frontend ==="
             sudo rm -rf $FRONTEND_DEST/*
             sudo cp -r frontend/dist/frontend/browser/* $FRONTEND_DEST/
