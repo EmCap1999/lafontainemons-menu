@@ -17,6 +17,8 @@
     "database"
   ],
   "devDependencies": {
+    "@angular-devkit/build-angular": "^20.3.3",
+    "@angular/cli": "^20.3.3",
     "@biomejs/biome": "2.3.8",
     "@types/node": "^24.10.0",
     "dotenv": "^17.2.2",
