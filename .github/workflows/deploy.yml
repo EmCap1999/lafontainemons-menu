@@ -34,6 +34,7 @@ jobs:
 
             echo "=== Cleaning and fixing permissions ==="
             sudo rm -rf node_modules frontend/node_modules backend/node_modules database/node_modules
+            npm cache clean --force
             sudo chown -R $(whoami):$(whoami) $PROJECT_PATH
 
             echo "=== Installing dependencies ==="
