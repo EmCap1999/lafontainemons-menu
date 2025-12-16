@@ -60,7 +60,7 @@ jobs:
 
             echo "=== Building frontend ==="
             NODE_ENV=production npm run generate-env --workspace=frontend
-            cd frontend && node ../node_modules/@angular/cli/bin/ng.js build --configuration production
+            cd frontend && NODE_PATH=$PROJECT_PATH/node_modules node ../node_modules/@angular/cli/bin/ng.js build --configuration production
 
             echo "=== Deploying frontend ==="
             sudo rm -rf $FRONTEND_DEST/*
