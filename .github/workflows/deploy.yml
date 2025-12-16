@@ -59,11 +59,12 @@ jobs:
             npm run db:seed --workspace=@lafontaine/database
 
             echo "=== Building frontend ==="
-            npm run build:prod --workspace=frontend
+            NODE_ENV=production npm run generate-env --workspace=frontend
+            cd frontend && node ../node_modules/@angular/cli/bin/ng.js build --configuration production
 
             echo "=== Deploying frontend ==="
             sudo rm -rf $FRONTEND_DEST/*
-            sudo cp -r frontend/dist/frontend/browser/* $FRONTEND_DEST/
+            sudo cp -r dist/frontend/browser/* $FRONTEND_DEST/
             sudo chown -R www-data:www-data $FRONTEND_DEST
 
             echo "=== Reloading Nginx ==="
