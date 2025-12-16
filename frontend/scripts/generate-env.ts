@@ -1,9 +1,14 @@
 import * as fs from 'node:fs'
 import * as path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import * as dotenv from 'dotenv'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+
+const envFile = '.env'
+console.log(`Loading environment from: ${envFile}`)
+dotenv.config({ path: path.resolve(__dirname, `../../${envFile}`) })
 
 const backendPort = process.env.BACKEND_PORT || '8080'
 const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:4200'
