@@ -33,7 +33,7 @@ jobs:
             git reset --hard origin/main
 
             echo "=== Installing dependencies ==="
-            sudo rm -rf node_modules
+            sudo rm -rf node_modules frontend/node_modules backend/node_modules database/node_modules
             npm ci
 
             echo "=== Backing up database ==="
