@@ -32,9 +32,11 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
 
+            echo "=== Fixing permissions ==="
+            sudo chown -R $(whoami):$(whoami) $PROJECT_PATH
+
             echo "=== Installing dependencies ==="
-            sudo rm -rf node_modules frontend/node_modules backend/node_modules database/node_modules
-            sudo chown -R $(whoami):$(whoami) .
+            rm -rf node_modules frontend/node_modules backend/node_modules database/node_modules
             npm ci
 
             echo "=== Backing up database ==="
