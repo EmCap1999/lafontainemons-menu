@@ -92,9 +92,7 @@ updates:
         patterns:
           - "@angular/*"
           - "@angular-devkit/*"
-        update-types:
-          - "minor"
-          - "patch"
+        # All Angular packages must be updated together to avoid version mismatches
       
       testing-tools:
         patterns:
