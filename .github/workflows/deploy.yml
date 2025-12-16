@@ -21,6 +21,7 @@ jobs:
           host: ${{ secrets.OVH_SSH_HOST }}
           username: ${{ secrets.OVH_SSH_USER }}
           key: ${{ secrets.OVH_SSH_KEY }}
+          passphrase: ${{ secrets.OVH_SSH_PASSPHRASE }}
           envs: PROJECT_PATH,FRONTEND_DEST
           script_stop: true
           script: |
