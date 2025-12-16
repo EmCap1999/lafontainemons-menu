@@ -33,8 +33,9 @@ jobs:
             git reset --hard origin/main
 
             echo "=== Installing dependencies ==="
+            sudo rm -rf node_modules
             npm ci
-
+            
             echo "=== Backing up database ==="
             mkdir -p backups
             BACKUP_FILE="backup_$(date +%Y%m%d_%H%M%S).sql"
