@@ -58,8 +58,7 @@ jobs:
             npm run db:seed --workspace=@lafontaine/database
 
             echo "=== Building frontend ==="
-            NODE_ENV=production ./node_modules/.bin/tsx frontend/scripts/generate-env.ts
-            npm run build --workspace=frontend -- --configuration production
+            npm run build:prod --workspace=frontend
             echo "=== Deploying frontend ==="
             sudo rm -rf $FRONTEND_DEST/*
             sudo cp -r frontend/dist/frontend/browser/* $FRONTEND_DEST/
