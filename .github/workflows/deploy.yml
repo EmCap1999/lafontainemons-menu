@@ -32,7 +32,7 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
 
-            echo "=== Installing dependencies ==="
+            echo "=== Cleaning and fixing permissions ==="
             sudo rm -rf node_modules frontend/node_modules backend/node_modules database/node_modules
             sudo chown -R $(whoami):$(whoami) $PROJECT_PATH
             npm ci
