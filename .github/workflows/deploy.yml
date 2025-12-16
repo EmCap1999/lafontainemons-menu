@@ -35,7 +35,6 @@ jobs:
             echo "=== Installing dependencies ==="
             sudo rm -rf node_modules frontend/node_modules backend/node_modules database/node_modules
             npm ci
-            sudo chown -R $(whoami):$(whoami) node_modules
 
             echo "=== Backing up database ==="
             mkdir -p backups
@@ -60,10 +59,10 @@ jobs:
 
             echo "=== Building frontend ==="
             cd frontend && npm ci && npm run build:prod
-
             echo "=== Deploying frontend ==="
             sudo rm -rf $FRONTEND_DEST/*
             sudo cp -r dist/frontend/browser/* $FRONTEND_DEST/
+
             sudo chown -R www-data:www-data $FRONTEND_DEST
 
             echo "=== Reloading Nginx ==="
@@ -71,5 +70,4 @@ jobs:
 
             echo "=== Cleaning old backups (keep last 10) ==="
             cd $PROJECT_PATH/backups && ls -t *.sql 2>/dev/null | tail -n +11 | xargs -r rm -- || true
-
             echo "=== Deployment complete ==="
