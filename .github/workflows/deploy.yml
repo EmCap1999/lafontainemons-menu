@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.2.0
+        uses: appleboy/ssh-action@v1.2.4
         with:
           host: ${{ secrets.OVH_SSH_HOST }}
           username: ${{ secrets.OVH_SSH_USER }}
