@@ -4,7 +4,7 @@ Angular application for the restaurant menu website.
 
 ## Tech Stack
 
-- Angular 20, TypeScript 5.9
+- Angular 21, TypeScript 5.9
 - SCSS, SSR
 - Shared types from @lafontaine/backend
 
