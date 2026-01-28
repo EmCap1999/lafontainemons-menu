@@ -6,29 +6,41 @@
     </div>
   </div>
 
-  <div class="section-content" *ngIf="isExpanded">
-    <div *ngIf="isLoading" class="loading">
-      <p>Chargement des items...</p>
-    </div>
-
-    <div *ngIf="!isLoading && items.length > 0" class="items-list">
-      <div *ngFor="let item of items" class="item-card">
-        <div class="item-header">
-          <h3 class="item-name">{{ item.name }}</h3>
-          <span class="item-price">{{ item.price | currency:'EUR':'symbol':'1.2-2':'fr' }}</span>
+  @if (isExpanded) {
+    <div class="section-content">
+      @if (isLoading) {
+        <div class="loading">
+          <p>Chargement des items...</p>
         </div>
-
-
-        <div class="item-details">
-          <span *ngIf="item.origin" class="item-origin">{{ item.origin }}</span>
-          <span *ngIf="item.capacity && item.unit" class="item-capacity">{{ item.capacity | number:'1.0-1':'fr' }} {{ item.unit }}</span>
-          <span *ngIf="!item.isAvailable" class="item-unavailable">Non disponible</span>
+      }
+      @if (!isLoading && items.length > 0) {
+        <div class="items-list">
+          @for (item of items; track item) {
+            <div class="item-card">
+              <div class="item-header">
+                <h3 class="item-name">{{ item.name }}</h3>
+                <span class="item-price">{{ item.price | currency:'EUR':'symbol':'1.2-2':'fr' }}</span>
+              </div>
+              <div class="item-details">
+                @if (item.origin) {
+                  <span class="item-origin">{{ item.origin }}</span>
+                }
+                @if (item.capacity && item.unit) {
+                  <span class="item-capacity">{{ item.capacity | number:'1.0-1':'fr' }} {{ item.unit }}</span>
+                }
+                @if (!item.isAvailable) {
+                  <span class="item-unavailable">Non disponible</span>
+                }
+              </div>
+            </div>
+          }
         </div>
-      </div>
+      }
+      @if (!isLoading && items.length === 0) {
+        <div class="no-items">
+          <p>Aucun item disponible dans cette section.</p>
+        </div>
+      }
     </div>
-
-    <div *ngIf="!isLoading && items.length === 0" class="no-items">
-      <p>Aucun item disponible dans cette section.</p>
-    </div>
-  </div>
+  }
 </div>
