@@ -1,4 +1,3 @@
-
 import { Component, Input, type OnInit } from '@angular/core'
 import type { PublicItem, PublicSection } from '@lafontaine/backend/src/types'
 import { MenuService } from '../../services/menu.service'
