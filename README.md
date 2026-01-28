@@ -6,7 +6,7 @@ Dynamic menu website for La Fontaine Mons restaurant.
 
 ## Tech Stack
 
-- **Frontend**: Angular 20, TypeScript, SCSS, SSR
+- **Frontend**: Angular 21, TypeScript, SCSS, SSR
 - **Backend**: Node.js, Express 5, TypeScript
 - **Database**: PostgreSQL 18, Drizzle ORM
 - **Infrastructure**: Docker, Nginx, Let's Encrypt
