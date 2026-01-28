@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common'
 import { Component, Input, type OnInit } from '@angular/core'
 import type { PublicItem, PublicSection } from '@lafontaine/backend/src/types'
 import { MenuService } from '../../services/menu.service'
@@ -7,7 +6,7 @@ import { SectionComponent } from '../section/section.component'
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule, SectionComponent],
+  imports: [SectionComponent],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })
