@@ -17,26 +17,35 @@
 
   <h1 class="menu-title">Carte - Boissons & Desserts</h1>
 
-  <div *ngIf="sectionsLoading" class="loading">
-    <p>Chargement du menu...</p>
-  </div>
+  @if (sectionsLoading) {
+    <div class="loading">
+      <p>Chargement du menu...</p>
+    </div>
+  }
 
-  <div *ngIf="sectionsError" class="error">
-    {{ sectionsError }}
-  </div>
+  @if (sectionsError) {
+    <div class="error">
+      {{ sectionsError }}
+    </div>
+  }
 
-  <div *ngIf="!sectionsLoading && !sectionsError" class="sections-list">
-    <app-section
-      *ngFor="let section of sections"
-      [section]="section"
-      [items]="getSectionItems(section.sectionId)"
-      [isExpanded]="isSectionExpanded(section.sectionId)"
-      [isLoading]="isSectionLoading(section.sectionId)"
-      (sectionClick)="onSectionClick($event)">
-    </app-section>
-  </div>
+  @if (!sectionsLoading && !sectionsError) {
+    <div class="sections-list">
+      @for (section of sections; track section) {
+        <app-section
+          [section]="section"
+          [items]="getSectionItems(section.sectionId)"
+          [isExpanded]="isSectionExpanded(section.sectionId)"
+          [isLoading]="isSectionLoading(section.sectionId)"
+          (sectionClick)="onSectionClick($event)">
+        </app-section>
+      }
+    </div>
+  }
 
-  <div *ngIf="!sectionsLoading && !sectionsError && sections.length === 0" class="no-sections">
-    <p>Aucune section disponible pour le moment.</p>
-  </div>
+  @if (!sectionsLoading && !sectionsError && sections.length === 0) {
+    <div class="no-sections">
+      <p>Aucune section disponible pour le moment.</p>
+    </div>
+  }
 </div>
