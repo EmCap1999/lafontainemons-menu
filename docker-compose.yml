@@ -33,7 +33,7 @@ services:
       - FRONTEND_URL=${FRONTEND_URL}
       - BACKEND_PORT=${BACKEND_PORT}
       - HUSKY=0
-    command: sh -c "npm install -g tsx && npm ci --ignore-scripts && npx tsx backend/src/server.ts"
+    command: sh -c "corepack enable && yarn install --immutable && yarn tsx watch backend/src/server.ts"
     depends_on:
       postgres:
         condition: service_healthy

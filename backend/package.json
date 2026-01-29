@@ -1,35 +1,35 @@
 {
-  "name": "@lafontaine/backend",
-  "version": "1.0.0",
-  "main": "dist/server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "dev": "NODE_ENV=development tsx watch src/server.ts",
-    "start:dev": "NODE_ENV=development node dist/server.js",
-    "start:prod": "NODE_ENV=production node dist/server.js",
-    "start": "node dist/server.js",
-    "typecheck": "tsc --noEmit"
-  },
-  "keywords": [],
-  "author": {
-    "name": "Manu Caputo",
-    "email": "caputoemmanuel1999@gmail.com",
-    "url": "https://github.com/EmCap1999"
-  },
-  "license": "ISC",
-  "description": "Backend API for La Fontaine Mons Restaurant.",
-  "type": "module",
-  "dependencies": {
-    "@types/express": "^5.0.5",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.2",
-    "dotenv-expand": "^12.0.2",
-    "express": "^5.1.0"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "esbuild": "^0.27.1",
-    "esbuild-node-externals": "^1.18.0"
-  }
+	"name": "@lafontaine/backend",
+	"version": "1.0.0",
+	"main": "dist/server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsc",
+		"dev": "NODE_ENV=development tsx watch src/server.ts",
+		"start:dev": "NODE_ENV=development node dist/server.js",
+		"start:prod": "NODE_ENV=production node dist/server.js",
+		"start": "node dist/server.js",
+		"typecheck": "tsc --noEmit"
+	},
+	"keywords": [],
+	"author": {
+		"name": "Manu Caputo",
+		"email": "caputoemmanuel1999@gmail.com",
+		"url": "https://github.com/EmCap1999"
+	},
+	"license": "ISC",
+	"description": "Backend API for La Fontaine Mons Restaurant.",
+	"type": "module",
+	"dependencies": {
+		"@types/express": "^5.0.5",
+		"cors": "^2.8.5",
+		"dotenv": "^17.2.2",
+		"dotenv-expand": "^12.0.2",
+		"express": "^5.1.0"
+	},
+	"devDependencies": {
+		"@types/cors": "^2.8.17",
+		"esbuild": "^0.27.1",
+		"esbuild-node-externals": "^1.18.0"
+	}
 }
