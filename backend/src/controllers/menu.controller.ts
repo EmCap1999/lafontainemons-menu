@@ -15,7 +15,8 @@ export const getAllSections = asyncHandler(async (_req: Request, res: Response) 
 });
 
 export const getItemsBySection = asyncHandler(async (req: Request, res: Response) => {
-	const sectionId = Number.parseInt(req.params.sectionId, 10);
+	const param = req.params.sectionId;
+	const sectionId = Number.parseInt(Array.isArray(param) ? param[0] : param, 10);
 
 	if (Number.isNaN(sectionId)) {
 		throw new AppError("Invalid section ID", 400);
