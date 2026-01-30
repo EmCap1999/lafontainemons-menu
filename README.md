@@ -26,15 +26,8 @@ Dynamic menu website for La Fontaine Mons restaurant.
 # Install dependencies
 yarn install
 
-# Start PostgreSQL and backend
-docker compose up -d
-
-# Run migrations and seed
-yarn workspace @lafontaine/database db:migrate
-yarn workspace @lafontaine/database db:seed
-
-# Start frontend
-yarn workspace frontend start
+# Start Application
+yarn dev
 ```
 
 **Endpoints**:
