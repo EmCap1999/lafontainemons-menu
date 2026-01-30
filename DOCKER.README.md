@@ -17,10 +17,10 @@ Backend API (port 8080)
 docker compose up -d
 
 # Run migrations (manual)
-npm run db:migrate --workspace=@lafontaine/database
+yarn workspace @lafontaine/database db:migrate
 
 # Seed database (optional)
-npm run db:seed --workspace=@lafontaine/database
+yarn workspace @lafontaine/database db:seed
 
 # Check status
 docker ps

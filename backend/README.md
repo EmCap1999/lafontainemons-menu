@@ -11,10 +11,10 @@ RESTful API server built with TypeScript and Express 5.
 ## Setup
 
 ```bash
-npm install
-npm run dev    # Development with hot reload
-npm run build  # Build for production
-npm start      # Start production server
+yarn install
+yarn dev       # Development with hot reload
+yarn build     # Build for production
+yarn start     # Start production server
 ```
 
 Server runs on `http://localhost:8080`

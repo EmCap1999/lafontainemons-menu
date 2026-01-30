@@ -24,17 +24,10 @@ Dynamic menu website for La Fontaine Mons restaurant.
 
 ```bash
 # Install dependencies
-npm install
+yarn install
 
-# Start PostgreSQL and backend
-docker compose up -d
-
-# Run migrations and seed
-npm run db:migrate --workspace=@lafontaine/database
-npm run db:seed --workspace=@lafontaine/database
-
-# Start frontend
-npm run start --workspace=frontend
+# Start Application
+yarn dev
 ```
 
 **Endpoints**:
@@ -45,11 +38,11 @@ npm run start --workspace=frontend
 ## Commands
 
 ```bash
-npm run lint              # Lint project
-npm run lint:fix          # Auto-fix lint issues
-npm run build --workspace=frontend
-npm run build --workspace=backend
-npm run db:studio         # Database GUI
+yarn lint                         # Lint project
+yarn lint:fix                     # Auto-fix lint issues
+yarn workspace frontend build     # Build frontend
+yarn workspace backend build      # Build backend
+yarn db:studio                    # Database GUI
 ```
 
 ## Documentation
