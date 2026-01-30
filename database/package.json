@@ -1,35 +1,35 @@
 {
-  "name": "@lafontaine/database",
-  "version": "1.0.0",
-  "description": "Database layer for La Fontaine Mons restaurant with TypeScript and Drizzle ORM",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "typecheck": "tsc --noEmit",
-    "dev": "tsc --watch",
-    "db:generate": "dotenv -e ../.env -- drizzle-kit generate",
-    "db:migrate": "dotenv -e ../.env -- drizzle-kit migrate",
-    "db:studio": "dotenv -e ../.env -- drizzle-kit studio",
-    "db:push": "dotenv -e ../.env -- drizzle-kit push",
-    "db:reset": "npm run db:migrate && npm run db:seed",
-    "db:seed": "dotenv -e ../.env -- tsx seeds/seed.ts",
-    "clean": "rm -rf dist"
-  },
-  "author": "EmCap1999",
-  "dependencies": {
-    "dotenv-expand": "^12.0.2",
-    "drizzle-orm": "^0.45.0",
-    "drizzle-zod": "^0.8.3",
-    "postgres": "^3.4.4",
-    "zod": "^4.1.3"
-  },
-  "devDependencies": {
-    "dotenv-cli": "^11.0.0",
-    "drizzle-kit": "^0.31.5"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "type": "module"
+	"name": "@lafontaine/database",
+	"version": "1.0.0",
+	"description": "Database layer for La Fontaine Mons restaurant with TypeScript and Drizzle ORM",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"typecheck": "tsc --noEmit",
+		"dev": "tsc --watch",
+		"db:generate": "dotenv -e ../.env -- drizzle-kit generate",
+		"db:migrate": "dotenv -e ../.env -- drizzle-kit migrate",
+		"db:studio": "dotenv -e ../.env -- drizzle-kit studio",
+		"db:push": "dotenv -e ../.env -- drizzle-kit push",
+		"db:reset": "npm run db:migrate && npm run db:seed",
+		"db:seed": "dotenv -e ../.env -- tsx seeds/seed.ts",
+		"clean": "rm -rf dist"
+	},
+	"author": "EmCap1999",
+	"dependencies": {
+		"dotenv-expand": "^12.0.2",
+		"drizzle-orm": "^0.45.0",
+		"drizzle-zod": "^0.8.3",
+		"postgres": "^3.4.4",
+		"zod": "^4.1.3"
+	},
+	"devDependencies": {
+		"dotenv-cli": "^11.0.0",
+		"drizzle-kit": "^0.31.5"
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	},
+	"type": "module"
 }

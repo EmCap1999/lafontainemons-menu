@@ -1,171 +1,47 @@
 version: 2
+
 updates:
-  - package-ecosystem: "npm"
+  - package-ecosystem: "github-actions"
     directory: "/"
+    target-branch: "main"
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "04:00"
-      timezone: "Europe/Brussels"
-    open-pull-requests-limit: 5
-    labels:
-      - "dependencies"
-      - "root"
+      interval: "monthly"
     commit-message:
-      prefix: "chore"
-      prefix-development: "chore"
-      include: "scope"
-    groups:
-      biome:
-        patterns:
-          - "@biomejs/*"
-        update-types:
-          - "minor"
-          - "patch"
+      prefix: "deps(github-actions):"
 
   - package-ecosystem: "npm"
-    directory: "/backend"
+    directory: "/"
+    target-branch: "main"
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "04:00"
-      timezone: "Europe/Brussels"
-    open-pull-requests-limit: 5
-    labels:
-      - "dependencies"
-      - "backend"
+      interval: "monthly"
     commit-message:
-      prefix: "chore"
-      prefix-development: "chore"
-      include: "scope"
+      prefix: "deps(node):"
     groups:
-      express-ecosystem:
+      angular:
+        patterns:
+          - "@angular/*"
+          - "@angular-devkit/*"
+      express:
         patterns:
           - "express"
           - "@types/express"
           - "cors"
           - "@types/cors"
-        update-types:
-          - "minor"
-          - "patch"
-      
-      dotenv-ecosystem:
+      drizzle:
         patterns:
-          - "dotenv*"
-        update-types:
-          - "minor"
-          - "patch"
-      
-      typescript-tooling:
+          - "drizzle-orm"
+          - "drizzle-kit"
+      tools:
+        patterns:
+          - "turbo"
+          - "@biomejs/*"
+      typescript:
         patterns:
           - "typescript"
-          - "tsx"
           - "@types/node"
-          - "esbuild*"
-        update-types:
-          - "minor"
-          - "patch"
-
-  - package-ecosystem: "npm"
-    directory: "/frontend"
-    schedule:
-      interval: "weekly"
-      day: "tuesday"
-      time: "04:00"
-      timezone: "Europe/Brussels"
-    open-pull-requests-limit: 5
-    labels:
-      - "dependencies"
-      - "frontend"
-      - "angular"
-    commit-message:
-      prefix: "chore"
-      prefix-development: "chore"
-      include: "scope"
-    ignore:
-      - dependency-name: "@angular/*"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "@angular-devkit/*"
-        update-types: ["version-update:semver-major"]
-    groups:
-      angular-ecosystem:
-        patterns:
-          - "@angular/*"
-          - "@angular-devkit/*"
-        # All Angular packages must be updated together to avoid version mismatches
-      
-      testing-tools:
+          - "tsx"
+      testing:
         patterns:
           - "jasmine*"
           - "karma*"
           - "@types/jasmine"
-        update-types:
-          - "minor"
-          - "patch"
-      
-      typescript-and-types:
-        patterns:
-          - "typescript"
-          - "@types/*"
-          - "tsx"
-        update-types:
-          - "minor"
-          - "patch"
-
-    versioning-strategy: "increase-if-necessary"
-
-  - package-ecosystem: "npm"
-    directory: "/database"
-    schedule:
-      interval: "weekly"
-      day: "wednesday"
-      time: "04:00"
-      timezone: "Europe/Brussels"
-    open-pull-requests-limit: 5
-    labels:
-      - "dependencies"
-      - "database"
-    commit-message:
-      prefix: "chore"
-      prefix-development: "chore"
-      include: "scope"
-    groups:
-      drizzle-ecosystem:
-        patterns:
-          - "drizzle-*"
-        update-types:
-          - "minor"
-          - "patch"
-      
-      database-tools:
-        patterns:
-          - "postgres"
-          - "zod"
-          - "dotenv*"
-        update-types:
-          - "minor"
-          - "patch"
-      
-      dev-tools:
-        patterns:
-          - "typescript"
-          - "tsx"
-          - "@types/*"
-        update-types:
-          - "minor"
-          - "patch"
-
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "thursday"
-      time: "04:00"
-      timezone: "Europe/Brussels"
-    open-pull-requests-limit: 3
-    labels:
-      - "dependencies"
-      - "github-actions"
-    commit-message:
-      prefix: "ci"
-      include: "scope"

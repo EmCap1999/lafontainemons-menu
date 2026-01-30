@@ -1,0 +1,32 @@
+name: PR checks
+
+on:
+  pull_request:
+
+jobs:
+  typescript-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/yarn-install
+      - name: Generate environment file
+        run: yarn --cwd frontend generate-env
+        env:
+          BACKEND_PORT: ${{ secrets.BACKEND_PORT }}
+          FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
+          FACEBOOK_URL: ${{ secrets.FACEBOOK_URL }}
+          TRIPADVISOR_URL: ${{ secrets.TRIPADVISOR_URL }}
+          GOOGLE_URL: ${{ secrets.GOOGLE_URL }}
+          NODE_ENV: "development"
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - name: Typescript compiler check
+        run: yarn turbo typecheck
+
+  biome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Biome CLI
+        uses: biomejs/setup-biome@v2
+      - name: Run Biome
+        run: biome ci .

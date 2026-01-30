@@ -33,9 +33,10 @@ jobs:
             git reset --hard origin/main
 
             echo "=== Cleaning and fixing permissions ==="
-            sudo rm -rf node_modules frontend/node_modules backend/node_modules database/node_modules
+            sudo rm -rf node_modules frontend/node_modules backend/node_modules database/node_modules .yarn
             sudo chown -R $(whoami):$(whoami) $PROJECT_PATH
-            npm ci
+            corepack enable
+            yarn install --immutable
 
             echo "=== Backing up database ==="
             mkdir -p backups
@@ -53,10 +54,10 @@ jobs:
             done
 
             echo "=== Running migrations ==="
-            npm run db:migrate --workspace=@lafontaine/database
+            yarn workspace @lafontaine/database db:migrate
 
             echo "=== Seeding database ==="
-            npm run db:seed --workspace=@lafontaine/database
+            yarn workspace @lafontaine/database db:seed
 
             echo "=== Cleaning old backups (keep last 10) ==="
             cd $PROJECT_PATH/backups && ls -t *.sql 2>/dev/null | tail -n +11 | xargs -r rm -- || true
