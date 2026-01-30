@@ -7,7 +7,7 @@ jobs:
   typescript-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./.github/actions/yarn-install
       - name: Generate environment file
         run: yarn --cwd frontend generate-env
@@ -25,7 +25,7 @@ jobs:
   biome:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Setup Biome CLI
         uses: biomejs/setup-biome@v2
       - name: Run Biome
