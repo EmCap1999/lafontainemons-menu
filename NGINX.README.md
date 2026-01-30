@@ -16,8 +16,8 @@ Production deployment guide for the frontend application.
 
 ```bash
 cd frontend
-NODE_ENV=production npm run generate-env
-npm run build:prod
+NODE_ENV=production yarn generate-env
+yarn build:prod
 ```
 
 ### 2. Deploy Files
@@ -94,8 +94,8 @@ sudo systemctl enable certbot.timer
 ```bash
 #!/bin/bash
 cd /path/to/project/frontend
-NODE_ENV=production npm run generate-env
-npm run build:prod
+NODE_ENV=production yarn generate-env
+yarn build:prod
 cp -r dist/frontend/browser/* /var/www/carte.lafontainemons.be/
 sudo systemctl reload nginx
 ```

@@ -11,10 +11,10 @@ Angular application for the restaurant menu website.
 ## Setup
 
 ```bash
-npm run generate-env  # Generate environment config
-npm start             # Development server
-npm run build:prod    # Production build
-npm test              # Run tests
+yarn generate-env  # Generate environment config
+yarn start         # Development server
+yarn build:prod    # Production build
+yarn test          # Run tests
 ```
 
 Development server runs on `http://localhost:4200`
