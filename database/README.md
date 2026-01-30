@@ -23,23 +23,23 @@ Section (7 categories)
 docker compose up -d postgres
 
 # Run migrations
-npm run db:migrate --workspace=@lafontaine/database
+yarn workspace @lafontaine/database db:migrate
 
 # Seed data
-npm run db:seed --workspace=@lafontaine/database
+yarn workspace @lafontaine/database db:seed
 
 # Database GUI
-npm run db:studio
+yarn db:studio
 ```
 
 ## Commands
 
 ```bash
-npm run build        # Build TypeScript
-npm run db:generate  # Generate migration
-npm run db:migrate   # Apply migrations
-npm run db:seed      # Seed database
-npm run db:studio    # Open Drizzle Studio
+yarn build        # Build TypeScript
+yarn db:generate  # Generate migration
+yarn db:migrate   # Apply migrations
+yarn db:seed      # Seed database
+yarn db:studio    # Open Drizzle Studio
 ```
 
 ## Environment Variables
