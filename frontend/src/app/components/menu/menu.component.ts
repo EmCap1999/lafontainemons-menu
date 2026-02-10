@@ -22,6 +22,10 @@ export class MenuComponent implements OnInit {
 	expandedSections: Set<number> = new Set();
 	loadingSections: Set<number> = new Set();
 
+	searchTerm = "";
+	private expandedBeforeSearch: Set<number> = new Set();
+	private isSearching = false;
+
 	constructor(private menuService: MenuService) {}
 
 	ngOnInit(): void {
@@ -76,6 +80,61 @@ export class MenuComponent implements OnInit {
 	}
 
 	getSectionItems(sectionId: number): PublicItem[] {
-		return this.sectionItems[sectionId] || [];
+		if (!this.searchTerm.trim()) {
+			return this.sectionItems[sectionId] || [];
+		}
+		return this.getFilteredItems(sectionId);
+	}
+
+	get filteredSections(): PublicSection[] {
+		if (!this.searchTerm.trim()) {
+			return this.sections;
+		}
+		const term = this.searchTerm.toLowerCase().trim();
+		return this.sections.filter((section) => {
+			const items = this.sectionItems[section.sectionId] || [];
+			return items.some(
+				(item) =>
+					item.name.toLowerCase().includes(term) || item.origin?.toLowerCase().includes(term),
+			);
+		});
+	}
+
+	onSearchInput(event: Event): void {
+		const value = (event.target as HTMLInputElement).value;
+
+		if (value.trim() && !this.isSearching) {
+			this.isSearching = true;
+			this.expandedBeforeSearch = new Set(this.expandedSections);
+			this.loadAllSectionItems();
+		}
+
+		if (!value.trim() && this.isSearching) {
+			this.isSearching = false;
+			this.expandedSections = new Set(this.expandedBeforeSearch);
+			this.expandedBeforeSearch.clear();
+		}
+
+		this.searchTerm = value;
+
+		if (value.trim()) {
+			this.expandedSections = new Set(this.filteredSections.map((s) => s.sectionId));
+		}
+	}
+
+	private getFilteredItems(sectionId: number): PublicItem[] {
+		const items = this.sectionItems[sectionId] || [];
+		const term = this.searchTerm.toLowerCase().trim();
+		return items.filter(
+			(item) => item.name.toLowerCase().includes(term) || item.origin?.toLowerCase().includes(term),
+		);
+	}
+
+	private loadAllSectionItems(): void {
+		for (const section of this.sections) {
+			if (!this.sectionItems[section.sectionId]) {
+				this.loadSectionItems(section.sectionId);
+			}
+		}
 	}
 }

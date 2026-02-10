@@ -1,0 +1,167 @@
+@use 'functions' as *;
+@use 'breakpoints' as *;
+
+// ==========================================================================
+// Mixins
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Typography (fluid scaling)
+// --------------------------------------------------------------------------
+
+@mixin type-h1 {
+  font-size: #{fluid(29, 40)};
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@mixin type-h2 {
+  font-size: #{fluid(24, 32)};
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+@mixin type-h3 {
+  font-size: #{fluid(18, 24)};
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+@mixin type-body {
+  font-size: #{fluid(15, 17)};
+  line-height: 1.5;
+}
+
+@mixin type-small {
+  font-size: #{fluid(14, 16)};
+  line-height: 1.4;
+}
+
+@mixin type-caption {
+  font-size: #{fluid(13, 14)};
+  line-height: 1.3;
+}
+
+// --------------------------------------------------------------------------
+// Layout
+// --------------------------------------------------------------------------
+
+@mixin container($max-width: 1800px) {
+  width: min(100% - var(--space-md) * 2, $max-width);
+  margin-inline: auto;
+}
+
+// --------------------------------------------------------------------------
+// Transitions & Interactions
+// --------------------------------------------------------------------------
+
+@mixin transition($properties...) {
+  $result: ();
+
+  @each $prop in $properties {
+    $result: append($result, $prop var(--transition-base), comma);
+  }
+
+  transition: $result;
+}
+
+@mixin hover-lift($y: -2px, $shadow: var(--shadow-lg)) {
+  &:hover {
+    transform: translateY($y);
+    box-shadow: $shadow;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Surfaces
+// --------------------------------------------------------------------------
+
+@mixin card-surface($radius: var(--radius-lg)) {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius;
+  box-shadow: var(--shadow-md);
+}
+
+// --------------------------------------------------------------------------
+// Social Icons
+// --------------------------------------------------------------------------
+
+@mixin social-icon($color) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: $color;
+  text-decoration: none;
+  transition: all var(--transition-base);
+  background: transparent;
+  border: 1.5px solid rgba($color, 0.3);
+
+  i {
+    font-size: 22px;
+  }
+
+  &:hover {
+    background: $color;
+    color: #fff;
+    border-color: $color;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba($color, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// --------------------------------------------------------------------------
+// Loading Spinner
+// --------------------------------------------------------------------------
+
+@mixin loading-spinner($accent: var(--color-primary)) {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border: 3px solid var(--color-border);
+    border-top: 3px solid $accent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Empty State
+// --------------------------------------------------------------------------
+
+@mixin empty-state {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+// --------------------------------------------------------------------------
+// Badges
+// --------------------------------------------------------------------------
+
+@mixin badge($color, $bg) {
+  display: inline-block;
+  color: $color;
+  font-weight: 600;
+  background: $bg;
+  padding: var(--space-xxs) 0.6rem;
+  border-radius: var(--radius-lg);
+  width: fit-content;
+}

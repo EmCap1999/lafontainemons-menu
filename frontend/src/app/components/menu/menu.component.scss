@@ -1,199 +1,163 @@
-.menu-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+@use 'abstracts' as *;
+
+// --------------------------------------------------------------------------
+// Hero Banner
+// --------------------------------------------------------------------------
+
+.hero-banner {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  background: url('/assets/background.jpg') center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include respond-to('md') {
+    min-height: 360px;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-xl) var(--space-md);
+  }
 
   .brewery-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    padding: 1rem 1rem 0 1rem;
+    margin-bottom: var(--space-xxs);
 
     .logo-image {
-      max-height: 240px;
-      max-width: 440px;
+      max-height: clamp(8rem, 18vw, 13rem);
+      max-width: clamp(18rem, 35vw, 25rem);
       height: auto;
       width: auto;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-      transition: transform 0.3s ease, filter 0.3s ease;
-
-      &:hover {
-        transform: scale(1.05);
-        filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
-      }
+      filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
     }
+  }
+
+  .menu-title {
+    text-align: center;
+    @include type-h1;
+    color: #fff;
+    margin: 0 0 var(--space-md);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   }
 
   .social-media-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding-top: 0;
-  }
-
-  .facebook-link, .tripadvisor-link, .google-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    color: #ffffff;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    backdrop-filter: blur(8px);
-
-    i {
-      font-size: 22px;
-    }
-
-    &:hover {
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      transform: translateY(0px);
-    }
+    gap: var(--space-lg);
   }
 
   .facebook-link {
-    background: rgba(66, 103, 178, 0.85);
-    box-shadow: 0 2px 8px rgba(66, 103, 178, 0.3);
-
-    &:hover {
-      background: rgba(66, 103, 178, 1);
-      box-shadow: 0 4px 16px rgba(66, 103, 178, 0.4);
-    }
-
-    &:active {
-      box-shadow: 0 2px 8px rgba(66, 103, 178, 0.35);
-    }
+    @include social-icon(#4267b2);
   }
 
   .tripadvisor-link {
-    background: rgba(76, 175, 80, 0.85);
-    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
-
-    &:hover {
-      background: rgba(76, 175, 80, 1);
-      box-shadow: 0 4px 16px rgba(76, 175, 80, 0.4);
-    }
-
-    &:active {
-      box-shadow: 0 2px 8px rgba(76, 175, 80, 0.35);
-    }
+    @include social-icon(#4caf50);
   }
 
   .google-link {
-    background: rgba(234, 67, 53, 0.85);
-    box-shadow: 0 2px 8px rgba(234, 67, 53, 0.3);
-
-    &:hover {
-      background: rgba(234, 67, 53, 1);
-      box-shadow: 0 4px 16px rgba(234, 67, 53, 0.4);
-    }
-
-    &:active {
-      box-shadow: 0 2px 8px rgba(234, 67, 53, 0.35);
-    }
+    @include social-icon(#ea4335);
   }
 
-  .menu-title {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 2rem;
-    border-bottom: 3px solid #95a5a6;
-    padding-bottom: 1rem;
+  .social-media-container a {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    backdrop-filter: blur(4px);
+  }
+}
+
+// --------------------------------------------------------------------------
+// Menu Content
+// --------------------------------------------------------------------------
+
+.menu-container {
+  @include container();
+  padding: var(--space-xl) var(--space-xxs) var(--space-sm);
+
+  @include respond-to('md') {
+    padding: var(--space-2xl) var(--space-xl) var(--space-xl);
+  }
+
+  .search-bar {
+    margin-bottom: var(--space-xl);
+    position: relative;
+
+    .search-icon {
+      position: absolute;
+      left: var(--space-md);
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: var(--space-sm) var(--space-md) var(--space-sm) 2.5rem;
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color var(--transition-base), box-shadow var(--transition-base);
+
+      &::placeholder {
+        color: var(--color-text-muted);
+      }
+
+      &:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.15);
+      }
+    }
   }
 
   .loading {
-    text-align: center;
-    padding: 3rem;
-    font-size: 1.1rem;
-    color: #6c757d;
-
-    &::after {
-      content: '';
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      margin-left: 10px;
-      border: 3px solid #f3f3f3;
-      border-top: 3px solid #3498db;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
+    @include loading-spinner(var(--color-primary));
   }
 
   .error {
-    background: #f8d7da;
-    color: #721c24;
-    padding: 1rem;
-    border-radius: 6px;
-    border: 1px solid #f5c6cb;
-    margin-bottom: 2rem;
+    background: var(--color-error-bg);
+    color: var(--color-error-text);
+    padding: var(--space-md);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-error-border);
+    margin-bottom: var(--space-xl);
     text-align: center;
     font-weight: 500;
   }
 
   .sections-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
+    display: grid;
+    gap: var(--space-md);
 
-  .no-sections {
-    text-align: center;
-    padding: 3rem;
-    color: #6c757d;
-    font-style: italic;
-    font-size: 1.1rem;
-  }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-// Responsive design
-@media (max-width: 768px) {
-  .menu-container {
-    padding: 1rem;
-
-    .brewery-logo {
-      margin-bottom: 1.5rem;
-      padding: 0.5rem 0.5rem 0 0.5rem;
-
-      .logo-image {
-        max-height: 180px;
-        max-width: 340px;
-      }
+    @include respond-to('xl') {
+      grid-template-columns: repeat(2, 1fr);
+      align-items: start;
     }
 
-    .menu-title {
-      font-size: 2rem;
+    > * {
+      min-width: 0;
     }
   }
-}
 
-@media (max-width: 480px) {
-  .menu-container {
-    .brewery-logo {
-      .logo-image {
-        max-height: 160px;
-        max-width: 320px;
-      }
-    }
-
-    .menu-title {
-      font-size: 1.8rem;
-    }
+  .no-sections,
+  .no-results {
+    @include empty-state;
   }
 }

@@ -1,0 +1,31 @@
+@use 'variables' as *;
+
+// ==========================================================================
+// Breakpoint Mixins
+// ==========================================================================
+
+/// Mobile-first: min-width
+@mixin respond-to($bp) {
+  $value: map-get($breakpoints, $bp);
+
+  @if $value {
+    @media (min-width: $value) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$bp}`. Available: #{map-keys($breakpoints)}";
+  }
+}
+
+/// Desktop-first: max-width (for migration)
+@mixin respond-below($bp) {
+  $value: map-get($breakpoints, $bp);
+
+  @if $value {
+    @media (max-width: $value - 1px) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$bp}`. Available: #{map-keys($breakpoints)}";
+  }
+}
