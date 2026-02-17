@@ -26,7 +26,8 @@
 	},
 	"devDependencies": {
 		"dotenv-cli": "^11.0.0",
-		"drizzle-kit": "^0.31.5"
+		"drizzle-kit": "^0.31.5",
+		"typescript": "^5.9.3"
 	},
 	"engines": {
 		"node": ">=18.0.0"
