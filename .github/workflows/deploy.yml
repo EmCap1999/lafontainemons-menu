@@ -61,4 +61,14 @@ jobs:
             echo "=== Cleaning old backups (keep last 10) ==="
             cd $PROJECT_PATH/backups && ls -t *.sql 2>/dev/null | tail -n +11 | xargs -r rm -- || true
 
+            echo "=== Building frontend ==="
+            cd $PROJECT_PATH
+            NODE_ENV=production yarn workspace frontend generate-env
+            yarn workspace frontend build:prod
+
+            echo "=== Deploying frontend ==="
+            rm -rf $FRONTEND_DEST/*
+            cp -r $PROJECT_PATH/frontend/dist/frontend/browser/* $FRONTEND_DEST/
+            sudo systemctl reload nginx
+
             echo "=== Deployment complete ==="
