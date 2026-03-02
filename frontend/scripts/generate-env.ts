@@ -17,6 +17,11 @@ const tripadvisorUrl = process.env.TRIPADVISOR_URL || "";
 const googleUrl = process.env.GOOGLE_URL || "";
 const isProduction = process.env.NODE_ENV === "production";
 
+const rootPackageJson = JSON.parse(
+	fs.readFileSync(path.resolve(__dirname, "../../package.json"), "utf-8"),
+);
+const appVersion = rootPackageJson.version || "0.0.0";
+
 const apiUrl = isProduction ? `${frontendUrl}/api` : `http://localhost:${backendPort}/api`;
 
 const envContent = `export const environment = {
@@ -25,7 +30,8 @@ const envContent = `export const environment = {
   frontendUrl: ${JSON.stringify(frontendUrl)},
   facebookUrl: ${JSON.stringify(facebookUrl)},
   tripadvisorUrl: ${JSON.stringify(tripadvisorUrl)},
-  googleUrl: ${JSON.stringify(googleUrl)}
+  googleUrl: ${JSON.stringify(googleUrl)},
+  version: ${JSON.stringify(appVersion)}
 };
 `;
 
