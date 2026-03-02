@@ -1,8 +1,8 @@
 name: Deploy to OVH
 
 on:
-  push:
-    branches: [main]
+  release:
+    types: [published]
   workflow_dispatch:
 
 env:
@@ -60,5 +60,15 @@ jobs:
 
             echo "=== Cleaning old backups (keep last 10) ==="
             cd $PROJECT_PATH/backups && ls -t *.sql 2>/dev/null | tail -n +11 | xargs -r rm -- || true
+
+            echo "=== Building frontend ==="
+            cd $PROJECT_PATH
+            yarn workspace frontend build:prod
+
+            echo "=== Deploying frontend ==="
+            rm -rf $FRONTEND_DEST/*
+            cp -r $PROJECT_PATH/frontend/dist/frontend/browser/* $FRONTEND_DEST/
+            cp $FRONTEND_DEST/index.csr.html $FRONTEND_DEST/index.html
+            sudo systemctl reload nginx
 
             echo "=== Deployment complete ==="
