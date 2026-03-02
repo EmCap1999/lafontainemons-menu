@@ -2,6 +2,9 @@
 
 Production deployment guide for the frontend application.
 
+> **Note:** Frontend deployment is automated via CI (`.github/workflows/deploy.yml`).
+> This guide documents the initial server setup and manual operations.
+
 ## Prerequisites
 
 - Ubuntu/Debian server with sudo access
@@ -10,25 +13,19 @@ Production deployment guide for the frontend application.
 - Domain configured (carte.lafontainemons.be)
 - Backend running (Docker)
 
-## Deployment
+## Initial Server Setup (one-time)
 
-### 1. Build Frontend
-
-```bash
-cd frontend
-NODE_ENV=production yarn generate-env
-yarn build:prod
-```
-
-### 2. Deploy Files
+### 1. Create Web Directory
 
 ```bash
 sudo mkdir -p /var/www/carte.lafontainemons.be
-sudo chown -R $USER:$USER /var/www/carte.lafontainemons.be
-cp -r dist/frontend/browser/* /var/www/carte.lafontainemons.be/
+sudo chown -R ubuntu:www-data /var/www/carte.lafontainemons.be
+sudo chmod -R 755 /var/www/carte.lafontainemons.be
 ```
 
-### 3. Configure Nginx
+> `ubuntu` owns the directory (can deploy without sudo), `www-data` group allows nginx to read.
+
+### 2. Configure Nginx
 
 Create `/etc/nginx/sites-available/carte.lafontainemons.be`:
 
@@ -73,7 +70,7 @@ server {
 }
 ```
 
-### 4. Enable Site
+### 3. Enable Site
 
 ```bash
 sudo ln -s /etc/nginx/sites-available/carte.lafontainemons.be /etc/nginx/sites-enabled/
@@ -81,7 +78,7 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-## SSL Setup
+### 4. SSL Setup
 
 ```bash
 sudo apt install certbot python3-certbot-nginx
@@ -89,16 +86,32 @@ sudo certbot --nginx -d carte.lafontainemons.be
 sudo systemctl enable certbot.timer
 ```
 
-## Update Script
+## Manual Deployment
+
+If you need to deploy manually (outside of CI):
 
 ```bash
-#!/bin/bash
-cd /path/to/project/frontend
-NODE_ENV=production yarn generate-env
-yarn build:prod
-cp -r dist/frontend/browser/* /var/www/carte.lafontainemons.be/
+cd /home/ubuntu/lafontainemons/lafontainemons-menu
+
+# Build
+NODE_ENV=production yarn workspace frontend generate-env
+yarn workspace frontend build:prod
+
+# Deploy (no sudo needed - ubuntu owns the directory)
+rm -rf /var/www/carte.lafontainemons.be/*
+cp -r frontend/dist/frontend/browser/* /var/www/carte.lafontainemons.be/
+
+# Reload nginx (sudo required - systemd service)
 sudo systemctl reload nginx
 ```
+
+## Permissions Summary
+
+| Path | Owner | Why |
+|------|-------|-----|
+| `/var/www/carte.lafontainemons.be/` | `ubuntu:www-data` | Deploy user writes, nginx reads |
+| `/etc/nginx/sites-available/*` | `root:root` | System config (sudo for edits) |
+| `systemctl reload nginx` | requires sudo | systemd service management |
 
 ## Troubleshooting
 
@@ -107,6 +120,7 @@ sudo systemctl reload nginx
 | 502 Bad Gateway | Check backend is running |
 | 404 for API calls | Verify proxy config |
 | SSL errors | `sudo certbot renew` |
+| Permission denied on deploy | `sudo chown -R ubuntu:www-data /var/www/carte.lafontainemons.be` |
 
 ### Debug
 
