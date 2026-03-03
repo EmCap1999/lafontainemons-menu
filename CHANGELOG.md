@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.0...v1.1.1) (2026-03-03)
+
+
+### Continuous Integration
+
+* **deploy:** combine release-please and deploy into single workflow ([#214](https://github.com/EmCap1999/lafontainemons-menu/issues/214)) ([0cc3ec9](https://github.com/EmCap1999/lafontainemons-menu/commit/0cc3ec954799d7b5abb583f921aa26c06fff7f2c))
+
 ## [1.1.0](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.0.0...v1.1.0) (2026-03-02)
 
 
