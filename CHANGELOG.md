@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.1...v1.1.2) (2026-03-10)
+
+
+### Bug Fixes
+
+* **deps:** trigger release for dependency updates ([#222](https://github.com/EmCap1999/lafontainemons-menu/issues/222)) ([69480b7](https://github.com/EmCap1999/lafontainemons-menu/commit/69480b71d865420a420009afce832036e1460703))
+
 ## [1.1.1](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.0...v1.1.1) (2026-03-03)
 
 
