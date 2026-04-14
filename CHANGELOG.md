@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.3](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.2...v1.1.3) (2026-04-13)
+
+
+### Dependencies
+
+* **node:** bump the angular group across 1 directory with 9 updates ([#245](https://github.com/EmCap1999/lafontainemons-menu/issues/245)) ([16eb7bc](https://github.com/EmCap1999/lafontainemons-menu/commit/16eb7bcd0b3ee08f5deceaa26c930dd4bbf148b1))
+* **node:** bump the drizzle group with 2 updates ([#234](https://github.com/EmCap1999/lafontainemons-menu/issues/234)) ([fe93e60](https://github.com/EmCap1999/lafontainemons-menu/commit/fe93e60575590d51023af67c57dccfa96fd16460))
+* **node:** bump the tools group with 2 updates ([#235](https://github.com/EmCap1999/lafontainemons-menu/issues/235)) ([cb23630](https://github.com/EmCap1999/lafontainemons-menu/commit/cb236308bcf706aa6eb30e7f4e008ba6607be9f0))
+* **node:** bump zone.js from 0.16.0 to 0.16.1 ([#237](https://github.com/EmCap1999/lafontainemons-menu/issues/237)) ([aef3a51](https://github.com/EmCap1999/lafontainemons-menu/commit/aef3a51a7b83ee006431476252640dbc8ad1dc70))
+
 ## [1.1.2](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.1...v1.1.2) (2026-03-10)
 
 
