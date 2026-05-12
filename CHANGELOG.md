@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.4](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.3...v1.1.4) (2026-05-12)
+
+
+### Dependencies
+
+* **github-actions:** bump googleapis/release-please-action from 4 to 5 ([#253](https://github.com/EmCap1999/lafontainemons-menu/issues/253)) ([a5acc25](https://github.com/EmCap1999/lafontainemons-menu/commit/a5acc252bbe5b406bc5de1b01c3e69ffcbed7f9a))
+* **node:** bump @biomejs/biome from 2.4.11 to 2.4.13 in the tools group ([#255](https://github.com/EmCap1999/lafontainemons-menu/issues/255)) ([f2ab135](https://github.com/EmCap1999/lafontainemons-menu/commit/f2ab13509559a1ac78a8b559110ec70914a5a4df))
+* **node:** bump esbuild-node-externals from 1.20.1 to 1.22.0 ([#257](https://github.com/EmCap1999/lafontainemons-menu/issues/257)) ([d10a006](https://github.com/EmCap1999/lafontainemons-menu/commit/d10a00643d04a9ab900100186e30471878dc3c9c))
+* **node:** bump jasmine-core in the testing group across 1 directory ([#256](https://github.com/EmCap1999/lafontainemons-menu/issues/256)) ([c5825f6](https://github.com/EmCap1999/lafontainemons-menu/commit/c5825f64650bae54bb8556d7454e4eb472260deb))
+* **node:** bump the angular group with 12 updates ([#254](https://github.com/EmCap1999/lafontainemons-menu/issues/254)) ([8aaa2f0](https://github.com/EmCap1999/lafontainemons-menu/commit/8aaa2f00b4f414df352a3733c84c848c5479bd63))
+
 ## [1.1.3](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.2...v1.1.3) (2026-04-13)
 
 
