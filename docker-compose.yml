@@ -20,7 +20,7 @@ services:
       retries: 5
 
   backend:
-    image: node:24-alpine
+    image: node:26-alpine
     container_name: lafontaine-backend-dev
     restart: always
     working_dir: /app
@@ -33,7 +33,7 @@ services:
       - FRONTEND_URL=${FRONTEND_URL}
       - BACKEND_PORT=${BACKEND_PORT}
       - HUSKY=0
-    command: sh -c "corepack enable && yarn install --immutable && yarn tsx watch backend/src/server.ts"
+    command: sh -c "npm install -g corepack && corepack enable && yarn install --immutable && yarn tsx watch backend/src/server.ts"
     depends_on:
       postgres:
         condition: service_healthy
