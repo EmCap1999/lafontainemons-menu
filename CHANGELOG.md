@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.5](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.4...v1.1.5) (2026-07-07)
+
+
+### Dependencies
+
+* **github-actions:** bump actions/checkout from 6 to 7 ([#280](https://github.com/EmCap1999/lafontainemons-menu/issues/280)) ([600e134](https://github.com/EmCap1999/lafontainemons-menu/commit/600e134e4646f6ff5dcd98205dffff1aedd9f921))
+* **node:** bump dotenv-expand from 12.0.3 to 13.0.0 ([#269](https://github.com/EmCap1999/lafontainemons-menu/issues/269)) ([be9f558](https://github.com/EmCap1999/lafontainemons-menu/commit/be9f558764785bc1d45c2d64d1e6dd6c5ecaafa4))
+* **node:** bump the angular group across 1 directory with 12 updates ([#285](https://github.com/EmCap1999/lafontainemons-menu/issues/285)) ([be9cfd2](https://github.com/EmCap1999/lafontainemons-menu/commit/be9cfd25cfcd8031a18b7449b97a122c7514d5bc))
+* **node:** bump the tools group with 2 updates ([#267](https://github.com/EmCap1999/lafontainemons-menu/issues/267)) ([050ee92](https://github.com/EmCap1999/lafontainemons-menu/commit/050ee92f09a1ef07a74c83eec54addc28f39f037))
+* **node:** bump the typescript group across 1 directory with 3 updates ([#265](https://github.com/EmCap1999/lafontainemons-menu/issues/265)) ([ef91cc8](https://github.com/EmCap1999/lafontainemons-menu/commit/ef91cc82e8e8872a88155196b069df700f79e41c))
+* **node:** bump zod from 4.3.6 to 4.4.3 ([#268](https://github.com/EmCap1999/lafontainemons-menu/issues/268)) ([12bcf75](https://github.com/EmCap1999/lafontainemons-menu/commit/12bcf7511d2c4fda4d9f501d63bb982b74ff8d77))
+
 ## [1.1.4](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.3...v1.1.4) (2026-05-12)
 
 
