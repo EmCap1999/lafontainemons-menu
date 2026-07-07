@@ -20,31 +20,25 @@
 </div>
 
 <div class="menu-container">
-  @if (sectionsLoading) {
+  @if (sectionsLoading()) {
     <div class="loading">
       <p>Chargement du menu...</p>
     </div>
   }
 
-  @if (sectionsError) {
-    <div class="error">
-      {{ sectionsError }}
-    </div>
-  }
-
-  @if (!sectionsLoading && !sectionsError) {
+  @if (!sectionsLoading()) {
     <div class="search-bar">
       <i class="fas fa-search search-icon"></i>
       <input
         type="text"
         class="search-input"
         placeholder="Rechercher une boisson..."
-        [value]="searchTerm"
+        [value]="searchTerm()"
         (input)="onSearchInput($event)">
     </div>
 
     <div class="sections-list">
-      @for (section of filteredSections; track section) {
+      @for (section of filteredSections(); track section) {
         <app-section
           [section]="section"
           [items]="getSectionItems(section.sectionId)"
@@ -55,14 +49,14 @@
       }
     </div>
 
-    @if (searchTerm.trim() && filteredSections.length === 0) {
+    @if (searchTerm().trim() && filteredSections().length === 0) {
       <div class="no-results">
-        <p>Aucun résultat pour "{{ searchTerm }}"</p>
+        <p>Aucun résultat pour "{{ searchTerm() }}"</p>
       </div>
     }
   }
 
-  @if (!sectionsLoading && !sectionsError && sections.length === 0) {
+  @if (!sectionsLoading() && sections().length === 0) {
     <div class="no-sections">
       <p>Aucune section disponible pour le moment.</p>
     </div>

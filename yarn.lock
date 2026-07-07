@@ -2123,7 +2123,7 @@ __metadata:
     esbuild: "npm:^0.28.1"
     esbuild-node-externals: "npm:^1.22.0"
     express: "npm:^5.1.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.3"
   languageName: unknown
   linkType: soft
 
@@ -2137,7 +2137,7 @@ __metadata:
     drizzle-orm: "npm:^0.45.2"
     drizzle-zod: "npm:^0.8.3"
     postgres: "npm:^3.4.4"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.3"
     zod: "npm:^4.4.3"
   languageName: unknown
   linkType: soft
@@ -3277,12 +3277,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^25.3.3":
-  version: 25.3.3
-  resolution: "@types/node@npm:25.3.3"
+"@types/node@npm:^26.1.0":
+  version: 26.1.0
+  resolution: "@types/node@npm:26.1.0"
   dependencies:
-    undici-types: "npm:~7.18.0"
-  checksum: 10c0/63e1d3816a9f4a706ab5d588d18cb98aa824b97748ff585537d327528e9438f58f69f45c7762e7cd3a1ab32c1619f551aabe8075d13172f9273cf10f6d83ab91
+    undici-types: "npm:~8.3.0"
+  checksum: 10c0/61c22ad1ef215e24138cb8b7368fb68bab9de4c123b3f23d411749b015ba1b7d22f878ad54add26a0b69068d7e07c04af665069d8571b6c6c3b9b2fb73b7bd91
   languageName: node
   linkType: hard
 
@@ -4388,7 +4388,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:0.28.1, esbuild@npm:^0.28.1":
+"esbuild@npm:0.28.1, esbuild@npm:^0.28.1, esbuild@npm:~0.28.0":
   version: 0.28.1
   resolution: "esbuild@npm:0.28.1"
   dependencies:
@@ -4991,7 +4991,7 @@ __metadata:
     karma-jasmine-html-reporter: "npm:~2.2.0"
     rxjs: "npm:~7.8.0"
     tslib: "npm:^2.3.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.3"
     zone.js: "npm:~0.16.1"
   languageName: unknown
   linkType: soft
@@ -5735,10 +5735,10 @@ __metadata:
   resolution: "lafontainemons-menu@workspace:."
   dependencies:
     "@biomejs/biome": "npm:2.4.16"
-    "@types/node": "npm:^25.3.3"
+    "@types/node": "npm:^26.1.0"
     dotenv: "npm:^17.2.2"
     esbuild: "npm:^0.28.1"
-    tsx: "npm:^4.19.2"
+    tsx: "npm:^4.23.0"
     turbo: "npm:^2.9.16"
   languageName: unknown
   linkType: soft
@@ -7499,7 +7499,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsx@npm:^4.19.2, tsx@npm:^4.21.0":
+"tsx@npm:^4.21.0":
   version: 4.21.0
   resolution: "tsx@npm:4.21.0"
   dependencies:
@@ -7512,6 +7512,21 @@ __metadata:
   bin:
     tsx: dist/cli.mjs
   checksum: 10c0/f5072923cd8459a1f9a26df87823a2ab5754641739d69df2a20b415f61814322b751fa6be85db7c6ec73cf68ba8fac2fd1cfc76bdb0aa86ded984d84d5d2126b
+  languageName: node
+  linkType: hard
+
+"tsx@npm:^4.23.0":
+  version: 4.23.0
+  resolution: "tsx@npm:4.23.0"
+  dependencies:
+    esbuild: "npm:~0.28.0"
+    fsevents: "npm:~2.3.3"
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    tsx: dist/cli.mjs
+  checksum: 10c0/e4fade6bf8a4447424652da3a68f5ab7b927d1cbe5f697dba876c626c5fb7bf7663c4f71777992c9cbbdc8148c63ee1ddcf15536ff9d1863f9fbea25247ee0a9
   languageName: node
   linkType: hard
 
@@ -7576,7 +7591,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:6.0.3":
+"typescript@npm:6.0.3, typescript@npm:^6.0.3":
   version: 6.0.3
   resolution: "typescript@npm:6.0.3"
   bin:
@@ -7586,33 +7601,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.9.3":
-  version: 5.9.3
-  resolution: "typescript@npm:5.9.3"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10c0/6bd7552ce39f97e711db5aa048f6f9995b53f1c52f7d8667c1abdc1700c68a76a308f579cd309ce6b53646deb4e9a1be7c813a93baaf0a28ccd536a30270e1c5
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A6.0.3#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A6.0.3#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^6.0.3#optional!builtin<compat/typescript>":
   version: 6.0.3
   resolution: "typescript@patch:typescript@npm%3A6.0.3#optional!builtin<compat/typescript>::version=6.0.3&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/2f25c74e65663c248fa1ade2b8459d9ce5372ff9dad07067310f132966ebec1d93f6c42f0baf77a6b6a7a91460463f708e6887013aaade22111037457c6b25df
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A^5.9.3#optional!builtin<compat/typescript>":
-  version: 5.9.3
-  resolution: "typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10c0/ad09fdf7a756814dce65bc60c1657b40d44451346858eea230e10f2e95a289d9183b6e32e5c11e95acc0ccc214b4f36289dcad4bf1886b0adb84d711d336a430
   languageName: node
   linkType: hard
 
@@ -7632,10 +7627,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~7.18.0":
-  version: 7.18.2
-  resolution: "undici-types@npm:7.18.2"
-  checksum: 10c0/85a79189113a238959d7a647368e4f7c5559c3a404ebdb8fc4488145ce9426fcd82252a844a302798dfc0e37e6fb178ff481ed03bc4caf634c5757d9ef43521d
+"undici-types@npm:~8.3.0":
+  version: 8.3.0
+  resolution: "undici-types@npm:8.3.0"
+  checksum: 10c0/c8aa7e2fbebfce519654dafadc0ece59be888d2ccaf180fb4495da875e7b536d2456345c384069c7e6f3e9c9ab7435f074957da306f142343eee86ff8048855a
   languageName: node
   linkType: hard
 
