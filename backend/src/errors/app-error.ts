@@ -1,4 +1,5 @@
 import type { NextFunction, Request, Response } from "express";
+import { env } from "../config/environment.config";
 
 export class AppError extends Error {
 	public readonly statusCode: number;
@@ -23,7 +24,7 @@ export const errorHandler = (
 	const statusCode = err instanceof AppError ? err.statusCode : 500;
 	let message = err.message || "Internal Server Error";
 
-	if (process.env.NODE_ENV === "production" && statusCode >= 500) {
+	if (env.NODE_ENV === "production" && statusCode >= 500) {
 		message = "Internal Server Error";
 	}
 
@@ -31,7 +32,7 @@ export const errorHandler = (
 		`[${new Date().toISOString()}] ${req.method} ${req.originalUrl} - ${statusCode} - ${message}`,
 	);
 
-	if (process.env.NODE_ENV === "development") {
+	if (env.NODE_ENV === "development") {
 		console.error(err.stack);
 	}
 
@@ -41,7 +42,7 @@ export const errorHandler = (
 		error: {
 			message,
 			statusCode,
-			...(process.env.NODE_ENV === "development" && { stack: err.stack }),
+			...(env.NODE_ENV === "development" && { stack: err.stack }),
 		},
 	});
 };

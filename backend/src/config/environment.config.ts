@@ -1,13 +1,16 @@
 import path from "node:path";
 import dotenv from "dotenv";
 import dotenvExpand from "dotenv-expand";
+import { z } from "zod";
 
-const envPath = path.join(process.cwd(), "..", ".env");
-
-console.log(`Loading environment from: ${envPath}`);
-
-const envConfig = dotenv.config({ path: envPath });
-
+const envConfig = dotenv.config({ path: path.join(process.cwd(), "..", ".env") });
 dotenvExpand.expand(envConfig);
 
-export { envConfig as default };
+const schema = z.object({
+	NODE_ENV: z.enum(["development", "production"]).default("development"),
+	BACKEND_PORT: z.coerce.number(),
+	FRONTEND_URL: z.url(),
+	DATABASE_URL: z.url(),
+});
+
+export const env = schema.parse(process.env);

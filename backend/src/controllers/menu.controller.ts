@@ -1,6 +1,6 @@
 import { db, itemCommand, sectionCommand } from "@lafontaine/database";
 import type { Request, Response } from "express";
-import { AppError, asyncHandler } from "../errors/app-error.js";
+import { AppError, asyncHandler } from "../errors/app-error";
 import { toPublicItem, toPublicSection } from "../types";
 
 export const getAllSections = asyncHandler(async (_req: Request, res: Response) => {

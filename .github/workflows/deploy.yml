@@ -82,12 +82,11 @@ jobs:
 
             echo "=== Building frontend ==="
             cd $PROJECT_PATH
-            yarn workspace frontend build:prod
+            yarn workspace frontend build
 
             echo "=== Deploying frontend ==="
             rm -rf $FRONTEND_DEST/*
-            cp -r $PROJECT_PATH/frontend/dist/frontend/browser/* $FRONTEND_DEST/
-            cp $FRONTEND_DEST/index.csr.html $FRONTEND_DEST/index.html
+            cp -r $PROJECT_PATH/frontend/dist/* $FRONTEND_DEST/
             sudo systemctl reload nginx
 
             echo "=== Deployment complete ==="

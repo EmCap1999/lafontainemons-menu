@@ -2,12 +2,11 @@
 	"name": "@lafontaine/backend",
 	"version": "1.0.0",
 	"main": "dist/server.js",
+	"types": "index.ts",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "tsc",
-		"dev": "NODE_ENV=development tsx watch src/server.ts",
-		"start:dev": "NODE_ENV=development node dist/server.js",
-		"start:prod": "NODE_ENV=production node dist/server.js",
+		"build": "tsx scripts/build.ts",
+		"dev": "tsx watch src/server.ts",
 		"start": "node dist/server.js",
 		"typecheck": "tsc --noEmit"
 	},
@@ -25,7 +24,8 @@
 		"cors": "^2.8.5",
 		"dotenv": "^17.2.2",
 		"dotenv-expand": "^13.0.0",
-		"express": "^5.1.0"
+		"express": "^5.1.0",
+		"zod": "^4.4.3"
 	},
 	"devDependencies": {
 		"@types/cors": "^2.8.17",

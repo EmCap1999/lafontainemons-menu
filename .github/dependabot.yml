@@ -17,10 +17,29 @@ updates:
     commit-message:
       prefix: "deps(node):"
     groups:
-      angular:
+      react:
         patterns:
-          - "@angular/*"
-          - "@angular-devkit/*"
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+          - "react-icons"
+      vite:
+        patterns:
+          - "vite"
+          - "@vitejs/*"
+          - "@tailwindcss/vite"
+      tailwind:
+        patterns:
+          - "tailwindcss"
+          - "tw-animate-css"
+      shadcn:
+        patterns:
+          - "@base-ui/react"
+          - "class-variance-authority"
+          - "clsx"
+          - "tailwind-merge"
+          - "lucide-react"
       express:
         patterns:
           - "express"
@@ -40,8 +59,3 @@ updates:
           - "typescript"
           - "@types/node"
           - "tsx"
-      testing:
-        patterns:
-          - "jasmine*"
-          - "karma*"
-          - "@types/jasmine"
