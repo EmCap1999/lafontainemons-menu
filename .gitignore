@@ -7,6 +7,8 @@
 **/.angular
 .turbo/
 dist/
+dist-ssr
+*.local
 
 # Drizzle
 database/drizzle/meta/*_snapshot.json
