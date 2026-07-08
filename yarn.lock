@@ -1392,7 +1392,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lafontaine/backend@workspace:backend":
+"@lafontaine/backend@npm:*, @lafontaine/backend@workspace:backend":
   version: 0.0.0-use.local
   resolution: "@lafontaine/backend@workspace:backend"
   dependencies:
@@ -3476,6 +3476,7 @@ __metadata:
   dependencies:
     "@base-ui/react": "npm:^1.6.0"
     "@fontsource-variable/geist": "npm:^5.2.9"
+    "@lafontaine/backend": "npm:*"
     "@tailwindcss/vite": "npm:^4.3.2"
     "@types/node": "npm:^24.13.2"
     "@types/react": "npm:^19.2.17"
@@ -3486,6 +3487,7 @@ __metadata:
     lucide-react: "npm:^1.23.0"
     react: "npm:^19.2.7"
     react-dom: "npm:^19.2.7"
+    react-icons: "npm:^5.7.0"
     shadcn: "npm:^4.13.0"
     tailwind-merge: "npm:^3.6.0"
     tailwindcss: "npm:^4.3.2"
@@ -4952,6 +4954,15 @@ __metadata:
   peerDependencies:
     react: ^19.2.7
   checksum: 10c0/970ff600f6e80d47d39e2f226f12f226173b3cba3382efc97c5f0cd663de9af38c7a4c11c213fb936094faeac83060d660247accaa96b752180d5b951b9cfecb
+  languageName: node
+  linkType: hard
+
+"react-icons@npm:^5.7.0":
+  version: 5.7.0
+  resolution: "react-icons@npm:5.7.0"
+  peerDependencies:
+    react: "*"
+  checksum: 10c0/cc5ae92e61ef9d8fc83cb3f3ac2710deab9174c5831bdaf2a94b099acfc91074a60d4b3adfd3165dcb9b21799ca6c760b3f4f6596d75198c1ed2ea44240818c8
   languageName: node
   linkType: hard
 
