@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.2.1...v1.3.0) (2026-07-08)
+
+
+### Features
+
+* **frontend:** optimize mobile layout with scrollable hero and fixed footer ([#297](https://github.com/EmCap1999/lafontainemons-menu/issues/297)) ([af77f0f](https://github.com/EmCap1999/lafontainemons-menu/commit/af77f0f1329535a371b91b874fd75c63262b0d8e))
+
 ## [1.2.1](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.2.0...v1.2.1) (2026-07-08)
 
 
