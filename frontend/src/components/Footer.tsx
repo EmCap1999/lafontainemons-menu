@@ -2,7 +2,7 @@ export function Footer() {
 	const year = new Date().getFullYear();
 
 	return (
-		<footer className="relative border-t border-border bg-gradient-to-br from-accent to-secondary px-4 sm:px-6 lg:px-8 py-5">
+		<footer className="fixed bottom-0 inset-x-0 z-10 border-t border-border bg-gradient-to-br from-accent to-secondary px-4 sm:px-6 lg:px-8 py-2 sm:py-5">
 			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-0.5 rounded-b bg-gradient-to-r from-primary to-primary-dark" />
 			<div className="max-w-[1800px] mx-auto flex flex-col items-center gap-2 sm:flex-row sm:justify-between">
 				<div className="flex items-center gap-2 text-sm text-foreground/60">

@@ -56,10 +56,10 @@ export function Menu() {
 	const accordionValue = term ? filteredSections.map((s) => String(s.sectionId)) : openSections;
 
 	return (
-		<div className="flex-1 min-h-0 flex flex-col">
-			{/* Hero - sticky top */}
+		<div>
+			{/* Hero */}
 			<div
-				className="shrink-0 relative flex items-center justify-center py-7 md:py-10"
+				className="shrink-0 relative flex items-center justify-center py-4 md:py-10"
 				style={{
 					backgroundImage: `url(${background})`,
 					backgroundSize: "cover",
@@ -71,42 +71,42 @@ export function Menu() {
 					<img
 						src={logo}
 						alt="Logo La Fontaine Mons"
-						className="mb-3 brightness-0 invert drop-shadow-lg"
+						className="mb-2 brightness-0 invert drop-shadow-lg"
 						style={{
-							maxHeight: "clamp(6.5rem, 12vw, 9rem)",
-							maxWidth: "clamp(15rem, 26vw, 21rem)",
+							maxHeight: "clamp(5rem, 12vw, 9rem)",
+							maxWidth: "clamp(12rem, 26vw, 21rem)",
 						}}
 					/>
-					<h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">
+					<h1 className="text-base sm:text-2xl md:text-3xl font-bold text-white mb-2 tracking-tight">
 						Carte — Boissons & Desserts
 					</h1>
-					<div className="flex gap-3 mt-2">
+					<div className="flex gap-2 mt-1.5 sm:gap-3 sm:mt-2">
 						<a
 							href={SOCIAL_LINKS.tripadvisor}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-white/90 hover:bg-white/20 hover:border-white/35 hover:text-white transition-all duration-200"
+							className="flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-white/90 hover:bg-white/20 hover:border-white/35 hover:text-white transition-all duration-200"
 							aria-label="TripAdvisor"
 						>
-							<FaTripadvisor size={18} />
-							<span className="text-sm font-medium tracking-wide">TripAdvisor</span>
+							<FaTripadvisor size={15} />
+							<span className="text-xs sm:text-sm font-medium tracking-wide">TripAdvisor</span>
 						</a>
 						<a
 							href={SOCIAL_LINKS.facebook}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-white/90 hover:bg-white/20 hover:border-white/35 hover:text-white transition-all duration-200"
+							className="flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-white/90 hover:bg-white/20 hover:border-white/35 hover:text-white transition-all duration-200"
 							aria-label="Facebook"
 						>
-							<FaFacebook size={17} />
-							<span className="text-sm font-medium tracking-wide">Facebook</span>
+							<FaFacebook size={15} />
+							<span className="text-xs sm:text-sm font-medium tracking-wide">Facebook</span>
 						</a>
 					</div>
 				</div>
 			</div>
 
-			{/* Scrollable content */}
-			<div className="flex-1 min-h-0 overflow-y-auto">
+			{/* Content */}
+			<div>
 				<div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Search */}
 					<div className="py-6 max-w-lg mx-auto">
