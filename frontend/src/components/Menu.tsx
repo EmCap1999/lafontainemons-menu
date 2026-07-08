@@ -16,12 +16,21 @@ export function Menu() {
 		getSections()
 			.then(async (data) => {
 				setSections(data);
-				const results = await Promise.all(
+				const results = await Promise.allSettled(
 					data.map((s) =>
 						getItemsBySection(s.sectionId).then((items) => [s.sectionId, items] as const),
 					),
 				);
-				setItems(Object.fromEntries(results));
+				const loaded: Record<number, PublicItem[]> = {};
+				for (const result of results) {
+					if (result.status === "fulfilled") {
+						const [id, items] = result.value;
+						loaded[id] = items;
+					} else {
+						console.error("Failed to load section items:", result.reason);
+					}
+				}
+				setItems(loaded);
 			})
 			.catch(console.error)
 			.finally(() => setLoading(false));
@@ -50,8 +59,7 @@ export function Menu() {
 			)
 		: sections;
 
-	const isExpanded = (sectionId: number) =>
-		term ? filteredSections.some((s) => s.sectionId === sectionId) : expanded.has(sectionId);
+	const isExpanded = (sectionId: number) => !!term || expanded.has(sectionId);
 
 	return (
 		<div>

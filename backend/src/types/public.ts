@@ -1,7 +1,15 @@
 import type { ItemSelect, SectionSelect } from "@lafontaine/database";
 
 const PUBLIC_SECTION_KEYS = ["sectionId", "name"] as const;
-const PUBLIC_ITEM_KEYS = ["name", "price", "origin", "capacity", "unit", "isAvailable"] as const;
+const PUBLIC_ITEM_KEYS = [
+	"itemId",
+	"name",
+	"price",
+	"origin",
+	"capacity",
+	"unit",
+	"isAvailable",
+] as const;
 
 export type PublicSection = Pick<SectionSelect, (typeof PUBLIC_SECTION_KEYS)[number]>;
 export type PublicItem = Pick<ItemSelect, (typeof PUBLIC_ITEM_KEYS)[number]>;

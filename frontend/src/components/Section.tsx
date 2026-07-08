@@ -29,12 +29,12 @@ export function Section({ section, items, isExpanded, onToggle }: Props) {
 			{isExpanded && (
 				<div>
 					{displayItems.map((item) => (
-						<div key={`${item.name}-${item.capacity}-${item.unit}`}>
+						<div key={item.itemId}>
 							<div>
 								<h3>{item.name}</h3>
 								<div>
 									{item.origin && <span>{item.origin}</span>}
-									{item.capacity !== null && item.unit && (
+									{item.capacity != null && item.unit && (
 										<span>
 											{new Intl.NumberFormat("fr").format(item.capacity)} {item.unit}
 										</span>

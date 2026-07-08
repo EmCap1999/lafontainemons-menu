@@ -5,8 +5,9 @@
 	"type": "module",
 	"packageManager": "yarn@4.12.0",
 	"scripts": {
-		"dev": "docker compose up -d && yarn workspace frontend dev",
+		"dev": "docker compose up -d && turbo dev --ui tui",
 		"dev:frontend": "yarn workspace frontend dev",
+		"dev:backend": "yarn workspace @lafontaine/backend dev",
 		"dev:stop": "docker compose down",
 		"build": "turbo build",
 		"lint": "biome check .",

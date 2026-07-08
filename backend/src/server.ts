@@ -17,6 +17,11 @@ app.all("/{*splat}", (req: Request, _res: Response, next: NextFunction) => {
 
 app.use(errorHandler);
 
-app.listen(env.BACKEND_PORT, () => {
-	console.log(`Server running on port ${env.BACKEND_PORT} (${env.NODE_ENV})`);
-});
+app
+	.listen(env.BACKEND_PORT, () => {
+		console.log(`Server running on port ${env.BACKEND_PORT} (${env.NODE_ENV})`);
+	})
+	.on("error", (err) => {
+		console.error("Failed to start server:", err.message);
+		process.exit(1);
+	});
