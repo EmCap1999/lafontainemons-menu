@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.2.0...v1.2.1) (2026-07-08)
+
+
+### Bug Fixes
+
+* **frontend:** remove deprecated base url ([#295](https://github.com/EmCap1999/lafontainemons-menu/issues/295)) ([08b294d](https://github.com/EmCap1999/lafontainemons-menu/commit/08b294d018e1623a1e3337baa65cc91fa143c40d))
+
 ## [1.2.0](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.5...v1.2.0) (2026-07-08)
 
 
