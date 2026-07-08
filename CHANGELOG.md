@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.0...v1.3.1) (2026-07-08)
+
+
+### Bug Fixes
+
+* **frontend:** set app title and html lang to French ([#299](https://github.com/EmCap1999/lafontainemons-menu/issues/299)) ([c0c60af](https://github.com/EmCap1999/lafontainemons-menu/commit/c0c60af3285636be1b9268d1eb230cfa6e1aa9df))
+
 ## [1.3.0](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.2.1...v1.3.0) (2026-07-08)
 
 
