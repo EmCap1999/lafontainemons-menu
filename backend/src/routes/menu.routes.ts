@@ -1,5 +1,5 @@
 import { type IRouter, Router } from "express";
-import * as menuController from "../controllers/menu.controller.js";
+import * as menuController from "../controllers/menu.controller";
 
 const router: IRouter = Router();
 

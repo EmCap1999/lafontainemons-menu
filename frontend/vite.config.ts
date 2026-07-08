@@ -11,4 +11,12 @@ export default defineConfig({
 		},
 	},
 	envDir: path.resolve(__dirname, ".."),
+	server: {
+		proxy: {
+			"/api": {
+				target: `http://localhost:${process.env.BACKEND_PORT}`,
+				changeOrigin: true,
+			},
+		},
+	},
 });

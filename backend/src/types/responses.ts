@@ -1,4 +1,4 @@
-import type { PublicItem, PublicSection } from "./public.js";
+import type { PublicItem, PublicSection } from "./public";
 
 export interface ApiResponse<T> {
 	status: "success" | "error";
