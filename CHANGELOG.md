@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.5...v1.2.0) (2026-07-08)
+
+
+### Features
+
+* **frontend:** migrate from Angular to React ([#293](https://github.com/EmCap1999/lafontainemons-menu/issues/293)) ([3624a7d](https://github.com/EmCap1999/lafontainemons-menu/commit/3624a7d1c149464f3b7d6babad576166b8623db8))
+
 ## [1.1.5](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.4...v1.1.5) (2026-07-07)
 
 
