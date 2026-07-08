@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.3.0](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.2.1...v1.3.0) (2026-07-08)
+
+
+### Features
+
+* **frontend:** optimize mobile layout with scrollable hero and fixed footer ([#297](https://github.com/EmCap1999/lafontainemons-menu/issues/297)) ([af77f0f](https://github.com/EmCap1999/lafontainemons-menu/commit/af77f0f1329535a371b91b874fd75c63262b0d8e))
+
+## [1.2.1](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.2.0...v1.2.1) (2026-07-08)
+
+
+### Bug Fixes
+
+* **frontend:** remove deprecated base url ([#295](https://github.com/EmCap1999/lafontainemons-menu/issues/295)) ([08b294d](https://github.com/EmCap1999/lafontainemons-menu/commit/08b294d018e1623a1e3337baa65cc91fa143c40d))
+
+## [1.2.0](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.5...v1.2.0) (2026-07-08)
+
+
+### Features
+
+* **frontend:** migrate from Angular to React ([#293](https://github.com/EmCap1999/lafontainemons-menu/issues/293)) ([3624a7d](https://github.com/EmCap1999/lafontainemons-menu/commit/3624a7d1c149464f3b7d6babad576166b8623db8))
+
 ## [1.1.5](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.1.4...v1.1.5) (2026-07-07)
 
 
