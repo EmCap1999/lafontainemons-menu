@@ -2,13 +2,13 @@
 
 Production deployment guide for the frontend application.
 
-> **Note:** Frontend deployment is automated via CI (`.github/workflows/deploy.yml`).
-> This guide documents the initial server setup and manual operations.
+> **Note:** Deployment is automated via CI (`.github/workflows/deploy.yml`), triggered after a release-please release
+> lands on `main`. This guide documents the initial server setup and manual operations.
 
 ## Prerequisites
 
 - Ubuntu/Debian server with sudo access
-- Node.js 24+
+- Node.js 26+
 - Nginx installed
 - Domain configured (carte.lafontainemons.be)
 - Backend running (Docker)
@@ -88,18 +88,17 @@ sudo systemctl enable certbot.timer
 
 ## Manual Deployment
 
-If you need to deploy manually (outside of CI):
+If you need to deploy manually (outside of CI), mirroring what `.github/workflows/deploy.yml` does:
 
 ```bash
 cd /home/ubuntu/lafontainemons/lafontainemons-menu
 
 # Build
-NODE_ENV=production yarn workspace frontend generate-env
-yarn workspace frontend build:prod
+yarn workspace frontend build
 
 # Deploy (no sudo needed - ubuntu owns the directory)
 rm -rf /var/www/carte.lafontainemons.be/*
-cp -r frontend/dist/frontend/browser/* /var/www/carte.lafontainemons.be/
+cp -r frontend/dist/* /var/www/carte.lafontainemons.be/
 
 # Reload nginx (sudo required - systemd service)
 sudo systemctl reload nginx
@@ -107,27 +106,32 @@ sudo systemctl reload nginx
 
 ## Permissions Summary
 
-| Path | Owner | Why |
-|------|-------|-----|
+| Path                                | Owner             | Why                             |
+|-------------------------------------|-------------------|---------------------------------|
 | `/var/www/carte.lafontainemons.be/` | `ubuntu:www-data` | Deploy user writes, nginx reads |
-| `/etc/nginx/sites-available/*` | `root:root` | System config (sudo for edits) |
-| `systemctl reload nginx` | requires sudo | systemd service management |
+| `/etc/nginx/sites-available/*`      | `root:root`       | System config (sudo for edits)  |
+| `systemctl reload nginx`            | requires sudo     | systemd service management      |
 
 ## Troubleshooting
 
-| Issue | Solution |
-|-------|----------|
-| 502 Bad Gateway | Check backend is running |
-| 404 for API calls | Verify proxy config |
-| SSL errors | `sudo certbot renew` |
+| Issue                       | Solution                                                         |
+|-----------------------------|------------------------------------------------------------------|
+| 502 Bad Gateway             | Check backend is running                                         |
+| 404 for API calls           | Verify proxy config                                              |
+| SSL errors                  | `sudo certbot renew`                                             |
 | Permission denied on deploy | `sudo chown -R ubuntu:www-data /var/www/carte.lafontainemons.be` |
 
 ### Debug
 
 ```bash
 sudo nginx -t
-sudo tail -f /var/log/nginx/carte.lafontainemons.be.error.log
 curl http://localhost:8080/api/sections
+```
+
+Follow error log (long-running — run on its own):
+
+```bash
+sudo tail -f /var/log/nginx/carte.lafontainemons.be.error.log
 ```
 
 ## Live Site
