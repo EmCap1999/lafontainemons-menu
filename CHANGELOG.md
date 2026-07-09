@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.2...v1.3.3) (2026-07-09)
+
+
+### Documentation
+
+* **app:** restructure and centralize project documentation ([#303](https://github.com/EmCap1999/lafontainemons-menu/issues/303)) ([935ff1a](https://github.com/EmCap1999/lafontainemons-menu/commit/935ff1a34a6fd9ac7343c45d662026e5f4c5790a))
+
 ## [1.3.2](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.1...v1.3.2) (2026-07-09)
 
 
