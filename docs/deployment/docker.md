@@ -1,6 +1,6 @@
 # Docker Deployment
 
-Docker Compose setup for backend services.
+Docker Compose setup for backend services (Postgres + API).
 
 ## Architecture
 
@@ -30,38 +30,72 @@ docker ps
 
 ### Service Control
 
+Independent commands — run one at a time.
+
+Start all:
+
 ```bash
-docker compose up -d              # Start all
-docker compose down               # Stop all
-docker compose restart backend    # Restart backend
+docker compose up -d
+```
+
+Stop all:
+
+```bash
+docker compose down
+```
+
+Restart backend:
+
+```bash
+docker compose restart backend
+```
+
+Follow backend logs (long-running — run on its own):
+
+```bash
 docker logs -f lafontaine-backend-dev
+```
+
+Follow postgres logs (long-running — run on its own):
+
+```bash
 docker logs -f lafontaine-postgres-dev
 ```
 
 ### Database Operations
 
+Connect to database (interactive):
+
 ```bash
-# Connect to database
 docker exec -it lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB
+```
 
-# View tables
+View tables:
+
+```bash
 docker exec -it lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB -c "\dt"
+```
 
-# Backup
+Backup:
+
+```bash
 docker exec lafontaine-postgres-dev pg_dump -U $POSTGRES_USER $POSTGRES_DB > backup.sql
+```
 
-# Restore
+Restore:
+
+```bash
 docker exec -i lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB < backup.sql
 ```
 
 ## Troubleshooting
 
-| Issue | Solution |
-|-------|----------|
-| Backend won't start | `docker logs lafontaine-backend-dev` |
-| Database connection error | Verify `DATABASE_URL` in .env |
-| Port already in use | Change ports or stop conflicting services |
-| Out of disk space | `docker system prune -f` |
+| Issue                     | Solution                                  |
+|---------------------------|-------------------------------------------|
+| Backend won't start       | `docker logs lafontaine-backend-dev`      |
+| Database connection error | Verify `DATABASE_URL` in `.env`           |
+| Port already in use       | Change ports or stop conflicting services |
+| Out of disk space         | `docker system prune -f`                  |
 
 ### Debug
 
@@ -69,11 +103,16 @@ docker exec -i lafontaine-postgres-dev psql -U $POSTGRES_USER -d $POSTGRES_DB < 
 docker ps
 curl http://localhost:8080/api/sections
 docker exec lafontaine-postgres-dev pg_isready -U $POSTGRES_USER
+```
+
+Live resource usage (long-running — run on its own):
+
+```bash
 docker stats lafontaine-backend-dev lafontaine-postgres-dev
 ```
 
 ## Related
 
-- [Nginx Deployment](NGINX.README.md)
-- [Backend](backend/README.md)
-- [Database](database/README.md)
+- [Nginx deployment](nginx.md)
+- [Backend](../backend.md)
+- [Database](../database.md)

@@ -6,7 +6,7 @@ Dynamic menu website for La Fontaine Mons restaurant.
 
 ## Tech Stack
 
-- **Frontend**: Angular 21, TypeScript, SCSS, SSR
+- **Frontend**: React 19, TypeScript, Vite, Tailwind CSS
 - **Backend**: Node.js, Express 5, TypeScript
 - **Database**: PostgreSQL 18, Drizzle ORM
 - **Infrastructure**: Docker, Nginx, Let's Encrypt
@@ -14,7 +14,7 @@ Dynamic menu website for La Fontaine Mons restaurant.
 ## Project Structure
 
 ```
-├── frontend/          # Angular application
+├── frontend/          # React application
 ├── backend/           # Express API
 ├── database/          # Drizzle ORM layer
 └── docker-compose.yml # Development containers
@@ -23,35 +23,22 @@ Dynamic menu website for La Fontaine Mons restaurant.
 ## Quick Start
 
 ```bash
-# Install dependencies
 yarn install
-
-# Start Application
 yarn dev
 ```
 
-**Endpoints**:
-- Frontend: http://localhost:4200
-- Backend: http://localhost:8080
-- Database: localhost:5432
-
-## Commands
-
-```bash
-yarn lint                         # Lint project
-yarn lint:fix                     # Auto-fix lint issues
-yarn workspace frontend build     # Build frontend
-yarn workspace backend build      # Build backend
-yarn db:studio                    # Database GUI
-```
+See [docs/getting-started.md](docs/getting-started.md) for environment setup and full details.
 
 ## Documentation
 
-- [Backend](backend/README.md)
-- [Frontend](frontend/README.md)
-- [Database](database/README.md)
-- [Docker Deployment](DOCKER.README.md)
-- [Nginx Deployment](NGINX.README.md)
+- [Architecture](docs/architecture.md) — monorepo structure, stack, data flow
+- [Getting Started](docs/getting-started.md) — local setup
+- [Backend](docs/backend.md) — API reference
+- [Frontend](docs/frontend.md) — structure, scripts
+- [Database](docs/database.md) — schema, migrations
+- [Docker Deployment](docs/deployment/docker.md)
+- [Nginx Deployment](docs/deployment/nginx.md)
+- [Changelog](CHANGELOG.md)
 
 ## Author
 
