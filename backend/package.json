@@ -30,7 +30,7 @@
 	"devDependencies": {
 		"@types/cors": "^2.8.17",
 		"esbuild": "^0.28.1",
-		"esbuild-node-externals": "^1.22.0",
+		"esbuild-node-externals": "^1.23.1",
 		"typescript": "^6.0.3"
 	}
 }
