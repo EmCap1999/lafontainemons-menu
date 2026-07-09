@@ -1,7 +1,7 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"files": {
-		"includes": ["**", "!**/drizzle/meta"]
+		"includes": ["**", "!**/drizzle/meta", "!**/*.svg"]
 	},
 	"formatter": {
 		"lineWidth": 100
