@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.3.2](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.1...v1.3.2) (2026-07-09)
+
+
+### Bug Fixes
+
+* **frontend:** use beer favicon instead of default ([#301](https://github.com/EmCap1999/lafontainemons-menu/issues/301)) ([86e6966](https://github.com/EmCap1999/lafontainemons-menu/commit/86e69667447465e7251b8e9f50c30fb5d4d1b464))
+
+
+### Dependencies
+
+* **node:** bump @types/node in the typescript group across 1 directory ([#288](https://github.com/EmCap1999/lafontainemons-menu/issues/288)) ([649faca](https://github.com/EmCap1999/lafontainemons-menu/commit/649facad3a81e1191086085e78f3d46f9c76844d))
+* **node:** bump dotenv from 17.2.3 to 17.4.2 ([#290](https://github.com/EmCap1999/lafontainemons-menu/issues/290)) ([0082feb](https://github.com/EmCap1999/lafontainemons-menu/commit/0082feb79f11058fe6688727047e93af4c6c7bc2))
+* **node:** bump esbuild-node-externals from 1.22.0 to 1.23.1 ([#291](https://github.com/EmCap1999/lafontainemons-menu/issues/291)) ([87b6d7e](https://github.com/EmCap1999/lafontainemons-menu/commit/87b6d7e73ed00182e6f31513403d91052a99cf96))
+* **node:** bump postgres from 3.4.8 to 3.4.9 ([#289](https://github.com/EmCap1999/lafontainemons-menu/issues/289)) ([6ddf594](https://github.com/EmCap1999/lafontainemons-menu/commit/6ddf5948fb18101fc0ea74bd75e2a7d7149e2ae8))
+* **node:** bump the tools group across 1 directory with 2 updates ([#287](https://github.com/EmCap1999/lafontainemons-menu/issues/287)) ([b885486](https://github.com/EmCap1999/lafontainemons-menu/commit/b8854868550c61304557e834df27a19b7883b746))
+
 ## [1.3.1](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.0...v1.3.1) (2026-07-08)
 
 
