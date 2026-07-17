@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.3.4](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.3...v1.3.4) (2026-07-17)
+
+
+### Dependencies
+
+* **node:** bump lucide-react from 1.23.0 to 1.25.0 in the shadcn group ([#308](https://github.com/EmCap1999/lafontainemons-menu/issues/308)) ([90976ef](https://github.com/EmCap1999/lafontainemons-menu/commit/90976ef3899e3fbbe917b703785af8a4e8f43dfc))
+* **node:** bump tailwindcss in the tailwind group across 1 directory ([#307](https://github.com/EmCap1999/lafontainemons-menu/issues/307)) ([d2245f2](https://github.com/EmCap1999/lafontainemons-menu/commit/d2245f244f54b09273f486e5b2d2d3b21995fabb))
+* **node:** bump the tools group with 2 updates ([#309](https://github.com/EmCap1999/lafontainemons-menu/issues/309)) ([f7f270a](https://github.com/EmCap1999/lafontainemons-menu/commit/f7f270afdee65b0c9b88e88209e6d8d13a29e5ea))
+* **node:** bump the vite group with 2 updates ([#306](https://github.com/EmCap1999/lafontainemons-menu/issues/306)) ([d65c18a](https://github.com/EmCap1999/lafontainemons-menu/commit/d65c18a84edc1076ef10049ac15a249978830111))
+* **node:** bump tsx in the typescript group across 1 directory ([#310](https://github.com/EmCap1999/lafontainemons-menu/issues/310)) ([4b52a6f](https://github.com/EmCap1999/lafontainemons-menu/commit/4b52a6fe74e5bf237df02e2d254266179982d460))
+
 ## [1.3.3](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.2...v1.3.3) (2026-07-09)
 
 
