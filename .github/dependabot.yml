@@ -5,7 +5,10 @@ updates:
     directory: "/"
     target-branch: "main"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+      timezone: "Europe/Brussels"
     commit-message:
       prefix: "deps(github-actions):"
 
@@ -13,7 +16,10 @@ updates:
     directory: "/"
     target-branch: "main"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+      timezone: "Europe/Brussels"
     commit-message:
       prefix: "deps(node):"
     groups:
