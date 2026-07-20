@@ -1307,10 +1307,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource-variable/geist@npm:^5.2.9":
-  version: 5.2.9
-  resolution: "@fontsource-variable/geist@npm:5.2.9"
-  checksum: 10c0/2f9b070bece1ab4cca0c3e434fb13a670eeae30481db17884a37ced494b7177ca81e9a384d30fc8c47fe05e4a55d861f854e377395c88d900a03ae3a8fe85e88
+"@fontsource-variable/geist@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource-variable/geist@npm:5.3.0"
+  checksum: 10c0/6b1d1d249643377c885d040769bf0964f242e8d03c4470535329ad4eed3d30a8134fea0d45c0b99b8069924a1f506a3bcb5b8d9cea77b7b5234dc7dd57371842
   languageName: node
   linkType: hard
 
@@ -3466,7 +3466,7 @@ __metadata:
   resolution: "frontend@workspace:frontend"
   dependencies:
     "@base-ui/react": "npm:^1.6.0"
-    "@fontsource-variable/geist": "npm:^5.2.9"
+    "@fontsource-variable/geist": "npm:^5.3.0"
     "@lafontaine/backend": "npm:*"
     "@tailwindcss/vite": "npm:^4.3.3"
     "@types/node": "npm:^26.1.1"
