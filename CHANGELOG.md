@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.3.5](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.4...v1.3.5) (2026-08-04)
+
+
+### Dependencies
+
+* **node:** bump @fontsource-variable/geist from 5.2.9 to 5.3.0 ([#313](https://github.com/EmCap1999/lafontainemons-menu/issues/313)) ([2736615](https://github.com/EmCap1999/lafontainemons-menu/commit/2736615068fc46adb2b326b45ca9325debc7d7ab))
+* **node:** bump lucide-react from 1.25.0 to 1.27.0 in the shadcn group ([db6664f](https://github.com/EmCap1999/lafontainemons-menu/commit/db6664fdb4dac923d77d014022da9a85c4b98527))
+* **node:** bump shadcn from 4.13.0 to 4.15.0 ([#320](https://github.com/EmCap1999/lafontainemons-menu/issues/320)) ([22296d3](https://github.com/EmCap1999/lafontainemons-menu/commit/22296d3458202219bd07d897f0df1bd1676a8c25))
+* **node:** bump the react group across 1 directory with 4 updates ([#323](https://github.com/EmCap1999/lafontainemons-menu/issues/323)) ([e9719de](https://github.com/EmCap1999/lafontainemons-menu/commit/e9719de1bf3a566a7f5eb8dd9f3ae89f70fc309f))
+* **node:** bump the vite group across 1 directory with 2 updates ([#324](https://github.com/EmCap1999/lafontainemons-menu/issues/324)) ([d8a3be2](https://github.com/EmCap1999/lafontainemons-menu/commit/d8a3be203471b083f4fbfb52f9b3efff33089b3e))
+
 ## [1.3.4](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.3...v1.3.4) (2026-07-17)
 
 
