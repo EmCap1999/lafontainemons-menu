@@ -3456,7 +3456,7 @@ __metadata:
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
     react-icons: "npm:^5.7.0"
-    shadcn: "npm:^4.15.0"
+    shadcn: "npm:^4.16.2"
     tailwind-merge: "npm:^3.6.0"
     tailwindcss: "npm:^4.3.3"
     tw-animate-css: "npm:^1.4.0"
@@ -5292,9 +5292,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shadcn@npm:^4.15.0":
-  version: 4.15.0
-  resolution: "shadcn@npm:4.15.0"
+"shadcn@npm:^4.16.2":
+  version: 4.16.2
+  resolution: "shadcn@npm:4.16.2"
   dependencies:
     "@babel/core": "npm:^7.28.0"
     "@babel/parser": "npm:^7.28.0"
@@ -5330,7 +5330,7 @@ __metadata:
     zod-to-json-schema: "npm:^3.24.6"
   bin:
     shadcn: dist/index.js
-  checksum: 10c0/08115f8b87ac182cbf754f9d124d2343a285c09f00b4d800f377b79f722f2577e8bec1670540c796600831585a2f30dcc36f1ff4bc1cd9082aecf844302ff23c
+  checksum: 10c0/4d9b5f6bb945426258b9833af0fad921822afd8b4a69683a76d2ed0cc31ec67df2491859b67c230d00ad080e8da3c8ce20d0e3846cf26f2e5b68a60cebea293c
   languageName: node
   linkType: hard
 
