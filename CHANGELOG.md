@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.3.6](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.5...v1.3.6) (2026-09-14)
+
+
+### Dependencies
+
+* **node:** bump shadcn from 4.15.0 to 4.16.2 ([#334](https://github.com/EmCap1999/lafontainemons-menu/issues/334)) ([2236280](https://github.com/EmCap1999/lafontainemons-menu/commit/22362809d2439727e179763f906821f67d57751e))
+* **node:** bump the shadcn group with 2 updates ([#331](https://github.com/EmCap1999/lafontainemons-menu/issues/331)) ([d19ef98](https://github.com/EmCap1999/lafontainemons-menu/commit/d19ef98d005c18e3d8f008cd29494c4847602938))
+* **node:** bump the tools group with 2 updates ([#332](https://github.com/EmCap1999/lafontainemons-menu/issues/332)) ([18bb65b](https://github.com/EmCap1999/lafontainemons-menu/commit/18bb65b902cce386d71305e020aea53c70af2ed6))
+* **node:** bump the typescript group across 1 directory with 2 updates ([#333](https://github.com/EmCap1999/lafontainemons-menu/issues/333)) ([a63b288](https://github.com/EmCap1999/lafontainemons-menu/commit/a63b288f05ed5a258a059851be16b138e9c5cb9e))
+* **node:** bump the vite group across 1 directory with 2 updates ([#338](https://github.com/EmCap1999/lafontainemons-menu/issues/338)) ([68b83a0](https://github.com/EmCap1999/lafontainemons-menu/commit/68b83a0dd038cc4d88af9e74ac87c88f6560090c))
+
 ## [1.3.5](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.4...v1.3.5) (2026-08-04)
 
 
