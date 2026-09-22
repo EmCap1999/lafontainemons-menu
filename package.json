@@ -25,11 +25,11 @@
 	},
 	"license": "ISC",
 	"devDependencies": {
-		"@biomejs/biome": "2.5.7",
+		"@biomejs/biome": "2.5.14",
 		"@types/node": "^26.5.1",
 		"dotenv": "^17.4.2",
 		"tsx": "^4.23.13",
-		"turbo": "^2.10.8"
+		"turbo": "^2.10.13"
 	},
 	"dependencies": {
 		"esbuild": "^0.28.1"
