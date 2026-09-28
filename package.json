@@ -29,7 +29,7 @@
 		"@types/node": "^26.6.2",
 		"dotenv": "^17.4.2",
 		"tsx": "^4.23.13",
-		"turbo": "^2.10.13"
+		"turbo": "^2.11.4"
 	},
 	"dependencies": {
 		"esbuild": "^0.28.1"
