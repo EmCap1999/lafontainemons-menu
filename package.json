@@ -28,7 +28,7 @@
 		"@biomejs/biome": "2.5.14",
 		"@types/node": "^26.6.2",
 		"dotenv": "^17.4.2",
-		"tsx": "^4.23.13",
+		"tsx": "^4.23.15",
 		"turbo": "^2.10.13"
 	},
 	"dependencies": {
