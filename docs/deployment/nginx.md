@@ -51,6 +51,11 @@ server {
         try_files $uri $uri/ /index.html;
     }
 
+    # PWA: service worker & manifest must always be revalidated so updates reach installed apps
+    location ~* ^/(sw\.js|registerSW\.js|manifest\.webmanifest)$ {
+        add_header Cache-Control "no-cache";
+    }
+
     location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2)$ {
         expires 1y;
         add_header Cache-Control "public, immutable";
@@ -69,6 +74,11 @@ server {
     error_log /var/log/nginx/carte.lafontainemons.be.error.log;
 }
 ```
+
+> **Header inheritance:** a `location` block containing any `add_header` inherits **none** of the `add_header`
+> directives from the `server`/`http` level. If you add global security headers (HSTS, `X-Content-Type-Options`,
+> CSP…), put them in a snippet (e.g. `/etc/nginx/snippets/security-headers.conf`) and `include` it both in the
+> `server` block and in every `location` that uses `add_header`. Check with `sudo nginx -T | grep add_header`.
 
 ### 3. Enable Site
 
