@@ -3,8 +3,8 @@ import { Menu } from "@/components/Menu";
 
 function App() {
 	return (
-		<div className="min-h-dvh flex flex-col">
-			<main className="flex-1 pb-12 sm:pb-16">
+		<div className="flex h-svh flex-col overflow-hidden">
+			<main className="flex min-h-0 flex-1 flex-col overflow-y-auto">
 				<Menu />
 			</main>
 			<Footer />

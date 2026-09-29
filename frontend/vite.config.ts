@@ -20,14 +20,14 @@ export default defineConfig(({ mode }) => {
 			tailwindcss(),
 			VitePWA({
 				registerType: "autoUpdate",
-				includeAssets: ["beer.ico", "apple-touch-icon-180x180.png"],
+				includeAssets: ["favicon.ico", "apple-touch-icon-180x180.png"],
 				manifest: {
 					name: "La Fontaine Mons",
 					short_name: "La Fontaine",
 					description: "Carte des boissons et desserts de la Brasserie La Fontaine à Mons",
 					lang: "fr",
 					theme_color: "#1c1917",
-					background_color: "#1c1917",
+					background_color: "#ffffff",
 					display: "standalone",
 					icons: [
 						{ src: "pwa-192x192.png", sizes: "192x192", type: "image/png" },

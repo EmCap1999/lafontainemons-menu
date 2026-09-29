@@ -2,24 +2,22 @@ export function Footer() {
 	const year = new Date().getFullYear();
 
 	return (
-		<footer className="fixed bottom-0 inset-x-0 z-10 border-t border-border bg-gradient-to-br from-accent to-secondary px-4 sm:px-6 lg:px-8 py-2 sm:py-5">
-			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-0.5 rounded-b bg-gradient-to-r from-primary to-primary-dark" />
-			<div className="max-w-[1800px] mx-auto flex flex-col items-center gap-2 sm:flex-row sm:justify-between">
-				<div className="flex items-center gap-2 text-sm text-foreground/60">
+		<footer className="relative border-t border-border bg-gradient-to-br from-accent to-secondary px-4 pt-4 pb-[calc(env(safe-area-inset-bottom)+1.25rem)] sm:px-6 sm:pt-5 sm:pb-[calc(env(safe-area-inset-bottom)+1.5rem)]">
+			<div className="absolute top-0 left-1/2 h-0.5 w-12 -translate-x-1/2 rounded-b bg-gradient-to-r from-primary to-primary-dark" />
+			<div className="mx-auto flex max-w-2xl flex-col items-center gap-3 text-center">
+				<span className="text-[15px] font-medium text-foreground">© {year} La Fontaine Mons</span>
+				<div className="flex items-center gap-1.5 text-xs text-foreground/50">
+					<span>v{__APP_VERSION__}</span>
+					<span className="text-foreground/40">·</span>
 					<span className="font-light">Powered by</span>
 					<a
 						href="https://www.linkedin.com/in/emmanu%C3%ABl-caputo-a46173235/"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="font-medium text-foreground/80 hover:text-primary transition-colors underline underline-offset-2"
+						className="font-medium text-foreground/70 underline underline-offset-2 transition-colors hover:text-primary"
 					>
 						Manu Caputo
 					</a>
-				</div>
-				<div className="flex items-center gap-2 text-sm font-light text-muted-foreground">
-					<span>© {year} La Fontaine Mons</span>
-					<span className="text-border">·</span>
-					<span className="text-sm font-medium text-foreground/50">v{__APP_VERSION__}</span>
 				</div>
 			</div>
 		</footer>
