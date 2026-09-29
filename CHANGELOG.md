@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.4.0](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.6...v1.4.0) (2026-09-29)
+
+
+### Features
+
+* **frontend:** add PWA support with official logo icons ([#360](https://github.com/EmCap1999/lafontainemons-menu/issues/360)) ([d3e0df4](https://github.com/EmCap1999/lafontainemons-menu/commit/d3e0df4b369acef0bdd4f0f26b806b5d79683f22))
+
+
+### Dependencies
+
+* **node:** bump @types/node in the typescript group across 1 directory ([#350](https://github.com/EmCap1999/lafontainemons-menu/issues/350)) ([3b2a24f](https://github.com/EmCap1999/lafontainemons-menu/commit/3b2a24f86959a746ebb56ec011be993e26040c76))
+* **node:** bump lucide-react from 1.47.0 to 1.48.0 in the shadcn group ([#353](https://github.com/EmCap1999/lafontainemons-menu/issues/353)) ([6c2f74b](https://github.com/EmCap1999/lafontainemons-menu/commit/6c2f74b32cc7a2a716eb7f9d94a634a78e49a3da))
+* **node:** bump shadcn from 4.16.2 to 4.21.0 ([#351](https://github.com/EmCap1999/lafontainemons-menu/issues/351)) ([e8f0bb9](https://github.com/EmCap1999/lafontainemons-menu/commit/e8f0bb94109edc01801f7db50ceab5561cba1195))
+* **node:** bump the drizzle group with 2 updates ([#354](https://github.com/EmCap1999/lafontainemons-menu/issues/354)) ([86f088a](https://github.com/EmCap1999/lafontainemons-menu/commit/86f088a0f7b59ee5bc2e6939e5824c0bb0f3e8bb))
+* **node:** bump the react group with 4 updates ([#347](https://github.com/EmCap1999/lafontainemons-menu/issues/347)) ([cbf022a](https://github.com/EmCap1999/lafontainemons-menu/commit/cbf022a26aed84c7d87ec79e178544074b3a50da))
+* **node:** bump the shadcn group across 1 directory with 3 updates ([#348](https://github.com/EmCap1999/lafontainemons-menu/issues/348)) ([51a5cbf](https://github.com/EmCap1999/lafontainemons-menu/commit/51a5cbff6d624f49016d75e971e8fe82ab5bbbe6))
+* **node:** bump the tools group with 2 updates ([#349](https://github.com/EmCap1999/lafontainemons-menu/issues/349)) ([9c340c7](https://github.com/EmCap1999/lafontainemons-menu/commit/9c340c7d3e7315ea5ecfdc9202988478cf71eb96))
+* **node:** bump the typescript group across 1 directory with 2 updates ([#359](https://github.com/EmCap1999/lafontainemons-menu/issues/359)) ([785c934](https://github.com/EmCap1999/lafontainemons-menu/commit/785c93454564de734c52ad126957afe478d59afe))
+* **node:** bump turbo from 2.10.13 to 2.11.4 in the tools group ([#355](https://github.com/EmCap1999/lafontainemons-menu/issues/355)) ([9438b56](https://github.com/EmCap1999/lafontainemons-menu/commit/9438b56d834a306dd046212de59853ff3adc1f07))
+* **node:** bump vite from 8.3.0 to 8.3.1 in the vite group ([#352](https://github.com/EmCap1999/lafontainemons-menu/issues/352)) ([1567f7b](https://github.com/EmCap1999/lafontainemons-menu/commit/1567f7bbfe087f03ae23d6a48ac6ac54891c1e8d))
+
 ## [1.3.6](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.5...v1.3.6) (2026-09-14)
 
 
