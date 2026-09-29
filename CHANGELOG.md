@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.4.0...v1.5.0) (2026-09-29)
+
+
+### Features
+
+* **frontend:** use official logo for favicon and PWA icons and align footer ([#362](https://github.com/EmCap1999/lafontainemons-menu/issues/362)) ([717afe8](https://github.com/EmCap1999/lafontainemons-menu/commit/717afe8d87dce9d40602cb0ed181ed9d4f54834a))
+
 ## [1.4.0](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.3.6...v1.4.0) (2026-09-29)
 
 
