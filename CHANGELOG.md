@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.5.2...v1.6.0) (2026-11-09)
+
+
+### Features
+
+* **footer:** simplify footer and move it to the end of the menu ([#390](https://github.com/EmCap1999/lafontainemons-menu/issues/390)) ([497a8b0](https://github.com/EmCap1999/lafontainemons-menu/commit/497a8b0dce40377f62688834b40e0891d046a226))
+
 ## [1.5.2](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.5.1...v1.5.2) (2026-11-09)
 
 
