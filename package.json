@@ -3,7 +3,7 @@
 	"version": "1.5.1",
 	"description": "La Fontaine Mons - Restaurant menu application",
 	"type": "module",
-	"packageManager": "yarn@4.12.0",
+	"packageManager": "yarn@4.18.1",
 	"scripts": {
 		"dev": "docker compose up -d && turbo dev --ui tui",
 		"dev:frontend": "yarn workspace frontend dev",
