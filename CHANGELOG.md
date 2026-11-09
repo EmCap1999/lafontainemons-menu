@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.5.1...v1.5.2) (2026-11-09)
+
+
+### Bug Fixes
+
+* **yarn:** upgrade yarn version ([#388](https://github.com/EmCap1999/lafontainemons-menu/issues/388)) ([5dc51b1](https://github.com/EmCap1999/lafontainemons-menu/commit/5dc51b131ffa65e08cc73a0e14de0a86c4c564af))
+
 ## [1.5.1](https://github.com/EmCap1999/lafontainemons-menu/compare/v1.5.0...v1.5.1) (2026-11-09)
 
 
